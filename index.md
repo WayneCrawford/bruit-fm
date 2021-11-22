@@ -2,9 +2,9 @@
 
 This is the point of entry for all documents/sharing for the BRUIT-FM project.  Below you will find links to work package web and project management pages.  The project management pages are where you should put shared files (under "Dossiers") and update things to do and their completed status (under "Projects")
 
-## Project Issues
+## The Project
 
-- [General Information](general-information.md)
+- [Accepted Proposal](aapg-anr-2021-full_proposal_BRUITFM.pdf)
 - [Meetings and Events](meetings-events.md)
 - [Deliverables and Milestones](deliverables-milestones.md)
 - [Project Management Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414#)

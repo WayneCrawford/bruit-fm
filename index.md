@@ -2,25 +2,26 @@
 
 This is the point of entry for all documents/sharing for the BRUIT-FM project.  Below you will find links to the main and work package project management pages.
 
-| Project Issues|
-| --------------- |
-| [General Information](general-information) |
-| [Meetings and Events](meetings-events)  |
-| [Deliverables and Milestones](deliverables-milestones) |
+## Project Issues
+
+- [General Information](general-information)
+- [Meetings and Events](meetings-events)
+- [Deliverables and Milestones](deliverables-milestones)
+- [Project Management Page]()
 
 ## Work Packages
 
-| Webpages | Project Management |
-| :--------------- |
-| [WP1: Coordination, Management and Animation](WP1.md)  | [Project Management Page]() |
-| [WP2: Full Seafloor Spectrum](WP2.md)  | [Project Management Page]() |
-| [WP3: The Generation of Global Seismological Noise](WP3.md)  | [Project Management Page]() |
-| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [Project Management Page]() |
-| [WP5: Seafloor Soundscape](WP5.md)  | [Project Management Page]() |
+| Webpages          | Project Management |
+| :--------------- | ---------- |
+| [WP1: Coordination, Management and Animation](WP1.md)  | [PM Page]() |
+| [WP2: Full Seafloor Spectrum](WP2.md)  | [PM Page]() |
+| [WP3: The Generation of Global Seismological Noise](WP3.md)  | [PM Page]() |
+| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [PM Page]() |
+| [WP5: Seafloor Soundscape](WP5.md)  | [PM Page]() |
 
 ## Datasets
 
-This will be a table listing the datasets and links to access them, once they are decided upon in [WP2](WP2)
+This will be a table listing the datasets and links to access them, once they are decided upon in [WP2](WP2.md)
 
 ### Support or Contact
 

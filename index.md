@@ -1,23 +1,23 @@
 # BRUIT-FM
 
-This is the point of entry for all documents/sharing for the BRUIT-FM project.  Below you will find links to the main and work package project management pages.
+This is the point of entry for all documents/sharing for the BRUIT-FM project.  Below you will find links to work package web and project management pages.  The project management pages are where you should put shared files (under "Dossiers") and update things to do and their completed status (under "Projects")
 
 ## Project Issues
 
-- [General Information](general-information)
-- [Meetings and Events](meetings-events)
-- [Deliverables and Milestones](deliverables-milestones)
-- [Project Management Page]()
+- [General Information](general-information.md)
+- [Meetings and Events](meetings-events.md)
+- [Deliverables and Milestones](deliverables-milestones.md)
+- [Project Management Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414#)
 
 ## Work Packages
 
 | Webpages          | Project Management |
 | :--------------- | ---------- |
-| [WP1: Coordination, Management and Animation](WP1.md)  | [PM Page]() |
-| [WP2: Full Seafloor Spectrum](WP2.md)  | [PM Page]() |
-| [WP3: The Generation of Global Seismological Noise](WP3.md)  | [PM Page]() |
-| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [PM Page]() |
-| [WP5: Seafloor Soundscape](WP5.md)  | [PM Page]() |
+| [WP1: Coordination, Management and Animation](WP1.md)  | PM Page() |
+| [WP2: Full Seafloor Spectrum](WP2.md)  | PM Page() |
+| [WP3: The Generation of Global Seismological Noise](WP3.md)  | PM Page() |
+| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [PM Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121579#) |
+| [WP5: Seafloor Soundscape](WP5.md)  | PM Page() |
 
 ## Datasets
 

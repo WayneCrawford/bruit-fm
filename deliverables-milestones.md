@@ -13,5 +13,9 @@
 | D2.3 | Seismological noise source catalog | M44 | not started |
 | D3.1 | Catalog of wave-generated noise sources | M36 | not started |
 | D3.2 | Scientific articles | M24-48 | not started |
+| D4.1  | Report on rotational seismometer integration in BBOBS | M12 | not started |
+| D4.2 | Open source software for noise separation and removal | M24-48 | not started |
+| D4.3 | Catalog of seafloor noise sources | M36 | not started |
+| D4.3 | Scientific articles | M24-48 | not started |
 
 ## Milestones

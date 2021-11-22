@@ -10,11 +10,11 @@ This is the point of entry for all documents/sharing for the BRUIT-FM project.  
 
 | Work Packages |
 | :--------------- |
-| [WP1: Coordination, Management and Animation](WP1)  |
-| [WP2: Full Seafloor Spectrum](WP2)  |
-| [WP3: The Generation of Global Seismological Noise](WP3)  |
-| [WP4: Seafloor Signal Separation and Noise Removal](WP4)  |
-| [WP5: Seafloor Soundscape](WP5)  |
+| [WP1: Coordination, Management and Animation](WP1.md)  |
+| [WP2: Full Seafloor Spectrum](WP2.md)  |
+| [WP3: The Generation of Global Seismological Noise](WP3.md)  |
+| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  |
+| [WP5: Seafloor Soundscape](WP5.md)  |
 
 ## Datasets
 

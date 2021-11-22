@@ -35,7 +35,6 @@ The project management pages are where you should put shared files, collaborate 
     - *Document icon*: Create a co-editable document (isDoc), spreadsheet (isTab) or presentation (isSlide).
       Once you click on one, it will give the option to create a Micro$oft or OpenOffice file.
     - *RSS icon*: Add an RSS flux (can someone explain this to me?)
-- update things to do and their completed status (under "Projects")
 
 The menu on the right side of the screen assembles information from all of your RESANA "projects"
 

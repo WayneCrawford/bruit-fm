@@ -1,36 +1,24 @@
-## Welcome to GitHub Pages
+## Welcome to the BRUIT-FM website
 
-You can use the [editor on GitHub](https://github.com/WayneCrawford/bruit-fm/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This is the point of entry for all documents/sharing for the BRUIT-FM project.  Below you will find links to the main and work package project management pages.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+| Project Issues|
+| --------------- |
+| [General Information](general-information) |
+| [Meetings and Events](meetings-events)  |
+| [Deliverables and Milestones](deliverables-milestones) |
 
-### Markdown
+| Work Packages |
+| :--------------- |
+| [WP1: Coordination, Management and Animation](WP1)  |
+| [WP2: Full Seafloor Spectrum](WP2)  |
+| [WP3: The Generation of Global Seismological Noise](WP3)  |
+| [WP4: Seafloor Signal Separation and Noise Removal](WP4)  |
+| [WP5: Seafloor Soundscape](WP5)  |
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Datasets
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/WayneCrawford/bruit-fm/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+This will be a table listing the datasets and links to access them, once they are decided upon in [WP2](WP2)
 
 ### Support or Contact
 

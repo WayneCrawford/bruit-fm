@@ -1,4 +1,4 @@
-## BRUIT-FM
+# BRUIT-FM
 
 This is the point of entry for all documents/sharing for the BRUIT-FM project.  Below you will find links to the main and work package project management pages.
 
@@ -8,13 +8,15 @@ This is the point of entry for all documents/sharing for the BRUIT-FM project.  
 | [Meetings and Events](meetings-events)  |
 | [Deliverables and Milestones](deliverables-milestones) |
 
-| Work Packages |
+## Work Packages
+
+| Webpages | Project Management |
 | :--------------- |
-| [WP1: Coordination, Management and Animation](WP1.md)  |
-| [WP2: Full Seafloor Spectrum](WP2.md)  |
-| [WP3: The Generation of Global Seismological Noise](WP3.md)  |
-| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  |
-| [WP5: Seafloor Soundscape](WP5.md)  |
+| [WP1: Coordination, Management and Animation](WP1.md)  | [Project Management Page]() |
+| [WP2: Full Seafloor Spectrum](WP2.md)  | [Project Management Page]() |
+| [WP3: The Generation of Global Seismological Noise](WP3.md)  | [Project Management Page]() |
+| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [Project Management Page]() |
+| [WP5: Seafloor Soundscape](WP5.md)  | [Project Management Page]() |
 
 ## Datasets
 

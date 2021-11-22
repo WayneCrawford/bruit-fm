@@ -1,4 +1,4 @@
-## Welcome to the BRUIT-FM website
+## BRUIT-FM
 
 This is the point of entry for all documents/sharing for the BRUIT-FM project.  Below you will find links to the main and work package project management pages.
 

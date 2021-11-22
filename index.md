@@ -1,27 +1,45 @@
 # BRUIT-FM
 
-This is the point of entry for all documents/sharing for the BRUIT-FM project.  Below you will find links to work package web and project management pages.  The project management pages are where you should put shared files (under "Dossiers") and update things to do and their completed status (under "Projects")
+This is the point of entry for all documents/sharing for the BRUIT-FM project.  Below you will find links to work package web and project management pages.  
 
 ## The Project
 
-- [Accepted Proposal](aapg-anr-2021-full_proposal_BRUITFM.pdf)
+- [Overview](overview.md)
 - [Meetings and Events](meetings-events.md)
 - [Deliverables and Milestones](deliverables-milestones.md)
 - [Project Management Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414#)
 
 ## Work Packages
 
-| Webpages          | Project Management |
+| Web Page         | Project Management Page |
 | :--------------- | ---------- |
-| [WP1: Coordination, Management and Animation](WP1.md)  | PM Page() |
-| [WP2: Full Seafloor Spectrum](WP2.md)  | PM Page() |
-| [WP3: The Generation of Global Seismological Noise](WP3.md)  | PM Page() |
-| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [PM Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121579#) |
-| [WP5: Seafloor Soundscape](WP5.md)  | PM Page() |
+| [WP1: Coordination, Management and Animation](WP1.md)  | Page() |
+| [WP2: Full Seafloor Spectrum](WP2.md)  | Page() |
+| [WP3: The Generation of Global Seismological Noise](WP3.md)  | Page() |
+| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121579#) |
+| [WP5: Seafloor Soundscape](WP5.md)  | Page() |
 
 ## Datasets
 
 This will be a table listing the datasets and links to access them, once they are decided upon in [WP2](WP2.md)
+
+## Project Management pages
+The project management pages are where you should put shared files, collaborate on documents/spreadsheets/presentations and send out news/updates to everyone or your work package.  We are using the French governments "RESANA" platform, the tabs at the top let you:
+- **Actualites**: look at news/updates 
+- **Dossiers**: look at, edit and edit shared files
+- **Agenda**: look at dates and deadlines in calendar format
+- **Project**: Add action items.  They will be displayed on the **Agenda** and you can view them all in Kanban or GANTT format under this tab
+- **Ajouter**: Click here to add stuff:
+    - *Human bust icon*: Invite new collaborators
+    - *Pencil icon*: Add a news item
+    - *Document icon*: Create a co-editable document (isDoc), spreadsheet (isTab) or presentation (isSlide).
+      Once you click on one, it will give the option to create a Micro$oft or OpenOffice file.
+    - *RSS icon*: Add an RSS flux (can someone explain this to me?)
+- update things to do and their completed status (under "Projects")
+
+The menu on the right side of the screen assembles information from all of your RESANA "projects"
+
+There's a videoconference tool as well, but I haven't figured it out.
 
 ## Members
 
@@ -51,3 +69,7 @@ This will be a table listing the datasets and links to access them, once they ar
 | IPGP| SAMARAN| Flore| Asst Professor| WP5: Biological sources| 3.5 |
 | IPGP| KINDA| Bazile| Researcher| WP5: noise pollution| 3.5 |
 | IPGP| DREO | Richard | Researcher | WP5: whales and ships | ??? |
+
+## Other Documents
+- [Proposal](aapg-anr-2021-full_proposal_BRUITFM.pdf)
+

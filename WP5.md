@@ -21,5 +21,5 @@ Work Package Management Site()
 
 | Number | Title | Due Date | Status |
 | ------ | ------ | ---------- | ------ |
-| D5.1  | Catalog of soundscape noise sources | M36 | not started |
-| D5.2 | Scientific Articles and Reports | M12-48 | not started |
+| D5.1   | Catalog of soundscape noise sources | M36 | not started |
+| D5.2   | Scientific Articles and Reports | M12-48 | not started |

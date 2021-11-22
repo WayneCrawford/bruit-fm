@@ -11,5 +11,7 @@
 | D2.1 | Catalogue of available OBS data and characteristics | M12 | not started |
 | D2.2 | Low and High noise reference levels for OBS  | M36 | not started |
 | D2.3 | Seismological noise source catalog | M44 | not started |
+| D3.1 | Catalog of wave-generated noise sources | M36 | not started |
+| D3.2 | Scientific articles | M24-48 | not started |
 
 ## Milestones

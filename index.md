@@ -45,14 +45,14 @@ There's a videoconference tool as well, but I haven't figured it out.
 
 | Partner | Name | First name| Current position | Role & responsibilities | Involvement (PM) |
 | ------- | ---- | --------- | ---------------- | ----------------------- | ---------------- | 
-| **IPGP**| CRAWFORD| Wayne| Dir Rech CNRS| **Coordinator** and WP1 Leader WPs 2 & 4 co-Leader| 21 | 
+| **IPGP**| CRAWFORD| Wayne| Dir Rech CNRS| **Coordinator**, **Partner's scientific leader**, **WP1 Leader**, WPs 2 & 4 co-Leader| 21 | 
 | **IFREMER**| KER| Stephan| Cadre de Recherche IFREMER| **Partner’s scientific leader**, WP4 co-leader| 12 | 
 | **iXblue**| GUATTARI| Frederic| Director| **Partner’s scientific leader**, WP 3.3 co-leader| 2.5 |
-| IPGP| STUTZMANN| Eléonore| Physicien| WP3 Leader, WP2 co-Leader| 18 |
-| IPGP| BARRUOL| Guilhem| Dir Rech CNRS| WP5 leader, WP2 co-leader| 18 |
-| IPGP| XXXX| XXXX| PhD student| Doctoral researcher, WP3| 36 |
-| IFREMER| XXXX| XXXX| postdoc| PostDoctoral researcher, WP4| 18 |
-| IPGP| XXXX| XXXX| ingenieur (hired)| Data processing, WPs 2 & 5| 20 |
+| IPGP| STUTZMANN| Eléonore| Physicien| **WP3 Leader**, WP2 co-Leader| 18 |
+| IPGP| BARRUOL| Guilhem| Dir Rech CNRS| **WP5 leader**, WP2 co-leader| 18 |
+| IPGP| XXXX| XXXX| PhD student| WP3: Doctoral researcher| 36 |
+| IFREMER| XXXX| XXXX| postdoc| WP4: PostDoctoral researcher| 18 |
+| IPGP| XXXX| XXXX| ingenieur (hired)| WPs 2 & 5: Data processing| 20 |
 | IPGP| FARRA| Veronique| Maitre de Conf| WP3: Global noise| 4 |
 | IFREMER| ARDHUIN| Fabrice| Dir Rech CNRS| WP3: Global noise modelling| 2 |
 | IFREMER| DUVAL| Laurent| Chercheur Invité| WP3: signal processing| 2 |

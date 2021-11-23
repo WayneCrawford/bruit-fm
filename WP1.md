@@ -2,6 +2,20 @@
 
 [Work Package Management Site](https://resana.numerique.gouv.fr/public/perimetre/consulter/121579#)
 
+WP1 will animate collaborations between participants and WPs.
+A management committee consisting of one representative of each partner will ensure that the funds are appropriately
+expended and that temporary posts are properly advertised and are selected in a timely manner.
+We will share and evaluate scientific results and work advancement at biannual meetings.
+A small operations budget will allow us to invite outside researchers to participate in these meetings.
+
+The Data Management Plan (DMP) will be based on putting and retrieving data to/from FDSN- compatible data centers (RESIF if
+collected using French instruments).
+Enhanced data will be proposed to the data center: if it cannot distribute the data, the DMP will specify how to make it publicly available.
+
+Open Science guidelines will reiterate ANR-required guidelines for publications and specify rules for making available
+codes developed during the project (publication of all software on an open-software site (e.g. GitLab) and distribution
+of operating software on open-software deployment sites (e.g., PyPI).
+
 ## Tasks
 
 | Number | Title | Responsable | Status |

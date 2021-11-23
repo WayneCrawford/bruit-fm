@@ -1,5 +1,7 @@
 # Project Overview
 
+*This is a copy of the opening sections of the accepted proposal*
+
 ## Objectives and research hypothesis
 
 BRUIT-FM is a multidisciplinary project to identify and exploit the signals hidden within broadband seafloor seismological “noise”.

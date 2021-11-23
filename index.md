@@ -24,17 +24,17 @@ This is the point of entry for all documents/sharing for the BRUIT-FM project.  
 
 ## Project Management pages
 The project management pages are where you should put shared files, collaborate on documents/spreadsheets/presentations and send out news/updates to everyone or your work package.  We are using the French governments "RESANA" platform, the tabs at the top let you:
-- **Actualites**: look at news/updates 
-- **Dossiers**: look at, add and edit shared files
-- **Agenda**: look at dates and deadlines in calendar format
-- **Project**: Add action items.  They will be displayed on the **Agenda** and you can view them under this tab in
+- ![Actualites Icon](Images/RESANA_Actualites.png): look at news/updates 
+- ![Dossiers Icon](Images/RESANA_Dossiers.png): look at, add and edit shared files
+- ![Agenda Icon](Images/RESANA_Agenda.png): look at dates and deadlines in calendar format
+- ![Projet Icon](Images/RESANA_Projet.png): Add action items.  They will be displayed on the **Agenda** and you can view them under this tab in
   [Kanban](https://en.wikipedia.org/wiki/Kanban_(development)) or [GANTT](https://en.wikipedia.org/wiki/Gantt_chart) format
-- **Ajouter**: Click here to add stuff:
-    - *Human bust icon*: Invite new collaborators
-    - *Pencil icon*: Add a news item
-    - *Document icon*: Create a co-editable document (isDoc), spreadsheet (isTab) or presentation (isSlide).
+- ![Ajouter Icon](Images/RESANA_Ajouter.png): Click here to add stuff:
+    - ![Human Bust Icon](Images/RESANA_person.png): Invite new collaborators
+    - ![Pencil Icon](Images/RESANA_pencil.png): Add a news item
+    - ![Document Icon](Images/RESANA_document.png): Create a co-editable document (isDoc), spreadsheet (isTab) or presentation (isSlide).
       Once you click on one, it will give the option to create a Micro$oft or OpenOffice file.
-    - *RSS icon*: Add an RSS flux (can someone explain this to me?)
+    - ![Human Bust Icon](Images/RESANA_RSS.png): Add an RSS flux (can someone explain this to me?)
 
 The menu on the right side of the screen assembles information from all of your RESANA "projects"
 

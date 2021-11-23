@@ -1,6 +1,6 @@
 # BRUIT-FM
 
-This is the point of entry for all documents/sharing for the BRUIT-FM project.  Below you will find links to work package web and project management pages.  
+This is the point of entry for the BRUIT-FM project.  You will find links to descriptions of the project parts, as well as project management pages.  
 
 ## The Project
 

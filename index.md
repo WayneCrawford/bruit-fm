@@ -22,10 +22,6 @@ This is the point of entry for all documents/sharing for the BRUIT-FM project.  
 | [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121579#) |
 | [WP5: Seafloor Soundscape](WP5.md)  | Page() |
 
-## Datasets
-
-This will be a table listing the datasets and links to access them, once they are decided upon in [WP2](WP2.md)
-
 ## Project Management pages
 The project management pages are where you should put shared files, collaborate on documents/spreadsheets/presentations and send out news/updates to everyone or your work package.  We are using the French governments "RESANA" platform, the tabs at the top let you:
 - **Actualites**: look at news/updates 

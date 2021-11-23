@@ -24,7 +24,7 @@ This is the point of entry for the BRUIT-FM project.  You will find links to des
 
 ## Project Management pages
 The project management pages are where you should put shared files, collaborate on documents/spreadsheets/presentations and send out news/updates to everyone or your work package.  We are using the French governments "RESANA" platform, the tabs at the top let you:
-- ![Actualites](Images/RESANA_Actualites.png): look at news/updates 
+- ![Actualites](Images/RESANA_Actualites.png): see recently added items (news, documents, actions...)
 - ![Dossiers](Images/RESANA_Dossiers.png): look at, add and edit shared files
 - ![Agenda](Images/RESANA_Agenda.png): look at dates and deadlines in calendar format
 - ![Projet](Images/RESANA_Projet.png): Add/display action items.  You can view them under this tab in

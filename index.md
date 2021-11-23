@@ -10,7 +10,7 @@ This is the point of entry for all documents/sharing for the BRUIT-FM project.  
 - [Datasets](datasets.md)
 - [Budget](budget.md)
 - [Administration](administration.md)
-- [Project Management Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414#)
+- Go to the [Project Management Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414#)
 
 ## Work Packages
 

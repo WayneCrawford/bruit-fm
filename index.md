@@ -25,9 +25,10 @@ This is the point of entry for all documents/sharing for the BRUIT-FM project.  
 ## Project Management pages
 The project management pages are where you should put shared files, collaborate on documents/spreadsheets/presentations and send out news/updates to everyone or your work package.  We are using the French governments "RESANA" platform, the tabs at the top let you:
 - **Actualites**: look at news/updates 
-- **Dossiers**: look at, edit and edit shared files
+- **Dossiers**: look at, add and edit shared files
 - **Agenda**: look at dates and deadlines in calendar format
-- **Project**: Add action items.  They will be displayed on the **Agenda** and you can view them all in Kanban or GANTT format under this tab
+- **Project**: Add action items.  They will be displayed on the **Agenda** and you can view them under this tab in
+  [Kanban](https://en.wikipedia.org/wiki/Kanban_(development)) or [GANTT](https://en.wikipedia.org/wiki/Gantt_chart) format
 - **Ajouter**: Click here to add stuff:
     - *Human bust icon*: Invite new collaborators
     - *Pencil icon*: Add a news item

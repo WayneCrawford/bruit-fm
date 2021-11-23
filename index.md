@@ -48,7 +48,7 @@ There's a videoconference tool as well, but I haven't figured it out.
 | **IPGP**| CRAWFORD| Wayne| Dir Rech CNRS| **Coordinator**, **Partner's scientific leader**, **WP1 leader**, WPs 2 & 4 co-Leader| 21 | 
 | **IFREMER**| KER| Stephan| Cadre de Recherche IFREMER| **Partner’s scientific leader**, WP4 co-leader| 12 | 
 | **iXblue**| GUATTARI| Frederic| Director| **Partner’s scientific leader**, WP 3.3 co-leader| 2.5 |
-| IPGP| STUTZMANN| Eléonore| Physicien| **WP3 leader**, WP2 co-Leader| 18 |
+| IPGP| STUTZMANN| Eléonore| Physicien| **WP3 leader**, WP2 co-leader| 18 |
 | IPGP| BARRUOL| Guilhem| Dir Rech CNRS| **WP5 leader**, WP2 co-leader| 18 |
 | IPGP| XXXX| XXXX| PhD student| WP3: Doctoral researcher| 36 |
 | IFREMER| XXXX| XXXX| postdoc| WP4: PostDoctoral researcher| 18 |

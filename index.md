@@ -70,5 +70,5 @@ There's a videoconference tool as well, but I haven't figured it out.
 | IPGP| DREO | Richard | Researcher | WP5: whales and ships | ??? |
 
 ## Other Documents
-- [Proposal](aapg-anr-2021-full_proposal_BRUITFM.pdf)
+- [Proposal](Documents/aapg-anr-2021-full_proposal_BRUITFM.pdf)
 

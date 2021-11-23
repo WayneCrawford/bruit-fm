@@ -7,6 +7,7 @@ This is the point of entry for all documents/sharing for the BRUIT-FM project.  
 - [Overview](overview.md)
 - [Meetings and Events](meetings-events.md)
 - [Deliverables and Milestones](deliverables-milestones.md)
+- [Datasets](datasets.md)
 - [Budget](budget.md)
 - [Project Management Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414#)
 

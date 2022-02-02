@@ -1,7 +1,5 @@
 # WP4: Seafloor Signal Separation and Noise Removal
 
-[Work Package Management Site](https://resana.numerique.gouv.fr/public/perimetre/consulter/121579#)
-
 This WP applies advanced signal processing techniques to separate signal/noise sources and tests the use of a new rotational sensor.
 
 ## Objectives

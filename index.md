@@ -1,6 +1,6 @@
 # BRUIT-FM
 
-This is the point of entry for the BRUIT-FM project.  You will find links to descriptions of the project parts, as well as project management pages.  
+This is the point of entry for the BRUIT-FM project.  You will find links to descriptions of the project parts and to project management pages.  We will try to keep this site up-to-date with the "big-picture" items, whereas the project managment pages let you communicate, share documents and plan.  There is an [overall project managment page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414) and a page for each work package.  Subpackages can also have their own project managment page if need be
 
 ## The Project
 
@@ -11,7 +11,7 @@ This is the point of entry for the BRUIT-FM project.  You will find links to des
 - [Datasets](datasets.md)
 - [Budget](budget.md)
 - [Administration](administration.md)
-- Go to the [Project Management Site](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414#)
+- [Project Management](project_management.md)
 
 ## Announcements
 

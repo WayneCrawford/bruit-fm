@@ -23,9 +23,9 @@ There is a post-doctoral position available at IFREMER on [signal processing and
 | :--------------- | ---------- |
 | [WP1: Coordination, Management and Animation](WP1.md)  | Page() |
 | [WP2: Full Seafloor Spectrum](WP2.md)  | Page() |
-| [WP3: The Generation of Global Seismological Noise](WP3.md)  | Page() |
-| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121579#) |
-| [WP5: Seafloor Soundscape](WP5.md)  | Page() |
+| [WP3: The Generation of Global Seismological Noise](WP3.md)  | [Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/132788) |
+| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/132795) |
+| [WP5: Seafloor Soundscape](WP5.md)  | [Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121579) |
 
 ## Project Management pages
 The project management pages are where you should put shared files, collaborate on documents/spreadsheets/presentations and send out news/updates to everyone or your work package.  We are using the French governments "RESANA" platform, the tabs at the top let you:

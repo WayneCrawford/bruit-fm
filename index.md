@@ -19,7 +19,7 @@ There is a post-doctoral position available at IFREMER on [signal processing and
 
 ## Work Packages
 
-| Web Page         | Project Management Page |
+| Web Page         | Project Management |
 | :--------------- | ---------- |
 | [WP1: Coordination, Management and Animation](WP1.md)  | Page() |
 | [WP2: Full Seafloor Spectrum](WP2.md)  | Page() |

@@ -12,6 +12,9 @@ This is the point of entry for the BRUIT-FM project.  You will find links to des
 - [Administration](administration.md)
 - Go to the [Project Management Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414#)
 
+## Announcements
+
+There is a post-doctoral position available at IFREMER on [signal processing and data science applied to marine seismology](Documents/Ifremer_2022_Bruit_FM-Postdoc-Ocean-Bottom-Noise-Shazam.pdf) starting Spring/Summer 2022
 ## Work Packages
 
 | Web Page         | Project Management Page |

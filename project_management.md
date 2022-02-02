@@ -13,7 +13,11 @@ news/updates to everyone or your work package.
 
 ## Intro to the platform
 
-We are using the French governments "RESANA" platform, once you are on the site, the tabs at the top let you:
+We are using the French governments "RESANA" platform, here is an example of the Homepage for WP4:
+![WP4_Homepage](Images/RESANA_WP4Page.png)
+
+**The tabs at the top** let you:
+
 - ![Actualites](Images/RESANA_Actualites.png): see recently added items (news, documents, actions...)
 - ![Dossiers](Images/RESANA_Dossiers.png): look at, add and edit shared files
 - ![Agenda](Images/RESANA_Agenda.png): look at dates and deadlines in calendar format
@@ -27,6 +31,6 @@ We are using the French governments "RESANA" platform, once you are on the site,
       Once you click on one, it will give the option to create a Microsoft or OpenOffice file.
     - ![RSS](Images/RESANA_RSS.png): Add an RSS flux (can someone explain this to me?)
 
-The menu on the right side of the screen assembles information from all of your RESANA "projects"
+**The menu on the right** assembles information from all of your RESANA "projects"
 
-There's a videoconference tool as well, but I haven't figured it out.
+There's a **videoconference tool** as well, but I haven't figured it out.

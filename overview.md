@@ -21,7 +21,7 @@ ship engines and sonars, marine animals, landslides and icequakes (**Figure 1**)
 
 ![Wideband Seafloor Noise](Images/SeafloorNoise_Wideband_Squat.png)
 
-**Figure 1**: Seafloor seismometer spectra. Green region is the “soundscape” band. Top: Pressure. Thick lines are relaJvely high, thin relaJvely low values. Bo[om: AcceleraJon. Red line = horizontal channels, black lines = verJcal. Dashed black line is cleaned spectra[ Crawford & Webb [2000]. Grey background: Global seismometer noise bounds [Peterson et al., 1993; Wolin & McNamara, 2020]. Spectral lines derived from Bradley et al. [1997], Crawford et al. [2006], Webb [1998], McDonald et al. [2008], Hildebrand [2009] and Deen et al. [2017].
+**Figure 1**: *Seafloor seismometer spectra. Green region is the “soundscape” band. Top: Pressure. Thick lines are relaJvely high, thin relaJvely low values. Bottom: Acceleration. Red line = horizontal channels, black lines = vertical. Dashed black line is cleaned spectra [Crawford & Webb, 2000]. Grey background: Global seismometer noise bounds [Peterson et al., 1993; Wolin & McNamara, 2020]. Spectral lines derived from Bradley et al. [1997], Crawford et al. [2006], Webb [1998], McDonald et al. [2008], Hildebrand [2009] and Deen et al. [2017].*
 
 Most of our work will be done using autonomous or cabled OBS data.
 Newer technologies such as DAS can revolutionise ocean bottom sensing by providing dense, real time networks, but they cannot replace
@@ -100,11 +100,11 @@ We will install a blueSeis-1C on the gimbaling system of a broadband (Trillium T
 We will conduct laboratory and shallow water evaluations, then we will deploy the system on the ocean floor for one month,
 to investigate improvements in seafloor data.
 
-![HorizontalNoiseLevels](Images/Horizontal_Noise_SF_blueSeis.png)
+![HorizontalNoiseLevels](Images/Horizontal_Noise_SF_blueSeis_480px.jpg)
 
-**Figure 2**: Horizontal component noise levels observed at and beneath the seafloor, compared to blueSeis 1C self- noise level (green).
+**Figure 2**: *Horizontal component noise levels observed at and beneath the seafloor, compared to blueSeis 1C self- noise level (green).
 Dashed lines are buried stations. The near-constant slope above ~10 s is caused by tilting due to seafloor currents.
-Sources: Crawford et al. [2006]; Beauduin & Montagner [1996]; Sutton & Barstow [1990]; Shiobara et al. [2013]; Suetsugu & Shiobara [2014].
+Sources: Crawford et al. [2006]; Beauduin & Montagner [1996]; Sutton & Barstow [1990]; Shiobara et al. [2013]; Suetsugu & Shiobara [2014].*
 
 Second, we will improve signal processing techniques used to enhance the quality of seismological signals.
 We will start by revising the reference, transfer function, technique by applying: 1) more critical data window selection based on
@@ -127,7 +127,9 @@ Acoustic waves travel efficiently through the water column but are challenging t
 geophony and anthropophony components, particularly in a world dominated by the continuous local and global ocean wave dynamics.
 OBSs can provide important data concerning **environmental, economic and societal issues** if we can understand and decipher the origin of these signals.
 
-![Soundscape](Images/Soundscape_example.png): **Figure 2**: Seismo-acoustic soundscape recorded by an OBS from the RHUM-RUM experiment in the Indian Ocean, showing close cohabitation of earthquake (“SEISMES”), ship (“NAVIRE”) and whale (“BALEINE”) signals
+![Soundscape](Images/Soundscape_example.png):
+
+**Figure 3**: *Seismo-acoustic soundscape recorded by an OBS from the RHUM-RUM experiment in the Indian Ocean, showing close cohabitation of earthquake (“SEISMES”), ship (“NAVIRE”) and whale (“BALEINE”) signals*
 
 Using available data from recent OBS deployments, we aim to better understand and constrain noise sources recorded on the
 seafloor and to create synergetic links between disciplines such as ecology, bioacoustics and seismology.

@@ -66,7 +66,7 @@ seismometers, pressure sensors, rotational sensors, to 1) understand the sources
 ambient noise experiments.
 To improve source and site characterisation, we will use machine-learning algorithms to classify signals recorded at each site.
 
-### Seafloor seismological signal separa=on and noise removal
+### Seafloor seismological signal separation and noise removal
 
 An OBS recording is the superposition of a broad spectrum of signals created by solid earth, ocean wave, biologic and anthropogenic sources.
 These signals can be very different in amplitude, duration and frequency content but they also can overlap, making them hard to isolate

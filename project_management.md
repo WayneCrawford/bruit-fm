@@ -5,7 +5,7 @@ news/updates to everyone or your work package.
 
 ## List of pages:
 
-- [BRUIT-FM project]()
+- [BRUIT-FM project](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414)
     - [WP3: The Generation of Global Seismological Noise](https://resana.numerique.gouv.fr/public/perimetre/consulter/132788)
     - [WP4: Seafloor Signal Separation and Noise Removal](https://resana.numerique.gouv.fr/public/perimetre/consulter/132795)
     - [WP5: Seafloor Soundscape](https://resana.numerique.gouv.fr/public/perimetre/consulter/121579)

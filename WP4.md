@@ -11,11 +11,11 @@ Increase sensitivity to low-frequency seismological signals (normal modes, teles
 
 ## Tasks
 
-| Number | Title | Responsable | Status |
-| ------ | ------ | ---------- | ------ |
-| T4.1   | Reducing horizontal noise using a rotational seismometer | @WayneCrawford, Frederic | not started |
-| T4.2 | Signal separation/removal techniques | Ker, @WayneCrawford |  not started |
-| T4.3  | Separating seismological and biological signals | Ker, Duval | not started |
+| Number | Title | Responsable | Status |  Project Page |
+| ------ | ------ | ---------- | ------ | ------------- |
+| T4.1   | Reducing horizontal noise using a rotational seismometer | @WayneCrawford, Frederic | not started | [Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/132782) |
+| T4.2 | Signal separation/removal techniques | Ker, @WayneCrawford |  not started | |
+| T4.3  | Separating seismological and biological signals | Ker, Duval | not started | |
 
 ## Deliverables
 

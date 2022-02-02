@@ -10,7 +10,7 @@ This is the point of entry for the BRUIT-FM project.  You will find links to des
 - [Datasets](datasets.md)
 - [Budget](budget.md)
 - [Administration](administration.md)
-- Go to the [Project Management Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414#)
+- Go to the [Project Management Site](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414#)
 
 ## Announcements
 

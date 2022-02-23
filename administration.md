@@ -1,7 +1,5 @@
 # Administration
 
-The committees will meet every 6 months, including ~1 month before the yearly project meetings in order to plan them
-
 ## Management committee
 
 - Members (Crawford, Ker, Guattari]

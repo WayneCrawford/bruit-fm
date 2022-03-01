@@ -14,5 +14,5 @@ Not yet selected.  Here are some possibilities:
 | Cascadia | NE Pacific | ~60) | 0.01/50 | 4 years | public | 7D (IRIS) |
 | SEIS-ADELICE | Antarctica | 5(2) | 0.1/100 | 1 month	(4) | 1 year | embargoed| through Guilhem |
 | AACSE | Alaska | 85 (?) | 0.01/100 | 1.5 years	(4) | open| XO (FDSN) |
-| NEAREST | Gulf of Cadiz | 85 (?) | 0.01/100 | 1.5 years	(4) | private| shared |
+| NEAREST | Gulf of Cadiz | ?? | ?? | ?? | private| shared |
 

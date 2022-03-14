@@ -1,6 +1,6 @@
 # BRUIT-FM
 
-<img src="Images/ANR_logo_seule.png" height="60"> <img src="Images/IPGP_UP_couleur.png" height="150">
+<img src="Images/logos/ANR_logo.png" height="60"> <img src="Images/logos/IPGP_UP_couleur.png" height="150"> <img src="Images/logos/Ifremer RVB vBleue.jpg" height="100"> <img src="Images/logos/ixblue-logo-hd.jpg" height="60">
 
 This is the point of entry for the BRUIT-FM project (project ANR-21-CE01-0031).  You will find links to descriptions of the project parts and to project management pages.  We will try to keep this site up-to-date with the "big-picture" items, whereas the project managment pages let you communicate, share documents and plan.  There are project management pages for the [overall project](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414) and for each work package.  Subpackages can have their own project managment page if need be.
 

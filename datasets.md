@@ -18,7 +18,7 @@ Not yet selected.  Here are some possibilities:
 
 ## Examples of data and metadata access using [obspy](https://github.com/obspy/obspy/wiki/)
 
-### Getting station information from an FDSN (RESIF, IRIS, mayobs.ipgp.fr...) site
+### Getting station/channel information from an FDSN (RESIF, IRIS, mayobs.ipgp.fr...) site
 In a first time, you can go to the [FDSN network website](http://www.fdsn.org/networks/), enter the network code and go to the linked site, which will usually have a map of the stations and basic information about the available channels/stations (look for "fedcatalog")
 
 You can also get the information using python/obspy
@@ -38,7 +38,7 @@ print(inventory)    # Writes basic information about stations to the screen
 inventory.write('XO.info.txt', 'STATIONTXT', level=level)  # writes more detailed info to XO.info.txt
 ```
 
-### Getting waveform data from an FDSN (RESIF, IRIS, mayobs.ipgp.fr...) site
+### Getting waveform data from an FDSN site
 ```python
 from obspy.clients.fdsn import Client
 from obspy.core import UTCDateTime

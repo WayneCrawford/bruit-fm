@@ -8,10 +8,13 @@ WP/task meetings will be held as needed.
 
 Should there be a "jour fixe" (2h/month) for the WP/task meetings, so that people can block off a date on their calendar?
 
-| Date(s)     | Description      | Site    | Link | Report |
-| ----------- | ---------------- | ------- | ---- | ------ |
-|  1 Mar 2022 | Kick-off Meeting | IPGP?   |      |        |
-|  1 Mar 2023 | Project Meeting  |         |      |        |
-|  1 Mar 2024 | Project Meeting  |         |      |        |
-|  1 Mar 2025 | Project Meeting  |         |      |        |
-| 15 Feb 2026 | Closing Meeting  | IPGP?   |      |        |
+| Date(s)     | Description       | Site    | Link | Report |
+| ----------- | ----------------  | ------- | ---- | ------ |
+|  7 Apr 2022 | Managment Meeting | virtual |      |        |
+|  7 Apr 2022 | Kick-off Meeting  | IPGP salle 108   | [Zoom](https://u-paris.zoom.us/j/84585189610?pwd=NzNNdE5WeTJmNlc3YnBzR2ZOenFsUT09) |        |
+|  1 Oct 2022 | WP updates        |         |      |        |
+|  1 Mar 2023 | Project Meeting   |         |      |        |
+|  1 Mar 2024 | Project Meeting   |         |      |        |
+|  1 Mar 2025 | Project Meeting   |         |      |        |
+| 15 Feb 2026 | Closing Meeting   | IPGP?   |      |        |
+

@@ -1,6 +1,6 @@
 # BRUIT-FM
 
-<img src="Images/logos/ANR_logo.png" height="60"> <img src="Images/logos/IPGP_UP_couleur.png" height="120"> <img src="Images/logos/Ifremer RVB vBleue.jpg" height="80"> <img src="Images/logos/ixblue-logo-hd.jpg" height="60">
+<img src="Images/logos/ANR_logo.png" height="50"> <img src="Images/logos/IPGP_UP_couleur.png" height="120"> <img src="Images/logos/Ifremer RVB vBleue.jpg" height="70"> <img src="Images/logos/ixblue-logo-hd.jpg" height="50">
 
 This is the point of entry for the BRUIT-FM project (project ANR-21-CE01-0031).  You will find links to descriptions of the project parts and to project management pages.  We will try to keep this site up-to-date with the "big-picture" items, whereas the project managment pages let you communicate, share documents and plan.  There are project management pages for the overall project and for each work package.  Subpackages can have their own project managment page if need be.
 

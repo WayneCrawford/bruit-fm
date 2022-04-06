@@ -1,4 +1,4 @@
-# Project Management
+# Notes on Project Management
 
 The project management pages are where you should put shared files, collaborate on documents/spreadsheets/presentations and send out
 news/updates to everyone or your work package.
@@ -6,6 +6,7 @@ news/updates to everyone or your work package.
 ## Existing pages:
 
 - [BRUIT-FM project](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414)
+    - [WP2: Full Seafloor Spectrum](https://resana.numerique.gouv.fr/public/perimetre/consulter/158901)
     - [WP3: The Generation of Global Seismological Noise](https://resana.numerique.gouv.fr/public/perimetre/consulter/132788)
     - [WP4: Seafloor Signal Separation and Noise Removal](https://resana.numerique.gouv.fr/public/perimetre/consulter/132795)
         - [T4.1: Reducing horizontal noise using a rotational seismometer](https://resana.numerique.gouv.fr/public/perimetre/consulter/132782)

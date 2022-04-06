@@ -2,7 +2,7 @@
 
 ## Management committee
 
-- Members (Crawford, Ker, Guattari]
+- Members (Crawford, Ker, Guattari)
     - One representative of each partner
 - Tasks
     - Ensure that the funds are appropriately expended

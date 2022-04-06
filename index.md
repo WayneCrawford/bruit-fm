@@ -13,6 +13,10 @@ This is the point of entry for the BRUIT-FM project (project ANR-21-CE01-0031). 
 - [Datasets](datasets.md)
 - [Budget](budget.md)
 - [Administration](administration.md)
+
+## Benchmarks, Sample Code and other helpful stuff
+- [Crawford&Webb 2000 noise reduction](crawford_noise_reduction.md)
+- [Dowloading and Displaying Data](data_download_display.md)
 - [Notes on Project Management](project_management.md)
 
 ## Announcements

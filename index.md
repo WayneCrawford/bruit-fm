@@ -13,7 +13,7 @@ This is the point of entry for the BRUIT-FM project (project ANR-21-CE01-0031). 
 - [Datasets](datasets.md)
 - [Budget](budget.md)
 - [Administration](administration.md)
-- [Project Management](project_management.md)
+- [Notes on Project Management](project_management.md)
 
 ## Announcements
 

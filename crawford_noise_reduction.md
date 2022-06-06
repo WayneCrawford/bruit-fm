@@ -9,11 +9,9 @@ There is a problem with tiskit, which makes it not reduce noise on the data stre
 
 There is a data file, a metadata file and the python run script
 
-- <a href="Files/XS.S11D.LH.2016.12.11.mseed" download>Download Data File</a>
-- <a href="Files/stations_PILAB_S_decimated.xml" download>Download Metadata File</a>
-- <a href="Files/run_data_cleaner.py" download>Download Python Script</a>
-- [Download Metadata File (markdown style)](Files/stations_PILAB_S_decimated.xml)
-- [Download Python Script (markdonw style](Files/run_data_cleaner.py)
+- [Data File](Files/XS.S11D.LH.2016.12.11.mseed)
+- [Metadata File](Files/stations_PILAB_S_decimated.xml)
+- [Python Script](Files/run_data_cleaner.py)
 
 ## Images of results
 

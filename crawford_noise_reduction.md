@@ -12,6 +12,7 @@ There is a data file, a metadata file and the python run script
 - [Data File](Files/XS.S11D.LH.2016.12.11.mseed)
 - [Metadata File](Files/stations_PILAB_S_decimated.xml)
 - [Python Script](Files/run_data_cleaner.py)
+- [Python TraceCompare class (used to compare PSDs)](Files/trace_compare.py)
 
 ## Images of results
 

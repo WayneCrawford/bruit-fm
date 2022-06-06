@@ -9,13 +9,14 @@ There is a problem with tiskit, which makes it not reduce noise on the data stre
 
 There is a data file, a metadata file and the python run script
 
-- <a href="Files/XS.S11D.LH.2016.12.11.mseed">Download Data File</a>
-- <a href="Files/stations_PILAB_S_decimated.xml">Download Metadata File</a>
-- <a href="Files/run_data_cleaner.py">Python Script</a>
+- [Download Data File]("Files/XS.S11D.LH.2016.12.11.mseed")
+- [Download Metadata File]("Files/stations_PILAB_S_decimated.xml")
+- [Download Python Script]("Files/run_data_cleaner.py")
 
 ## Images of results
-PSD of corrected stream
-<img src="Images/XS.S11D_2048s_streamPSD.png" class="img-responsive" alt=""> </div>
 
-Direct calculation of corrected PSD from input stream
-<img src="Images/XS.S11D_2048s_directPSD.png" class="img-responsive" alt=""> </div>
+PSD of corrected stream:
+![corrected stream's PSD]("Images/XS.S11D_2048s_streamPSD.png")
+
+Direct calculation of corrected PSD from input stream:
+![direct calculation of corrected PSD]("Images/XS.S11D_2048s_directPSD.png")

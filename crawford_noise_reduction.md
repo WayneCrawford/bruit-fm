@@ -19,4 +19,4 @@ There is a data file, a metadata file and the python run script
 - PSD of corrected stream: ![corrected stream's PSD](Images/XS.S11D_2048s_streamPSD.png)
 
 
-- Direct calculation of corrected PSD from input stream: ![direct calculation of corrected PSD](Images/XS.S11D_2048s_directPSD.png)
+- Comparison of calculating corrected stream, then PSD versus PSD calculation with correction integrated: ![best corrected PSD, different methods](Images/XS.S11D_2048s_bestComparePSD.png)

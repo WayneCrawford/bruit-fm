@@ -16,7 +16,13 @@ There is a data file, a metadata file and the python run script
 
 ## Images of results
 
-- PSD of corrected stream: ![corrected stream's PSD](Images/XS.S11D_2048s_streamPSD.png)
+PSD of corrected stream:
 
+![corrected stream's PSD](Images/XS.S11D_2048s_streamPSD.png)
 
-- Comparison of calculating corrected stream, then PSD versus PSD calculation with correction integrated: ![best corrected PSD, different methods](Images/XS.S11D_2048s_bestComparePSD.png)
+Comparison of
+
+- correcting stream then calculating PSD, and
+- calculating PSD on rotated stream with integrated correction
+
+![best corrected PSD, different methods](Images/XS.S11D_2048s_bestCompare.png)

@@ -20,9 +20,11 @@ PSD of corrected stream:
 
 ![corrected stream's PSD](Images/XS.S11D_2048s_streamPSD.png)
 
-Comparison of
+Comparison of the best method, calculated two different ways:
 
-- correcting stream then calculating PSD, and
-- calculating PSD on rotated stream with integrated correction
+The best method is rotating the stream, then data correcting in the frequency domain.  The two plots show"
+
+1) First rotating, then correcting the stream, then calculating the SpectralDensity, and
+2) First rotating the stream, then calculating the SpectralDensity integrated correction
 
 ![best corrected PSD, different methods](Images/XS.S11D_2048s_bestCompare.png)

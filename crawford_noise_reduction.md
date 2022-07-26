@@ -7,24 +7,24 @@ There is a problem with tiskit, which makes it not reduce noise on the data stre
 
 ## Files to download
 
-There is a data file, a metadata file and the python run script
+The script requires tiskit 0.2
 
-- [Data File](Files/XS.S11D.LH.2016.12.11.mseed)
-- [Metadata File](Files/stations_PILAB_S_decimated.xml)
-- [Python Script](Files/run_data_cleaner.py)
-- [Python TraceCompare class (used to compare PSDs)](Files/trace_compare.py)
+Run the script using `python3 run_data_cleaner.py`  When you run it for the first time, the CleanRotator will download an earthquake
+catalog to your directory.
+
+- [run_data_cleaner.py](Files/run_data_cleaner.py)
+- [Data File](Files/XS.S11D.LH.2016.12.11.mseed): contains one day of data from a seafloor broadband OBS
+- [Metadata File](Files/stations_PILAB_S_decimated.xml): contains an inventory of the station and the channel responses.
 
 ## Images of results
 
-PSD of corrected stream:
+`run_data_cleaner.py` should output the following image, which compares the PSDs obtained from:
+- The original data
+- The original data plus simple rotation (CleanRotator class)
+- The original data, cleaned using the DataCleaner class and a *time*-domain stream-cleaning method
+- The rotated data, cleaned using the DataCleaner class and a time-domain stream-cleaning method
+- The original data, cleaned using the DataCleaner class and a *frequency*-domain stream-cleaning method
+- The rotated data, cleaned using the DataCleaner class and a frequency-domain stream-cleaning method
+- The rotated data, with the PSD calculated taking into account the DataCleaner
 
-![corrected stream's PSD](Images/XS.S11D_2048s_streamPSD.png)
-
-Comparison of the best method, calculated two different ways:
-
-The best method is rotating the stream, then data correcting in the frequency domain.  The two plots show"
-
-1) First rotating, then correcting the stream, then calculating the SpectralDensity, and
-2) First rotating the stream, then calculating the SpectralDensity integrated correction
-
-![best corrected PSD, different methods](Images/XS.S11D_2048s_bestCompare.png)
+![XS.S11D_2048s_comparePSDs.png](Images/XS.S11D_2048s_comparePSDs.png)

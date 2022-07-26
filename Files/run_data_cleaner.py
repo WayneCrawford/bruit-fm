@@ -3,17 +3,17 @@
 import numpy as np
 from obspy.core.stream import read
 from obspy.core.inventory import read_inventory
+import matplotlib.pyplot as plt
 
 from tiskit import CleanRotator, SpectralDensity, DataCleaner
 from trace_compare import TraceCompare
 
 # SET PARAMETERS
 infiles = ['XS.S11D.LH.2016.12.11.mseed']
-window_s = 2*1024  # Window length in seconds
 # CleanRotator parameters
 rotate_band = (0.003, 0.02)  # freq band in which to calculate rotate angle
-# DataCleaner Parameters
-dc_kwargs = {'max_freq': 0.1, 'window_s': window_s, 'show_progress': False}
+sp_kwargs = {'window_s': 2*1024, 'windowtype': 'prol1pi'}
+dc_kwargs = {'max_freq': 0.1, 'show_progress': False, **sp_kwargs}
 dc_tforder = ('*1', '*2', '*H')
 
 
@@ -25,7 +25,7 @@ for infile in infiles:
     print(f'Working on {sta=}, {seed_id=}')
 
     print('Plotting AutoSpectral Density Functions')
-    sd = SpectralDensity.from_stream(stream, window_s, inv=inv_decim)
+    sd = SpectralDensity.from_stream(stream, inv=inv_decim, **sp_kwargs)
     sd.plot(overlay=True)
 
     print('Running simple rotator')
@@ -40,7 +40,7 @@ for infile in infiles:
     # dc.plot()
     # dc_rot.plot()
 
-    print('Correcting data streams using DataCleaners)')
+    print('Correcting data streams using DataCleaners')
     stream_dced_td = dc.clean_stream(stream, in_time_domain=True)
     stream_rot_dced_td = dc_rot.clean_stream(stream_rot, in_time_domain=True)
     stream_dced_fd = dc.clean_stream(stream, in_time_domain=False)
@@ -54,13 +54,23 @@ for infile in infiles:
          [stream_rot_dced_td.select(channel='*Z')[0], 'rot+clean_td', 'blue', '--'],
          [stream_dced_fd.select(channel='*Z')[0], 'orig+clean_fd', 'red', '-'],
          [stream_rot_dced_fd.select(channel='*Z')[0], 'rot+clean_fd', 'red', '--']])
-    tc.plot_psds(inv=inv_decim, title=seed_id+f'{window_s:.0f}s',
-                 outfile=f'{seed_id}_{window_s:.0f}s_streamPSD.png', show=True)
+    ws = sp_kwargs["window_s"]
+    freqs, PSDs = tc.plot_psds(
+        inv=inv_decim, title=seed_id+f'{ws:.0f}s', show=True,
+        outfile=f'{seed_id}_{ws:.0f}s_streamPSD.png', **sp_kwargs)
 
-    print('Calculating PSD of the best combo')
-    sd_best = SpectralDensity.from_stream(stream_rot, window_s=2048,
-                                          data_cleaner=dc_rot)
+    print('Calculating rotated data PSD, applying DataCleaner during')
+    sd_best = SpectralDensity.from_stream(stream_rot, data_cleaner=dc_rot,
+                                          inv=inv_decim, **sp_kwargs)
     print('Z PSD min = {:.1f}'.format(
           10*np.log10(np.min(sd_best.autospect("XS.S11D..LHZ-1-2-H")))))
-    sd_best.plot_one_autospectra(
-        'XS.S11D..LHZ-1-2-H', outfile=f'{seed_id}_{window_s:.0f}s_directPSD.png')
+    fig, ax = plt.subplots(1, 1)
+    ax.semilogx(freqs, PSDs['rot+clean_fd'],
+                label='data_cleaner before spect_calc')
+    ax.semilogx(sd_best.freqs,
+                10*np.log10(sd_best.autospect('XS.S11D..LHZ-1-2-H')),
+                label='data_cleaner in spect calc')
+    plt.legend()
+    plt.title('Rotation + DataCleaner in frequency domain')
+    plt.savefig(f'{seed_id}_{ws:.0f}s_bestCompare.png')
+    plt.show()

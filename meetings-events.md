@@ -12,7 +12,7 @@ Should there be a "jour fixe" (2h/month) for the WP/task meetings, so that peopl
 | ----------- | ----------------  | ------- | ---- | ------ |
 |  7 Apr 2022 | Managment Meeting | virtual |      |        |
 |  7 Apr 2022 | Kick-off Meeting  | IPGP salle 108   | [Zoom](https://u-paris.zoom.us/j/84585189610?pwd=NzNNdE5WeTJmNlc3YnBzR2ZOenFsUT09) |        |
-|  1 Oct 2022 | WP updates        |         |      |        |
+| 20 Oct 2022 | WP update Meeting | mixed   |      |        |
 |  1 Mar 2023 | Project Meeting   |         |      |        |
 |  1 Mar 2024 | Project Meeting   |         |      |        |
 |  1 Mar 2025 | Project Meeting   |         |      |        |

@@ -9,7 +9,7 @@
 | Date(s)     | Description       | Site           | Report |
 | ----------- | ----------------  | -------------- | ------ |
 |  7 Apr 2022 | Managment Meeting | virtual        |        |
-|  7 Apr 2022 | Kick-off Meeting  | IPGP salle 108 |        |
+|  7 Apr 2022 | Kick-off Meeting  | IPGP salle 108 | [here](Documents/2022.04_Minutes_Kickoff.pdf) |
 | 20 Oct 2022 | WP update Meeting | mixed          |        |
 |  1 Mar 2023 | Project Meeting   |                |        |
 |  1 Mar 2024 | Project Meeting   |                |        |

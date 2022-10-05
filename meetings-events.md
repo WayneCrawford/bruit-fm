@@ -6,6 +6,8 @@ Project meetings are scheduled once a year, an ANR report will be made after eac
 
 WP/task meetings will be held as needed.
 
+Meeting videos are found [here](videos.md)
+
 Should there be a "jour fixe" (2h/month) for the WP/task meetings, so that people can block off a date on their calendar?
 
 | Date(s)     | Description       | Site    | Link | Report |

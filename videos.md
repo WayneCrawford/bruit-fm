@@ -1,5 +1,10 @@
 # Meeting Videos
 
+The website cannot display the video, and if you click-right to download the file it will just download an html file, so...
+
+- Click on the link to go to a page saying it can't display the file
+- Click on "View Raw" to download the file.
+
 ## Kickoff meeting (2022-04-07)
 
 - [Introduction](Videos/20220404_01_Introduction_ProjectOverview.mp4)

@@ -7,6 +7,7 @@
 - [Zoom link](https://u-paris.zoom.us/j/84585189610?pwd=NzNNdE5WeTJmNlc3YnBzR2ZOenFsUT09) for the plenary meetings
 
 ## Plenary Meetings
+
 | Date(s)     | Description          | Site           | Links |
 | ----------- | -------------------- | -------------- | ------ |
 | 28 May 2021 | WP Presentations     | virtual        |  |
@@ -19,6 +20,7 @@
 | 15 Feb 2026 | Closing              | IPGP?          |        |
 
 ## Work Package/Task Meetings
+
 | Date(s)     | Description          | Site           | Links |
 | ----------- | -------------------- | -------------- | ------ |
 

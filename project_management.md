@@ -1,9 +1,9 @@
 # Notes on Project Management
 
-The project management pages are where you should put shared files, collaborate on documents/spreadsheets/presentations and send out
+The project management spaces are where you should put shared files, collaborate on documents/spreadsheets/presentations and send out
 news/updates to everyone or your work package.
 
-## Existing pages:
+## Existing spaces:
 
 - [BRUIT-FM project](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414)
     - [WP2: Full Seafloor Spectrum](https://resana.numerique.gouv.fr/public/perimetre/consulter/158901)
@@ -14,8 +14,8 @@ news/updates to everyone or your work package.
 
 ## Intro to the platform
 
-We are using the French governments "RESANA" platform, here is an example of the Homepage for WP4:
-![WP4_Homepage](Images/RESANA_WP4Page.png)
+We are using the French governments "RESANA" platform, here is an example of the WP4 space:
+![WP4_Space](Images/RESANA_WP4Page.png)
 
 **The tabs at the top** let you:
 
@@ -32,6 +32,6 @@ We are using the French governments "RESANA" platform, here is an example of the
       Once you click on one, it will give the option to create a Microsoft or OpenOffice file.
     - ![RSS](Images/RESANA_RSS.png): Add an RSS flux (can someone explain this to me?)
 
-**The menu on the right** assembles information from all of your RESANA "projects"
+**The menu on the right** assembles information from all of your RESANA spaces
 
 There's a **videoconference tool** as well, but I haven't figured it out.

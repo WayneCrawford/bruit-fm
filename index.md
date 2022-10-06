@@ -26,13 +26,13 @@ There is a post-doctoral position available at IFREMER on [signal processing and
 
 ## Work Packages
 
-| Web Page         | Project Management |
+| Web Page         | Project Management Space |
 | :--------------- | ---------- |
-| [WP1: Coordination, Management and Animation](WP1.md)  | [Overall Project Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414) |
-| [WP2: Full Seafloor Spectrum](WP2.md)  | [Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/158901) |
-| [WP3: The Generation of Global Seismological Noise](WP3.md)  | [Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/132788) |
-| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/132795) |
-| [WP5: Seafloor Soundscape](WP5.md)  | [Page](https://resana.numerique.gouv.fr/public/perimetre/consulter/121579) |
+| [WP1: Coordination, Management and Animation](WP1.md)  | [Overall Project](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414) |
+| [WP2: Full Seafloor Spectrum](WP2.md)  | [WP2](https://resana.numerique.gouv.fr/public/perimetre/consulter/158901) |
+| [WP3: The Generation of Global Seismological Noise](WP3.md)  | [WP3](https://resana.numerique.gouv.fr/public/perimetre/consulter/132788) |
+| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [WP4](https://resana.numerique.gouv.fr/public/perimetre/consulter/132795) |
+| [WP5: Seafloor Soundscape](WP5.md)  | [WP5](https://resana.numerique.gouv.fr/public/perimetre/consulter/121579) |
 
 ## Other Documents
 - [Proposal](Documents/aapg-anr-2021-full_proposal_BRUITFM.pdf)

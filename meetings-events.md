@@ -9,8 +9,8 @@
 ## Plenary Meetings
 | Date(s)     | Description          | Site           | Links |
 | ----------- | -------------------- | -------------- | ------ |
-| 28 May 2021 | WP Presentations     | virtual        | [minutes](Documents/20211021_Minutes.pdf) |
-| 21 Oct 2021 | Member Presentations | virtual      |        |
+| 28 May 2021 | WP Presentations     | virtual        |  |
+| 21 Oct 2021 | Member Presentations | virtual        | [minutes](Documents/20211021_Minutes.pdf) |
 |  7 Apr 2022 | Kick-off             | IPGP salle 108 | [minutes](Documents/2022.04_Minutes_Kickoff.pdf) |
 | 20 Oct 2022 | WP updates           | mixed          | [zoom](https://u-paris.zoom.us/j/84585189610?pwd=NzNNdE5WeTJmNlc3YnBzR2ZOenFsUT09) |
 |  1 Mar 2023 | Project              |                |        |

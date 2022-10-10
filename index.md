@@ -2,7 +2,7 @@
 
 <img src="Images/logos/ANR_logo.png" height="50"> <img src="Images/logos/IPGP_UP_mix_RVB.png" height="70"> <img src="Images/logos/Ifremer RVB vBleue.jpg" height="70"> <img src="Images/logos/ixblue-logo-hd.jpg" height="50">
 
-This is the point of entry for the BRUIT-FM project (project ANR-21-CE01-0031).  We will try to keep this site up-to-date with the "big-picture" items, whereas the project managment spaces let you communicate, share documents and plan.  There are project management spaces for the [overall project](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414) and for each work package, and tasks can have their own project management space if need be.
+This is the point of entry for the BRUIT-FM project (project [ANR-21-CE01-0031](https://anr.fr/Projet-ANR-21-CE01-0031)).  We will try to keep this site up-to-date with the "big-picture" items, whereas the project managment spaces let you communicate, share documents and plan.  There are project management spaces for the [overall project](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414) and for each work package, and tasks can have their own project management space if need be.
 
 ## The Project
 

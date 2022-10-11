@@ -1,15 +1,17 @@
 Here is an example of seafloor data and its cleaning using Wayne's codes
 
 ## Wayne's processing module
-Wayne's code is called [tiskit](https://github.com/WayneCrawford/tiskit) and it's available online at github.  It uses [obspy](https://github.com/obspy/obspy/wiki/).  Please install `obspy` first following their installation instructions, then install `tiskit` within your `obspy` environment using the instructions on the `tiskit` webpage. I think the `obspy` environment will contain all of the modules needed for `tiskit`, please tell me if this is not so.
 
-There is a problem with tiskit, which makes it not reduce noise on the data stream as much as it should  (compare the top plot below, which is what tiskit is currently getting, to the bottom plot, which is what it should get.)
+Wayne's code is called [tiskit](https://github.com/WayneCrawford/tiskit).  It uses [obspy](https://github.com/obspy/obspy/wiki/).
+Please install `obspy` first following their installation instructions, then install `tiskit` within your `obspy` environment
+using the instructions on the `tiskit` webpage.
+The `obspy` environment should contain all of the modules needed for `tiskit`, please tell me if this is not so.
 
 ## Files to download
 
-The script requires tiskit 0.2
+The script requires tiskit 0.3
 
-Run the script using `python3 run_data_cleaner.py`  When you run it for the first time, the CleanRotator will download an earthquake
+Run the script using `python3 run_data_cleaner.py`  When you run it for the first time, `CleanRotator` will download an earthquake
 catalog to your directory.
 
 - [run_data_cleaner.py](Files/run_data_cleaner.py)
@@ -18,7 +20,7 @@ catalog to your directory.
 
 ## Images of results
 
-`run_data_cleaner.py` should output the following image, which compares the PSDs obtained from:
+`run_data_cleaner.py` should plot the orginal power spectral densities for the four channels, then the following image, which compares the PSDs obtained from:
 - The original data
 - The original data plus simple rotation (CleanRotator class)
 - The original data, cleaned using the DataCleaner class and a *time*-domain stream-cleaning method

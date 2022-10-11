@@ -78,7 +78,7 @@ for infile in infiles:
     sd_best = SpectralDensity.from_stream(stream_rot, data_cleaner=dc_rot,
                                           inv=inv_decim, **sp_kwargs)
     ax.semilogx(sd_best.freqs,
-                10*np.log10(sd_best.autospect('XS.S11D..LHZ-1-2-H')),
+                10*np.log10(sd_best.autospect('XS.S11D.*.LHZ')),
                 label='rot+psd-clean_fd',color='orange')
     plt.legend()
     plt.savefig(f'{seed_id}_{ws:.0f}s_comparePSDs.png')

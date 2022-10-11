@@ -2,7 +2,7 @@ Here is an example of seafloor data and its cleaning using Wayne's codes
 
 ## Wayne's processing module
 
-Wayne's code is called [tiskit](https://github.com/WayneCrawford/tiskit).  It uses [obspy](https://github.com/obspy/obspy/wiki/).
+Wayne's code is called [tiskit](https://github.com/WayneCrawford/tiskit) and it uses [obspy](https://github.com/obspy/obspy/wiki/).
 Please install `obspy` first following their installation instructions, then install `tiskit` within your `obspy` environment
 using the instructions on the `tiskit` webpage.
 The `obspy` environment should contain all of the modules needed for `tiskit`, please tell me if this is not so.

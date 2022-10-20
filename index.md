@@ -28,6 +28,7 @@ This is the point of entry for the BRUIT-FM project (project [ANR-21-CE01-0031](
 - [Crawford&Webb 2000 noise reduction](crawford_noise_reduction.md)
 - [Dowloading and Displaying Data](data_download_display.md)
 - [Notes on Project Management](project_management.md)
+- [Where to find...?](where_to_find.md)
 
 ## Announcements
 

@@ -1,5 +1,7 @@
 # Meetings and Events
 
+## Overview
+
 - Management meetings are scheduled every 6 months (Management comittee + WP leaders)
 - Project meetings are scheduled once a year
 - WP/task meetings will be held as needed.
@@ -19,6 +21,7 @@
 |  1 Mar 2025 | Project              |                |        |
 | 15 Feb 2026 | Closing              | IPGP?          |        |
 
+
 ## Work Package/Task Meetings
 
 | Date(s)     | Description          | Site           | Links |
@@ -30,3 +33,24 @@
 | ----------- | ------------------ | 
 | 05 Jan 2022 | Administration, Kickoff Meeting, Collaboration Tools, Hiring |
 | 17 Mar 2022 | Official Documents, Kickoff Meeting |
+
+## Next meeting
+
+- Type: Plenary
+- Date and Time: Thursday 20 October 14-17h Paris Time
+- Location: on Zoom, at [this link](https://u-paris.zoom.us/j/84585189610?pwd=NzNNdE5WeTJmNlc3YnBzR2ZOenFsUT09)
+- Program
+  - 6 month data management plan
+  - Where to find stuff
+  - Work package updates:
+    - WP 2
+    - WP 3
+    - WP 4 
+    - WP 5 
+  - Presentations:
+    - Felix Bernauer: Rotational motion sensing technologies
+    - Wayne Crawford: tiskit
+    - Richard Dreo: Research update and data management
+    - Simon Rebeyrol: OBS low-frequency noise extraction methodology: Toolkits and Benchmark plan
+    - Mohammed-Amin Aminian: Research update
+

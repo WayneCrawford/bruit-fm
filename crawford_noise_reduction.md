@@ -1,11 +1,28 @@
-Here is an example of seafloor data and its cleaning using Wayne's codes
+Here is an example of seafloor data and its cleaning using the python ``tiskit`` code
 
-## Wayne's processing module
+## tiskit
 
-Wayne's code is called [tiskit](https://github.com/WayneCrawford/tiskit) and it uses [obspy](https://github.com/obspy/obspy/wiki/).
-Please install `obspy` first following their installation instructions, then install `tiskit` within your `obspy` environment
-using the instructions on the `tiskit` webpage.
-The `obspy` environment should contain all of the modules needed for `tiskit`, please tell me if this is not so.
+[tiskit](https://github.com/WayneCrawford/tiskit) is documented at tiskit.readthedocs.io, including how to install, examples and a complete
+description of each component class.
+
+## Installing
+
+Installation instructions are found [in the documentation](https://tiskit.readthedocs.io/en/latest/install.html).  Unfortunately,
+if you install using ``pip install tiskit``, ``tiskit`` will be named `tiskit-py` and you will need to modify line 10 of 
+``run_data_cleaner.py`` from
+
+``` python
+from tiskit import CleanRotator, SpectralDensity, DataCleaner
+```
+
+to
+
+``` python
+from tiskit-py import CleanRotator, SpectralDensity, DataCleaner
+```
+
+If anything does not work for you, please tell Wayne or, better yet, leave an [issue](https://github.com/WayneCrawford/tiskit/issues)
+at the [development website](https://github.com/WayneCrawford/tiskit).
 
 ## Files to download
 

@@ -18,11 +18,11 @@ This is the point of entry for the BRUIT-FM project (project [ANR-21-CE01-0031](
 
 | Web Page         | Project Management Space |
 | :--------------- | ---------- |
-| [WP1: Coordination, Management and Animation](WP1.md)  | [Overall Project](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414) |
-| [WP2: Full Seafloor Spectrum](WP2.md)  | [WP2](https://resana.numerique.gouv.fr/public/perimetre/consulter/158901) |
-| [WP3: The Generation of Global Seismological Noise](WP3.md)  | [WP3](https://resana.numerique.gouv.fr/public/perimetre/consulter/132788) |
-| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [WP4](https://resana.numerique.gouv.fr/public/perimetre/consulter/132795) |
-| [WP5: Seafloor Soundscape](WP5.md)  | [WP5](https://resana.numerique.gouv.fr/public/perimetre/consulter/121579) |
+| [WP1: Coordination, Management and Animation](WP1.md)  | [Overall Project space](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414) |
+| [WP2: Full Seafloor Spectrum](WP2.md)  | [WP2 space](https://resana.numerique.gouv.fr/public/perimetre/consulter/158901) |
+| [WP3: The Generation of Global Seismological Noise](WP3.md)  | [WP3 space](https://resana.numerique.gouv.fr/public/perimetre/consulter/132788) |
+| [WP4: Seafloor Signal Separation and Noise Removal](WP4.md)  | [WP4 space](https://resana.numerique.gouv.fr/public/perimetre/consulter/132795) |
+| [WP5: Seafloor Soundscape](WP5.md)  | [WP5 space](https://resana.numerique.gouv.fr/public/perimetre/consulter/121579) |
 
 ## Benchmarks, Sample Code and other helpful stuff
 - [Crawford&Webb 2000 noise reduction](crawford_noise_reduction.md)

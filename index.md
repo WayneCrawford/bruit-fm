@@ -16,7 +16,7 @@ This is the point of entry for the BRUIT-FM project (project [ANR-21-CE01-0031](
 
 ## Work Packages
 
-| Web Page         | Project Management Space |
+| Web Page         | Project Management |
 | :--------------- | ---------- |
 | [WP1: Coordination, Management and Animation](WP1.md)  | [Overall Project space](https://resana.numerique.gouv.fr/public/perimetre/consulter/121414) |
 | [WP2: Full Seafloor Spectrum](WP2.md)  | [WP2 space](https://resana.numerique.gouv.fr/public/perimetre/consulter/158901) |

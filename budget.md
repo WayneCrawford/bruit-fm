@@ -12,7 +12,7 @@ How the money is allocated and spent (excluding overhead)
 | | Computer equipment  | 2,5k€ | - |  |
 | Masters students | 4 Stipends | 8k€ | - | |
 | Equipment | Installation of rotational seismometer in existing BBOBS | 20k€ | - | |
-|  | Antarctic OBS deployments | 12k€ | 12k€ | A verifier avec Marie Dominique |
+|  | Antarctic OBS deployments | 12k€ | 12k€ | |
 |  | Transportation to/from BBOBS/OBS expts | 8k€ | - | |
 | Other | Publication charges | 12k€ | - | |
 | Travel | Collaboration Schimmel | 8k€ | - | |

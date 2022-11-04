@@ -16,7 +16,7 @@ How the money is allocated and spent (excluding overhead)
 |  | Transportation to/from BBOBS/OBS expts | 8k€ | - | |
 | Other | Publication charges | 12k€ | - | |
 | Travel | Collaboration Schimmel | 8k€ | - | |
-| | WP1 travel and meetings | 9.6k€ | 1,1k€ | kickoff meeting |
+| | WP1 travel and meetings | 9.6k€ | 1,3k€ | kickoff meeting |
 | | 4 European workshops/symposa | 8k€ | |
 | | 4 iternational workshops/symposa | 11k€ | |
 

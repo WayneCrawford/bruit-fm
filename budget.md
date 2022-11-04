@@ -1,6 +1,6 @@
 # Budget
 
-How the money is allocated (excluding overhead)
+How the money is allocated and spent (excluding overhead)
 
 ## IPGP
 
@@ -11,12 +11,12 @@ How the money is allocated (excluding overhead)
 | Engineer | Salary | 105k€ | 7,5k€ | 3 months en 2022 |
 | | Computer equipment  | 2,5k€ | - |  |
 | Masters students | 4 Stipends | 8k€ | - | |
-| Equipment | Installation of rotaitonal seismometer in existing BBOBS | 20k€ | - | |
+| Equipment | Installation of rotational seismometer in existing BBOBS | 20k€ | - | |
 |  | Antarctic OBS deployments | 12k€ | 12k€ | A verifier avec Marie Dominique |
 |  | Transportation to/from BBOBS/OBS expts | 8k€ | - | |
 | Other | Publication charges | 12k€ | - | |
 | Travel | Collaboration Schimmel | 8k€ | - | |
-| | WP1 travel and meetings | 9.6k€ | - | |
+| | WP1 travel and meetings | 9.6k€ | 1,1k€ | kickoff meeting |
 | | 4 European workshops/symposa | 8k€ | |
 | | 4 iternational workshops/symposa | 11k€ | |
 

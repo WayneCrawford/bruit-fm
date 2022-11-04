@@ -4,21 +4,21 @@ How the money is allocated and spent (excluding overhead)
 
 ## IPGP
 
-| Subject | Description | Budgeted | Spent 2022 | Comments |
-| ------- | ----------- | -------- | ----- | -------- |
+| Subject   | Description | Budgeted | Spent 2022 | Comments |
+| --------- | ----------- | -------- | ----- | -------- |
 | Postdoc WP2 | fellowship | 120k€ | - |  |
-| | Computer equipment  | 2,5k€ | - |  |
-| Engineer | Salary | 105k€ | 7,5k€ | 3 months en 2022 |
-| | Computer equipment  | 2,5k€ | - |  |
+|           | Computer equipment  | 2,5k€ | - |  |
+| Engineer  | Salary | 105k€ | 7,5k€ | 3 months en 2022 |
+|           | Computer equipment  | 2,5k€ | - |  |
 | Masters students | 4 Stipends | 8k€ | - | |
 | Equipment | Installation of rotational seismometer in existing BBOBS | 20k€ | - | |
-|  | Antarctic OBS deployments | 12k€ | 12k€ | |
-|  | Transportation to/from BBOBS/OBS expts | 8k€ | - | |
-| Other | Publication charges | 12k€ | - | |
-| Travel | Collaboration Schimmel | 8k€ | - | |
-| | WP1 travel and meetings | 9.6k€ | 1,3k€ | kickoff meeting |
-| | 4 European workshops/symposa | 8k€ | |
-| | 4 iternational workshops/symposa | 11k€ | |
+| Other     | Antarctic OBS deployments | 12k€ | 12k€ | |
+|           | Transportation to/from BBOBS/OBS expts | 8k€ | 0,2 k€ | |
+|           | Publication charges | 12k€ | - | |
+| Travel    | Collaboration Schimmel | 8k€ | - | |
+|           | WP1 travel and meetings | 9.6k€ | 1,1k€ | kickoff meeting |
+|           | 4 European workshops/symposa | 8k€ | |
+|           | 4 iternational workshops/symposa | 11k€ | |
 
 *Removed by review panel: 5k€ participation IPGP computation cluster, 3k€ computer equipment, 2k€ doctoral fellowship, 5k€ travel*
 

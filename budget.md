@@ -4,15 +4,15 @@ How the money is allocated (excluding overhead)
 
 ## IPGP
 
-| Subject | Description | Budgeted | Spent | Comments |
+| Subject | Description | Budgeted | Spent 2022 | Comments |
 | ------- | ----------- | -------- | ----- | -------- |
-| Doctoral student | Doctoral fellowship | 120k€ | - |  |
+| Postdoc WP2 | fellowship | 120k€ | - |  |
 | | Computer equipment  | 2,5k€ | - |  |
-| Engineer | Salary | 105k€ | - |  |
+| Engineer | Salary | 105k€ | 7,5k€ | 3 months en 2022 |
 | | Computer equipment  | 2,5k€ | - |  |
 | Masters students | 4 Stipends | 8k€ | - | |
 | Equipment | Installation of rotaitonal seismometer in existing BBOBS | 20k€ | - | |
-|  | Antarctic OBS deployments | 12k€ | - | |
+|  | Antarctic OBS deployments | 12k€ | 12k€ | A verifier avec Marie Dominique |
 |  | Transportation to/from BBOBS/OBS expts | 8k€ | - | |
 | Other | Publication charges | 12k€ | - | |
 | Travel | Collaboration Schimmel | 8k€ | - | |

@@ -4,21 +4,21 @@ How the money is allocated and spent (excluding overhead)
 
 ## IPGP
 
-| Subject   | Description | Budgeted | Spent 2022 | Comments |
-| --------- | ----------- | -------- | ----- | -------- |
-| Postdoc WP2 | fellowship | 120k€ | - |  |
-|           | Computer equipment  | 2,5k€ | - |  |
-| Engineer  | Salary | 105k€ | 7,5k€ | 3 months en 2022 |
-|           | Computer equipment  | 2,5k€ | - |  |
-| Masters students | 4 Stipends | 8k€ | - | |
-| Equipment | Installation of rotational seismometer in existing BBOBS | 20k€ | - | |
-| Other     | Antarctic OBS deployments | 12k€ | 12k€ | |
-|           | Transportation to/from BBOBS/OBS expts | 8k€ | 0,2 k€ | |
-|           | Publication charges | 12k€ | - | |
-| Travel    | Collaboration Schimmel | 8k€ | - | |
-|           | WP1 travel and meetings | 9.6k€ | 1,1k€ | kickoff meeting |
-|           | 4 European workshops/symposa | 8k€ | |
-|           | 4 iternational workshops/symposa | 11k€ | |
+| Subject   | Description               | Budgeted | 2022  | Prevu 2023 | Comments |
+| --------- | ------------------------- | -------- | ----- | ---------- | -------- |
+| Postdoc WP2 | fellowship              | 120k€    | -     | 50 k€      | Presume commence 1 Mars 2023 |
+|           | Computer equipment        | 2,5k€    | -     | 2,5 k€     | |
+| Engineer  | Salary                    | 105k€    | 7,4k€ | 29,5 k€    | 50% temps |
+|           | Computer equipment        | 2,5k€    | 2,5k€ | -          | |
+| Masters students | 4 Stipends         | 8k€      | -     | 4 k€       | |
+| Equipment | Installation of rotational seismometer in existing BBOBS | 20k€ | - | 15 k€ | |
+| Other     | Antarctic OBS deployments | 12k€     | 12k€  | -          | **soldé** |
+|           | Transportation to/from BBOBS/OBS expts | 8k€ | 0,2 k€     | 1 k€ | |
+|           | Publication charges       | 12k€     | -     | -          | |
+| Travel    | Collaboration Schimmel    | 8k€      | -     | 2,6 k€     | |
+|           | WP1 travel and meetings   | 9.6k€    | 1,1k€ | 2,5 k€     | |
+|           | 4 European workshops/symposa | 8k€   | -     | -          | |
+|           | 4 iternational workshops/symposa     | 11k€  | -          | |
 
 *Removed by review panel: 5k€ participation IPGP computation cluster, 3k€ computer equipment, 2k€ doctoral fellowship, 5k€ travel*
 

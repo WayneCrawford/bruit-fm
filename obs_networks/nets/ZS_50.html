@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_a5e2fa34f038746b245a4a00bbb99cdf {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network ZS: Seismicity of East Coast Submarine Landslides </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Woods Hole Oceanographic Institution (WHOI)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Jul 2012 to Nov 2013</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/ZS_2012">https://doi.org/10.7914/SN/ZS_2012</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_a5e2fa34f038746b245a4a00bbb99cdf" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>ZS</TD><TD>S01</TD><TD>2012/07/06</TD><TD>2012/12/06</TD><TD>39.870098</TD><TD>-70.962997</TD><TD>-880</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>S02</TD><TD>2012/07/06</TD><TD>2012/12/06</TD><TD>39.865601</TD><TD>-70.962997</TD><TD>-816</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>S03</TD><TD>2012/07/06</TD><TD>2012/12/06</TD><TD>39.862499</TD><TD>-70.962997</TD><TD>-825</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>S04</TD><TD>2012/07/06</TD><TD>2012/12/06</TD><TD>39.859699</TD><TD>-70.962097</TD><TD>-832</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>S05</TD><TD>2012/07/06</TD><TD>2012/12/06</TD><TD>39.862999</TD><TD>-70.956596</TD><TD>-838</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>S06</TD><TD>2012/07/06</TD><TD>2012/12/06</TD><TD>39.8522</TD><TD>-70.962997</TD><TD>-860</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>S07</TD><TD>2012/07/06</TD><TD>2012/12/07</TD><TD>39.856701</TD><TD>-70.957199</TD><TD>-843</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>S08</TD><TD>2012/07/06</TD><TD>2012/11/30</TD><TD>39.861099</TD><TD>-70.957199</TD><TD>-833</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>S09</TD><TD>2012/07/06</TD><TD>2012/12/06</TD><TD>39.8657</TD><TD>-70.9571</TD><TD>-838</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>S10</TD><TD>2012/07/06</TD><TD>2012/12/06</TD><TD>39.856602</TD><TD>-70.968903</TD><TD>-841</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>S12</TD><TD>2012/07/06</TD><TD>2012/12/07</TD><TD>39.8657</TD><TD>-70.968903</TD><TD>-816</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>W01</TD><TD>2012/11/29</TD><TD>2013/09/12</TD><TD>39.816799</TD><TD>-70.426804</TD><TD>-1031</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>W02</TD><TD>2012/11/29</TD><TD>2013/09/12</TD><TD>39.563499</TD><TD>-70.850502</TD><TD>-2386</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>W03</TD><TD>2012/11/29</TD><TD>2013/09/11</TD><TD>39.7948</TD><TD>-71.293098</TD><TD>-978</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>W04</TD><TD>2012/11/29</TD><TD>2013/11/22</TD><TD>39.432899</TD><TD>-71.475601</TD><TD>-2288</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZS</TD><TD>W05</TD><TD>2012/11/29</TD><TD>2013/09/12</TD><TD>39.379101</TD><TD>-71.982002</TD><TD>-927</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>EDH</TD><TD>100.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase C</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>EL1</TD><TD>100.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>EL2</TD><TD>100.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>ELZ</TD><TD>100.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>LDH</TD><TD>1.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase C</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>LL1</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>LL2</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>LLZ</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>VM0</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>VM1</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>VM2</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>VM3</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>VM4</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>VM5</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>VM6</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>VMU</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>VMV</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>VMW</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>VMZ</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>S01 S02 S03 S04 S05 S06 S07 S08 S09 S10 S12 W01 W02 W03 W04 W05</TD><TD>VPB</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_a5e2fa34f038746b245a4a00bbb99cdf = L.map(
+                "map_a5e2fa34f038746b245a4a00bbb99cdf",
+                {
+                    center: [39.77912474999998, -71.03799949999998],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_83ece017806d0d9504cc312c3236641f = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var circle_marker_7d8632aa5bcf1ff21ac5121214a1f0ce = L.circleMarker(
+                [39.870098, -70.962997],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_7d8632aa5bcf1ff21ac5121214a1f0ce.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> S01 <br> <b>Dates: </b>2012/07/06 to 2012/12/06  <br><br><b>Depth: </b> -880 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_36793ff9a4b80769cfe9a66f6455e6f9 = L.marker(
+                [39.870098, -70.962997],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_93de48d7154094d16139978f61dabc82 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eS01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_36793ff9a4b80769cfe9a66f6455e6f9.setIcon(div_icon_93de48d7154094d16139978f61dabc82);
+        
+    
+            var circle_marker_d2e7f3649085c2d9550291e03fbb8fb7 = L.circleMarker(
+                [39.865601, -70.962997],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_d2e7f3649085c2d9550291e03fbb8fb7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> S02 <br> <b>Dates: </b>2012/07/06 to 2012/12/06  <br><br><b>Depth: </b> -816 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b78abf16a58ebb8a27938ef21d29f98e = L.marker(
+                [39.865601, -70.962997],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_f132864f182ec0094ccc0bb239b08b77 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eS02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b78abf16a58ebb8a27938ef21d29f98e.setIcon(div_icon_f132864f182ec0094ccc0bb239b08b77);
+        
+    
+            var circle_marker_b5e25e94c083fb8e83e59d1f77cf6157 = L.circleMarker(
+                [39.862499, -70.962997],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_b5e25e94c083fb8e83e59d1f77cf6157.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> S03 <br> <b>Dates: </b>2012/07/06 to 2012/12/06  <br><br><b>Depth: </b> -825 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e6f7c38394e776f46398d6dfaf9f7ae2 = L.marker(
+                [39.862499, -70.962997],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_1257bad98c6b1a21a37bd0d6af0d412f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eS03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e6f7c38394e776f46398d6dfaf9f7ae2.setIcon(div_icon_1257bad98c6b1a21a37bd0d6af0d412f);
+        
+    
+            var circle_marker_9eefcfaf9a5efe652401b0db9a471ebf = L.circleMarker(
+                [39.859699, -70.962097],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_9eefcfaf9a5efe652401b0db9a471ebf.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> S04 <br> <b>Dates: </b>2012/07/06 to 2012/12/06  <br><br><b>Depth: </b> -832 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6c673d80e86c7cf03675f67f082ea100 = L.marker(
+                [39.859699, -70.962097],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_b884cdbfe0bbb55db8ddf593f621e141 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eS04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6c673d80e86c7cf03675f67f082ea100.setIcon(div_icon_b884cdbfe0bbb55db8ddf593f621e141);
+        
+    
+            var circle_marker_073a1abd68e25f90b9bdec69beb78d0e = L.circleMarker(
+                [39.862999, -70.956596],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_073a1abd68e25f90b9bdec69beb78d0e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> S05 <br> <b>Dates: </b>2012/07/06 to 2012/12/06  <br><br><b>Depth: </b> -838 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_98b67e8de6f3525b0ea620f3fafa3729 = L.marker(
+                [39.862999, -70.956596],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_79a0063ccb76cadabbf112a02b44e044 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eS05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_98b67e8de6f3525b0ea620f3fafa3729.setIcon(div_icon_79a0063ccb76cadabbf112a02b44e044);
+        
+    
+            var circle_marker_2d5a40ef91f43e989e562f32d466c7f9 = L.circleMarker(
+                [39.8522, -70.962997],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_2d5a40ef91f43e989e562f32d466c7f9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> S06 <br> <b>Dates: </b>2012/07/06 to 2012/12/06  <br><br><b>Depth: </b> -860 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_820c2611c2b533aa127a364a5471e220 = L.marker(
+                [39.8522, -70.962997],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_02f849fdbb07bd3b2c6f954deb041202 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eS06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_820c2611c2b533aa127a364a5471e220.setIcon(div_icon_02f849fdbb07bd3b2c6f954deb041202);
+        
+    
+            var circle_marker_dc85d32648eeb732bedc4cc3273d0d60 = L.circleMarker(
+                [39.856701, -70.957199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_dc85d32648eeb732bedc4cc3273d0d60.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> S07 <br> <b>Dates: </b>2012/07/06 to 2012/12/07  <br><br><b>Depth: </b> -843 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7444314479fc950b275a538b71e78b90 = L.marker(
+                [39.856701, -70.957199],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_099b0e70f05f47741f1b4a526c2a81eb = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eS07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7444314479fc950b275a538b71e78b90.setIcon(div_icon_099b0e70f05f47741f1b4a526c2a81eb);
+        
+    
+            var circle_marker_eff0bcc0cd1f5f99bb73c0d139a31677 = L.circleMarker(
+                [39.861099, -70.957199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_eff0bcc0cd1f5f99bb73c0d139a31677.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> S08 <br> <b>Dates: </b>2012/07/06 to 2012/11/30  <br><br><b>Depth: </b> -833 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_07bb9fbbb145b4501c37b0627cb0d32e = L.marker(
+                [39.861099, -70.957199],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_628c095815d37e1083b91357b24dfcb3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eS08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_07bb9fbbb145b4501c37b0627cb0d32e.setIcon(div_icon_628c095815d37e1083b91357b24dfcb3);
+        
+    
+            var circle_marker_473000e38ade09c098195c32c0d56bcd = L.circleMarker(
+                [39.8657, -70.9571],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_473000e38ade09c098195c32c0d56bcd.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> S09 <br> <b>Dates: </b>2012/07/06 to 2012/12/06  <br><br><b>Depth: </b> -838 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_53726f2a90f09063becb81ef9983e8a7 = L.marker(
+                [39.8657, -70.9571],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_54f21201144d86d68859866356830009 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eS09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_53726f2a90f09063becb81ef9983e8a7.setIcon(div_icon_54f21201144d86d68859866356830009);
+        
+    
+            var circle_marker_1a2d1f2e3b5ecad79a561e099624f987 = L.circleMarker(
+                [39.856602, -70.968903],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_1a2d1f2e3b5ecad79a561e099624f987.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> S10 <br> <b>Dates: </b>2012/07/06 to 2012/12/06  <br><br><b>Depth: </b> -841 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_651ed67e5041d1fd578c4c327be4bd1c = L.marker(
+                [39.856602, -70.968903],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_6647e020ce51471d866296eaaaaf8ac6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eS10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_651ed67e5041d1fd578c4c327be4bd1c.setIcon(div_icon_6647e020ce51471d866296eaaaaf8ac6);
+        
+    
+            var circle_marker_ba0066e05850f7adc45f51c98e084233 = L.circleMarker(
+                [39.8657, -70.968903],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_ba0066e05850f7adc45f51c98e084233.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> S12 <br> <b>Dates: </b>2012/07/06 to 2012/12/07  <br><br><b>Depth: </b> -816 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f8f36ab5f59b1dbf265fa8351b1edfa3 = L.marker(
+                [39.8657, -70.968903],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_e58723214728a62f05da23445d802dc7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eS12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f8f36ab5f59b1dbf265fa8351b1edfa3.setIcon(div_icon_e58723214728a62f05da23445d802dc7);
+        
+    
+            var circle_marker_fd2e1c31f4d597381902230b05823221 = L.circleMarker(
+                [39.816799, -70.426804],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_fd2e1c31f4d597381902230b05823221.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> W01 <br> <b>Dates: </b>2012/11/29 to 2013/09/12  <br><br><b>Depth: </b> -1031 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7448a4cbb79e670de8cb79ea85fa76ba = L.marker(
+                [39.816799, -70.426804],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_d54e8c35d430c3a28512de9675848125 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eW01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7448a4cbb79e670de8cb79ea85fa76ba.setIcon(div_icon_d54e8c35d430c3a28512de9675848125);
+        
+    
+            var circle_marker_efa402cdfe7326949361e56db6eeeae3 = L.circleMarker(
+                [39.563499, -70.850502],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_efa402cdfe7326949361e56db6eeeae3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> W02 <br> <b>Dates: </b>2012/11/29 to 2013/09/12  <br><br><b>Depth: </b> -2386 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_236e8f77290b1c2ac452b55e0e7bfb1d = L.marker(
+                [39.563499, -70.850502],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_448d2862dab634aa90235518bed71275 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eW02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_236e8f77290b1c2ac452b55e0e7bfb1d.setIcon(div_icon_448d2862dab634aa90235518bed71275);
+        
+    
+            var circle_marker_9f06a50c8dd5cd17f2cdfcce2d5a5fb0 = L.circleMarker(
+                [39.7948, -71.293098],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_9f06a50c8dd5cd17f2cdfcce2d5a5fb0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> W03 <br> <b>Dates: </b>2012/11/29 to 2013/09/11  <br><br><b>Depth: </b> -978 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9d7fe35de108df17e88884a0208ffa97 = L.marker(
+                [39.7948, -71.293098],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_b1fda797a3b25099b2c89e1ed644aa60 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eW03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9d7fe35de108df17e88884a0208ffa97.setIcon(div_icon_b1fda797a3b25099b2c89e1ed644aa60);
+        
+    
+            var circle_marker_e26e71dd8e2b080d4a0d7a87b796d9ac = L.circleMarker(
+                [39.432899, -71.475601],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_e26e71dd8e2b080d4a0d7a87b796d9ac.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> W04 <br> <b>Dates: </b>2012/11/29 to 2013/11/22  <br><br><b>Depth: </b> -2288 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_20fef8c5d35ebcd1e13916272f3dcd0e = L.marker(
+                [39.432899, -71.475601],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_01df424eba3b1263a35f1058de2277eb = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eW04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_20fef8c5d35ebcd1e13916272f3dcd0e.setIcon(div_icon_01df424eba3b1263a35f1058de2277eb);
+        
+    
+            var circle_marker_f8d8c42d9d777c88f84e507ed122afd3 = L.circleMarker(
+                [39.379101, -71.982002],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58a700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            circle_marker_f8d8c42d9d777c88f84e507ed122afd3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZS <br> <b>Station:</b> W05 <br> <b>Dates: </b>2012/11/29 to 2013/09/12  <br><br><b>Depth: </b> -927 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZS_2012 <br><br> <b>Net name: </b> Seismicity of East Coast Submarine Landslides <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_99bb6b9099aa9493605d7c7d26032d10 = L.marker(
+                [39.379101, -71.982002],
+                {}
+            ).addTo(map_a5e2fa34f038746b245a4a00bbb99cdf);
+        
+    
+            var div_icon_b53e9fde8a0a80ce90ae85cc89facb27 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eW05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_99bb6b9099aa9493605d7c7d26032d10.setIcon(div_icon_b53e9fde8a0a80ce90ae85cc89facb27);
+        
+    
+            map_a5e2fa34f038746b245a4a00bbb99cdf.fitBounds(
+                [[39.379101, -71.982002], [39.870098, -70.426804]],
+                {}
+            );
+        </script>
+
+</html>

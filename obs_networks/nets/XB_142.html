@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_d667c59c000a5416d9a50973e9a26eb6 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network XB: Costa Rica Active Source OBS Experiment </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Woods Hole Oceanographic Institution (WHOI)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Feb 2008 to Apr 2008</p>
+		<p id="net_header", class="headerDoi">DOI: <a href=""></a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_d667c59c000a5416d9a50973e9a26eb6" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>XB</TD><TD>1ET5</TD><TD>2008/02/16</TD><TD>2008/03/03</TD><TD>10.9341</TD><TD>-83.156998</TD><TD>-1572</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>1ET6</TD><TD>2008/02/16</TD><TD>2008/03/03</TD><TD>11.0076</TD><TD>-83.0812</TD><TD>-1693</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>1ET7</TD><TD>2008/02/16</TD><TD>2008/03/03</TD><TD>11.0807</TD><TD>-83.005302</TD><TD>-1887</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>1WT11</TD><TD>2008/03/21</TD><TD>2008/03/30</TD><TD>9.0847</TD><TD>-85.049103</TD><TD>-2533</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>1WT7</TD><TD>2008/03/21</TD><TD>2008/03/29</TD><TD>8.7799</TD><TD>-85.358299</TD><TD>-2891</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>1WT8</TD><TD>2008/03/21</TD><TD>2008/03/29</TD><TD>8.8404</TD><TD>-85.297203</TD><TD>-2973</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>ANET1</TD><TD>2008/03/31</TD><TD>2008/04/13</TD><TD>11.0684</TD><TD>-86.867897</TD><TD>-543</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>ANET2</TD><TD>2008/03/31</TD><TD>2008/04/13</TD><TD>10.9774</TD><TD>-86.9813</TD><TD>-1677</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>ANT01</TD><TD>2008/03/30</TD><TD>2008/04/09</TD><TD>11.2746</TD><TD>-87.317902</TD><TD>-1675</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>ANT06</TD><TD>2008/03/30</TD><TD>2008/04/10</TD><TD>10.1234</TD><TD>-87.318199</TD><TD>-2962</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>AWT06</TD><TD>2008/03/31</TD><TD>2008/04/13</TD><TD>10.7009</TD><TD>-86.739403</TD><TD>-1832</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>CRT10</TD><TD>2008/03/21</TD><TD>2008/03/27</TD><TD>9.0095</TD><TD>-85.284897</TD><TD>-3329</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>CRT12</TD><TD>2008/03/21</TD><TD>2008/03/28</TD><TD>9.0929</TD><TD>-85.525902</TD><TD>-3207</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>CRT13</TD><TD>2008/03/21</TD><TD>2008/03/28</TD><TD>9.134</TD><TD>-85.646202</TD><TD>-3631</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>CRT14</TD><TD>2008/03/21</TD><TD>2008/03/28</TD><TD>9.1758</TD><TD>-85.766602</TD><TD>-3638</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>HT11</TD><TD>2008/02/16</TD><TD>2008/03/08</TD><TD>11.3734</TD><TD>-82.532402</TD><TD>-2412</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>HT12</TD><TD>2008/02/16</TD><TD>2008/03/08</TD><TD>11.282</TD><TD>-82.4506</TD><TD>-2413</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>HT7</TD><TD>2008/02/17</TD><TD>2008/03/08</TD><TD>11.7393</TD><TD>-82.858498</TD><TD>-1480</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>HT9</TD><TD>2008/02/16</TD><TD>2008/03/08</TD><TD>11.5563</TD><TD>-82.695198</TD><TD>-1692</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>NRT6</TD><TD>2008/02/17</TD><TD>2008/03/07</TD><TD>12.4478</TD><TD>-83.000801</TD><TD>-33</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>NRT7</TD><TD>2008/02/16</TD><TD>2008/03/06</TD><TD>12.5604</TD><TD>-82.933403</TD><TD>-45</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XB</TD><TD>ST14</TD><TD>2008/03/29</TD><TD>2008/04/11</TD><TD>10.384</TD><TD>-87.017502</TD><TD>-4068</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>1ET5 1ET6 1ET7 1WT11 1WT7 1WT8 ANET1 ANET2 ANT01 ANT06 AWT06 CRT10 CRT12 CRT13 CRT14 HT11 HT12 HT7 HT9 NRT6 NRT7 ST14</TD><TD>EDH</TD><TD>200.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase B</TD></TR><TR><TD>1ET5 1ET6 1ET7 1WT11 1WT7 1WT8 ANET1 ANET2 ANT01 ANT06 AWT06 CRT10 CRT12 CRT13 CRT14 HT11 HT12 HT7 HT9 NRT6 NRT7 ST14</TD><TD>EL1</TD><TD>200.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>1ET5 1ET6 1ET7 1WT11 1WT7 1WT8 ANET1 ANET2 ANT01 ANT06 AWT06 CRT10 CRT12 CRT13 CRT14 HT11 HT12 HT7 HT9 NRT6 NRT7 ST14</TD><TD>EL2</TD><TD>200.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>1ET5 1ET6 1ET7 1WT11 1WT7 1WT8 ANET1 ANET2 ANT01 ANT06 AWT06 CRT10 CRT12 CRT13 CRT14 HT11 HT12 HT7 HT9 NRT6 NRT7 ST14</TD><TD>ELZ</TD><TD>200.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>1ET5 1ET6 1ET7 1WT11 1WT7 1WT8 ANET1 ANET2 ANT01 ANT06 AWT06 CRT10 CRT12 CRT13 CRT14 HT11 HT12 HT7 HT9 NRT6 NRT7 ST14</TD><TD>LDH</TD><TD>1.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase B</TD></TR><TR><TD>1ET5 1ET6 1ET7 1WT11 1WT7 1WT8 ANET1 ANET2 ANT01 ANT06 AWT06 CRT10 CRT12 CRT13 CRT14 HT11 HT12 HT7 HT9 NRT6 NRT7 ST14</TD><TD>LL1</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>1ET5 1ET6 1ET7 1WT11 1WT7 1WT8 ANET1 ANET2 ANT01 ANT06 AWT06 CRT10 CRT12 CRT13 CRT14 HT11 HT12 HT7 HT9 NRT6 NRT7 ST14</TD><TD>LL2</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>1ET5 1ET6 1ET7 1WT11 1WT7 1WT8 ANET1 ANET2 ANT01 ANT06 AWT06 CRT10 CRT12 CRT13 CRT14 HT11 HT12 HT7 HT9 NRT6 NRT7 ST14</TD><TD>LLZ</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_d667c59c000a5416d9a50973e9a26eb6 = L.map(
+                "map_d667c59c000a5416d9a50973e9a26eb6",
+                {
+                    center: [10.528522727272717, -84.81294604545447],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_56abb117ff27c50729f404df2f8c1b05 = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var circle_marker_718c1b51ccd7d1fcea064976920d9d70 = L.circleMarker(
+                [10.9341, -83.156998],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_718c1b51ccd7d1fcea064976920d9d70.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> 1ET5 <br> <b>Dates: </b>2008/02/16 to 2008/03/03  <br><br><b>Depth: </b> -1572 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_16ba39ef5a43adc58aac53901d31993f = L.marker(
+                [10.9341, -83.156998],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_26ebedcb694532d38ee9058e91a3be38 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e1ET5\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_16ba39ef5a43adc58aac53901d31993f.setIcon(div_icon_26ebedcb694532d38ee9058e91a3be38);
+        
+    
+            var circle_marker_3b9e39cde723b1422260ebaac52748bf = L.circleMarker(
+                [11.0076, -83.0812],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_3b9e39cde723b1422260ebaac52748bf.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> 1ET6 <br> <b>Dates: </b>2008/02/16 to 2008/03/03  <br><br><b>Depth: </b> -1693 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4d4dffb60a08989b4791af0446ac0927 = L.marker(
+                [11.0076, -83.0812],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_323159b9aa8922b08285f3aec0a8fd06 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e1ET6\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4d4dffb60a08989b4791af0446ac0927.setIcon(div_icon_323159b9aa8922b08285f3aec0a8fd06);
+        
+    
+            var circle_marker_704756c9872b00eaa5e9db0e83d0d45a = L.circleMarker(
+                [11.0807, -83.005302],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_704756c9872b00eaa5e9db0e83d0d45a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> 1ET7 <br> <b>Dates: </b>2008/02/16 to 2008/03/03  <br><br><b>Depth: </b> -1887 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c46b86c627f46093b01b0ef60013607a = L.marker(
+                [11.0807, -83.005302],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_39650bfa96c223cd429f4171896e7c9f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e1ET7\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c46b86c627f46093b01b0ef60013607a.setIcon(div_icon_39650bfa96c223cd429f4171896e7c9f);
+        
+    
+            var circle_marker_39e45a753d3670837f56395a547ad300 = L.circleMarker(
+                [9.0847, -85.049103],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_39e45a753d3670837f56395a547ad300.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> 1WT11 <br> <b>Dates: </b>2008/03/21 to 2008/03/30  <br><br><b>Depth: </b> -2533 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_416c82b86edb3fbbad0751100557643e = L.marker(
+                [9.0847, -85.049103],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_82912572ba0424c6b4b10b2cbb1ed3b3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e1WT11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_416c82b86edb3fbbad0751100557643e.setIcon(div_icon_82912572ba0424c6b4b10b2cbb1ed3b3);
+        
+    
+            var circle_marker_707113a6dd1638623a9a5a03879b27f3 = L.circleMarker(
+                [8.7799, -85.358299],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_707113a6dd1638623a9a5a03879b27f3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> 1WT7 <br> <b>Dates: </b>2008/03/21 to 2008/03/29  <br><br><b>Depth: </b> -2891 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fc63cbbf3fc4bfb37d03f3110728a4ed = L.marker(
+                [8.7799, -85.358299],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_9a728703cedf87340288b8ab450dfc32 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e1WT7\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fc63cbbf3fc4bfb37d03f3110728a4ed.setIcon(div_icon_9a728703cedf87340288b8ab450dfc32);
+        
+    
+            var circle_marker_7b55202701e9e224bbbadf73a089a84c = L.circleMarker(
+                [8.8404, -85.297203],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_7b55202701e9e224bbbadf73a089a84c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> 1WT8 <br> <b>Dates: </b>2008/03/21 to 2008/03/29  <br><br><b>Depth: </b> -2973 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2324fe1b6777c3aa2d50b1ff333bab8b = L.marker(
+                [8.8404, -85.297203],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_19ce3f62f12c3389dcdc906975eeee91 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e1WT8\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2324fe1b6777c3aa2d50b1ff333bab8b.setIcon(div_icon_19ce3f62f12c3389dcdc906975eeee91);
+        
+    
+            var circle_marker_6dc5d88440d00ab93a3f8ff645721c2b = L.circleMarker(
+                [11.0684, -86.867897],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_6dc5d88440d00ab93a3f8ff645721c2b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> ANET1 <br> <b>Dates: </b>2008/03/31 to 2008/04/13  <br><br><b>Depth: </b> -543 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b27b6d0cd099986d73c6e1f9498cffc8 = L.marker(
+                [11.0684, -86.867897],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_e48870f01b8d0569589d995206719742 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eANET1\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b27b6d0cd099986d73c6e1f9498cffc8.setIcon(div_icon_e48870f01b8d0569589d995206719742);
+        
+    
+            var circle_marker_555c1173a9827fd8e881ea6380e5580e = L.circleMarker(
+                [10.9774, -86.9813],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_555c1173a9827fd8e881ea6380e5580e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> ANET2 <br> <b>Dates: </b>2008/03/31 to 2008/04/13  <br><br><b>Depth: </b> -1677 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_750f218be1da4a563cc548a0ae109f7a = L.marker(
+                [10.9774, -86.9813],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_59188ecb855fdb6d0f3c422c1b28b689 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eANET2\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_750f218be1da4a563cc548a0ae109f7a.setIcon(div_icon_59188ecb855fdb6d0f3c422c1b28b689);
+        
+    
+            var circle_marker_75b4b31a299493af9c35ebd30af53312 = L.circleMarker(
+                [11.2746, -87.317902],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_75b4b31a299493af9c35ebd30af53312.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> ANT01 <br> <b>Dates: </b>2008/03/30 to 2008/04/09  <br><br><b>Depth: </b> -1675 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ff94f4987c9f92782fc8098f27e884f4 = L.marker(
+                [11.2746, -87.317902],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_1d6e5fab8e9cf0cde6831e7e48c26c9b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eANT01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ff94f4987c9f92782fc8098f27e884f4.setIcon(div_icon_1d6e5fab8e9cf0cde6831e7e48c26c9b);
+        
+    
+            var circle_marker_8252504913e8a5321a6bc3a6307b78ab = L.circleMarker(
+                [10.1234, -87.318199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_8252504913e8a5321a6bc3a6307b78ab.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> ANT06 <br> <b>Dates: </b>2008/03/30 to 2008/04/10  <br><br><b>Depth: </b> -2962 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a56d992234f3025671655e7b723f8aba = L.marker(
+                [10.1234, -87.318199],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_dcaae0fb01e1b90aeb3c1c61cd21ce65 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eANT06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a56d992234f3025671655e7b723f8aba.setIcon(div_icon_dcaae0fb01e1b90aeb3c1c61cd21ce65);
+        
+    
+            var circle_marker_d458f5dc663d46a83ad8445a69e7a8cd = L.circleMarker(
+                [10.7009, -86.739403],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_d458f5dc663d46a83ad8445a69e7a8cd.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> AWT06 <br> <b>Dates: </b>2008/03/31 to 2008/04/13  <br><br><b>Depth: </b> -1832 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6af19f1b20e55358f29ab547254db255 = L.marker(
+                [10.7009, -86.739403],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_a0f681df9b087627166fc4ae8513f17d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eAWT06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6af19f1b20e55358f29ab547254db255.setIcon(div_icon_a0f681df9b087627166fc4ae8513f17d);
+        
+    
+            var circle_marker_946cc67e6aff2f03c595b37e1534cb1f = L.circleMarker(
+                [9.0095, -85.284897],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_946cc67e6aff2f03c595b37e1534cb1f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> CRT10 <br> <b>Dates: </b>2008/03/21 to 2008/03/27  <br><br><b>Depth: </b> -3329 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e396d56efbbc63f1e58ae1e9a05e9422 = L.marker(
+                [9.0095, -85.284897],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_153455f923c2e120526ae369e00dacf7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCRT10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e396d56efbbc63f1e58ae1e9a05e9422.setIcon(div_icon_153455f923c2e120526ae369e00dacf7);
+        
+    
+            var circle_marker_7cb498d67f329b0c03602c18a3060898 = L.circleMarker(
+                [9.0929, -85.525902],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_7cb498d67f329b0c03602c18a3060898.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> CRT12 <br> <b>Dates: </b>2008/03/21 to 2008/03/28  <br><br><b>Depth: </b> -3207 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9173024001bf077b2a17943acf6c374c = L.marker(
+                [9.0929, -85.525902],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_26769d9c126954226e511d1363303c5e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCRT12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9173024001bf077b2a17943acf6c374c.setIcon(div_icon_26769d9c126954226e511d1363303c5e);
+        
+    
+            var circle_marker_23cd6812c04f2b02cc96021831ca2206 = L.circleMarker(
+                [9.134, -85.646202],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_23cd6812c04f2b02cc96021831ca2206.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> CRT13 <br> <b>Dates: </b>2008/03/21 to 2008/03/28  <br><br><b>Depth: </b> -3631 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_17726398231e8e0e4383f87eddb54a14 = L.marker(
+                [9.134, -85.646202],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_0632fe32f85016a5d456e7cdcf3438a1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCRT13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_17726398231e8e0e4383f87eddb54a14.setIcon(div_icon_0632fe32f85016a5d456e7cdcf3438a1);
+        
+    
+            var circle_marker_ad179b9c7e6220cdf05a6ab0c5e18b10 = L.circleMarker(
+                [9.1758, -85.766602],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_ad179b9c7e6220cdf05a6ab0c5e18b10.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> CRT14 <br> <b>Dates: </b>2008/03/21 to 2008/03/28  <br><br><b>Depth: </b> -3638 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e9f6a8451cfc5d01c9946ffa44607ed2 = L.marker(
+                [9.1758, -85.766602],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_4b5d4480ef3ace05791ec5786cb26eee = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCRT14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e9f6a8451cfc5d01c9946ffa44607ed2.setIcon(div_icon_4b5d4480ef3ace05791ec5786cb26eee);
+        
+    
+            var circle_marker_00b5a5a2ff5f2f83ae0baf6dfdc32a01 = L.circleMarker(
+                [11.3734, -82.532402],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_00b5a5a2ff5f2f83ae0baf6dfdc32a01.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> HT11 <br> <b>Dates: </b>2008/02/16 to 2008/03/08  <br><br><b>Depth: </b> -2412 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d825abec8392fd01320573c0fc567a6c = L.marker(
+                [11.3734, -82.532402],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_f2965edeca47e6a15d12c117efdc56ca = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eHT11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d825abec8392fd01320573c0fc567a6c.setIcon(div_icon_f2965edeca47e6a15d12c117efdc56ca);
+        
+    
+            var circle_marker_3c9b5985d0e4e3afdd94eb275e728809 = L.circleMarker(
+                [11.282, -82.4506],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_3c9b5985d0e4e3afdd94eb275e728809.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> HT12 <br> <b>Dates: </b>2008/02/16 to 2008/03/08  <br><br><b>Depth: </b> -2413 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c7800ac8e44a7a0907f8548c8611c161 = L.marker(
+                [11.282, -82.4506],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_e57f9bce85e8fb4f265b0870361928cc = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eHT12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c7800ac8e44a7a0907f8548c8611c161.setIcon(div_icon_e57f9bce85e8fb4f265b0870361928cc);
+        
+    
+            var circle_marker_7c19e6a7bedb17e4bde8ae28c6b682bd = L.circleMarker(
+                [11.7393, -82.858498],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_7c19e6a7bedb17e4bde8ae28c6b682bd.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> HT7 <br> <b>Dates: </b>2008/02/17 to 2008/03/08  <br><br><b>Depth: </b> -1480 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d15828c2eb120aefb24b1a6519c0645a = L.marker(
+                [11.7393, -82.858498],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_ef419ab756253c351963eb73aa7cd359 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eHT7\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d15828c2eb120aefb24b1a6519c0645a.setIcon(div_icon_ef419ab756253c351963eb73aa7cd359);
+        
+    
+            var circle_marker_eb242c9eb0f89767701f49e5bb328bba = L.circleMarker(
+                [11.5563, -82.695198],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_eb242c9eb0f89767701f49e5bb328bba.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> HT9 <br> <b>Dates: </b>2008/02/16 to 2008/03/08  <br><br><b>Depth: </b> -1692 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_20217ff9a2fe1f307b7bca630a7a7d16 = L.marker(
+                [11.5563, -82.695198],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_447a509e9ec7e1edcdf2017b2262c15a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eHT9\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_20217ff9a2fe1f307b7bca630a7a7d16.setIcon(div_icon_447a509e9ec7e1edcdf2017b2262c15a);
+        
+    
+            var circle_marker_b0f299746e7e745af419cdb7d3e469af = L.circleMarker(
+                [12.4478, -83.000801],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_b0f299746e7e745af419cdb7d3e469af.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> NRT6 <br> <b>Dates: </b>2008/02/17 to 2008/03/07  <br><br><b>Depth: </b> -33 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e29930e6b19754cdd78b9515f84c73e5 = L.marker(
+                [12.4478, -83.000801],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_76e6e36c0ce548b26fa6b8e48c0156e6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNRT6\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e29930e6b19754cdd78b9515f84c73e5.setIcon(div_icon_76e6e36c0ce548b26fa6b8e48c0156e6);
+        
+    
+            var circle_marker_5b724a764fba2360cfb888f34188600e = L.circleMarker(
+                [12.5604, -82.933403],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_5b724a764fba2360cfb888f34188600e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> NRT7 <br> <b>Dates: </b>2008/02/16 to 2008/03/06  <br><br><b>Depth: </b> -45 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_aaf7ab13753facbdecea799c3ea01001 = L.marker(
+                [12.5604, -82.933403],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_8977ababb5ed3731da16fa2b9afa3827 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNRT7\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_aaf7ab13753facbdecea799c3ea01001.setIcon(div_icon_8977ababb5ed3731da16fa2b9afa3827);
+        
+    
+            var circle_marker_8226cfc50bc7bacef370e6b3d2762ffb = L.circleMarker(
+                [10.384, -87.017502],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6a9500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            circle_marker_8226cfc50bc7bacef370e6b3d2762ffb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XB <br> <b>Station:</b> ST14 <br> <b>Dates: </b>2008/03/29 to 2008/04/11  <br><br><b>Depth: </b> -4068 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Costa Rica Active Source OBS Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c6cdf1d11d7044e633d20c740d0743d9 = L.marker(
+                [10.384, -87.017502],
+                {}
+            ).addTo(map_d667c59c000a5416d9a50973e9a26eb6);
+        
+    
+            var div_icon_f9fbc5ed19ea2c1522144530b7cadb3b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eST14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c6cdf1d11d7044e633d20c740d0743d9.setIcon(div_icon_f9fbc5ed19ea2c1522144530b7cadb3b);
+        
+    
+            map_d667c59c000a5416d9a50973e9a26eb6.fitBounds(
+                [[8.7799, -87.318199], [12.5604, -82.4506]],
+                {}
+            );
+        </script>
+
+</html>

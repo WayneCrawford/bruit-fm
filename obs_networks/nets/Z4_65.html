@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_1c8458788a23125a6427594e83f3ce93 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network Z4: Chilean 2010 post-seismic response </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Oregon State University (OSU USA)</p>
+		<p id="net_header", class="headerDates">OBS deployed from May 2012 to Mar 2013</p>
+		<p id="net_header", class="headerDoi">DOI: <a href=""></a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_1c8458788a23125a6427594e83f3ce93" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>Z4</TD><TD>CP01</TD><TD>2012/05/08</TD><TD>2013/03/16</TD><TD>-34.701801</TD><TD>-72.932297</TD><TD>-2442</TD><TD>HDH (125.0 Hz) <br></TD></TR><TR><TD>Z4</TD><TD>CP02</TD><TD>2012/05/09</TD><TD>2013/03/18</TD><TD>-34.586201</TD><TD>-73.293198</TD><TD>-3956</TD><TD>HDH (125.0 Hz) <br></TD></TR><TR><TD>Z4</TD><TD>CP03</TD><TD>2012/05/09</TD><TD>2013/03/18</TD><TD>-34.632801</TD><TD>-73.161102</TD><TD>-3311</TD><TD>HDH (125.0 Hz) <br></TD></TR><TR><TD>Z4</TD><TD>CP04</TD><TD>2012/05/08</TD><TD>2013/03/17</TD><TD>-34.671299</TD><TD>-73.037697</TD><TD>-2739</TD><TD>HDH (125.0 Hz) <br></TD></TR><TR><TD>Z4</TD><TD>CP06</TD><TD>2012/05/05</TD><TD>2013/03/17</TD><TD>-34.5457</TD><TD>-73.192497</TD><TD>-3667</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>Z4</TD><TD>CP07</TD><TD>2012/05/06</TD><TD>2013/03/16</TD><TD>-34.588001</TD><TD>-73.067497</TD><TD>-2835</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>Z4</TD><TD>CP08</TD><TD>2012/05/06</TD><TD>2013/03/16</TD><TD>-34.7537</TD><TD>-73.009804</TD><TD>-2469</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>Z4</TD><TD>CP09</TD><TD>2012/05/06</TD><TD>2013/03/17</TD><TD>-34.673302</TD><TD>-73.254097</TD><TD>-3272</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>Z4</TD><TD>CP10</TD><TD>2012/05/09</TD><TD>2013/03/17</TD><TD>-34.7146</TD><TD>-73.137299</TD><TD>-3022</TD><TD>HDH (125.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>CP06 CP07 CP08 CP09</TD><TD>BDH</TD><TD>40.0</TD><TD>LDEO DPG/LDEO_new dummy at 40/125/100</TD></TR><TR><TD>CP06 CP07 CP08 CP09</TD><TD>BH1</TD><TD>40.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125/100</TD></TR><TR><TD>CP06 CP07 CP08 CP09</TD><TD>BH2</TD><TD>40.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125/100</TD></TR><TR><TD>CP06 CP07 CP08 CP09</TD><TD>BHZ</TD><TD>40.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125/100</TD></TR><TR><TD>CP01 CP02 CP03 CP04 CP10</TD><TD>HDH</TD><TD>125.0</TD><TD>Parosci APG Pressure/LDEO_APG_logger</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_1c8458788a23125a6427594e83f3ce93 = L.map(
+                "map_1c8458788a23125a6427594e83f3ce93",
+                {
+                    center: [-34.64521495238097, -73.12653204761905],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_90c034131f0571d66ff2ea23b31ca97a = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            var circle_marker_8433fc3e4c54e84623c301f37c1db7b4 = L.circleMarker(
+                [-34.701801, -72.932297],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca0035", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            circle_marker_8433fc3e4c54e84623c301f37c1db7b4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z4 <br> <b>Station:</b> CP01 <br> <b>Dates: </b>2012/05/08 to 2013/03/16  <br><br><b>Depth: </b> -2442 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Chilean 2010 post-seismic response <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a848b799d4b048360a569d8d9cbf42db = L.marker(
+                [-34.701801, -72.932297],
+                {}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            var div_icon_936da95b0e2191806519f9f9d0a83e5f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCP01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a848b799d4b048360a569d8d9cbf42db.setIcon(div_icon_936da95b0e2191806519f9f9d0a83e5f);
+        
+    
+            var circle_marker_967ed728f503fecb02a4688ed014ada2 = L.circleMarker(
+                [-34.586201, -73.293198],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca0035", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            circle_marker_967ed728f503fecb02a4688ed014ada2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z4 <br> <b>Station:</b> CP02 <br> <b>Dates: </b>2012/05/09 to 2013/03/18  <br><br><b>Depth: </b> -3956 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Chilean 2010 post-seismic response <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_303ad0fa23e1afd7c9e80919486ecd4d = L.marker(
+                [-34.586201, -73.293198],
+                {}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            var div_icon_a0ca9225b18886293ce5c4a5ae41d012 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCP02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_303ad0fa23e1afd7c9e80919486ecd4d.setIcon(div_icon_a0ca9225b18886293ce5c4a5ae41d012);
+        
+    
+            var circle_marker_7c476f8922604ed3c2d1c9e5554c9cee = L.circleMarker(
+                [-34.632801, -73.161102],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca0035", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            circle_marker_7c476f8922604ed3c2d1c9e5554c9cee.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z4 <br> <b>Station:</b> CP03 <br> <b>Dates: </b>2012/05/09 to 2013/03/18  <br><br><b>Depth: </b> -3311 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Chilean 2010 post-seismic response <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b24a9e8774ef6dd55c1c07d45911089e = L.marker(
+                [-34.632801, -73.161102],
+                {}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            var div_icon_8c06cdb8402689bb0e3866b1f9a15f41 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCP03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b24a9e8774ef6dd55c1c07d45911089e.setIcon(div_icon_8c06cdb8402689bb0e3866b1f9a15f41);
+        
+    
+            var circle_marker_b971c2ba602fed7e405adb1d5f07f105 = L.circleMarker(
+                [-34.671299, -73.037697],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca0035", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            circle_marker_b971c2ba602fed7e405adb1d5f07f105.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z4 <br> <b>Station:</b> CP04 <br> <b>Dates: </b>2012/05/08 to 2013/03/17  <br><br><b>Depth: </b> -2739 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Chilean 2010 post-seismic response <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ecb0a942140a89abba07a57bebf6219c = L.marker(
+                [-34.671299, -73.037697],
+                {}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            var div_icon_6c958c0b578fcabb2b7680aa9e2cd6f7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCP04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ecb0a942140a89abba07a57bebf6219c.setIcon(div_icon_6c958c0b578fcabb2b7680aa9e2cd6f7);
+        
+    
+            var circle_marker_f6d58e0317a5ccaf963e318d3beff60e = L.circleMarker(
+                [-34.5457, -73.192497],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca0035", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            circle_marker_f6d58e0317a5ccaf963e318d3beff60e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z4 <br> <b>Station:</b> CP06 <br> <b>Dates: </b>2012/05/05 to 2013/03/17  <br><br><b>Depth: </b> -3667 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Chilean 2010 post-seismic response <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bb8857f9a3d3f420ecb0206e3c7738ae = L.marker(
+                [-34.5457, -73.192497],
+                {}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            var div_icon_19b3c665a8098fb20fe20006c1de229f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCP06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_bb8857f9a3d3f420ecb0206e3c7738ae.setIcon(div_icon_19b3c665a8098fb20fe20006c1de229f);
+        
+    
+            var circle_marker_2c16ed0b652447c4bed65df8e311aa4d = L.circleMarker(
+                [-34.588001, -73.067497],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca0035", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            circle_marker_2c16ed0b652447c4bed65df8e311aa4d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z4 <br> <b>Station:</b> CP07 <br> <b>Dates: </b>2012/05/06 to 2013/03/16  <br><br><b>Depth: </b> -2835 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Chilean 2010 post-seismic response <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1ca086dd6d5723bba9b72185a26f0fe9 = L.marker(
+                [-34.588001, -73.067497],
+                {}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            var div_icon_e276dad9c0f8f6bd9e59b1f8069bc749 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCP07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1ca086dd6d5723bba9b72185a26f0fe9.setIcon(div_icon_e276dad9c0f8f6bd9e59b1f8069bc749);
+        
+    
+            var circle_marker_2cf7c3ee0f8a6c671d651eb3cc4875ec = L.circleMarker(
+                [-34.7537, -73.009804],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca0035", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            circle_marker_2cf7c3ee0f8a6c671d651eb3cc4875ec.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z4 <br> <b>Station:</b> CP08 <br> <b>Dates: </b>2012/05/06 to 2013/03/16  <br><br><b>Depth: </b> -2469 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Chilean 2010 post-seismic response <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_04afedb2171cfdbd6117d2c77e1f1516 = L.marker(
+                [-34.7537, -73.009804],
+                {}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            var div_icon_6fbca9c30621b8b6be7e36f2b63fe413 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCP08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_04afedb2171cfdbd6117d2c77e1f1516.setIcon(div_icon_6fbca9c30621b8b6be7e36f2b63fe413);
+        
+    
+            var circle_marker_9a91f344a82a13099b81930645ab07b3 = L.circleMarker(
+                [-34.673302, -73.254097],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca0035", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            circle_marker_9a91f344a82a13099b81930645ab07b3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z4 <br> <b>Station:</b> CP09 <br> <b>Dates: </b>2012/05/06 to 2013/03/17  <br><br><b>Depth: </b> -3272 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Chilean 2010 post-seismic response <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2f08bbb4b045caf4092bea9836d5df65 = L.marker(
+                [-34.673302, -73.254097],
+                {}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            var div_icon_2cb90450f137934f9d269e0e5bc71cef = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCP09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2f08bbb4b045caf4092bea9836d5df65.setIcon(div_icon_2cb90450f137934f9d269e0e5bc71cef);
+        
+    
+            var circle_marker_f714b628cfddf940266ca38a3d2f541d = L.circleMarker(
+                [-34.7146, -73.137299],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca0035", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            circle_marker_f714b628cfddf940266ca38a3d2f541d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z4 <br> <b>Station:</b> CP10 <br> <b>Dates: </b>2012/05/09 to 2013/03/17  <br><br><b>Depth: </b> -3022 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Chilean 2010 post-seismic response <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e8bddd4e27ce897117e3a346ee6e70ba = L.marker(
+                [-34.7146, -73.137299],
+                {}
+            ).addTo(map_1c8458788a23125a6427594e83f3ce93);
+        
+    
+            var div_icon_ba5ad4e9ba1570c77bcd32be4a32a3b0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCP10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e8bddd4e27ce897117e3a346ee6e70ba.setIcon(div_icon_ba5ad4e9ba1570c77bcd32be4a32a3b0);
+        
+    
+            map_1c8458788a23125a6427594e83f3ce93.fitBounds(
+                [[-34.7537, -73.293198], [-34.5457, -72.932297]],
+                {}
+            );
+        </script>
+
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_67f879d702077b5f8b2fbbb035c24fdf {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network 4L: IMAGE Reykjanes </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</p>
+		<p id="net_header", class="headerDates">OBS deployed from May 2014 to Aug 2015</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.14470/9Y7569325908">https://doi.org/10.14470/9Y7569325908</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_67f879d702077b5f8b2fbbb035c24fdf" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>4L</TD><TD>BS01</TD><TD>2014/05/26</TD><TD>2015/08/23</TD><TD>63.78344</TD><TD>-22.01142</TD><TD>-106</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS02</TD><TD>2014/08/23</TD><TD>2015/07/18</TD><TD>63.78321</TD><TD>-22.22867</TD><TD>-100</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS03</TD><TD>2014/08/23</TD><TD>2015/08/24</TD><TD>63.77156</TD><TD>-22.47474</TD><TD>-111</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS04</TD><TD>2014/08/23</TD><TD>2015/08/24</TD><TD>63.75381</TD><TD>-22.7006</TD><TD>-137</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS05</TD><TD>2014/08/31</TD><TD>2015/08/21</TD><TD>63.77284</TD><TD>-22.84096</TD><TD>-79</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS06</TD><TD>2014/08/22</TD><TD>2015/08/29</TD><TD>63.90564</TD><TD>-22.85942</TD><TD>-91</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS07</TD><TD>2014/08/20</TD><TD>2014/12/09</TD><TD>63.976133</TD><TD>-22.88025</TD><TD>-81</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS08</TD><TD>2014/08/20</TD><TD>2015/06/11</TD><TD>64.0982</TD><TD>-22.4029</TD><TD>-36</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS10</TD><TD>2014/08/21</TD><TD>2015/03/04</TD><TD>64.04705</TD><TD>-23.09651</TD><TD>-54</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS11</TD><TD>2014/08/22</TD><TD>2015/05/05</TD><TD>63.915</TD><TD>-23.091</TD><TD>-119</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS12</TD><TD>2014/08/21</TD><TD>2015/04/09</TD><TD>63.77653</TD><TD>-23.25142</TD><TD>-155</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS14</TD><TD>2014/08/24</TD><TD>2015/06/15</TD><TD>63.62276</TD><TD>-22.86604</TD><TD>-174</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS15</TD><TD>2014/08/23</TD><TD>2015/06/30</TD><TD>63.61422</TD><TD>-22.6184</TD><TD>-151</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS16</TD><TD>2014/08/23</TD><TD>2015/07/05</TD><TD>63.68114</TD><TD>-22.39437</TD><TD>-146</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS17</TD><TD>2014/08/23</TD><TD>2015/07/27</TD><TD>63.59102</TD><TD>-22.19684</TD><TD>-178</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS18</TD><TD>2014/08/22</TD><TD>2015/02/02</TD><TD>63.48008</TD><TD>-22.57946</TD><TD>-235</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS19</TD><TD>2014/08/22</TD><TD>2015/07/05</TD><TD>63.61303</TD><TD>-23.07999</TD><TD>-169</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS20</TD><TD>2014/08/21</TD><TD>2015/08/29</TD><TD>63.68719</TD><TD>-23.31253</TD><TD>-109</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS21</TD><TD>2014/08/21</TD><TD>2015/03/14</TD><TD>64.01889</TD><TD>-23.6863</TD><TD>-140</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS22</TD><TD>2014/08/21</TD><TD>2015/06/23</TD><TD>63.82679</TD><TD>-23.80373</TD><TD>-152</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR><TR><TD>4L</TD><TD>BS23</TD><TD>2014/08/22</TD><TD>2015/07/13</TD><TD>63.50439</TD><TD>-22.98352</TD><TD>-195</TD><TD>HLE-HLN-HLZ (100.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>BS01 BS02 BS03 BS04 BS05 BS06 BS07 BS08 BS10 BS11 BS12 BS14 BS15 BS16 BS17 BS18 BS19 BS20 BS21 BS22 BS23</TD><TD>HLE</TD><TD>100.0</TD><TD>GFZ:4L2014:SM-6/g=28</TD></TR><TR><TD>BS01 BS02 BS03 BS04 BS05 BS06 BS07 BS08 BS10 BS11 BS12 BS14 BS15 BS16 BS17 BS18 BS19 BS20 BS21 BS22 BS23</TD><TD>HLN</TD><TD>100.0</TD><TD>GFZ:4L2014:SM-6/g=28</TD></TR><TR><TD>BS01 BS02 BS03 BS04 BS05 BS06 BS07 BS08 BS10 BS11 BS12 BS14 BS15 BS16 BS17 BS18 BS19 BS20 BS21 BS22 BS23</TD><TD>HLZ</TD><TD>100.0</TD><TD>GFZ:4L2014:SM-6/g=28</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_67f879d702077b5f8b2fbbb035c24fdf = L.map(
+                "map_67f879d702077b5f8b2fbbb035c24fdf",
+                {
+                    center: [63.772520142857125, -22.826622380952376],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_be7cbc64a8c69054ff2604bc1e7733cc = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var circle_marker_4eb801f3ccadeaf1347b63e5c8bf84e7 = L.circleMarker(
+                [63.78344, -22.01142],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_4eb801f3ccadeaf1347b63e5c8bf84e7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS01 <br> <b>Dates: </b>2014/05/26 to 2015/08/23  <br><br><b>Depth: </b> -106 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_944be2aceb19c7407401144d243b63ad = L.marker(
+                [63.78344, -22.01142],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_2feba82e534b0ab05da58f20c00b6614 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_944be2aceb19c7407401144d243b63ad.setIcon(div_icon_2feba82e534b0ab05da58f20c00b6614);
+        
+    
+            var circle_marker_b86abe6806befff62f509077629bb555 = L.circleMarker(
+                [63.78321, -22.22867],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_b86abe6806befff62f509077629bb555.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS02 <br> <b>Dates: </b>2014/08/23 to 2015/07/18  <br><br><b>Depth: </b> -100 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b8f2a4378e4592fc9828f4547b618bdf = L.marker(
+                [63.78321, -22.22867],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_0d7f23097e5f04ce09cfe8f300a48134 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b8f2a4378e4592fc9828f4547b618bdf.setIcon(div_icon_0d7f23097e5f04ce09cfe8f300a48134);
+        
+    
+            var circle_marker_9e5ab5c96dbe0d7c2b61b2ca8e9aa424 = L.circleMarker(
+                [63.77156, -22.47474],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_9e5ab5c96dbe0d7c2b61b2ca8e9aa424.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS03 <br> <b>Dates: </b>2014/08/23 to 2015/08/24  <br><br><b>Depth: </b> -111 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_188103f8de1ac95f9a5239a82155ee1c = L.marker(
+                [63.77156, -22.47474],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_efa16863f6a37713758ac7d797779020 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_188103f8de1ac95f9a5239a82155ee1c.setIcon(div_icon_efa16863f6a37713758ac7d797779020);
+        
+    
+            var circle_marker_171e9a17144d6399b4176bdb0a6af676 = L.circleMarker(
+                [63.75381, -22.7006],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_171e9a17144d6399b4176bdb0a6af676.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS04 <br> <b>Dates: </b>2014/08/23 to 2015/08/24  <br><br><b>Depth: </b> -137 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2cd1bd381233218eea95238e22ff3e42 = L.marker(
+                [63.75381, -22.7006],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_f4bc47c5f1d155929d5a283b46e9d885 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2cd1bd381233218eea95238e22ff3e42.setIcon(div_icon_f4bc47c5f1d155929d5a283b46e9d885);
+        
+    
+            var circle_marker_91e38f374a8a7e0c3d953f8fe0234a62 = L.circleMarker(
+                [63.77284, -22.84096],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_91e38f374a8a7e0c3d953f8fe0234a62.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS05 <br> <b>Dates: </b>2014/08/31 to 2015/08/21  <br><br><b>Depth: </b> -79 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dae6cd5de1e721a22735662efa8123f7 = L.marker(
+                [63.77284, -22.84096],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_ba324595b667015eaf0c74d5f1669367 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_dae6cd5de1e721a22735662efa8123f7.setIcon(div_icon_ba324595b667015eaf0c74d5f1669367);
+        
+    
+            var circle_marker_8a57ee9179bd4dfa9b13007a81e1edeb = L.circleMarker(
+                [63.90564, -22.85942],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_8a57ee9179bd4dfa9b13007a81e1edeb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS06 <br> <b>Dates: </b>2014/08/22 to 2015/08/29  <br><br><b>Depth: </b> -91 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f0f142311a420b7ed12329a4a76af2cb = L.marker(
+                [63.90564, -22.85942],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_ca1cd3bc7e54ba60b5020d1a76821cdb = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f0f142311a420b7ed12329a4a76af2cb.setIcon(div_icon_ca1cd3bc7e54ba60b5020d1a76821cdb);
+        
+    
+            var circle_marker_8a8517bbdc77518d61ecfa4da877cf7f = L.circleMarker(
+                [63.976133, -22.88025],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_8a8517bbdc77518d61ecfa4da877cf7f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS07 <br> <b>Dates: </b>2014/08/20 to 2014/12/09  <br><br><b>Depth: </b> -81 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_40b8d4cf6ac6edb191a64352bc21aa0a = L.marker(
+                [63.976133, -22.88025],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_1a6895f4e954245f629adb27f5591ce5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_40b8d4cf6ac6edb191a64352bc21aa0a.setIcon(div_icon_1a6895f4e954245f629adb27f5591ce5);
+        
+    
+            var circle_marker_7b8e5cd7e9f70093c786e301c9119edd = L.circleMarker(
+                [64.0982, -22.4029],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_7b8e5cd7e9f70093c786e301c9119edd.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS08 <br> <b>Dates: </b>2014/08/20 to 2015/06/11  <br><br><b>Depth: </b> -36 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b41a473eb83eb081a707d417493dfa24 = L.marker(
+                [64.0982, -22.4029],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_1ee2b28cd38fdc8bcfc370c53e3502f1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b41a473eb83eb081a707d417493dfa24.setIcon(div_icon_1ee2b28cd38fdc8bcfc370c53e3502f1);
+        
+    
+            var circle_marker_ca54ee4f6eb1e3be6ef0625d27bb758b = L.circleMarker(
+                [64.04705, -23.09651],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_ca54ee4f6eb1e3be6ef0625d27bb758b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS10 <br> <b>Dates: </b>2014/08/21 to 2015/03/04  <br><br><b>Depth: </b> -54 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c6fd4c3b288c1892b88237db53d88c46 = L.marker(
+                [64.04705, -23.09651],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_477285b0e76883c2b8fba936ba3983d2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c6fd4c3b288c1892b88237db53d88c46.setIcon(div_icon_477285b0e76883c2b8fba936ba3983d2);
+        
+    
+            var circle_marker_0f5c1736c0f59506ce72484ef2cc1975 = L.circleMarker(
+                [63.915, -23.091],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_0f5c1736c0f59506ce72484ef2cc1975.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS11 <br> <b>Dates: </b>2014/08/22 to 2015/05/05  <br><br><b>Depth: </b> -119 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1ce20111516e4c618fca4b424b2e0dac = L.marker(
+                [63.915, -23.091],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_307211b38ab2e1b8982c2eff50d874d7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1ce20111516e4c618fca4b424b2e0dac.setIcon(div_icon_307211b38ab2e1b8982c2eff50d874d7);
+        
+    
+            var circle_marker_508d8ac23eb447176535d0d7c38ae1df = L.circleMarker(
+                [63.77653, -23.25142],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_508d8ac23eb447176535d0d7c38ae1df.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS12 <br> <b>Dates: </b>2014/08/21 to 2015/04/09  <br><br><b>Depth: </b> -155 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c1fb4b5e6bd557c91e8fac555943a0d2 = L.marker(
+                [63.77653, -23.25142],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_6b7f8b72b244d24f9e862bce52bb6628 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c1fb4b5e6bd557c91e8fac555943a0d2.setIcon(div_icon_6b7f8b72b244d24f9e862bce52bb6628);
+        
+    
+            var circle_marker_c401d7bb5cb33d0e5822c8e93c3d9f4e = L.circleMarker(
+                [63.62276, -22.86604],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_c401d7bb5cb33d0e5822c8e93c3d9f4e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS14 <br> <b>Dates: </b>2014/08/24 to 2015/06/15  <br><br><b>Depth: </b> -174 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a6c0f590ed3445f6193be1928da84336 = L.marker(
+                [63.62276, -22.86604],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_f8b559bbbdadc809ac5151cdf63014ca = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a6c0f590ed3445f6193be1928da84336.setIcon(div_icon_f8b559bbbdadc809ac5151cdf63014ca);
+        
+    
+            var circle_marker_3af07aa1ba67e9232618b9e33505e077 = L.circleMarker(
+                [63.61422, -22.6184],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_3af07aa1ba67e9232618b9e33505e077.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS15 <br> <b>Dates: </b>2014/08/23 to 2015/06/30  <br><br><b>Depth: </b> -151 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7301837f24cde0432a47ff3ec127c999 = L.marker(
+                [63.61422, -22.6184],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_053bfda17f4ff264e29327f2800ef40d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7301837f24cde0432a47ff3ec127c999.setIcon(div_icon_053bfda17f4ff264e29327f2800ef40d);
+        
+    
+            var circle_marker_9d39ed7c04dd389c0d8714f93b3a7f15 = L.circleMarker(
+                [63.68114, -22.39437],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_9d39ed7c04dd389c0d8714f93b3a7f15.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS16 <br> <b>Dates: </b>2014/08/23 to 2015/07/05  <br><br><b>Depth: </b> -146 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_49e7b771f67857ecbd0a8d3a99cadc16 = L.marker(
+                [63.68114, -22.39437],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_3db08f6527ffed42d6c7c0d2f04b8a63 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_49e7b771f67857ecbd0a8d3a99cadc16.setIcon(div_icon_3db08f6527ffed42d6c7c0d2f04b8a63);
+        
+    
+            var circle_marker_217c149b6218d97de53ed1820a68c3d2 = L.circleMarker(
+                [63.59102, -22.19684],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_217c149b6218d97de53ed1820a68c3d2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS17 <br> <b>Dates: </b>2014/08/23 to 2015/07/27  <br><br><b>Depth: </b> -178 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_49a508107dd16257c463e098983c9a90 = L.marker(
+                [63.59102, -22.19684],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_d8509f0e62e4e5c0ee4cb2ec1347a880 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_49a508107dd16257c463e098983c9a90.setIcon(div_icon_d8509f0e62e4e5c0ee4cb2ec1347a880);
+        
+    
+            var circle_marker_0eac35eab35c3b5806f89e6a79541455 = L.circleMarker(
+                [63.48008, -22.57946],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_0eac35eab35c3b5806f89e6a79541455.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS18 <br> <b>Dates: </b>2014/08/22 to 2015/02/02  <br><br><b>Depth: </b> -235 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d2444ba1ee648e2cd0ea9bd6ae667abb = L.marker(
+                [63.48008, -22.57946],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_d551f8b116b94d876e239d3b54a65716 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d2444ba1ee648e2cd0ea9bd6ae667abb.setIcon(div_icon_d551f8b116b94d876e239d3b54a65716);
+        
+    
+            var circle_marker_377b7cd4e95b9089eb17aa8eb6035e70 = L.circleMarker(
+                [63.61303, -23.07999],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_377b7cd4e95b9089eb17aa8eb6035e70.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS19 <br> <b>Dates: </b>2014/08/22 to 2015/07/05  <br><br><b>Depth: </b> -169 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3e084ddce5f382d974e54e791ebbf902 = L.marker(
+                [63.61303, -23.07999],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_808321687e1c25fbe58f83a2a2e8b948 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS19\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3e084ddce5f382d974e54e791ebbf902.setIcon(div_icon_808321687e1c25fbe58f83a2a2e8b948);
+        
+    
+            var circle_marker_7f325f49473b925f836111c74336aeaa = L.circleMarker(
+                [63.68719, -23.31253],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_7f325f49473b925f836111c74336aeaa.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS20 <br> <b>Dates: </b>2014/08/21 to 2015/08/29  <br><br><b>Depth: </b> -109 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e00b388c1bf282fdc95e87324c5bf3b8 = L.marker(
+                [63.68719, -23.31253],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_7e6446d9771dc76173d3abce4ac741c0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS20\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e00b388c1bf282fdc95e87324c5bf3b8.setIcon(div_icon_7e6446d9771dc76173d3abce4ac741c0);
+        
+    
+            var circle_marker_a7501e8488670169f64a918206af537c = L.circleMarker(
+                [64.01889, -23.6863],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_a7501e8488670169f64a918206af537c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS21 <br> <b>Dates: </b>2014/08/21 to 2015/03/14  <br><br><b>Depth: </b> -140 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7cadc4a530265fec508a500723687a77 = L.marker(
+                [64.01889, -23.6863],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_965df71d0cbc9694aa7d4d12811f6305 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS21\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7cadc4a530265fec508a500723687a77.setIcon(div_icon_965df71d0cbc9694aa7d4d12811f6305);
+        
+    
+            var circle_marker_2be31334cd39253eb033c63007c68359 = L.circleMarker(
+                [63.82679, -23.80373],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_2be31334cd39253eb033c63007c68359.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS22 <br> <b>Dates: </b>2014/08/21 to 2015/06/23  <br><br><b>Depth: </b> -152 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_657aeda0c6c9dbfe9c0bef6f7e8a2892 = L.marker(
+                [63.82679, -23.80373],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_4735eca342af03709fe1c72e23368344 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS22\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_657aeda0c6c9dbfe9c0bef6f7e8a2892.setIcon(div_icon_4735eca342af03709fe1c72e23368344);
+        
+    
+            var circle_marker_19b1a050fcd69b65163ff440fed1dc89 = L.circleMarker(
+                [63.50439, -22.98352],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#946b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            circle_marker_19b1a050fcd69b65163ff440fed1dc89.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4L <br> <b>Station:</b> BS23 <br> <b>Dates: </b>2014/08/22 to 2015/07/13  <br><br><b>Depth: </b> -195 m <br> <br> <b>Channels:</b><br> HLE-HLN-HLZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/9Y7569325908 <br><br> <b>Net name: </b> IMAGE Reykjanes <br><br> <b>Operator: </b>  Deutsches GeoForschungsZentrum GFZ (GFZ Potsdam)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e237e0b24e6e329c4387cc5ba15a6838 = L.marker(
+                [63.50439, -22.98352],
+                {}
+            ).addTo(map_67f879d702077b5f8b2fbbb035c24fdf);
+        
+    
+            var div_icon_769e2015fa8278097702f442d3eba2e7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS23\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e237e0b24e6e329c4387cc5ba15a6838.setIcon(div_icon_769e2015fa8278097702f442d3eba2e7);
+        
+    
+            map_67f879d702077b5f8b2fbbb035c24fdf.fitBounds(
+                [[63.48008, -23.80373], [64.0982, -22.01142]],
+                {}
+            );
+        </script>
+
+</html>

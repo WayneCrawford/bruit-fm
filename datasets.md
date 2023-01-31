@@ -1,5 +1,7 @@
-# Datasets
+# Datasets open or available through BRUIT-FM
+See the [map](https://www.bruit-fm.org/obs_networks/world_map_inventory.html) to explore open datasets.
 
+# Recommended BRUIT-FM datasets (available through WP2)
 Not yet selected.  Here are some possibilities:
 
 | Name | Location | # stations (BB) | min/max freq (Hz) | Start | End | Availabilty | Access |

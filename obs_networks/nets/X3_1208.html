@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_9d1d486a67081195d168e4e36f06deac {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network X3: MARINER: Seismic Investigation of the Rainbow Hydrothermal Field </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   University of Hawaii (UH)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Apr 2013 to Jan 2014</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/X3_2013">https://doi.org/10.7914/SN/X3_2013</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_9d1d486a67081195d168e4e36f06deac" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>X3</TD><TD>OBS01</TD><TD>2013/04/16</TD><TD>2013/05/01</TD><TD>36.117802</TD><TD>-34.2104</TD><TD>-1503</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS02</TD><TD>2013/04/16</TD><TD>2013/05/02</TD><TD>36.163898</TD><TD>-34.144901</TD><TD>-1536</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS03</TD><TD>2013/04/16</TD><TD>2013/05/02</TD><TD>36.204201</TD><TD>-34.0896</TD><TD>-1689</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS05</TD><TD>2013/04/17</TD><TD>2013/05/02</TD><TD>36.272598</TD><TD>-33.995602</TD><TD>-2339</TD><TD>EDH-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS06</TD><TD>2013/04/17</TD><TD>2013/05/02</TD><TD>36.296398</TD><TD>-33.9627</TD><TD>-1895</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS07</TD><TD>2013/04/17</TD><TD>2013/05/02</TD><TD>36.318699</TD><TD>-33.929798</TD><TD>-1612</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS08</TD><TD>2013/04/17</TD><TD>2013/05/02</TD><TD>36.350601</TD><TD>-33.888199</TD><TD>-2117</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS09</TD><TD>2013/04/17</TD><TD>2013/05/02</TD><TD>36.3867</TD><TD>-33.838299</TD><TD>-1823</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS10</TD><TD>2013/04/17</TD><TD>2013/05/02</TD><TD>36.4286</TD><TD>-33.778702</TD><TD>-1693</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS11</TD><TD>2013/04/17</TD><TD>2013/05/02</TD><TD>36.477402</TD><TD>-33.715698</TD><TD>-1908</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS12</TD><TD>2013/04/17</TD><TD>2013/05/02</TD><TD>36.430401</TD><TD>-33.661999</TD><TD>-2534</TD><TD>EDH-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS13</TD><TD>2013/04/17</TD><TD>2013/05/13</TD><TD>36.380699</TD><TD>-33.727901</TD><TD>-2751</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS14</TD><TD>2013/04/17</TD><TD>2013/05/13</TD><TD>36.340199</TD><TD>-33.785999</TD><TD>-2865</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS15</TD><TD>2013/04/17</TD><TD>2013/05/13</TD><TD>36.303799</TD><TD>-33.835701</TD><TD>-2871</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS16</TD><TD>2013/04/17</TD><TD>2013/05/14</TD><TD>36.273499</TD><TD>-33.8773</TD><TD>-2475</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS17</TD><TD>2013/04/17</TD><TD>2013/05/14</TD><TD>36.244701</TD><TD>-33.867401</TD><TD>-2141</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS18</TD><TD>2013/04/17</TD><TD>2013/05/14</TD><TD>36.249699</TD><TD>-33.910301</TD><TD>-2721</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS19</TD><TD>2013/04/17</TD><TD>2013/05/14</TD><TD>36.2146</TD><TD>-33.909199</TD><TD>-2452</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS20</TD><TD>2013/04/17</TD><TD>2013/05/14</TD><TD>36.225498</TD><TD>-33.943199</TD><TD>-3219</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS21</TD><TD>2013/04/17</TD><TD>2013/05/14</TD><TD>36.195</TD><TD>-33.984699</TD><TD>-3035</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS22</TD><TD>2013/04/17</TD><TD>2013/05/14</TD><TD>36.1595</TD><TD>-34.034698</TD><TD>-2231</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS23</TD><TD>2013/04/17</TD><TD>2013/05/14</TD><TD>36.117001</TD><TD>-34.092701</TD><TD>-2506</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS24</TD><TD>2013/04/18</TD><TD>2013/05/03</TD><TD>36.069</TD><TD>-34.158798</TD><TD>-2321</TD><TD>EDH-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS25</TD><TD>2013/04/18</TD><TD>2013/05/03</TD><TD>36.028599</TD><TD>-34.114601</TD><TD>-2268</TD><TD>EDH-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS26</TD><TD>2013/04/18</TD><TD>2013/05/14</TD><TD>36.0774</TD><TD>-34.0485</TD><TD>-2620</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS27</TD><TD>2013/04/17</TD><TD>2013/05/14</TD><TD>36.1194</TD><TD>-33.990299</TD><TD>-2801</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS28</TD><TD>2013/04/17</TD><TD>2013/05/14</TD><TD>36.155499</TD><TD>-33.940399</TD><TD>-2693</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS29</TD><TD>2013/04/17</TD><TD>2013/05/14</TD><TD>36.185799</TD><TD>-33.8992</TD><TD>-2219</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS30</TD><TD>2013/04/17</TD><TD>2013/05/13</TD><TD>36.209599</TD><TD>-33.865898</TD><TD>-2071</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS31</TD><TD>2013/04/17</TD><TD>2013/05/13</TD><TD>36.233799</TD><TD>-33.8321</TD><TD>-2736</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS32</TD><TD>2013/04/17</TD><TD>2013/05/13</TD><TD>36.263901</TD><TD>-33.790699</TD><TD>-2836</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS33</TD><TD>2013/04/17</TD><TD>2013/05/13</TD><TD>36.300098</TD><TD>-33.741699</TD><TD>-2547</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS34</TD><TD>2013/04/17</TD><TD>2013/05/13</TD><TD>36.341999</TD><TD>-33.683601</TD><TD>-2786</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS35</TD><TD>2013/04/18</TD><TD>2013/05/02</TD><TD>36.3904</TD><TD>-33.617599</TD><TD>-2212</TD><TD>EDH-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS36</TD><TD>2013/04/17</TD><TD>2013/05/02</TD><TD>36.343601</TD><TD>-33.5653</TD><TD>-1918</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS37</TD><TD>2013/04/17</TD><TD>2013/05/02</TD><TD>36.295502</TD><TD>-33.631401</TD><TD>-1966</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS38</TD><TD>2013/04/18</TD><TD>2013/05/02</TD><TD>36.253399</TD><TD>-33.6889</TD><TD>-2277</TD><TD>EDH-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS39</TD><TD>2013/04/18</TD><TD>2013/05/03</TD><TD>36.217098</TD><TD>-33.7388</TD><TD>-2435</TD><TD>EDH-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS41</TD><TD>2013/04/17</TD><TD>2013/05/03</TD><TD>36.162899</TD><TD>-33.813202</TD><TD>-1878</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS43</TD><TD>2013/04/18</TD><TD>2013/05/03</TD><TD>36.108799</TD><TD>-33.8876</TD><TD>-2147</TD><TD>EDH-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS44</TD><TD>2013/04/17</TD><TD>2013/05/03</TD><TD>36.072399</TD><TD>-33.937302</TD><TD>-2315</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS45</TD><TD>2013/04/18</TD><TD>2013/05/03</TD><TD>36.0303</TD><TD>-33.997799</TD><TD>-2234</TD><TD>EDH-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS46</TD><TD>2013/04/17</TD><TD>2013/05/03</TD><TD>35.982101</TD><TD>-34.061699</TD><TD>-2422</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS47</TD><TD>2013/05/14</TD><TD>2014/01/09</TD><TD>36.185501</TD><TD>-33.932701</TD><TD>-3153</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS48</TD><TD>2013/05/03</TD><TD>2014/01/08</TD><TD>36.213299</TD><TD>-33.898201</TD><TD>-2227</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS49</TD><TD>2013/05/03</TD><TD>2014/01/08</TD><TD>36.208302</TD><TD>-33.876701</TD><TD>-2021</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS50</TD><TD>2013/05/03</TD><TD>2014/01/09</TD><TD>36.221802</TD><TD>-33.860298</TD><TD>-2169</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS51</TD><TD>2013/05/14</TD><TD>2014/01/09</TD><TD>36.203499</TD><TD>-33.826</TD><TD>-2550</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS54</TD><TD>2013/05/03</TD><TD>2014/01/09</TD><TD>36.242199</TD><TD>-33.8894</TD><TD>-2282</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS55</TD><TD>2013/05/03</TD><TD>2014/01/09</TD><TD>36.252701</TD><TD>-33.944599</TD><TD>-3016</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS56</TD><TD>2013/05/10</TD><TD>2014/01/08</TD><TD>36.2286</TD><TD>-33.9076</TD><TD>-2345</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS57</TD><TD>2013/05/03</TD><TD>2014/01/08</TD><TD>36.231998</TD><TD>-33.903999</TD><TD>-2377</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS58</TD><TD>2013/05/10</TD><TD>2014/01/08</TD><TD>36.232101</TD><TD>-33.902</TD><TD>-2296</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS59</TD><TD>2013/05/10</TD><TD>2014/01/08</TD><TD>36.230099</TD><TD>-33.902</TD><TD>-2248</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS60</TD><TD>2013/05/10</TD><TD>2014/01/08</TD><TD>36.229</TD><TD>-33.902199</TD><TD>-2237</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>X3</TD><TD>OBS61</TD><TD>2013/05/12</TD><TD>2014/01/08</TD><TD>36.229099</TD><TD>-33.904301</TD><TD>-2294</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>OBS01 OBS02 OBS03 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15 OBS16 OBS17 OBS18 OBS19 OBS20 OBS21 OBS22 OBS23 OBS24 OBS25 OBS26 OBS27 OBS28 OBS29 OBS30 OBS31 OBS32 OBS33 OBS34 OBS35 OBS36 OBS37 OBS38 OBS39 OBS41 OBS43 OBS44 OBS45 OBS46 OBS47 OBS48 OBS49 OBS50 OBS51 OBS54 OBS55 OBS56 OBS57 OBS58 OBS59 OBS60 OBS61</TD><TD>EDH</TD><TD>200.0</TD><TD>HTI_90_U Hydrophone OBSIP-SIO/ABALONES-4x4</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS13 OBS14 OBS15 OBS16 OBS17 OBS18 OBS19 OBS20 OBS21 OBS22 OBS23 OBS26 OBS27 OBS28 OBS29 OBS30 OBS31 OBS32 OBS33 OBS34 OBS36 OBS37 OBS41 OBS44 OBS46 OBS47 OBS48 OBS49 OBS50 OBS51 OBS54 OBS55 OBS56 OBS57 OBS58 OBS59 OBS60 OBS61</TD><TD>EL1</TD><TD>200.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS13 OBS14 OBS15 OBS16 OBS17 OBS18 OBS19 OBS20 OBS21 OBS22 OBS23 OBS26 OBS27 OBS28 OBS29 OBS30 OBS31 OBS32 OBS33 OBS34 OBS36 OBS37 OBS41 OBS44 OBS46 OBS47 OBS48 OBS49 OBS50 OBS51 OBS54 OBS55 OBS56 OBS57 OBS58 OBS59 OBS60 OBS61</TD><TD>EL2</TD><TD>200.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR><TR><TD>OBS05 OBS12 OBS24 OBS25 OBS35 OBS38 OBS39 OBS43 OBS45</TD><TD>ELZ</TD><TD>200.0</TD><TD>L22D OBSIP-SIO Vertical Seismometer/ABALONES-4x4</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS13 OBS14 OBS15 OBS16 OBS17 OBS18 OBS19 OBS20 OBS21 OBS22 OBS23 OBS26 OBS27 OBS28 OBS29 OBS30 OBS31 OBS32 OBS33 OBS34 OBS36 OBS37 OBS41 OBS44 OBS46 OBS47 OBS48 OBS49 OBS50 OBS51 OBS54 OBS55 OBS56 OBS57 OBS58 OBS59 OBS60 OBS61</TD><TD>ELZ</TD><TD>200.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_9d1d486a67081195d168e4e36f06deac = L.map(
+                "map_9d1d486a67081195d168e4e36f06deac",
+                {
+                    center: [36.23302891262137, -33.891447436893216],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_1a01453f2ca481bb84b29445d3395704 = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var circle_marker_1d6c5db0088eea9cdbdb849ca0f9d111 = L.circleMarker(
+                [36.117802, -34.2104],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_1d6c5db0088eea9cdbdb849ca0f9d111.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS01 <br> <b>Dates: </b>2013/04/16 to 2013/05/01  <br><br><b>Depth: </b> -1503 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b4af80eff56b6fad3f07bdc55e9693e3 = L.marker(
+                [36.117802, -34.2104],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_d770302d2baea2fabb4a5259ee7a9c9e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b4af80eff56b6fad3f07bdc55e9693e3.setIcon(div_icon_d770302d2baea2fabb4a5259ee7a9c9e);
+        
+    
+            var circle_marker_d929d9059de41c9659b4257af9606298 = L.circleMarker(
+                [36.163898, -34.144901],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_d929d9059de41c9659b4257af9606298.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS02 <br> <b>Dates: </b>2013/04/16 to 2013/05/02  <br><br><b>Depth: </b> -1536 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a1ec4abca4947276142b58f5513b8959 = L.marker(
+                [36.163898, -34.144901],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_0b3fb7c1cd42a790411acc18ca0cec56 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a1ec4abca4947276142b58f5513b8959.setIcon(div_icon_0b3fb7c1cd42a790411acc18ca0cec56);
+        
+    
+            var circle_marker_8a73faad86418e8a1c1c00813c9ddf6e = L.circleMarker(
+                [36.204201, -34.0896],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_8a73faad86418e8a1c1c00813c9ddf6e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS03 <br> <b>Dates: </b>2013/04/16 to 2013/05/02  <br><br><b>Depth: </b> -1689 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f9862b7d69990b566b38440d6e72af2e = L.marker(
+                [36.204201, -34.0896],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_3682aaca16e7e3b7f49fddcfc7d7f164 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f9862b7d69990b566b38440d6e72af2e.setIcon(div_icon_3682aaca16e7e3b7f49fddcfc7d7f164);
+        
+    
+            var circle_marker_dcd333fa31b66204a8961a9473c34d68 = L.circleMarker(
+                [36.272598, -33.995602],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_dcd333fa31b66204a8961a9473c34d68.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS05 <br> <b>Dates: </b>2013/04/17 to 2013/05/02  <br><br><b>Depth: </b> -2339 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_185ee1cacaf2aa4be1ab213268f89e41 = L.marker(
+                [36.272598, -33.995602],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_1053fae3268d905c16c904b7339cb862 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_185ee1cacaf2aa4be1ab213268f89e41.setIcon(div_icon_1053fae3268d905c16c904b7339cb862);
+        
+    
+            var circle_marker_747a61c7f3ca4f770cf509232dfc5abf = L.circleMarker(
+                [36.296398, -33.9627],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_747a61c7f3ca4f770cf509232dfc5abf.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS06 <br> <b>Dates: </b>2013/04/17 to 2013/05/02  <br><br><b>Depth: </b> -1895 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_98416aa4208825d440103ba643c3205f = L.marker(
+                [36.296398, -33.9627],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_b119026d2b56c81f959770df4961433b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_98416aa4208825d440103ba643c3205f.setIcon(div_icon_b119026d2b56c81f959770df4961433b);
+        
+    
+            var circle_marker_980463833713e39c31a8a11a0646e959 = L.circleMarker(
+                [36.318699, -33.929798],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_980463833713e39c31a8a11a0646e959.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS07 <br> <b>Dates: </b>2013/04/17 to 2013/05/02  <br><br><b>Depth: </b> -1612 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_30bf726ea39b4b609caf1691589ac290 = L.marker(
+                [36.318699, -33.929798],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_67b6066f99125f1e7495e97158989fe8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_30bf726ea39b4b609caf1691589ac290.setIcon(div_icon_67b6066f99125f1e7495e97158989fe8);
+        
+    
+            var circle_marker_407d3601ac583d98f8ac894c50f9a488 = L.circleMarker(
+                [36.350601, -33.888199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_407d3601ac583d98f8ac894c50f9a488.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS08 <br> <b>Dates: </b>2013/04/17 to 2013/05/02  <br><br><b>Depth: </b> -2117 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_68e471f5682e460c242956048fec1f3f = L.marker(
+                [36.350601, -33.888199],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_9deded10423da521a2fe48399220af4d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_68e471f5682e460c242956048fec1f3f.setIcon(div_icon_9deded10423da521a2fe48399220af4d);
+        
+    
+            var circle_marker_b55c5d5ad160e37b31652031946847cd = L.circleMarker(
+                [36.3867, -33.838299],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_b55c5d5ad160e37b31652031946847cd.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS09 <br> <b>Dates: </b>2013/04/17 to 2013/05/02  <br><br><b>Depth: </b> -1823 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f0ef9447b19679c4ccd2d80f792c2240 = L.marker(
+                [36.3867, -33.838299],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_2d599039c79c8ce13a6c5962353f8547 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f0ef9447b19679c4ccd2d80f792c2240.setIcon(div_icon_2d599039c79c8ce13a6c5962353f8547);
+        
+    
+            var circle_marker_39e40aa54d8718dfc9c5d31aa7dbccc9 = L.circleMarker(
+                [36.4286, -33.778702],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_39e40aa54d8718dfc9c5d31aa7dbccc9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS10 <br> <b>Dates: </b>2013/04/17 to 2013/05/02  <br><br><b>Depth: </b> -1693 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_66d8c240f2feaa9500f4a854ae70ebba = L.marker(
+                [36.4286, -33.778702],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_1fd6372cb1500d0ac96dd104bc11948f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_66d8c240f2feaa9500f4a854ae70ebba.setIcon(div_icon_1fd6372cb1500d0ac96dd104bc11948f);
+        
+    
+            var circle_marker_88246ac030cbaadc25c5584835c8c0c5 = L.circleMarker(
+                [36.477402, -33.715698],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_88246ac030cbaadc25c5584835c8c0c5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS11 <br> <b>Dates: </b>2013/04/17 to 2013/05/02  <br><br><b>Depth: </b> -1908 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ec6312fa7bf92573140d89bc01969c84 = L.marker(
+                [36.477402, -33.715698],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_ef733c86873c6efde4f7858cb29bba3e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ec6312fa7bf92573140d89bc01969c84.setIcon(div_icon_ef733c86873c6efde4f7858cb29bba3e);
+        
+    
+            var circle_marker_74dd38fad1201dd632679767ab9ef189 = L.circleMarker(
+                [36.430401, -33.661999],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_74dd38fad1201dd632679767ab9ef189.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS12 <br> <b>Dates: </b>2013/04/17 to 2013/05/02  <br><br><b>Depth: </b> -2534 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c808f643718c9f19942ee3964877d32c = L.marker(
+                [36.430401, -33.661999],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_37d977b1b754fef533b79e85ecee2412 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c808f643718c9f19942ee3964877d32c.setIcon(div_icon_37d977b1b754fef533b79e85ecee2412);
+        
+    
+            var circle_marker_adbcbb6518aeda4c3a86279decd0e4a0 = L.circleMarker(
+                [36.380699, -33.727901],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_adbcbb6518aeda4c3a86279decd0e4a0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS13 <br> <b>Dates: </b>2013/04/17 to 2013/05/13  <br><br><b>Depth: </b> -2751 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_91d7a2824873cd993596f7eb29cf7444 = L.marker(
+                [36.380699, -33.727901],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_d7772d68c5e27ecde884bc84dabf32a5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_91d7a2824873cd993596f7eb29cf7444.setIcon(div_icon_d7772d68c5e27ecde884bc84dabf32a5);
+        
+    
+            var circle_marker_85602421094d1516126206225f304a5c = L.circleMarker(
+                [36.340199, -33.785999],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_85602421094d1516126206225f304a5c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS14 <br> <b>Dates: </b>2013/04/17 to 2013/05/13  <br><br><b>Depth: </b> -2865 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a5d03757a164f655864daae194aede11 = L.marker(
+                [36.340199, -33.785999],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_83ac7ea4a93ddea5e8ac413249723f6d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a5d03757a164f655864daae194aede11.setIcon(div_icon_83ac7ea4a93ddea5e8ac413249723f6d);
+        
+    
+            var circle_marker_c4c6a497172943d3ef657b9c5e8c2407 = L.circleMarker(
+                [36.303799, -33.835701],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_c4c6a497172943d3ef657b9c5e8c2407.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS15 <br> <b>Dates: </b>2013/04/17 to 2013/05/13  <br><br><b>Depth: </b> -2871 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_51679c92066249ae9c776133244ccbf0 = L.marker(
+                [36.303799, -33.835701],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_10d6d0deae5acef3300c37b89f709e54 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_51679c92066249ae9c776133244ccbf0.setIcon(div_icon_10d6d0deae5acef3300c37b89f709e54);
+        
+    
+            var circle_marker_00335436a87787b702ad49388d2806b7 = L.circleMarker(
+                [36.273499, -33.8773],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_00335436a87787b702ad49388d2806b7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS16 <br> <b>Dates: </b>2013/04/17 to 2013/05/14  <br><br><b>Depth: </b> -2475 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_762f5c3931ea575d5cde96e63023e521 = L.marker(
+                [36.273499, -33.8773],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_47d5f58fed24d8d90560e273bfa330b9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_762f5c3931ea575d5cde96e63023e521.setIcon(div_icon_47d5f58fed24d8d90560e273bfa330b9);
+        
+    
+            var circle_marker_0378d1e87d50e54fb216998c819db16e = L.circleMarker(
+                [36.244701, -33.867401],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_0378d1e87d50e54fb216998c819db16e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS17 <br> <b>Dates: </b>2013/04/17 to 2013/05/14  <br><br><b>Depth: </b> -2141 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9e5bd7370415aab1696f466fd1932d97 = L.marker(
+                [36.244701, -33.867401],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_603fd066e1fbfde9477cf430a5d68965 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9e5bd7370415aab1696f466fd1932d97.setIcon(div_icon_603fd066e1fbfde9477cf430a5d68965);
+        
+    
+            var circle_marker_4b36bcd6e2f845837fdc383207a81b1d = L.circleMarker(
+                [36.249699, -33.910301],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_4b36bcd6e2f845837fdc383207a81b1d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS18 <br> <b>Dates: </b>2013/04/17 to 2013/05/14  <br><br><b>Depth: </b> -2721 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6ce3b2d1352321de68afec7868a1281e = L.marker(
+                [36.249699, -33.910301],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_4c012791df933c9eeb77f6bcbb03a817 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6ce3b2d1352321de68afec7868a1281e.setIcon(div_icon_4c012791df933c9eeb77f6bcbb03a817);
+        
+    
+            var circle_marker_c168873dbc00a5afbb92cea7a5197f5a = L.circleMarker(
+                [36.2146, -33.909199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_c168873dbc00a5afbb92cea7a5197f5a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS19 <br> <b>Dates: </b>2013/04/17 to 2013/05/14  <br><br><b>Depth: </b> -2452 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_63e0acee8f5e33723435934eed3a8c5c = L.marker(
+                [36.2146, -33.909199],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_5642b523c8ec985add48d161e0226b12 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS19\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_63e0acee8f5e33723435934eed3a8c5c.setIcon(div_icon_5642b523c8ec985add48d161e0226b12);
+        
+    
+            var circle_marker_fa8c7b3f61205675ba6c7596d308af44 = L.circleMarker(
+                [36.225498, -33.943199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_fa8c7b3f61205675ba6c7596d308af44.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS20 <br> <b>Dates: </b>2013/04/17 to 2013/05/14  <br><br><b>Depth: </b> -3219 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4ff2433fe88de46691adf42098b85790 = L.marker(
+                [36.225498, -33.943199],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_f5ad7252d253d05660c12457577e9e1e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS20\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4ff2433fe88de46691adf42098b85790.setIcon(div_icon_f5ad7252d253d05660c12457577e9e1e);
+        
+    
+            var circle_marker_552c034250bda8a2f5c51ed5c947155a = L.circleMarker(
+                [36.195, -33.984699],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_552c034250bda8a2f5c51ed5c947155a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS21 <br> <b>Dates: </b>2013/04/17 to 2013/05/14  <br><br><b>Depth: </b> -3035 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_573ae32e5920127b44fa85f01183c0d9 = L.marker(
+                [36.195, -33.984699],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_9955eb952762c79f194f25d0e457e84b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS21\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_573ae32e5920127b44fa85f01183c0d9.setIcon(div_icon_9955eb952762c79f194f25d0e457e84b);
+        
+    
+            var circle_marker_44063c1a11544341f8978dea2e61da62 = L.circleMarker(
+                [36.1595, -34.034698],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_44063c1a11544341f8978dea2e61da62.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS22 <br> <b>Dates: </b>2013/04/17 to 2013/05/14  <br><br><b>Depth: </b> -2231 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_adcdb0c1cf0aa12e749cd038a564cc64 = L.marker(
+                [36.1595, -34.034698],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_558ae1c094206d2191863537c5f06315 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS22\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_adcdb0c1cf0aa12e749cd038a564cc64.setIcon(div_icon_558ae1c094206d2191863537c5f06315);
+        
+    
+            var circle_marker_e3d659325a96716eb69e1adae3fa8379 = L.circleMarker(
+                [36.117001, -34.092701],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_e3d659325a96716eb69e1adae3fa8379.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS23 <br> <b>Dates: </b>2013/04/17 to 2013/05/14  <br><br><b>Depth: </b> -2506 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_acd1f62635d652f2eb48da7cb1e2cd7c = L.marker(
+                [36.117001, -34.092701],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_1bcdbbe65408dd6fe080efa72c1b61e8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS23\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_acd1f62635d652f2eb48da7cb1e2cd7c.setIcon(div_icon_1bcdbbe65408dd6fe080efa72c1b61e8);
+        
+    
+            var circle_marker_3479beb22aca9cbc445a9b910ab74c00 = L.circleMarker(
+                [36.069, -34.158798],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_3479beb22aca9cbc445a9b910ab74c00.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS24 <br> <b>Dates: </b>2013/04/18 to 2013/05/03  <br><br><b>Depth: </b> -2321 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b9ad4294e4275ba79177cdaaeb22eeee = L.marker(
+                [36.069, -34.158798],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_b809d654c9c82c1f316aecb6b8f6769b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS24\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b9ad4294e4275ba79177cdaaeb22eeee.setIcon(div_icon_b809d654c9c82c1f316aecb6b8f6769b);
+        
+    
+            var circle_marker_2a0de0f047c6f7864f1b89c3f7db806d = L.circleMarker(
+                [36.028599, -34.114601],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_2a0de0f047c6f7864f1b89c3f7db806d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS25 <br> <b>Dates: </b>2013/04/18 to 2013/05/03  <br><br><b>Depth: </b> -2268 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0fc868cb7017d830125083e48b43652d = L.marker(
+                [36.028599, -34.114601],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_698a3006921b5b3ef9090b07a8a04bc5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS25\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0fc868cb7017d830125083e48b43652d.setIcon(div_icon_698a3006921b5b3ef9090b07a8a04bc5);
+        
+    
+            var circle_marker_d386bbd0a08576f9f7aa597ecfc71fbb = L.circleMarker(
+                [36.0774, -34.0485],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_d386bbd0a08576f9f7aa597ecfc71fbb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS26 <br> <b>Dates: </b>2013/04/18 to 2013/05/14  <br><br><b>Depth: </b> -2620 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4b42cab344aa2c3f42e55f4ad614d565 = L.marker(
+                [36.0774, -34.0485],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_5d3d299eb195bc121a8d8607884cffa6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS26\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4b42cab344aa2c3f42e55f4ad614d565.setIcon(div_icon_5d3d299eb195bc121a8d8607884cffa6);
+        
+    
+            var circle_marker_bd5383bcb052988aade29da995665f52 = L.circleMarker(
+                [36.1194, -33.990299],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_bd5383bcb052988aade29da995665f52.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS27 <br> <b>Dates: </b>2013/04/17 to 2013/05/14  <br><br><b>Depth: </b> -2801 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f70a3c9ac607847b06abc01ef9bb5d97 = L.marker(
+                [36.1194, -33.990299],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_c6d9b93204f6467e31ff38c5b860a55d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS27\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f70a3c9ac607847b06abc01ef9bb5d97.setIcon(div_icon_c6d9b93204f6467e31ff38c5b860a55d);
+        
+    
+            var circle_marker_e5ec9528f05d09ef660578ecc27a71b5 = L.circleMarker(
+                [36.155499, -33.940399],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_e5ec9528f05d09ef660578ecc27a71b5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS28 <br> <b>Dates: </b>2013/04/17 to 2013/05/14  <br><br><b>Depth: </b> -2693 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1efff5c81bced5aa974ca49b9923b2eb = L.marker(
+                [36.155499, -33.940399],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_a9451a8e2cb79e97f559de65da7047ae = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS28\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1efff5c81bced5aa974ca49b9923b2eb.setIcon(div_icon_a9451a8e2cb79e97f559de65da7047ae);
+        
+    
+            var circle_marker_a4dcc03444916790f54b21ffe21f6bad = L.circleMarker(
+                [36.185799, -33.8992],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_a4dcc03444916790f54b21ffe21f6bad.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS29 <br> <b>Dates: </b>2013/04/17 to 2013/05/14  <br><br><b>Depth: </b> -2219 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_45de126993be76588b68dc2ad7d710f8 = L.marker(
+                [36.185799, -33.8992],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_a2fe94a0bd7208c6696e7cd5bf844e0a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS29\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_45de126993be76588b68dc2ad7d710f8.setIcon(div_icon_a2fe94a0bd7208c6696e7cd5bf844e0a);
+        
+    
+            var circle_marker_507c7ef2b8bb68864926ead0cde8c75b = L.circleMarker(
+                [36.209599, -33.865898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_507c7ef2b8bb68864926ead0cde8c75b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS30 <br> <b>Dates: </b>2013/04/17 to 2013/05/13  <br><br><b>Depth: </b> -2071 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d404fffc85a7b940a32d979abb721f90 = L.marker(
+                [36.209599, -33.865898],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_97dfb021d98822215654eecb16c5b508 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS30\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d404fffc85a7b940a32d979abb721f90.setIcon(div_icon_97dfb021d98822215654eecb16c5b508);
+        
+    
+            var circle_marker_59ac82e9f4587f1cf64aa5d703c5521f = L.circleMarker(
+                [36.233799, -33.8321],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_59ac82e9f4587f1cf64aa5d703c5521f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS31 <br> <b>Dates: </b>2013/04/17 to 2013/05/13  <br><br><b>Depth: </b> -2736 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f1c01bdf3b7d5c77c2f8debbbf24b91e = L.marker(
+                [36.233799, -33.8321],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_1cb4ea7341f8e0352be2cff44a26a2fc = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS31\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f1c01bdf3b7d5c77c2f8debbbf24b91e.setIcon(div_icon_1cb4ea7341f8e0352be2cff44a26a2fc);
+        
+    
+            var circle_marker_05cb296c40586e6bece2af09db183eb4 = L.circleMarker(
+                [36.263901, -33.790699],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_05cb296c40586e6bece2af09db183eb4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS32 <br> <b>Dates: </b>2013/04/17 to 2013/05/13  <br><br><b>Depth: </b> -2836 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_092ed5900bbc09b0b893980d008c2a88 = L.marker(
+                [36.263901, -33.790699],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_49bc99d4283d52c7cc997fdb23ca9974 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS32\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_092ed5900bbc09b0b893980d008c2a88.setIcon(div_icon_49bc99d4283d52c7cc997fdb23ca9974);
+        
+    
+            var circle_marker_819f779020b65d65aa2ed5ff6ed43311 = L.circleMarker(
+                [36.300098, -33.741699],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_819f779020b65d65aa2ed5ff6ed43311.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS33 <br> <b>Dates: </b>2013/04/17 to 2013/05/13  <br><br><b>Depth: </b> -2547 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cac5ad41250ca76ea1df1f632b03b9b9 = L.marker(
+                [36.300098, -33.741699],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_3083025eca77750aa3e9cef278984d6f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS33\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cac5ad41250ca76ea1df1f632b03b9b9.setIcon(div_icon_3083025eca77750aa3e9cef278984d6f);
+        
+    
+            var circle_marker_5d51d79d4eba71cc4a9ebc4b475028a4 = L.circleMarker(
+                [36.341999, -33.683601],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_5d51d79d4eba71cc4a9ebc4b475028a4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS34 <br> <b>Dates: </b>2013/04/17 to 2013/05/13  <br><br><b>Depth: </b> -2786 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6f06eebef2cb0a7431f9d34c614de8ab = L.marker(
+                [36.341999, -33.683601],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_099210c8416e58f7c0b12f30d716a024 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS34\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6f06eebef2cb0a7431f9d34c614de8ab.setIcon(div_icon_099210c8416e58f7c0b12f30d716a024);
+        
+    
+            var circle_marker_d0081944fffb137c399fb869393e86a0 = L.circleMarker(
+                [36.3904, -33.617599],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_d0081944fffb137c399fb869393e86a0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS35 <br> <b>Dates: </b>2013/04/18 to 2013/05/02  <br><br><b>Depth: </b> -2212 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_54e1be1c5b0372f54f9e70231d748a3b = L.marker(
+                [36.3904, -33.617599],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_b6cca17b20ab5313c2dec78be65d7e93 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS35\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_54e1be1c5b0372f54f9e70231d748a3b.setIcon(div_icon_b6cca17b20ab5313c2dec78be65d7e93);
+        
+    
+            var circle_marker_b86ac3fab09641d455ceeb22690e9393 = L.circleMarker(
+                [36.343601, -33.5653],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_b86ac3fab09641d455ceeb22690e9393.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS36 <br> <b>Dates: </b>2013/04/17 to 2013/05/02  <br><br><b>Depth: </b> -1918 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_24f282f66700614503f077de059ece10 = L.marker(
+                [36.343601, -33.5653],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_d749a9404068da3f1cd061e5f8f56ff9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS36\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_24f282f66700614503f077de059ece10.setIcon(div_icon_d749a9404068da3f1cd061e5f8f56ff9);
+        
+    
+            var circle_marker_d6410df23823d5469f468f57556532a8 = L.circleMarker(
+                [36.295502, -33.631401],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_d6410df23823d5469f468f57556532a8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS37 <br> <b>Dates: </b>2013/04/17 to 2013/05/02  <br><br><b>Depth: </b> -1966 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_562da248856c633f63482c2e0e5dcc26 = L.marker(
+                [36.295502, -33.631401],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_7b794be57b5d12179361014d2aa22623 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS37\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_562da248856c633f63482c2e0e5dcc26.setIcon(div_icon_7b794be57b5d12179361014d2aa22623);
+        
+    
+            var circle_marker_e946975d4f7051784295c38f10feede2 = L.circleMarker(
+                [36.253399, -33.6889],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_e946975d4f7051784295c38f10feede2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS38 <br> <b>Dates: </b>2013/04/18 to 2013/05/02  <br><br><b>Depth: </b> -2277 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3b3b727d91a1beca319a35ea2c84d77f = L.marker(
+                [36.253399, -33.6889],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_278fc65064e1d52786e059885592e3a0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS38\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3b3b727d91a1beca319a35ea2c84d77f.setIcon(div_icon_278fc65064e1d52786e059885592e3a0);
+        
+    
+            var circle_marker_1a9c01a6b183106f62427c73fc074dfe = L.circleMarker(
+                [36.217098, -33.7388],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_1a9c01a6b183106f62427c73fc074dfe.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS39 <br> <b>Dates: </b>2013/04/18 to 2013/05/03  <br><br><b>Depth: </b> -2435 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6d810db591135c710c6a93147cc7e995 = L.marker(
+                [36.217098, -33.7388],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_cb2d2f93899f099c10a46a9ad8633a0d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS39\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6d810db591135c710c6a93147cc7e995.setIcon(div_icon_cb2d2f93899f099c10a46a9ad8633a0d);
+        
+    
+            var circle_marker_f69d38b9f599c6eed2fa84276c94308b = L.circleMarker(
+                [36.162899, -33.813202],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_f69d38b9f599c6eed2fa84276c94308b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS41 <br> <b>Dates: </b>2013/04/17 to 2013/05/03  <br><br><b>Depth: </b> -1878 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0d7998468a5e2cba26c639ad2cac84e4 = L.marker(
+                [36.162899, -33.813202],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_a494e62b272cdcaebb4ead3d613ce3fc = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS41\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0d7998468a5e2cba26c639ad2cac84e4.setIcon(div_icon_a494e62b272cdcaebb4ead3d613ce3fc);
+        
+    
+            var circle_marker_fcd172d6d8b3c0e44570ec1bf50a8d17 = L.circleMarker(
+                [36.108799, -33.8876],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_fcd172d6d8b3c0e44570ec1bf50a8d17.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS43 <br> <b>Dates: </b>2013/04/18 to 2013/05/03  <br><br><b>Depth: </b> -2147 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d9364b09710b775cb9c0f888f56711fc = L.marker(
+                [36.108799, -33.8876],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_fce228675238789b800bfc5b679d66b1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS43\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d9364b09710b775cb9c0f888f56711fc.setIcon(div_icon_fce228675238789b800bfc5b679d66b1);
+        
+    
+            var circle_marker_1c4603e5acef13a5d150cf1a68879f7f = L.circleMarker(
+                [36.072399, -33.937302],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_1c4603e5acef13a5d150cf1a68879f7f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS44 <br> <b>Dates: </b>2013/04/17 to 2013/05/03  <br><br><b>Depth: </b> -2315 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fc57b39982e3eb6f4dcf45f07039257e = L.marker(
+                [36.072399, -33.937302],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_43d19e93ab3e15f14fe801449d6fb111 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS44\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fc57b39982e3eb6f4dcf45f07039257e.setIcon(div_icon_43d19e93ab3e15f14fe801449d6fb111);
+        
+    
+            var circle_marker_ec4c74ac972b3e4a082b56554c438162 = L.circleMarker(
+                [36.0303, -33.997799],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_ec4c74ac972b3e4a082b56554c438162.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS45 <br> <b>Dates: </b>2013/04/18 to 2013/05/03  <br><br><b>Depth: </b> -2234 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_17a91be40aef4bbe0e1a03aff2f9ba81 = L.marker(
+                [36.0303, -33.997799],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_bfab7c12f6cf550bc6663fe562ee8e5b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS45\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_17a91be40aef4bbe0e1a03aff2f9ba81.setIcon(div_icon_bfab7c12f6cf550bc6663fe562ee8e5b);
+        
+    
+            var circle_marker_a666179daac36728878bad6ba66628fc = L.circleMarker(
+                [35.982101, -34.061699],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_a666179daac36728878bad6ba66628fc.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS46 <br> <b>Dates: </b>2013/04/17 to 2013/05/03  <br><br><b>Depth: </b> -2422 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6d323c87256f769e14d6c1f6f0284fce = L.marker(
+                [35.982101, -34.061699],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_fa6a5d7110015857f2c2b2be36b4847e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS46\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6d323c87256f769e14d6c1f6f0284fce.setIcon(div_icon_fa6a5d7110015857f2c2b2be36b4847e);
+        
+    
+            var circle_marker_e1bfcb839ed116288ef3c9f346295932 = L.circleMarker(
+                [36.185501, -33.932701],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_e1bfcb839ed116288ef3c9f346295932.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS47 <br> <b>Dates: </b>2013/05/14 to 2014/01/09  <br><br><b>Depth: </b> -3153 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1438f30b78ef31251104849be9d6d6b8 = L.marker(
+                [36.185501, -33.932701],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_0e874f346ac59d654cc16de35c286a4a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS47\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1438f30b78ef31251104849be9d6d6b8.setIcon(div_icon_0e874f346ac59d654cc16de35c286a4a);
+        
+    
+            var circle_marker_8c8f78d8a05f26837298a575a29792d1 = L.circleMarker(
+                [36.213299, -33.898201],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_8c8f78d8a05f26837298a575a29792d1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS48 <br> <b>Dates: </b>2013/05/03 to 2014/01/08  <br><br><b>Depth: </b> -2227 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fa4981f853c324ed8f55d7c8e372059d = L.marker(
+                [36.213299, -33.898201],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_cd9705bbdfb315c009f365ee4ec083ae = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS48\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fa4981f853c324ed8f55d7c8e372059d.setIcon(div_icon_cd9705bbdfb315c009f365ee4ec083ae);
+        
+    
+            var circle_marker_6a8bf012650db732877e34c1bd899c63 = L.circleMarker(
+                [36.208302, -33.876701],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_6a8bf012650db732877e34c1bd899c63.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS49 <br> <b>Dates: </b>2013/05/03 to 2014/01/08  <br><br><b>Depth: </b> -2021 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a161f49511ed0d185d3be4afc492c318 = L.marker(
+                [36.208302, -33.876701],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_740f63a02da6efbc61c83f9810c87f37 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS49\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a161f49511ed0d185d3be4afc492c318.setIcon(div_icon_740f63a02da6efbc61c83f9810c87f37);
+        
+    
+            var circle_marker_54c744f224ff444ecf1cda271a6a41bf = L.circleMarker(
+                [36.221802, -33.860298],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_54c744f224ff444ecf1cda271a6a41bf.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS50 <br> <b>Dates: </b>2013/05/03 to 2014/01/09  <br><br><b>Depth: </b> -2169 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_14d8727503ffc37215ffc3d25da7a4b0 = L.marker(
+                [36.221802, -33.860298],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_79e4b663e0ba3e5ac89f337755175fa0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS50\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_14d8727503ffc37215ffc3d25da7a4b0.setIcon(div_icon_79e4b663e0ba3e5ac89f337755175fa0);
+        
+    
+            var circle_marker_ea46d623c442086a94b01976fda4e82f = L.circleMarker(
+                [36.203499, -33.826],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_ea46d623c442086a94b01976fda4e82f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS51 <br> <b>Dates: </b>2013/05/14 to 2014/01/09  <br><br><b>Depth: </b> -2550 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6e67eae273a5e1529ee7195992177471 = L.marker(
+                [36.203499, -33.826],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_2fa5d98dfba70dcf4abb232ee48bea35 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS51\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6e67eae273a5e1529ee7195992177471.setIcon(div_icon_2fa5d98dfba70dcf4abb232ee48bea35);
+        
+    
+            var circle_marker_021b282f549cf06dd271ad8f48bded7a = L.circleMarker(
+                [36.242199, -33.8894],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_021b282f549cf06dd271ad8f48bded7a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS54 <br> <b>Dates: </b>2013/05/03 to 2014/01/09  <br><br><b>Depth: </b> -2282 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9670997e63a87c4e050b425cf0e8f55c = L.marker(
+                [36.242199, -33.8894],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_a42453666811053edee31c6ddc065785 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS54\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9670997e63a87c4e050b425cf0e8f55c.setIcon(div_icon_a42453666811053edee31c6ddc065785);
+        
+    
+            var circle_marker_ba072a5a4e01268e42692db660df94c8 = L.circleMarker(
+                [36.252701, -33.944599],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_ba072a5a4e01268e42692db660df94c8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS55 <br> <b>Dates: </b>2013/05/03 to 2014/01/09  <br><br><b>Depth: </b> -3016 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9321ef1d206d620f233c343e9a88fccd = L.marker(
+                [36.252701, -33.944599],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_d574938e68746b2425e45e80b99745e6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS55\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9321ef1d206d620f233c343e9a88fccd.setIcon(div_icon_d574938e68746b2425e45e80b99745e6);
+        
+    
+            var circle_marker_69aaa7ee8d80310a3f8685778d9300da = L.circleMarker(
+                [36.2286, -33.9076],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_69aaa7ee8d80310a3f8685778d9300da.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS56 <br> <b>Dates: </b>2013/05/10 to 2014/01/08  <br><br><b>Depth: </b> -2345 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_24fad43d9ec7795b5be15fe6c51bbc1a = L.marker(
+                [36.2286, -33.9076],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_939493a71d93cb6de049d593c0beda5c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS56\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_24fad43d9ec7795b5be15fe6c51bbc1a.setIcon(div_icon_939493a71d93cb6de049d593c0beda5c);
+        
+    
+            var circle_marker_8ccce8bc75e0faa14031c7506aa88734 = L.circleMarker(
+                [36.231998, -33.903999],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_8ccce8bc75e0faa14031c7506aa88734.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS57 <br> <b>Dates: </b>2013/05/03 to 2014/01/08  <br><br><b>Depth: </b> -2377 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_efe857807986619ab39d878dcfe46996 = L.marker(
+                [36.231998, -33.903999],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_6d2977f0f7b8a9e4c228f6f5f384b6ee = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS57\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_efe857807986619ab39d878dcfe46996.setIcon(div_icon_6d2977f0f7b8a9e4c228f6f5f384b6ee);
+        
+    
+            var circle_marker_ab7b22d05b4b97ad40c029d451494d83 = L.circleMarker(
+                [36.232101, -33.902],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_ab7b22d05b4b97ad40c029d451494d83.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS58 <br> <b>Dates: </b>2013/05/10 to 2014/01/08  <br><br><b>Depth: </b> -2296 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8ca38ec5606acfc8ea15a865819eafbb = L.marker(
+                [36.232101, -33.902],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_dd141eee405c9e6ac1314f135848b47d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS58\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8ca38ec5606acfc8ea15a865819eafbb.setIcon(div_icon_dd141eee405c9e6ac1314f135848b47d);
+        
+    
+            var circle_marker_d68a372577d00d4eb53f3ced15731ea2 = L.circleMarker(
+                [36.230099, -33.902],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_d68a372577d00d4eb53f3ced15731ea2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS59 <br> <b>Dates: </b>2013/05/10 to 2014/01/08  <br><br><b>Depth: </b> -2248 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_adcbbd5bcd00e90723a6caa2c21fdf1c = L.marker(
+                [36.230099, -33.902],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_fc915438d8c7eb87230384c361120251 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS59\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_adcbbd5bcd00e90723a6caa2c21fdf1c.setIcon(div_icon_fc915438d8c7eb87230384c361120251);
+        
+    
+            var circle_marker_d8d39aac722c9667e46c68432a3f6790 = L.circleMarker(
+                [36.229, -33.902199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_d8d39aac722c9667e46c68432a3f6790.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS60 <br> <b>Dates: </b>2013/05/10 to 2014/01/08  <br><br><b>Depth: </b> -2237 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_00be3aca739ae4eabd8b815a42ac3d9d = L.marker(
+                [36.229, -33.902199],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_3e1e1c4f67bab807c3114d41d88288bb = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS60\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_00be3aca739ae4eabd8b815a42ac3d9d.setIcon(div_icon_3e1e1c4f67bab807c3114d41d88288bb);
+        
+    
+            var circle_marker_0f634d05c920da03a41be4259dc9facd = L.circleMarker(
+                [36.229099, -33.904301],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#760089", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            circle_marker_0f634d05c920da03a41be4259dc9facd.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X3 <br> <b>Station:</b> OBS61 <br> <b>Dates: </b>2013/05/12 to 2014/01/08  <br><br><b>Depth: </b> -2294 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X3_2013 <br><br> <b>Net name: </b> MARINER: Seismic Investigation of the Rainbow Hydrothermal Field <br><br> <b>Operator: </b>  University of Hawaii (UH)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c7a15a283c54c0ac12d38b751a9fff8d = L.marker(
+                [36.229099, -33.904301],
+                {}
+            ).addTo(map_9d1d486a67081195d168e4e36f06deac);
+        
+    
+            var div_icon_5432e16c272b26420149f263a15f31a7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS61\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c7a15a283c54c0ac12d38b751a9fff8d.setIcon(div_icon_5432e16c272b26420149f263a15f31a7);
+        
+    
+            map_9d1d486a67081195d168e4e36f06deac.fitBounds(
+                [[35.982101, -34.2104], [36.477402, -33.5653]],
+                {}
+            );
+        </script>
+
+</html>

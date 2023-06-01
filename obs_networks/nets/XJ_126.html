@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_953bb258cdd3804732f57336d70a8534 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network XJ: Gulf of Mexico Hydrates Research Consortium </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Woods Hole Oceanographic Institution (WHOI)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Apr 2011 to Apr 2011</p>
+		<p id="net_header", class="headerDoi">DOI: <a href=""></a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_953bb258cdd3804732f57336d70a8534" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>XJ</TD><TD>OBS01</TD><TD>2011/04/03</TD><TD>2011/04/07</TD><TD>28.8582</TD><TD>-88.490799</TD><TD>-881</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS02</TD><TD>2011/04/03</TD><TD>2011/04/07</TD><TD>28.8578</TD><TD>-88.490799</TD><TD>-882</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS03</TD><TD>2011/04/03</TD><TD>2011/04/07</TD><TD>28.8577</TD><TD>-88.490898</TD><TD>-880</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS04</TD><TD>2011/04/03</TD><TD>2011/04/08</TD><TD>28.857401</TD><TD>-88.490997</TD><TD>-882</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS05</TD><TD>2011/04/03</TD><TD>2011/04/08</TD><TD>28.857201</TD><TD>-88.490898</TD><TD>-883</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS06</TD><TD>2011/04/03</TD><TD>2011/04/08</TD><TD>28.857</TD><TD>-88.490997</TD><TD>-884</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS07</TD><TD>2011/04/03</TD><TD>2011/04/08</TD><TD>28.856701</TD><TD>-88.490898</TD><TD>-885</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS08</TD><TD>2011/04/03</TD><TD>2011/04/08</TD><TD>28.8566</TD><TD>-88.490898</TD><TD>-885</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS09</TD><TD>2011/04/03</TD><TD>2011/04/08</TD><TD>28.8563</TD><TD>-88.490898</TD><TD>-887</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS10</TD><TD>2011/04/03</TD><TD>2011/04/08</TD><TD>28.8561</TD><TD>-88.490898</TD><TD>-885</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS11</TD><TD>2011/04/03</TD><TD>2011/04/08</TD><TD>28.855801</TD><TD>-88.490898</TD><TD>-884</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS12</TD><TD>2011/04/03</TD><TD>2011/04/08</TD><TD>28.851299</TD><TD>-88.490799</TD><TD>-887</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS13</TD><TD>2011/04/03</TD><TD>2011/04/08</TD><TD>28.8468</TD><TD>-88.4907</TD><TD>-910</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS14</TD><TD>2011/04/03</TD><TD>2011/04/07</TD><TD>28.8627</TD><TD>-88.490898</TD><TD>-870</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>XJ</TD><TD>OBS15</TD><TD>2011/04/03</TD><TD>2011/04/07</TD><TD>28.867201</TD><TD>-88.491096</TD><TD>-863</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15</TD><TD>EDH</TD><TD>200.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase B</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15</TD><TD>EL1</TD><TD>200.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15</TD><TD>EL2</TD><TD>200.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15</TD><TD>ELZ</TD><TD>200.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15</TD><TD>LDH</TD><TD>1.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase B</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15</TD><TD>LL1</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15</TD><TD>LL2</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15</TD><TD>LLZ</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_953bb258cdd3804732f57336d70a8534 = L.map(
+                "map_953bb258cdd3804732f57336d70a8534",
+                {
+                    center: [28.856986933333328, -88.49089139999998],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_4b79ef40a0c9fe9d0d531d474d2bf9ca = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var circle_marker_496275a8f9d8fa36346a0a55028726b5 = L.circleMarker(
+                [28.8582, -88.490799],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_496275a8f9d8fa36346a0a55028726b5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS01 <br> <b>Dates: </b>2011/04/03 to 2011/04/07  <br><br><b>Depth: </b> -881 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ca7d89610cdb7b05778cbef0a5ba1d8a = L.marker(
+                [28.8582, -88.490799],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_0e04e8b99767a274cab6c013a15c3e86 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ca7d89610cdb7b05778cbef0a5ba1d8a.setIcon(div_icon_0e04e8b99767a274cab6c013a15c3e86);
+        
+    
+            var circle_marker_0503621d105b50b8cd5916f8deaf0506 = L.circleMarker(
+                [28.8578, -88.490799],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_0503621d105b50b8cd5916f8deaf0506.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS02 <br> <b>Dates: </b>2011/04/03 to 2011/04/07  <br><br><b>Depth: </b> -882 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6bac46b39e5f581fd20ada0253d6a987 = L.marker(
+                [28.8578, -88.490799],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_a6af8049732249ef04b0cb11faea666d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6bac46b39e5f581fd20ada0253d6a987.setIcon(div_icon_a6af8049732249ef04b0cb11faea666d);
+        
+    
+            var circle_marker_b24710880cdc3f268100d440ffd034a5 = L.circleMarker(
+                [28.8577, -88.490898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_b24710880cdc3f268100d440ffd034a5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS03 <br> <b>Dates: </b>2011/04/03 to 2011/04/07  <br><br><b>Depth: </b> -880 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c283ac4f3f9e8665fc5825961c0be533 = L.marker(
+                [28.8577, -88.490898],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_84c009df9352b6b4cea462f5643fe4b9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c283ac4f3f9e8665fc5825961c0be533.setIcon(div_icon_84c009df9352b6b4cea462f5643fe4b9);
+        
+    
+            var circle_marker_b7a056b4613f319139d0c45de0387dd2 = L.circleMarker(
+                [28.857401, -88.490997],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_b7a056b4613f319139d0c45de0387dd2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS04 <br> <b>Dates: </b>2011/04/03 to 2011/04/08  <br><br><b>Depth: </b> -882 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b4ded41040efbe2e9d76fa10ba800d96 = L.marker(
+                [28.857401, -88.490997],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_fb46fd235afe607fa157087fe9230c36 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b4ded41040efbe2e9d76fa10ba800d96.setIcon(div_icon_fb46fd235afe607fa157087fe9230c36);
+        
+    
+            var circle_marker_b1aea9bd13086f327d368810a88c55d7 = L.circleMarker(
+                [28.857201, -88.490898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_b1aea9bd13086f327d368810a88c55d7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS05 <br> <b>Dates: </b>2011/04/03 to 2011/04/08  <br><br><b>Depth: </b> -883 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_24a7d2e0b6c3f7317ccf9092494f83a0 = L.marker(
+                [28.857201, -88.490898],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_e01dbd4addd79d4a3bd3667d7fa1eadf = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_24a7d2e0b6c3f7317ccf9092494f83a0.setIcon(div_icon_e01dbd4addd79d4a3bd3667d7fa1eadf);
+        
+    
+            var circle_marker_44fd320a2fd588064edc4ecab3b65951 = L.circleMarker(
+                [28.857, -88.490997],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_44fd320a2fd588064edc4ecab3b65951.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS06 <br> <b>Dates: </b>2011/04/03 to 2011/04/08  <br><br><b>Depth: </b> -884 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4c39cac3b98335ec6d9f299316238abc = L.marker(
+                [28.857, -88.490997],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_b61da86e4d83eba91c3beb33cdad953d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4c39cac3b98335ec6d9f299316238abc.setIcon(div_icon_b61da86e4d83eba91c3beb33cdad953d);
+        
+    
+            var circle_marker_53907ee4e06e7d063448989702dfc33c = L.circleMarker(
+                [28.856701, -88.490898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_53907ee4e06e7d063448989702dfc33c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS07 <br> <b>Dates: </b>2011/04/03 to 2011/04/08  <br><br><b>Depth: </b> -885 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_07edbca1cb657192406743be9d4a7453 = L.marker(
+                [28.856701, -88.490898],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_3592b25b75ec9104a9ff9ef02d102931 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_07edbca1cb657192406743be9d4a7453.setIcon(div_icon_3592b25b75ec9104a9ff9ef02d102931);
+        
+    
+            var circle_marker_1f28a30d0ab2902d9dd0a92c56a6bd1e = L.circleMarker(
+                [28.8566, -88.490898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_1f28a30d0ab2902d9dd0a92c56a6bd1e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS08 <br> <b>Dates: </b>2011/04/03 to 2011/04/08  <br><br><b>Depth: </b> -885 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7153cc86e5a42db3649f740ed9cc135b = L.marker(
+                [28.8566, -88.490898],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_76219ccbb5e0fe86997fb7d11f05a794 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7153cc86e5a42db3649f740ed9cc135b.setIcon(div_icon_76219ccbb5e0fe86997fb7d11f05a794);
+        
+    
+            var circle_marker_8b9dc25bbeb5ab3aabf774e775a5b313 = L.circleMarker(
+                [28.8563, -88.490898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_8b9dc25bbeb5ab3aabf774e775a5b313.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS09 <br> <b>Dates: </b>2011/04/03 to 2011/04/08  <br><br><b>Depth: </b> -887 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8cea3242c01c146ce805df850fdcae7e = L.marker(
+                [28.8563, -88.490898],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_7ba6853624459f37a5fd171f6cf808bc = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8cea3242c01c146ce805df850fdcae7e.setIcon(div_icon_7ba6853624459f37a5fd171f6cf808bc);
+        
+    
+            var circle_marker_de482cf4f2739e46564aa0045f102842 = L.circleMarker(
+                [28.8561, -88.490898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_de482cf4f2739e46564aa0045f102842.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS10 <br> <b>Dates: </b>2011/04/03 to 2011/04/08  <br><br><b>Depth: </b> -885 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_26c4c6907a1b925c2b947ff4bc253deb = L.marker(
+                [28.8561, -88.490898],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_adcacc8ff4d0397acf8d0e94b270995e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_26c4c6907a1b925c2b947ff4bc253deb.setIcon(div_icon_adcacc8ff4d0397acf8d0e94b270995e);
+        
+    
+            var circle_marker_6ad178c5a3cc07b88c9f603b426ff7e5 = L.circleMarker(
+                [28.855801, -88.490898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_6ad178c5a3cc07b88c9f603b426ff7e5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS11 <br> <b>Dates: </b>2011/04/03 to 2011/04/08  <br><br><b>Depth: </b> -884 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bb66b66fce6f07dc22d265d7cb1d23bb = L.marker(
+                [28.855801, -88.490898],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_5f1b6a0b625ea9fe34e5049c3aa0feea = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_bb66b66fce6f07dc22d265d7cb1d23bb.setIcon(div_icon_5f1b6a0b625ea9fe34e5049c3aa0feea);
+        
+    
+            var circle_marker_7e9394e29b0f44d4e21c172db0293f6e = L.circleMarker(
+                [28.851299, -88.490799],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_7e9394e29b0f44d4e21c172db0293f6e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS12 <br> <b>Dates: </b>2011/04/03 to 2011/04/08  <br><br><b>Depth: </b> -887 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fb87d4a73c27747fa7dd0b29a935d323 = L.marker(
+                [28.851299, -88.490799],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_87b00d5ef6cccb79791e1a50dbedf29e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fb87d4a73c27747fa7dd0b29a935d323.setIcon(div_icon_87b00d5ef6cccb79791e1a50dbedf29e);
+        
+    
+            var circle_marker_fdb153a450d61a8608bae98042af5e57 = L.circleMarker(
+                [28.8468, -88.4907],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_fdb153a450d61a8608bae98042af5e57.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS13 <br> <b>Dates: </b>2011/04/03 to 2011/04/08  <br><br><b>Depth: </b> -910 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f4c5af2360035dd96c236a408f07f570 = L.marker(
+                [28.8468, -88.4907],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_60f791aa91661abdbf6f23f2b9d2d68b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f4c5af2360035dd96c236a408f07f570.setIcon(div_icon_60f791aa91661abdbf6f23f2b9d2d68b);
+        
+    
+            var circle_marker_afed45f8d586324a465ff11223453002 = L.circleMarker(
+                [28.8627, -88.490898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_afed45f8d586324a465ff11223453002.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS14 <br> <b>Dates: </b>2011/04/03 to 2011/04/07  <br><br><b>Depth: </b> -870 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5e0b0fe3af83c7d5c748634b1ec9d5da = L.marker(
+                [28.8627, -88.490898],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_d677b8f12e2218781d307145d3725c9e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5e0b0fe3af83c7d5c748634b1ec9d5da.setIcon(div_icon_d677b8f12e2218781d307145d3725c9e);
+        
+    
+            var circle_marker_4dd817cee3f1356e5a164da6bfe3a6d8 = L.circleMarker(
+                [28.867201, -88.491096],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b64900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            circle_marker_4dd817cee3f1356e5a164da6bfe3a6d8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XJ <br> <b>Station:</b> OBS15 <br> <b>Dates: </b>2011/04/03 to 2011/04/07  <br><br><b>Depth: </b> -863 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Gulf of Mexico Hydrates Research Consortium <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_00709e7b0ceacd33740a464792ed8429 = L.marker(
+                [28.867201, -88.491096],
+                {}
+            ).addTo(map_953bb258cdd3804732f57336d70a8534);
+        
+    
+            var div_icon_4d86025b5d1b46039620f9b1e0144577 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_00709e7b0ceacd33740a464792ed8429.setIcon(div_icon_4d86025b5d1b46039620f9b1e0144577);
+        
+    
+            map_953bb258cdd3804732f57336d70a8534.fitBounds(
+                [[28.8468, -88.491096], [28.867201, -88.4907]],
+                {}
+            );
+        </script>
+
+</html>

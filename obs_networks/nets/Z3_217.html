@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_67e026c0c251238667d9819b0cf2233f {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network Z3: AlpArray </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</p>
+		<p id="net_header", class="headerDates">OBS deployed from Apr 2017 to Apr 2018</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.12686/alparray/z3_2015">https://doi.org/10.12686/alparray/z3_2015</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_67e026c0c251238667d9819b0cf2233f" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>Z3</TD><TD>A414A</TD><TD>2017/06/15</TD><TD>2018/02/15</TD><TD>42.178267</TD><TD>5.858317</TD><TD>-2463</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A409A</TD><TD>2017/06/17</TD><TD>2018/02/17</TD><TD>43.348183</TD><TD>7.516717</TD><TD>-1981</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A404A</TD><TD>2017/06/19</TD><TD>2018/02/15</TD><TD>42.17825</TD><TD>5.019267</TD><TD>-2013</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A417A</TD><TD>2017/06/17</TD><TD>2018/02/17</TD><TD>42.879617</TD><TD>7.517817</TD><TD>-2677</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A428A</TD><TD>2017/06/16</TD><TD>2018/02/23</TD><TD>41.710233</TD><TD>6.963833</TD><TD>-2734</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A420A</TD><TD>2017/06/24</TD><TD>2018/02/20</TD><TD>43.453733</TD><TD>9.195483</TD><TD>-1354</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A402A</TD><TD>2017/06/19</TD><TD>2018/02/16</TD><TD>42.87933</TD><TD>5.3005</TD><TD>-1632</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A421A</TD><TD>2017/06/16</TD><TD>2018/02/15</TD><TD>41.7153</TD><TD>5.849967</TD><TD>-2525</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A418A</TD><TD>2017/06/19</TD><TD>2018/02/17</TD><TD>42.999917</TD><TD>8.0709</TD><TD>-2632</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A415A</TD><TD>2017/06/15</TD><TD>2018/02/16</TD><TD>42.4119</TD><TD>6.410933</TD><TD>-2595</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A434A</TD><TD>2017/06/24</TD><TD>2018/02/20</TD><TD>43.850317</TD><TD>9.229867</TD><TD>-1133</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A405A</TD><TD>2017/06/15</TD><TD>2018/02/15</TD><TD>42.411567</TD><TD>5.30365</TD><TD>-2192</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A423A</TD><TD>2017/06/18</TD><TD>2018/02/16</TD><TD>42.1784</TD><TD>6.96405</TD><TD>-2706</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A412A</TD><TD>2017/06/15</TD><TD>2018/02/12</TD><TD>41.647583</TD><TD>4.744833</TD><TD>-2519</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A406A</TD><TD>2017/06/22</TD><TD>2018/04/25</TD><TD>42.646667</TD><TD>5.856667</TD><TD>-2399</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A430A</TD><TD>2017/06/17</TD><TD>2018/02/16</TD><TD>42.1779</TD><TD>7.980917</TD><TD>-2752</TD><TD>CDH-CH1-CH2-CHZ (250.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A401A</TD><TD>2017/06/22</TD><TD>2018/02/16</TD><TD>42.647</TD><TD>5.0198</TD><TD>-1619</TD><TD>BDH-BH1-BH2-BHZ (62.5 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A410A</TD><TD>2017/04/25</TD><TD>2017/11/27</TD><TD>43.5866</TD><TD>8.0732</TD><TD>-2423</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A413A</TD><TD>2017/06/23</TD><TD>2018/02/15</TD><TD>41.9422</TD><TD>5.3101</TD><TD>-2293</TD><TD>BDH-BH1-BH2-BHZ (62.5 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A416A</TD><TD>2017/06/26</TD><TD>2018/02/17</TD><TD>42.6479</TD><TD>6.9627</TD><TD>-2631</TD><TD>BDH-BH1-BH2-BHZ (62.5 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A419A</TD><TD>2017/06/25</TD><TD>2018/02/19</TD><TD>43.2913</TD><TD>8.602</TD><TD>-2585</TD><TD>BDH-BH1-BH2-BHZ (62.5 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A422A</TD><TD>2017/06/23</TD><TD>2018/02/23</TD><TD>41.9439</TD><TD>6.4101</TD><TD>-2545</TD><TD>BDH-BH1-BH2-BHZ (62.5 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A425A</TD><TD>2017/06/24</TD><TD>2018/02/21</TD><TD>42.6478</TD><TD>8.0738</TD><TD>-2708</TD><TD>BDH-BH1-BH2-BHZ (62.5 Hz) <br></TD></TR><TR><TD>Z3</TD><TD>A429A</TD><TD>2017/06/25</TD><TD>2018/02/22</TD><TD>41.9447</TD><TD>7.5188</TD><TD>-2766</TD><TD>BDH-BH1-BH2-BHZ (62.5 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>A413A A416A</TD><TD>BDH</TD><TD>62.5</TD><TD>Differential Pascals Gauge</TD></TR><TR><TD>A401A A419A A422A A425A</TD><TD>BDH</TD><TD>62.5</TD><TD>Differential Pressure Gauge</TD></TR><TR><TD>A429A</TD><TD>BDH</TD><TD>62.5</TD><TD>Differential pressure Gauge</TD></TR><TR><TD>A401A A413A A416A A419A A422A A425A A429A</TD><TD>BH1</TD><TD>62.5</TD><TD>Trillium T240 single-sided</TD></TR><TR><TD>A401A A413A A416A A419A A422A A425A A429A</TD><TD>BH2</TD><TD>62.5</TD><TD>Trillium T240 single-sided</TD></TR><TR><TD>A401A A413A A416A A419A A422A A425A A429A</TD><TD>BHZ</TD><TD>62.5</TD><TD>Trillium T240 single-sided</TD></TR><TR><TD>A414A A409A A404A A417A A428A A420A A402A A421A A418A A415A A434A A405A A423A A412A A406A A430A</TD><TD>CDH</TD><TD>250.0</TD><TD>Hydrophone</TD></TR><TR><TD>A414A A409A A404A A417A A428A A420A A402A A421A A418A A415A A434A A405A A423A A412A A406A A430A</TD><TD>CH1</TD><TD>250.0</TD><TD>Broadband Ocean Bottom Seismometer</TD></TR><TR><TD>A414A A409A A404A A417A A428A A420A A402A A421A A418A A415A A434A A405A A423A A412A A406A A430A</TD><TD>CH2</TD><TD>250.0</TD><TD>Broadband Ocean Bottom Seismometer</TD></TR><TR><TD>A414A A409A A404A A417A A428A A420A A402A A421A A418A A415A A434A A405A A423A A412A A406A A430A</TD><TD>CHZ</TD><TD>250.0</TD><TD>Broadband Ocean Bottom Seismometer</TD></TR><TR><TD>A410A</TD><TD>HDH</TD><TD>100.0</TD><TD>E-2PD High Pressure Hydrophone by OAS</TD></TR><TR><TD>A410A</TD><TD>HH1</TD><TD>100.0</TD><TD>TRILLIUM-Compact broad band triaxial sensor by Na</TD></TR><TR><TD>A410A</TD><TD>HH2</TD><TD>100.0</TD><TD>TRILLIUM-Compact broad band triaxial sensor by Na</TD></TR><TR><TD>A410A</TD><TD>HHZ</TD><TD>100.0</TD><TD>TRILLIUM-Compact broad band triaxial sensor by Na</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_67e026c0c251238667d9819b0cf2233f = L.map(
+                "map_67e026c0c251238667d9819b0cf2233f",
+                {
+                    center: [42.54964319999999, 6.788448400000005],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_7a7a7c8c04ee46283786d41702d77170 = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var circle_marker_eec319d017bd96ab2c8991ac4da25976 = L.circleMarker(
+                [42.178267, 5.858317],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_eec319d017bd96ab2c8991ac4da25976.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A414A <br> <b>Dates: </b>2017/06/15 to 2018/02/15  <br><br><b>Depth: </b> -2463 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c08270bfbcaf030003c9cbac2c91ba68 = L.marker(
+                [42.178267, 5.858317],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_454b7e8993fe1d4a4d7326bb9f9f59f5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA414A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c08270bfbcaf030003c9cbac2c91ba68.setIcon(div_icon_454b7e8993fe1d4a4d7326bb9f9f59f5);
+        
+    
+            var circle_marker_be9ccfc27805d9dd993bfa468cc71b1f = L.circleMarker(
+                [43.348183, 7.516717],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_be9ccfc27805d9dd993bfa468cc71b1f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A409A <br> <b>Dates: </b>2017/06/17 to 2018/02/17  <br><br><b>Depth: </b> -1981 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4624b4ae63939cad776a10475bc581ee = L.marker(
+                [43.348183, 7.516717],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_f2c093a98c7ada2823277264707d6cfa = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA409A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4624b4ae63939cad776a10475bc581ee.setIcon(div_icon_f2c093a98c7ada2823277264707d6cfa);
+        
+    
+            var circle_marker_7bb3cd2461196fa810313398c521d7c8 = L.circleMarker(
+                [42.17825, 5.019267],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_7bb3cd2461196fa810313398c521d7c8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A404A <br> <b>Dates: </b>2017/06/19 to 2018/02/15  <br><br><b>Depth: </b> -2013 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2907ee375bbab582408ccfe7c5bdc50b = L.marker(
+                [42.17825, 5.019267],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_5cc71019c4c72c4a720766f197a1f29f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA404A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2907ee375bbab582408ccfe7c5bdc50b.setIcon(div_icon_5cc71019c4c72c4a720766f197a1f29f);
+        
+    
+            var circle_marker_3a0b6d594a7f550223871b7eee447aa6 = L.circleMarker(
+                [42.879617, 7.517817],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_3a0b6d594a7f550223871b7eee447aa6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A417A <br> <b>Dates: </b>2017/06/17 to 2018/02/17  <br><br><b>Depth: </b> -2677 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c5c3cc3d55caeac12f21a8435bfae943 = L.marker(
+                [42.879617, 7.517817],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_fc3c4914439e3fda4ad89d2a7f08c0ad = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA417A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c5c3cc3d55caeac12f21a8435bfae943.setIcon(div_icon_fc3c4914439e3fda4ad89d2a7f08c0ad);
+        
+    
+            var circle_marker_7a2350acae32a4a33b1cffab7f5d9427 = L.circleMarker(
+                [41.710233, 6.963833],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_7a2350acae32a4a33b1cffab7f5d9427.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A428A <br> <b>Dates: </b>2017/06/16 to 2018/02/23  <br><br><b>Depth: </b> -2734 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9074796c4974c61aec4bda44183e2008 = L.marker(
+                [41.710233, 6.963833],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_9347bac94c72d72040dd7b7ddb781f6f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA428A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9074796c4974c61aec4bda44183e2008.setIcon(div_icon_9347bac94c72d72040dd7b7ddb781f6f);
+        
+    
+            var circle_marker_a8975b7900e7e6d83fe6530ee64d5f66 = L.circleMarker(
+                [43.453733, 9.195483],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_a8975b7900e7e6d83fe6530ee64d5f66.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A420A <br> <b>Dates: </b>2017/06/24 to 2018/02/20  <br><br><b>Depth: </b> -1354 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_798b2035a6ac087e83e421bdbb8d63f9 = L.marker(
+                [43.453733, 9.195483],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_2e6f64521cb41073a7147b9d7b63b10c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA420A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_798b2035a6ac087e83e421bdbb8d63f9.setIcon(div_icon_2e6f64521cb41073a7147b9d7b63b10c);
+        
+    
+            var circle_marker_5e11a3dce3e7a2f0006e8ee18f011ac8 = L.circleMarker(
+                [42.87933, 5.3005],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_5e11a3dce3e7a2f0006e8ee18f011ac8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A402A <br> <b>Dates: </b>2017/06/19 to 2018/02/16  <br><br><b>Depth: </b> -1632 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_531800cf1ed933ee81a0b6d350568840 = L.marker(
+                [42.87933, 5.3005],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_b2453307cd1b6563c89422ffcb48bd0f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA402A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_531800cf1ed933ee81a0b6d350568840.setIcon(div_icon_b2453307cd1b6563c89422ffcb48bd0f);
+        
+    
+            var circle_marker_c8f4674cca4ef39f21240110017c528e = L.circleMarker(
+                [41.7153, 5.849967],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_c8f4674cca4ef39f21240110017c528e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A421A <br> <b>Dates: </b>2017/06/16 to 2018/02/15  <br><br><b>Depth: </b> -2525 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_083330eb8df9536b4b89a0fd1640449c = L.marker(
+                [41.7153, 5.849967],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_dfae93a0364c9cc96a6eff4aa3365bb0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA421A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_083330eb8df9536b4b89a0fd1640449c.setIcon(div_icon_dfae93a0364c9cc96a6eff4aa3365bb0);
+        
+    
+            var circle_marker_3f1974c9cafe9688066a1b38e28a5af6 = L.circleMarker(
+                [42.999917, 8.0709],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_3f1974c9cafe9688066a1b38e28a5af6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A418A <br> <b>Dates: </b>2017/06/19 to 2018/02/17  <br><br><b>Depth: </b> -2632 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d957687f15689ebcd0e6637b123ac485 = L.marker(
+                [42.999917, 8.0709],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_0b67ed0b34832cbba1c108f87e355f08 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA418A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d957687f15689ebcd0e6637b123ac485.setIcon(div_icon_0b67ed0b34832cbba1c108f87e355f08);
+        
+    
+            var circle_marker_ecea520df1cc72a4fde59fa6c125d8ab = L.circleMarker(
+                [42.4119, 6.410933],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_ecea520df1cc72a4fde59fa6c125d8ab.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A415A <br> <b>Dates: </b>2017/06/15 to 2018/02/16  <br><br><b>Depth: </b> -2595 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0cdba93fed092375d25e624637725361 = L.marker(
+                [42.4119, 6.410933],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_dbbbae1704dfc7eada9330a7329e2c53 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA415A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0cdba93fed092375d25e624637725361.setIcon(div_icon_dbbbae1704dfc7eada9330a7329e2c53);
+        
+    
+            var circle_marker_c31ef2096d0682d042a8f96d037b5916 = L.circleMarker(
+                [43.850317, 9.229867],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_c31ef2096d0682d042a8f96d037b5916.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A434A <br> <b>Dates: </b>2017/06/24 to 2018/02/20  <br><br><b>Depth: </b> -1133 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ecbaa7ae3378de81b73bd53bdb3b5541 = L.marker(
+                [43.850317, 9.229867],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_1c8e7ded2ad847259f9cee3e53a1eabb = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA434A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ecbaa7ae3378de81b73bd53bdb3b5541.setIcon(div_icon_1c8e7ded2ad847259f9cee3e53a1eabb);
+        
+    
+            var circle_marker_6a9f5b0396aec54d496d5141f865263a = L.circleMarker(
+                [42.411567, 5.30365],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_6a9f5b0396aec54d496d5141f865263a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A405A <br> <b>Dates: </b>2017/06/15 to 2018/02/15  <br><br><b>Depth: </b> -2192 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3da5ed90efb0b62ab7aa52a16540590a = L.marker(
+                [42.411567, 5.30365],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_44126e00e0b5f6146c4d73c507b08db7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA405A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3da5ed90efb0b62ab7aa52a16540590a.setIcon(div_icon_44126e00e0b5f6146c4d73c507b08db7);
+        
+    
+            var circle_marker_0d37205232f48f4415d23aae953953c2 = L.circleMarker(
+                [42.1784, 6.96405],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_0d37205232f48f4415d23aae953953c2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A423A <br> <b>Dates: </b>2017/06/18 to 2018/02/16  <br><br><b>Depth: </b> -2706 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0934884ecf9dcb78c73e693ba40d6a4a = L.marker(
+                [42.1784, 6.96405],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_21929c5cd3576de0670b5d76682beeb6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA423A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0934884ecf9dcb78c73e693ba40d6a4a.setIcon(div_icon_21929c5cd3576de0670b5d76682beeb6);
+        
+    
+            var circle_marker_0f919fa3e5c73784ded35b136c14b192 = L.circleMarker(
+                [41.647583, 4.744833],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_0f919fa3e5c73784ded35b136c14b192.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A412A <br> <b>Dates: </b>2017/06/15 to 2018/02/12  <br><br><b>Depth: </b> -2519 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_39c5215879a759d1e196adb8993b3489 = L.marker(
+                [41.647583, 4.744833],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_ac0d7b464a171a252fcc7dddc6cd8852 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA412A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_39c5215879a759d1e196adb8993b3489.setIcon(div_icon_ac0d7b464a171a252fcc7dddc6cd8852);
+        
+    
+            var circle_marker_66fe41746a1097eef14525ac145c6c58 = L.circleMarker(
+                [42.646667, 5.856667],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_66fe41746a1097eef14525ac145c6c58.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A406A <br> <b>Dates: </b>2017/06/22 to 2018/04/25  <br><br><b>Depth: </b> -2399 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9048d67d7bae1ddc6c366d5e1974ccb7 = L.marker(
+                [42.646667, 5.856667],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_f514d8b96bcd8d4b6c48bb75b44ec7e3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA406A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9048d67d7bae1ddc6c366d5e1974ccb7.setIcon(div_icon_f514d8b96bcd8d4b6c48bb75b44ec7e3);
+        
+    
+            var circle_marker_57c92d581408852732908b043a478c06 = L.circleMarker(
+                [42.1779, 7.980917],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_57c92d581408852732908b043a478c06.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A430A <br> <b>Dates: </b>2017/06/17 to 2018/02/16  <br><br><b>Depth: </b> -2752 m <br> <br> <b>Channels:</b><br> CDH-CH1-CH2-CHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_69c7de3c09b28797125e881367892792 = L.marker(
+                [42.1779, 7.980917],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_acdf5fa0d5f5b33350c5aa29c52928fe = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA430A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_69c7de3c09b28797125e881367892792.setIcon(div_icon_acdf5fa0d5f5b33350c5aa29c52928fe);
+        
+    
+            var circle_marker_86477e97a876cbd0a39214a87d7f27f9 = L.circleMarker(
+                [42.647, 5.0198],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_86477e97a876cbd0a39214a87d7f27f9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A401A <br> <b>Dates: </b>2017/06/22 to 2018/02/16  <br><br><b>Depth: </b> -1619 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (62.5 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_beb19a2ba8e035b38041760910d92eb9 = L.marker(
+                [42.647, 5.0198],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_891224c39d05efccb3b3425ac3c6605c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA401A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_beb19a2ba8e035b38041760910d92eb9.setIcon(div_icon_891224c39d05efccb3b3425ac3c6605c);
+        
+    
+            var circle_marker_cbb326ba2c5af113bbb9418aa1f2a738 = L.circleMarker(
+                [43.5866, 8.0732],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_cbb326ba2c5af113bbb9418aa1f2a738.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A410A <br> <b>Dates: </b>2017/04/25 to 2017/11/27  <br><br><b>Depth: </b> -2423 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4b1e257739872d9ecdb71457d27f05e4 = L.marker(
+                [43.5866, 8.0732],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_f21ba1d09a73e7329e7c3afe082c7fa8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA410A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4b1e257739872d9ecdb71457d27f05e4.setIcon(div_icon_f21ba1d09a73e7329e7c3afe082c7fa8);
+        
+    
+            var circle_marker_f96e3975ec8f5aae6ffce203b58a7515 = L.circleMarker(
+                [41.9422, 5.3101],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_f96e3975ec8f5aae6ffce203b58a7515.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A413A <br> <b>Dates: </b>2017/06/23 to 2018/02/15  <br><br><b>Depth: </b> -2293 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (62.5 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_979009702e90276363842fca12b7dc17 = L.marker(
+                [41.9422, 5.3101],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_ce046b4bed3cfcec40fe3f3cd2ece8a0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA413A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_979009702e90276363842fca12b7dc17.setIcon(div_icon_ce046b4bed3cfcec40fe3f3cd2ece8a0);
+        
+    
+            var circle_marker_e0cce1e198243dca71aea6433bbbf7df = L.circleMarker(
+                [42.6479, 6.9627],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_e0cce1e198243dca71aea6433bbbf7df.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A416A <br> <b>Dates: </b>2017/06/26 to 2018/02/17  <br><br><b>Depth: </b> -2631 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (62.5 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ef6993c1c560424f2f0cd0d4baa336e3 = L.marker(
+                [42.6479, 6.9627],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_937cc0ad887152c6dd7e45a6d0901b15 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA416A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ef6993c1c560424f2f0cd0d4baa336e3.setIcon(div_icon_937cc0ad887152c6dd7e45a6d0901b15);
+        
+    
+            var circle_marker_dac4dceee9033854beef7b1892c35cc3 = L.circleMarker(
+                [43.2913, 8.602],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_dac4dceee9033854beef7b1892c35cc3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A419A <br> <b>Dates: </b>2017/06/25 to 2018/02/19  <br><br><b>Depth: </b> -2585 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (62.5 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_170707a0122f2b41c51469eea99783ab = L.marker(
+                [43.2913, 8.602],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_aef1c171e64586fbe90257da1d7b6dd5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA419A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_170707a0122f2b41c51469eea99783ab.setIcon(div_icon_aef1c171e64586fbe90257da1d7b6dd5);
+        
+    
+            var circle_marker_9641c6ffaf86140429f46a005d7de54d = L.circleMarker(
+                [41.9439, 6.4101],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_9641c6ffaf86140429f46a005d7de54d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A422A <br> <b>Dates: </b>2017/06/23 to 2018/02/23  <br><br><b>Depth: </b> -2545 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (62.5 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d45ec793bb9360adffb7f8f1d8dab051 = L.marker(
+                [41.9439, 6.4101],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_6ca28204714c26bcae433bffd3beb2f0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA422A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d45ec793bb9360adffb7f8f1d8dab051.setIcon(div_icon_6ca28204714c26bcae433bffd3beb2f0);
+        
+    
+            var circle_marker_aef2e1253a28019957c435ef96516562 = L.circleMarker(
+                [42.6478, 8.0738],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_aef2e1253a28019957c435ef96516562.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A425A <br> <b>Dates: </b>2017/06/24 to 2018/02/21  <br><br><b>Depth: </b> -2708 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (62.5 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d3b494e9bae1c6bf71aeec3520f0799b = L.marker(
+                [42.6478, 8.0738],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_5a91863d6409ea9c5c42f2326f9604c8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA425A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d3b494e9bae1c6bf71aeec3520f0799b.setIcon(div_icon_5a91863d6409ea9c5c42f2326f9604c8);
+        
+    
+            var circle_marker_84e8733362eeeb948a4f37c0ebc0859a = L.circleMarker(
+                [41.9447, 7.5188],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f80700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            circle_marker_84e8733362eeeb948a4f37c0ebc0859a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z3 <br> <b>Station:</b> A429A <br> <b>Dates: </b>2017/06/25 to 2018/02/22  <br><br><b>Depth: </b> -2766 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (62.5 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.12686/alparray/z3_2015 <br><br> <b>Net name: </b> AlpArray <br><br> <b>Operator: </b>  Eidgendssisch Technische Hochschule (ETH Zurich) - Swiss Seismological Service</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4d3ad086d91a190b76a5a3a6a3895968 = L.marker(
+                [41.9447, 7.5188],
+                {}
+            ).addTo(map_67e026c0c251238667d9819b0cf2233f);
+        
+    
+            var div_icon_867e1e8fd0360fa0f3985d62eeeb8218 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA429A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4d3ad086d91a190b76a5a3a6a3895968.setIcon(div_icon_867e1e8fd0360fa0f3985d62eeeb8218);
+        
+    
+            map_67e026c0c251238667d9819b0cf2233f.fitBounds(
+                [[41.647583, 4.744833], [43.850317, 9.229867]],
+                {}
+            );
+        </script>
+
+</html>

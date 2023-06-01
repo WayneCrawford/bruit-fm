@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_c8723880df72f63db2fcc598641dc6d4 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network ZT: Testing of a Deep-Water, Acoustically-Linked, Moored- Buoy Seafloor Observatory </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   IRIS HQ (DC)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Nov 2003 to Jan 2004</p>
+		<p id="net_header", class="headerDoi">DOI: <a href=""></a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_c8723880df72f63db2fcc598641dc6d4" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>ZT</TD><TD>ALST0</TD><TD>2003/11/19</TD><TD>2004/01/19</TD><TD>39.272598</TD><TD>-70.055199</TD><TD>-2645</TD><TD>BDH-BH1-BH2-BHZ-BLZ-SHE-SHN (40.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>ALST0</TD><TD>BDH</TD><TD>40.0</TD><TD>SIO Differential Pressure Gauge/Quanterra Q330 Lin</TD></TR><TR><TD>ALST0</TD><TD>BH1</TD><TD>40.0</TD><TD>Mark Products L-4C/Quanterra Q330 Linear Phase Bel</TD></TR><TR><TD>ALST0</TD><TD>BH2</TD><TD>40.0</TD><TD>Mark Products L-4C/Quanterra Q330 Linear Phase Bel</TD></TR><TR><TD>ALST0</TD><TD>BHZ</TD><TD>40.0</TD><TD>Mark Products L-4C/Quanterra Q330 Linear Phase Bel</TD></TR><TR><TD>ALST0</TD><TD>BLZ</TD><TD>40.0</TD><TD>Mark Products L-4C/Quanterra Q330 Linear Phase Bel</TD></TR><TR><TD>ALST0</TD><TD>LDH</TD><TD>1.0</TD><TD>SIO Differential Pressure Gauge/Quanterra Q330 Lin</TD></TR><TR><TD>ALST0</TD><TD>LH1</TD><TD>1.0</TD><TD>Mark Products L-4C/Quanterra Q330 Linear Phase Bel</TD></TR><TR><TD>ALST0</TD><TD>LH2</TD><TD>1.0</TD><TD>Mark Products L-4C/Quanterra Q330 Linear Phase Bel</TD></TR><TR><TD>ALST0</TD><TD>LHZ</TD><TD>1.0</TD><TD>Mark Products L-4C/Quanterra Q330 Linear Phase Bel</TD></TR><TR><TD>ALST0</TD><TD>SHE</TD><TD>40.0</TD><TD>Mark Products L-4C/Quanterra Q330 Linear Phase Bel</TD></TR><TR><TD>ALST0</TD><TD>SHN</TD><TD>40.0</TD><TD>Mark Products L-4C/Quanterra Q330 Linear Phase Bel</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_c8723880df72f63db2fcc598641dc6d4 = L.map(
+                "map_c8723880df72f63db2fcc598641dc6d4",
+                {
+                    center: [39.27259800000001, -70.055199],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_8343644232dcf4b9a85c8f627cbc2e1a = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_c8723880df72f63db2fcc598641dc6d4);
+        
+    
+            var circle_marker_e08d4b00fdf3959b348670e4a0fd9aa7 = L.circleMarker(
+                [39.272598, -70.055199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#dc0023", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c8723880df72f63db2fcc598641dc6d4);
+        
+    
+            circle_marker_e08d4b00fdf3959b348670e4a0fd9aa7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZT <br> <b>Station:</b> ALST0 <br> <b>Dates: </b>2003/11/19 to 2004/01/19  <br><br><b>Depth: </b> -2645 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ-BLZ-SHE-SHN (40.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Testing of a Deep-Water, Acoustically-Linked, Moored- Buoy Seafloor Observatory <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_47ff273de7a42be405c06ced8d482c68 = L.marker(
+                [39.272598, -70.055199],
+                {}
+            ).addTo(map_c8723880df72f63db2fcc598641dc6d4);
+        
+    
+            var div_icon_9262aa44f32210056f216044f25aa7c0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eALST0\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_47ff273de7a42be405c06ced8d482c68.setIcon(div_icon_9262aa44f32210056f216044f25aa7c0);
+        
+    
+            map_c8723880df72f63db2fcc598641dc6d4.fitBounds(
+                [[39.272598, -70.055199], [39.272598, -70.055199]],
+                {}
+            );
+        </script>
+
+</html>

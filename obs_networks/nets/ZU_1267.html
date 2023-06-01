@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_e72b315b02db1e86d1534b04cb9380bc {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network ZU: Marine Observations of Anisotropy near Aotearoa </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Woods Hole Oceanographic Institution (WHOI)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Jan 2009 to Feb 2010</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/ZU_2009">https://doi.org/10.7914/SN/ZU_2009</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_e72b315b02db1e86d1534b04cb9380bc" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>ZU</TD><TD>NZ01</TD><TD>2009/01/31</TD><TD>2010/02/04</TD><TD>-44.4981</TD><TD>165.001602</TD><TD>-4682</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ02</TD><TD>2009/02/01</TD><TD>2010/02/04</TD><TD>-43.998001</TD><TD>166.501099</TD><TD>-3816</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ03</TD><TD>2009/02/02</TD><TD>2010/02/05</TD><TD>-43.001801</TD><TD>165.999496</TD><TD>-4225</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ04</TD><TD>2009/02/02</TD><TD>2010/02/06</TD><TD>-41.999298</TD><TD>165.502396</TD><TD>-4470</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ05</TD><TD>2009/02/03</TD><TD>2010/01/29</TD><TD>-40.6493</TD><TD>167.251007</TD><TD>-1188</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ06</TD><TD>2009/02/03</TD><TD>2010/01/29</TD><TD>-39.749802</TD><TD>168.001099</TD><TD>-859</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ07</TD><TD>2009/02/03</TD><TD>2010/01/29</TD><TD>-40.250099</TD><TD>169.000305</TD><TD>-852</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ08</TD><TD>2009/02/04</TD><TD>2010/01/30</TD><TD>-40.999802</TD><TD>168.501099</TD><TD>-995</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ09</TD><TD>2009/02/04</TD><TD>2010/02/01</TD><TD>-41.6507</TD><TD>167.899796</TD><TD>-1335</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ10</TD><TD>2009/02/04</TD><TD>2010/02/05</TD><TD>-43.200699</TD><TD>168.000397</TD><TD>-1193</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ11</TD><TD>2009/02/04</TD><TD>2010/02/02</TD><TD>-43.299999</TD><TD>168.850204</TD><TD>-911</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ12</TD><TD>2009/02/05</TD><TD>2010/02/02</TD><TD>-43.001701</TD><TD>169.598602</TD><TD>-625</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ13</TD><TD>2009/02/05</TD><TD>2010/02/01</TD><TD>-42.499699</TD><TD>169.0</TD><TD>-1165</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ14</TD><TD>2009/02/06</TD><TD>2010/01/31</TD><TD>-42.6506</TD><TD>169.949997</TD><TD>-633</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ15</TD><TD>2009/02/06</TD><TD>2009/06/18</TD><TD>-42.1506</TD><TD>170.399597</TD><TD>-561</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ16</TD><TD>2009/02/06</TD><TD>2010/01/30</TD><TD>-41.749901</TD><TD>169.2491</TD><TD>-1063</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ18</TD><TD>2009/02/07</TD><TD>2010/01/28</TD><TD>-41.000198</TD><TD>170.0</TD><TD>-805</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ19</TD><TD>2009/02/08</TD><TD>2010/01/27</TD><TD>-40.750198</TD><TD>170.900406</TD><TD>-549</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ20</TD><TD>2009/02/08</TD><TD>2010/01/27</TD><TD>-40.199501</TD><TD>170.750305</TD><TD>-714</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ21</TD><TD>2009/02/08</TD><TD>2010/01/27</TD><TD>-39.5005</TD><TD>170.000107</TD><TD>-676</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ22</TD><TD>2009/02/12</TD><TD>2010/02/14</TD><TD>-44.500599</TD><TD>173.998703</TD><TD>-776</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ23</TD><TD>2009/02/12</TD><TD>2010/02/12</TD><TD>-45.149399</TD><TD>174.852005</TD><TD>-1091</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ24</TD><TD>2009/02/14</TD><TD>2010/02/12</TD><TD>-45.498402</TD><TD>176.002594</TD><TD>-1507</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ25</TD><TD>2009/02/15</TD><TD>2010/02/12</TD><TD>-45.997799</TD><TD>174.750397</TD><TD>-1727</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ26</TD><TD>2009/02/15</TD><TD>2010/02/11</TD><TD>-46.997898</TD><TD>174.498398</TD><TD>-1316</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ27</TD><TD>2009/02/16</TD><TD>2010/02/11</TD><TD>-46.500702</TD><TD>173.249695</TD><TD>-1544</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ28</TD><TD>2009/02/16</TD><TD>2010/02/11</TD><TD>-45.963902</TD><TD>171.751404</TD><TD>-1328</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ29</TD><TD>2009/02/17</TD><TD>2010/02/13</TD><TD>-45.247398</TD><TD>172.253494</TD><TD>-1383</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZU</TD><TD>NZ30</TD><TD>2009/02/17</TD><TD>2010/02/13</TD><TD>-45.498001</TD><TD>173.501007</TD><TD>-1416</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>NZ01 NZ02 NZ03 NZ04 NZ05 NZ06 NZ07 NZ08 NZ09 NZ10 NZ11 NZ12 NZ13 NZ14 NZ15 NZ16 NZ18 NZ19 NZ20 NZ21 NZ22 NZ23 NZ24 NZ25 NZ26 NZ27 NZ28 NZ29 NZ30</TD><TD>BDH</TD><TD>50.0</TD><TD>Differential Pressure Gauge OBSIP-SIO/LCheapo2000</TD></TR><TR><TD>NZ01 NZ02 NZ03 NZ04 NZ05 NZ06 NZ07 NZ08 NZ09 NZ10 NZ11 NZ12 NZ13 NZ15 NZ16 NZ18 NZ19 NZ20 NZ21 NZ22 NZ23 NZ24 NZ25 NZ26 NZ27 NZ28 NZ29 NZ30</TD><TD>BH1</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Single-Sided/LCheapo2000</TD></TR><TR><TD>NZ14</TD><TD>BH1</TD><TD>50.0</TD><TD>Nanometrics Trillium 40 Single Sided/LCheapo2000 D</TD></TR><TR><TD>NZ01 NZ02 NZ03 NZ04 NZ05 NZ06 NZ07 NZ08 NZ09 NZ10 NZ11 NZ12 NZ13 NZ15 NZ16 NZ18 NZ19 NZ20 NZ21 NZ22 NZ23 NZ24 NZ25 NZ26 NZ27 NZ28 NZ29 NZ30</TD><TD>BH2</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Single-Sided/LCheapo2000</TD></TR><TR><TD>NZ14</TD><TD>BH2</TD><TD>50.0</TD><TD>Nanometrics Trillium 40 Single Sided/LCheapo2000 D</TD></TR><TR><TD>NZ01 NZ02 NZ03 NZ04 NZ05 NZ06 NZ07 NZ08 NZ09 NZ10 NZ11 NZ12 NZ13 NZ15 NZ16 NZ18 NZ19 NZ20 NZ21 NZ22 NZ23 NZ24 NZ25 NZ26 NZ27 NZ28 NZ29 NZ30</TD><TD>BHZ</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Single-Sided/LCheapo2000</TD></TR><TR><TD>NZ14</TD><TD>BHZ</TD><TD>50.0</TD><TD>Nanometrics Trillium 40 Single Sided/LCheapo2000 D</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_e72b315b02db1e86d1534b04cb9380bc = L.map(
+                "map_e72b315b02db1e86d1534b04cb9380bc",
+                {
+                    center: [-43.039813758620745, 170.17980382758603],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_20635eb7a0acb2ec1267094c0ccf2ef5 = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var circle_marker_29f37bad295e24c4f8135e6b22d25f0e = L.circleMarker(
+                [-44.4981, 165.001602],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_29f37bad295e24c4f8135e6b22d25f0e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ01 <br> <b>Dates: </b>2009/01/31 to 2010/02/04  <br><br><b>Depth: </b> -4682 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1f36ccd3bc42dd2d6cf0a6a8c3a19f56 = L.marker(
+                [-44.4981, 165.001602],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_4914a03d1137a70187c3d73a817249a3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1f36ccd3bc42dd2d6cf0a6a8c3a19f56.setIcon(div_icon_4914a03d1137a70187c3d73a817249a3);
+        
+    
+            var circle_marker_97422d35bdc52faaaf45c1ec14476400 = L.circleMarker(
+                [-43.998001, 166.501099],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_97422d35bdc52faaaf45c1ec14476400.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ02 <br> <b>Dates: </b>2009/02/01 to 2010/02/04  <br><br><b>Depth: </b> -3816 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3384508a2f5164e7ef1dce4c8e208c49 = L.marker(
+                [-43.998001, 166.501099],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_8390145e3e6efc4c05d738511d4693f8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3384508a2f5164e7ef1dce4c8e208c49.setIcon(div_icon_8390145e3e6efc4c05d738511d4693f8);
+        
+    
+            var circle_marker_790fe9b9884705330b970320ef817e37 = L.circleMarker(
+                [-43.001801, 165.999496],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_790fe9b9884705330b970320ef817e37.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ03 <br> <b>Dates: </b>2009/02/02 to 2010/02/05  <br><br><b>Depth: </b> -4225 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fb343ce6638ff5b67298ea648dcfd0ed = L.marker(
+                [-43.001801, 165.999496],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_9a7f80a187e6a3e55f05603d003b0e69 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fb343ce6638ff5b67298ea648dcfd0ed.setIcon(div_icon_9a7f80a187e6a3e55f05603d003b0e69);
+        
+    
+            var circle_marker_85c71b23cec2efa60215b0c32b849172 = L.circleMarker(
+                [-41.999298, 165.502396],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_85c71b23cec2efa60215b0c32b849172.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ04 <br> <b>Dates: </b>2009/02/02 to 2010/02/06  <br><br><b>Depth: </b> -4470 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e7d62c0fa82bf68d285bf93cf886cb2f = L.marker(
+                [-41.999298, 165.502396],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_b84d456d845c75b25d15b75514f46493 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e7d62c0fa82bf68d285bf93cf886cb2f.setIcon(div_icon_b84d456d845c75b25d15b75514f46493);
+        
+    
+            var circle_marker_e64af885ac1670c4e1c22197b3975898 = L.circleMarker(
+                [-40.6493, 167.251007],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_e64af885ac1670c4e1c22197b3975898.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ05 <br> <b>Dates: </b>2009/02/03 to 2010/01/29  <br><br><b>Depth: </b> -1188 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_52f575109f81b5652929c712ea907f34 = L.marker(
+                [-40.6493, 167.251007],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_625c7aa8a993831c5ccad6876620e56c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_52f575109f81b5652929c712ea907f34.setIcon(div_icon_625c7aa8a993831c5ccad6876620e56c);
+        
+    
+            var circle_marker_31648e527b0be42d138608d4ed11e92d = L.circleMarker(
+                [-39.749802, 168.001099],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_31648e527b0be42d138608d4ed11e92d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ06 <br> <b>Dates: </b>2009/02/03 to 2010/01/29  <br><br><b>Depth: </b> -859 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1f63ca406a13e48722b26af5c7266a41 = L.marker(
+                [-39.749802, 168.001099],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_a4f9b46e6469f447a97fda28a0677b08 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1f63ca406a13e48722b26af5c7266a41.setIcon(div_icon_a4f9b46e6469f447a97fda28a0677b08);
+        
+    
+            var circle_marker_3400acb3837ca28deabc793cf87856ff = L.circleMarker(
+                [-40.250099, 169.000305],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_3400acb3837ca28deabc793cf87856ff.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ07 <br> <b>Dates: </b>2009/02/03 to 2010/01/29  <br><br><b>Depth: </b> -852 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_989ba52ce432db69def15f2ba87c16ea = L.marker(
+                [-40.250099, 169.000305],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_7b7abd87db86b64f773c3932b6ed0e20 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_989ba52ce432db69def15f2ba87c16ea.setIcon(div_icon_7b7abd87db86b64f773c3932b6ed0e20);
+        
+    
+            var circle_marker_ab6c9463995914270611457d2acae54c = L.circleMarker(
+                [-40.999802, 168.501099],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_ab6c9463995914270611457d2acae54c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ08 <br> <b>Dates: </b>2009/02/04 to 2010/01/30  <br><br><b>Depth: </b> -995 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3d725a4ed86f11f8aeed16364621f962 = L.marker(
+                [-40.999802, 168.501099],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_3e02da2d99939a2c1186a71245ebeee7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3d725a4ed86f11f8aeed16364621f962.setIcon(div_icon_3e02da2d99939a2c1186a71245ebeee7);
+        
+    
+            var circle_marker_2310bae7a97b66c0ac49a80b40274442 = L.circleMarker(
+                [-41.6507, 167.899796],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_2310bae7a97b66c0ac49a80b40274442.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ09 <br> <b>Dates: </b>2009/02/04 to 2010/02/01  <br><br><b>Depth: </b> -1335 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3cc6f36d6cad7f1a73e5705bdf52209e = L.marker(
+                [-41.6507, 167.899796],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_e196ed6233455efdde83bf4197a6b0ce = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3cc6f36d6cad7f1a73e5705bdf52209e.setIcon(div_icon_e196ed6233455efdde83bf4197a6b0ce);
+        
+    
+            var circle_marker_b7428c31ef7a50fc28bf2c88b24ac722 = L.circleMarker(
+                [-43.200699, 168.000397],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_b7428c31ef7a50fc28bf2c88b24ac722.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ10 <br> <b>Dates: </b>2009/02/04 to 2010/02/05  <br><br><b>Depth: </b> -1193 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_38335618726e102f5e6d674f618d8839 = L.marker(
+                [-43.200699, 168.000397],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_2b9f7a4a5c9c2412c2ed96ee264786ad = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_38335618726e102f5e6d674f618d8839.setIcon(div_icon_2b9f7a4a5c9c2412c2ed96ee264786ad);
+        
+    
+            var circle_marker_6144580583c1a84c2747d8c20f00921c = L.circleMarker(
+                [-43.299999, 168.850204],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_6144580583c1a84c2747d8c20f00921c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ11 <br> <b>Dates: </b>2009/02/04 to 2010/02/02  <br><br><b>Depth: </b> -911 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dd9fa784285c042b6f3485e996c38785 = L.marker(
+                [-43.299999, 168.850204],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_21e27c56a60aa231c10968e0a494158f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_dd9fa784285c042b6f3485e996c38785.setIcon(div_icon_21e27c56a60aa231c10968e0a494158f);
+        
+    
+            var circle_marker_33685edef1dacf2a4bab125ddaebc749 = L.circleMarker(
+                [-43.001701, 169.598602],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_33685edef1dacf2a4bab125ddaebc749.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ12 <br> <b>Dates: </b>2009/02/05 to 2010/02/02  <br><br><b>Depth: </b> -625 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d0cb5e78321e07de4b3eba3b2839d9ba = L.marker(
+                [-43.001701, 169.598602],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_f05793ca4daf9f6f6f10417881bfa1f9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d0cb5e78321e07de4b3eba3b2839d9ba.setIcon(div_icon_f05793ca4daf9f6f6f10417881bfa1f9);
+        
+    
+            var circle_marker_39532723d459aa57cbd4f1a09bd83510 = L.circleMarker(
+                [-42.499699, 169.0],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_39532723d459aa57cbd4f1a09bd83510.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ13 <br> <b>Dates: </b>2009/02/05 to 2010/02/01  <br><br><b>Depth: </b> -1165 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4959d286c560c1d8e0bf0e265706cf79 = L.marker(
+                [-42.499699, 169.0],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_03c3a024a778690f913963064e08ea4d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4959d286c560c1d8e0bf0e265706cf79.setIcon(div_icon_03c3a024a778690f913963064e08ea4d);
+        
+    
+            var circle_marker_d8d2d12c4614ea640c94c8f5192ea6bf = L.circleMarker(
+                [-42.6506, 169.949997],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_d8d2d12c4614ea640c94c8f5192ea6bf.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ14 <br> <b>Dates: </b>2009/02/06 to 2010/01/31  <br><br><b>Depth: </b> -633 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b9e9be338f4b6a9d1d2f28e45055c398 = L.marker(
+                [-42.6506, 169.949997],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_5348dcf64779fa5532ecac2e0e2d540e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b9e9be338f4b6a9d1d2f28e45055c398.setIcon(div_icon_5348dcf64779fa5532ecac2e0e2d540e);
+        
+    
+            var circle_marker_689800788169d6c3f9d650329c925d58 = L.circleMarker(
+                [-42.1506, 170.399597],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_689800788169d6c3f9d650329c925d58.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ15 <br> <b>Dates: </b>2009/02/06 to 2009/06/18  <br><br><b>Depth: </b> -561 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_109c4c046639f0d3a43151cdaa79fbbe = L.marker(
+                [-42.1506, 170.399597],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_55053cd4cadda5034f6bb4c73ec5535b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_109c4c046639f0d3a43151cdaa79fbbe.setIcon(div_icon_55053cd4cadda5034f6bb4c73ec5535b);
+        
+    
+            var circle_marker_54dcc6ac0a613555abeddcabd023a8a6 = L.circleMarker(
+                [-41.749901, 169.2491],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_54dcc6ac0a613555abeddcabd023a8a6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ16 <br> <b>Dates: </b>2009/02/06 to 2010/01/30  <br><br><b>Depth: </b> -1063 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ade137bb31691b73b27b075d727bd408 = L.marker(
+                [-41.749901, 169.2491],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_c887007c40c1f0c4e28bf491b078ea0a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ade137bb31691b73b27b075d727bd408.setIcon(div_icon_c887007c40c1f0c4e28bf491b078ea0a);
+        
+    
+            var circle_marker_091dacd6c6ec932878e002b8ecb72d9d = L.circleMarker(
+                [-41.000198, 170.0],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_091dacd6c6ec932878e002b8ecb72d9d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ18 <br> <b>Dates: </b>2009/02/07 to 2010/01/28  <br><br><b>Depth: </b> -805 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_95cd3e2bc5f60cc15e39acf8a5bcffaa = L.marker(
+                [-41.000198, 170.0],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_3da922f11aa3acb7766f35bff4849131 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_95cd3e2bc5f60cc15e39acf8a5bcffaa.setIcon(div_icon_3da922f11aa3acb7766f35bff4849131);
+        
+    
+            var circle_marker_2cb91f26d8ccba39e045cd3ec9ded19c = L.circleMarker(
+                [-40.750198, 170.900406],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_2cb91f26d8ccba39e045cd3ec9ded19c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ19 <br> <b>Dates: </b>2009/02/08 to 2010/01/27  <br><br><b>Depth: </b> -549 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_23838834823e6c199f46ec237561eeea = L.marker(
+                [-40.750198, 170.900406],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_3d323bfb393cfdc7386f5059dd013a85 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ19\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_23838834823e6c199f46ec237561eeea.setIcon(div_icon_3d323bfb393cfdc7386f5059dd013a85);
+        
+    
+            var circle_marker_48d65c543227e2b1d547a269dfd6cd10 = L.circleMarker(
+                [-40.199501, 170.750305],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_48d65c543227e2b1d547a269dfd6cd10.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ20 <br> <b>Dates: </b>2009/02/08 to 2010/01/27  <br><br><b>Depth: </b> -714 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_989df98f5730aa25d23e5b4007f1bdba = L.marker(
+                [-40.199501, 170.750305],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_31e8eb81c085802067f1a060d726fe26 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ20\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_989df98f5730aa25d23e5b4007f1bdba.setIcon(div_icon_31e8eb81c085802067f1a060d726fe26);
+        
+    
+            var circle_marker_ffeff0cc89801799467f613e9837cbc7 = L.circleMarker(
+                [-39.5005, 170.000107],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_ffeff0cc89801799467f613e9837cbc7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ21 <br> <b>Dates: </b>2009/02/08 to 2010/01/27  <br><br><b>Depth: </b> -676 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6114ae6f9d7115fbb7a0c1bdc20bc963 = L.marker(
+                [-39.5005, 170.000107],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_e21f8bd3172ac8ffb09a081bbaf3c48c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ21\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6114ae6f9d7115fbb7a0c1bdc20bc963.setIcon(div_icon_e21f8bd3172ac8ffb09a081bbaf3c48c);
+        
+    
+            var circle_marker_391819c736dfa203d4075b5235744c13 = L.circleMarker(
+                [-44.500599, 173.998703],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_391819c736dfa203d4075b5235744c13.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ22 <br> <b>Dates: </b>2009/02/12 to 2010/02/14  <br><br><b>Depth: </b> -776 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_07fb6acfa2659ff1ca7418eb2f7931b7 = L.marker(
+                [-44.500599, 173.998703],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_c131410e416f4de8b63ef6c233e08681 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ22\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_07fb6acfa2659ff1ca7418eb2f7931b7.setIcon(div_icon_c131410e416f4de8b63ef6c233e08681);
+        
+    
+            var circle_marker_d98d9995f4b15fa3a826891ed73a729c = L.circleMarker(
+                [-45.149399, 174.852005],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_d98d9995f4b15fa3a826891ed73a729c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ23 <br> <b>Dates: </b>2009/02/12 to 2010/02/12  <br><br><b>Depth: </b> -1091 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_12c1f446ddbe2d1eac76b6cbb76afa66 = L.marker(
+                [-45.149399, 174.852005],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_6699e73e6d4a2fa8b8924c5b9a236416 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ23\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_12c1f446ddbe2d1eac76b6cbb76afa66.setIcon(div_icon_6699e73e6d4a2fa8b8924c5b9a236416);
+        
+    
+            var circle_marker_c59fff7745933013d18d5b037804cfbb = L.circleMarker(
+                [-45.498402, 176.002594],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_c59fff7745933013d18d5b037804cfbb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ24 <br> <b>Dates: </b>2009/02/14 to 2010/02/12  <br><br><b>Depth: </b> -1507 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5fae1eeb3683d56299f5c7c4360a672b = L.marker(
+                [-45.498402, 176.002594],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_745129d318d4e4299e61cda36ed82726 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ24\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5fae1eeb3683d56299f5c7c4360a672b.setIcon(div_icon_745129d318d4e4299e61cda36ed82726);
+        
+    
+            var circle_marker_2d4a1999b1fbd32eb8876a9b12f6ad85 = L.circleMarker(
+                [-45.997799, 174.750397],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_2d4a1999b1fbd32eb8876a9b12f6ad85.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ25 <br> <b>Dates: </b>2009/02/15 to 2010/02/12  <br><br><b>Depth: </b> -1727 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8e115e3d0d0d381a8d898cfac72fbd64 = L.marker(
+                [-45.997799, 174.750397],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_9b6cd227a26fe1b36cbf302a89f4204d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ25\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8e115e3d0d0d381a8d898cfac72fbd64.setIcon(div_icon_9b6cd227a26fe1b36cbf302a89f4204d);
+        
+    
+            var circle_marker_4ee16c974c56cb5402b1c00e5f61f62c = L.circleMarker(
+                [-46.997898, 174.498398],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_4ee16c974c56cb5402b1c00e5f61f62c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ26 <br> <b>Dates: </b>2009/02/15 to 2010/02/11  <br><br><b>Depth: </b> -1316 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0572ec9b70374c38fc86fdc6266b49db = L.marker(
+                [-46.997898, 174.498398],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_50fed501d3aeea1ed1f57056ad594169 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ26\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0572ec9b70374c38fc86fdc6266b49db.setIcon(div_icon_50fed501d3aeea1ed1f57056ad594169);
+        
+    
+            var circle_marker_960c80215f6bb53937b277617fc090ab = L.circleMarker(
+                [-46.500702, 173.249695],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_960c80215f6bb53937b277617fc090ab.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ27 <br> <b>Dates: </b>2009/02/16 to 2010/02/11  <br><br><b>Depth: </b> -1544 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0cf6e9cdd7b9ad5236d58843b4aaa3c2 = L.marker(
+                [-46.500702, 173.249695],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_86e4d88bd842bb615bc09f25b0b194ec = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ27\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0cf6e9cdd7b9ad5236d58843b4aaa3c2.setIcon(div_icon_86e4d88bd842bb615bc09f25b0b194ec);
+        
+    
+            var circle_marker_24a5f93615ab08f5743f7f721caec0e3 = L.circleMarker(
+                [-45.963902, 171.751404],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_24a5f93615ab08f5743f7f721caec0e3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ28 <br> <b>Dates: </b>2009/02/16 to 2010/02/11  <br><br><b>Depth: </b> -1328 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_530d0111d8317bec31f3b43dab0d817d = L.marker(
+                [-45.963902, 171.751404],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_f6dc79f8ecbf872d3e5747a5d2fa3825 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ28\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_530d0111d8317bec31f3b43dab0d817d.setIcon(div_icon_f6dc79f8ecbf872d3e5747a5d2fa3825);
+        
+    
+            var circle_marker_009078b4e8e1857283790616f3d5bff7 = L.circleMarker(
+                [-45.247398, 172.253494],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_009078b4e8e1857283790616f3d5bff7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ29 <br> <b>Dates: </b>2009/02/17 to 2010/02/13  <br><br><b>Depth: </b> -1383 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cff5ca1b7c35da610fad66e5cdf18cc6 = L.marker(
+                [-45.247398, 172.253494],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_64e5a9178cb1ed227dc8c486ca092b64 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ29\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cff5ca1b7c35da610fad66e5cdf18cc6.setIcon(div_icon_64e5a9178cb1ed227dc8c486ca092b64);
+        
+    
+            var circle_marker_46573d184297a70e7ef5110ffc6b0a1a = L.circleMarker(
+                [-45.498001, 173.501007],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0000f", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            circle_marker_46573d184297a70e7ef5110ffc6b0a1a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZU <br> <b>Station:</b> NZ30 <br> <b>Dates: </b>2009/02/17 to 2010/02/13  <br><br><b>Depth: </b> -1416 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZU_2009 <br><br> <b>Net name: </b> Marine Observations of Anisotropy near Aotearoa <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_01a935f21614c1c9340dc978c6f342c6 = L.marker(
+                [-45.498001, 173.501007],
+                {}
+            ).addTo(map_e72b315b02db1e86d1534b04cb9380bc);
+        
+    
+            var div_icon_d124007972cb58d46c3ea69fed6fa7fb = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNZ30\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_01a935f21614c1c9340dc978c6f342c6.setIcon(div_icon_d124007972cb58d46c3ea69fed6fa7fb);
+        
+    
+            map_e72b315b02db1e86d1534b04cb9380bc.fitBounds(
+                [[-46.997898, 165.001602], [-39.5005, 176.002594]],
+                {}
+            );
+        </script>
+
+</html>

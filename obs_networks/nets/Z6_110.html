@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_329ba7232eb01b6880e1ae8afa8c588a {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network Z6: OBS survey of Kilauea's submarine south flank following the May 4, 2018 M6.9 earthquake and Lower East Rift Zone eruption </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Scripps Institution of Oceanography (SIO)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Jul 2018 to Sep 2018</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/Z6_2018">https://doi.org/10.7914/SN/Z6_2018</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_329ba7232eb01b6880e1ae8afa8c588a" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>Z6</TD><TD>KSFA</TD><TD>2018/07/09</TD><TD>2018/09/15</TD><TD>19.120199</TD><TD>-155.338898</TD><TD>-1540</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>KSFB</TD><TD>2018/07/10</TD><TD>2018/09/15</TD><TD>19.135799</TD><TD>-155.163193</TD><TD>-1811</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>KSFD</TD><TD>2018/07/10</TD><TD>2018/09/16</TD><TD>19.263201</TD><TD>-154.979706</TD><TD>-2200</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>KSFE</TD><TD>2018/07/10</TD><TD>2018/09/16</TD><TD>19.2526</TD><TD>-154.886002</TD><TD>-3100</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>KSFF</TD><TD>2018/07/10</TD><TD>2018/09/16</TD><TD>19.2321</TD><TD>-154.871704</TD><TD>-3300</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>KSFG</TD><TD>2018/07/10</TD><TD>2018/09/16</TD><TD>19.213499</TD><TD>-154.849594</TD><TD>-3800</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>KSFH</TD><TD>2018/07/11</TD><TD>2018/09/16</TD><TD>19.1945</TD><TD>-154.826294</TD><TD>-4800</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>KSFI</TD><TD>2018/07/11</TD><TD>2018/09/16</TD><TD>19.252199</TD><TD>-154.706696</TD><TD>-5000</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>KSFK</TD><TD>2018/07/12</TD><TD>2018/09/16</TD><TD>19.468399</TD><TD>-154.727295</TD><TD>-2000</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>KSFL</TD><TD>2018/07/12</TD><TD>2018/09/16</TD><TD>19.530001</TD><TD>-154.749802</TD><TD>-700</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>KSFA KSFB KSFD KSFE KSFF KSFG KSFH KSFI KSFK KSFL</TD><TD>EDH</TD><TD>200.0</TD><TD>HTI_90_U Hydrophone OBSIP-SIO/ABALONES</TD></TR><TR><TD>KSFA KSFB KSFD KSFE KSFF KSFG KSFH KSFI KSFK KSFL</TD><TD>EL1</TD><TD>200.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES</TD></TR><TR><TD>KSFA KSFB KSFD KSFE KSFF KSFG KSFH KSFI KSFK KSFL</TD><TD>EL2</TD><TD>200.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES</TD></TR><TR><TD>KSFA KSFB KSFD KSFE KSFF KSFG KSFH KSFI KSFK KSFL</TD><TD>ELZ</TD><TD>200.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_329ba7232eb01b6880e1ae8afa8c588a = L.map(
+                "map_329ba7232eb01b6880e1ae8afa8c588a",
+                {
+                    center: [19.266249699999996, -154.90991840000004],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_d5ed2ae69d7768e94c170f16fadb8213 = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            var circle_marker_eea8a7bcda927277f0e599a76b936927 = L.circleMarker(
+                [19.120199, -155.338898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f40b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            circle_marker_eea8a7bcda927277f0e599a76b936927.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> KSFA <br> <b>Dates: </b>2018/07/09 to 2018/09/15  <br><br><b>Depth: </b> -1540 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z6_2018 <br><br> <b>Net name: </b> OBS survey of Kilauea's submarine south flank following the May 4, 2018 M6.9 earthquake and Lower East Rift Zone eruption <br><br> <b>Operator: </b>  Scripps Institution of Oceanography (SIO)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6af1e1e169899e74904b4c29ccecc097 = L.marker(
+                [19.120199, -155.338898],
+                {}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            var div_icon_a79ff6274651fb303b1ebc1725b6abc3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eKSFA\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6af1e1e169899e74904b4c29ccecc097.setIcon(div_icon_a79ff6274651fb303b1ebc1725b6abc3);
+        
+    
+            var circle_marker_2418674a7fd07279d778fc2f9b58d1b3 = L.circleMarker(
+                [19.135799, -155.163193],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f40b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            circle_marker_2418674a7fd07279d778fc2f9b58d1b3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> KSFB <br> <b>Dates: </b>2018/07/10 to 2018/09/15  <br><br><b>Depth: </b> -1811 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z6_2018 <br><br> <b>Net name: </b> OBS survey of Kilauea's submarine south flank following the May 4, 2018 M6.9 earthquake and Lower East Rift Zone eruption <br><br> <b>Operator: </b>  Scripps Institution of Oceanography (SIO)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_11fd7c9d6fa4aab8e82bea651f1a132a = L.marker(
+                [19.135799, -155.163193],
+                {}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            var div_icon_30a5056b067b1bdcffba480336521185 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eKSFB\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_11fd7c9d6fa4aab8e82bea651f1a132a.setIcon(div_icon_30a5056b067b1bdcffba480336521185);
+        
+    
+            var circle_marker_8b09182b23ed5d2e8f72c769e4f373af = L.circleMarker(
+                [19.263201, -154.979706],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f40b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            circle_marker_8b09182b23ed5d2e8f72c769e4f373af.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> KSFD <br> <b>Dates: </b>2018/07/10 to 2018/09/16  <br><br><b>Depth: </b> -2200 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z6_2018 <br><br> <b>Net name: </b> OBS survey of Kilauea's submarine south flank following the May 4, 2018 M6.9 earthquake and Lower East Rift Zone eruption <br><br> <b>Operator: </b>  Scripps Institution of Oceanography (SIO)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_47dcbdd5b62d690f84b42538a53afd58 = L.marker(
+                [19.263201, -154.979706],
+                {}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            var div_icon_32986bc8d328096d55ce37ec08985f3c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eKSFD\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_47dcbdd5b62d690f84b42538a53afd58.setIcon(div_icon_32986bc8d328096d55ce37ec08985f3c);
+        
+    
+            var circle_marker_0b4e7a2f921466235437a9604eb0929e = L.circleMarker(
+                [19.2526, -154.886002],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f40b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            circle_marker_0b4e7a2f921466235437a9604eb0929e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> KSFE <br> <b>Dates: </b>2018/07/10 to 2018/09/16  <br><br><b>Depth: </b> -3100 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z6_2018 <br><br> <b>Net name: </b> OBS survey of Kilauea's submarine south flank following the May 4, 2018 M6.9 earthquake and Lower East Rift Zone eruption <br><br> <b>Operator: </b>  Scripps Institution of Oceanography (SIO)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0db7b91f27a2d669794d6f29dde3699e = L.marker(
+                [19.2526, -154.886002],
+                {}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            var div_icon_2b7def2781c456ad03e124f6661c8fc2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eKSFE\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0db7b91f27a2d669794d6f29dde3699e.setIcon(div_icon_2b7def2781c456ad03e124f6661c8fc2);
+        
+    
+            var circle_marker_5b37b8219d8e4f51fdd145364b01aea3 = L.circleMarker(
+                [19.2321, -154.871704],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f40b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            circle_marker_5b37b8219d8e4f51fdd145364b01aea3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> KSFF <br> <b>Dates: </b>2018/07/10 to 2018/09/16  <br><br><b>Depth: </b> -3300 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z6_2018 <br><br> <b>Net name: </b> OBS survey of Kilauea's submarine south flank following the May 4, 2018 M6.9 earthquake and Lower East Rift Zone eruption <br><br> <b>Operator: </b>  Scripps Institution of Oceanography (SIO)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cce7b3d3d77b830169e7029e083e0edc = L.marker(
+                [19.2321, -154.871704],
+                {}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            var div_icon_d275e4adcfe3df461f7f3e1932d0a864 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eKSFF\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cce7b3d3d77b830169e7029e083e0edc.setIcon(div_icon_d275e4adcfe3df461f7f3e1932d0a864);
+        
+    
+            var circle_marker_334e30d9d5e9477cf6477712bed7a393 = L.circleMarker(
+                [19.213499, -154.849594],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f40b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            circle_marker_334e30d9d5e9477cf6477712bed7a393.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> KSFG <br> <b>Dates: </b>2018/07/10 to 2018/09/16  <br><br><b>Depth: </b> -3800 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z6_2018 <br><br> <b>Net name: </b> OBS survey of Kilauea's submarine south flank following the May 4, 2018 M6.9 earthquake and Lower East Rift Zone eruption <br><br> <b>Operator: </b>  Scripps Institution of Oceanography (SIO)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_31baa0386c36649e903dbd93ecf5d7f9 = L.marker(
+                [19.213499, -154.849594],
+                {}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            var div_icon_e4d82ebf5eb88c6da3afb048524a9be5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eKSFG\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_31baa0386c36649e903dbd93ecf5d7f9.setIcon(div_icon_e4d82ebf5eb88c6da3afb048524a9be5);
+        
+    
+            var circle_marker_7033b6b7e0dd1349e84164db353135ee = L.circleMarker(
+                [19.1945, -154.826294],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f40b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            circle_marker_7033b6b7e0dd1349e84164db353135ee.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> KSFH <br> <b>Dates: </b>2018/07/11 to 2018/09/16  <br><br><b>Depth: </b> -4800 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z6_2018 <br><br> <b>Net name: </b> OBS survey of Kilauea's submarine south flank following the May 4, 2018 M6.9 earthquake and Lower East Rift Zone eruption <br><br> <b>Operator: </b>  Scripps Institution of Oceanography (SIO)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6f63436011fe95864545220f82884413 = L.marker(
+                [19.1945, -154.826294],
+                {}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            var div_icon_2d790a64975f2f8922e0020db57d0f4b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eKSFH\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6f63436011fe95864545220f82884413.setIcon(div_icon_2d790a64975f2f8922e0020db57d0f4b);
+        
+    
+            var circle_marker_2b27427325e8f4a0c575fa26dc8d878a = L.circleMarker(
+                [19.252199, -154.706696],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f40b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            circle_marker_2b27427325e8f4a0c575fa26dc8d878a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> KSFI <br> <b>Dates: </b>2018/07/11 to 2018/09/16  <br><br><b>Depth: </b> -5000 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z6_2018 <br><br> <b>Net name: </b> OBS survey of Kilauea's submarine south flank following the May 4, 2018 M6.9 earthquake and Lower East Rift Zone eruption <br><br> <b>Operator: </b>  Scripps Institution of Oceanography (SIO)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0296f548bffd40c857ecbd7769f7b8ce = L.marker(
+                [19.252199, -154.706696],
+                {}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            var div_icon_edba5d564de4d8db50525399853fb69c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eKSFI\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0296f548bffd40c857ecbd7769f7b8ce.setIcon(div_icon_edba5d564de4d8db50525399853fb69c);
+        
+    
+            var circle_marker_a7d2d2988b8c206ff86e130b125b8437 = L.circleMarker(
+                [19.468399, -154.727295],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f40b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            circle_marker_a7d2d2988b8c206ff86e130b125b8437.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> KSFK <br> <b>Dates: </b>2018/07/12 to 2018/09/16  <br><br><b>Depth: </b> -2000 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z6_2018 <br><br> <b>Net name: </b> OBS survey of Kilauea's submarine south flank following the May 4, 2018 M6.9 earthquake and Lower East Rift Zone eruption <br><br> <b>Operator: </b>  Scripps Institution of Oceanography (SIO)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dee0d8edc454068ab8d3c1e154ac2c3b = L.marker(
+                [19.468399, -154.727295],
+                {}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            var div_icon_33f7583315e64fd48ea170430f3e774a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eKSFK\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_dee0d8edc454068ab8d3c1e154ac2c3b.setIcon(div_icon_33f7583315e64fd48ea170430f3e774a);
+        
+    
+            var circle_marker_e665001ebefd043b75352c6da8a0708b = L.circleMarker(
+                [19.530001, -154.749802],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f40b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            circle_marker_e665001ebefd043b75352c6da8a0708b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> KSFL <br> <b>Dates: </b>2018/07/12 to 2018/09/16  <br><br><b>Depth: </b> -700 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z6_2018 <br><br> <b>Net name: </b> OBS survey of Kilauea's submarine south flank following the May 4, 2018 M6.9 earthquake and Lower East Rift Zone eruption <br><br> <b>Operator: </b>  Scripps Institution of Oceanography (SIO)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fbb8d6a220a392b533f776b6b0ee8365 = L.marker(
+                [19.530001, -154.749802],
+                {}
+            ).addTo(map_329ba7232eb01b6880e1ae8afa8c588a);
+        
+    
+            var div_icon_04f50f529b500dde8345f6bba0b2337a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eKSFL\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fbb8d6a220a392b533f776b6b0ee8365.setIcon(div_icon_04f50f529b500dde8345f6bba0b2337a);
+        
+    
+            map_329ba7232eb01b6880e1ae8afa8c588a.fitBounds(
+                [[19.120199, -155.338898], [19.530001, -154.706696]],
+                {}
+            );
+        </script>
+
+</html>

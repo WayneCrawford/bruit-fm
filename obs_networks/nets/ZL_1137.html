@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_57e24e2099b4455fffe0224813da6a48 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network ZL: Shatsky Rise Active Source Experiment OBSIP </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Woods Hole Oceanographic Institution (WHOI)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Jul 2010 to Sep 2010</p>
+		<p id="net_header", class="headerDoi">DOI: <a href=""></a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_57e24e2099b4455fffe0224813da6a48" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>ZL</TD><TD>A01</TD><TD>2010/07/28</TD><TD>2010/08/30</TD><TD>33.629501</TD><TD>156.598007</TD><TD>-5420</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A02</TD><TD>2010/07/28</TD><TD>2010/08/30</TD><TD>33.550098</TD><TD>156.791107</TD><TD>-5337</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A03</TD><TD>2010/07/28</TD><TD>2010/08/30</TD><TD>33.4706</TD><TD>156.984406</TD><TD>-5154</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A04</TD><TD>2010/07/28</TD><TD>2010/08/30</TD><TD>33.389198</TD><TD>157.1772</TD><TD>-4583</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A05</TD><TD>2010/07/28</TD><TD>2010/08/31</TD><TD>33.3083</TD><TD>157.369293</TD><TD>-4289</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A06</TD><TD>2010/07/28</TD><TD>2010/08/31</TD><TD>33.2272</TD><TD>157.561905</TD><TD>-3922</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A07</TD><TD>2010/07/28</TD><TD>2010/08/31</TD><TD>33.1455</TD><TD>157.752502</TD><TD>-4016</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A08</TD><TD>2010/07/28</TD><TD>2010/08/31</TD><TD>33.072102</TD><TD>157.925003</TD><TD>-3438</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A09</TD><TD>2010/07/28</TD><TD>2010/08/31</TD><TD>32.981701</TD><TD>158.137604</TD><TD>-3198</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A10</TD><TD>2010/07/28</TD><TD>2010/08/31</TD><TD>32.9207</TD><TD>158.278107</TD><TD>-2113</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A11</TD><TD>2010/07/28</TD><TD>2010/08/31</TD><TD>32.8578</TD><TD>158.420502</TD><TD>-2702</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A12</TD><TD>2010/07/27</TD><TD>2010/09/01</TD><TD>32.775398</TD><TD>158.610901</TD><TD>-2480</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A13</TD><TD>2010/07/27</TD><TD>2010/09/01</TD><TD>32.704498</TD><TD>158.771393</TD><TD>-2463</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A14</TD><TD>2010/07/27</TD><TD>2010/09/01</TD><TD>32.650398</TD><TD>158.894806</TD><TD>-2537</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A15</TD><TD>2010/07/27</TD><TD>2010/09/01</TD><TD>32.5457</TD><TD>159.131104</TD><TD>-3080</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A16</TD><TD>2010/07/27</TD><TD>2010/09/02</TD><TD>32.453499</TD><TD>159.338806</TD><TD>-3755</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A17</TD><TD>2010/07/27</TD><TD>2010/09/02</TD><TD>32.3568</TD><TD>159.555206</TD><TD>-4334</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A18</TD><TD>2010/07/27</TD><TD>2010/09/02</TD><TD>32.271999</TD><TD>159.743103</TD><TD>-4494</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A19</TD><TD>2010/07/27</TD><TD>2010/09/02</TD><TD>32.187599</TD><TD>159.930298</TD><TD>-4992</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A20</TD><TD>2010/07/27</TD><TD>2010/09/02</TD><TD>32.1022</TD><TD>160.117599</TD><TD>-5162</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>A21</TD><TD>2010/07/27</TD><TD>2010/09/02</TD><TD>31.995399</TD><TD>160.351196</TD><TD>-5334</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>B01</TD><TD>2010/07/28</TD><TD>2010/09/01</TD><TD>32.136501</TD><TD>158.233002</TD><TD>-2671</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>B02</TD><TD>2010/07/28</TD><TD>2010/09/01</TD><TD>32.298401</TD><TD>158.326401</TD><TD>-2558</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>B03</TD><TD>2010/07/28</TD><TD>2010/09/01</TD><TD>32.4594</TD><TD>158.421204</TD><TD>-2458</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>B04</TD><TD>2010/07/28</TD><TD>2010/09/01</TD><TD>32.620399</TD><TD>158.515701</TD><TD>-2392</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>B05</TD><TD>2010/07/27</TD><TD>2010/09/01</TD><TD>32.942501</TD><TD>158.705795</TD><TD>-2659</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>B06</TD><TD>2010/07/27</TD><TD>2010/08/31</TD><TD>33.103401</TD><TD>158.801895</TD><TD>-2996</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>ZL</TD><TD>B07</TD><TD>2010/07/26</TD><TD>2010/08/31</TD><TD>33.2645</TD><TD>158.8983</TD><TD>-3074</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>A01 A02 A03 A04 A05 A06 A07 A08 A09 A10 A11 A12 A13 A14 A15 A16 A17 A18 A19 A20 A21 B01 B02 B03 B04 B05 B06 B07</TD><TD>EDH</TD><TD>200.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase B</TD></TR><TR><TD>A01 A02 A03 A04 A05 A06 A07 A08 A09 A10 A11 A12 A13 A14 A15 A16 A17 A18 A19 A20 A21 B01 B02 B03 B04 B05 B06 B07</TD><TD>EL1</TD><TD>200.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>A01 A02 A03 A04 A05 A06 A07 A08 A09 A10 A11 A12 A13 A14 A15 A16 A17 A18 A19 A20 A21 B01 B02 B03 B04 B05 B06 B07</TD><TD>EL2</TD><TD>200.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>A01 A02 A03 A04 A05 A06 A07 A08 A09 A10 A11 A12 A13 A14 A15 A16 A17 A18 A19 A20 A21 B01 B02 B03 B04 B05 B06 B07</TD><TD>ELZ</TD><TD>200.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>A01 A02 A03 A04 A05 A06 A07 A08 A09 A10 A11 A12 A13 A14 A15 A16 A17 A18 A19 A20 A21 B01 B02 B03 B04 B05 B06 B07</TD><TD>LDH</TD><TD>1.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase B</TD></TR><TR><TD>A01 A02 A03 A04 A05 A06 A07 A08 A09 A10 A11 A12 A13 A14 A15 A16 A17 A18 A19 A20 A21 B01 B02 B03 B04 B05 B06 B07</TD><TD>LL1</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>A01 A02 A03 A04 A05 A06 A07 A08 A09 A10 A11 A12 A13 A14 A15 A16 A17 A18 A19 A20 A21 B01 B02 B03 B04 B05 B06 B07</TD><TD>LL2</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>A01 A02 A03 A04 A05 A06 A07 A08 A09 A10 A11 A12 A13 A14 A15 A16 A17 A18 A19 A20 A21 B01 B02 B03 B04 B05 B06 B07</TD><TD>LLZ</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_57e24e2099b4455fffe0224813da6a48 = L.map(
+                "map_57e24e2099b4455fffe0224813da6a48",
+                {
+                    center: [32.80076046428577, 158.47651235714278],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_59fc6c23d58156ea1c05a5e482a2cf7a = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var circle_marker_f838f438f636cdf9e0ceccf693a7d777 = L.circleMarker(
+                [33.629501, 156.598007],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_f838f438f636cdf9e0ceccf693a7d777.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A01 <br> <b>Dates: </b>2010/07/28 to 2010/08/30  <br><br><b>Depth: </b> -5420 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_16a8241da83a4eea1d6db096625dc299 = L.marker(
+                [33.629501, 156.598007],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_f1ae8f808856c5548b4f4b138be9c040 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_16a8241da83a4eea1d6db096625dc299.setIcon(div_icon_f1ae8f808856c5548b4f4b138be9c040);
+        
+    
+            var circle_marker_dd567ad5cdb5183d99d1bfa87c2046c8 = L.circleMarker(
+                [33.550098, 156.791107],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_dd567ad5cdb5183d99d1bfa87c2046c8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A02 <br> <b>Dates: </b>2010/07/28 to 2010/08/30  <br><br><b>Depth: </b> -5337 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8b822ca4673eb86f31be82c5b3505b9f = L.marker(
+                [33.550098, 156.791107],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_ea9766c4ff3eecd27f2d9de75efd0729 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8b822ca4673eb86f31be82c5b3505b9f.setIcon(div_icon_ea9766c4ff3eecd27f2d9de75efd0729);
+        
+    
+            var circle_marker_18066e5cde83d06e393a418b7cf9b819 = L.circleMarker(
+                [33.4706, 156.984406],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_18066e5cde83d06e393a418b7cf9b819.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A03 <br> <b>Dates: </b>2010/07/28 to 2010/08/30  <br><br><b>Depth: </b> -5154 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_baefb9144b45c40002a39b8f16f651e5 = L.marker(
+                [33.4706, 156.984406],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_a301c7477e816a9eb8d1da3ffee4697c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_baefb9144b45c40002a39b8f16f651e5.setIcon(div_icon_a301c7477e816a9eb8d1da3ffee4697c);
+        
+    
+            var circle_marker_8b01537ad06f0e4267f10636afa57d84 = L.circleMarker(
+                [33.389198, 157.1772],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_8b01537ad06f0e4267f10636afa57d84.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A04 <br> <b>Dates: </b>2010/07/28 to 2010/08/30  <br><br><b>Depth: </b> -4583 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_62f6c4d7fefd3c1ecf83ebdde43a358b = L.marker(
+                [33.389198, 157.1772],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_cb248bfa4c6f69d01fcf6c16482cad90 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_62f6c4d7fefd3c1ecf83ebdde43a358b.setIcon(div_icon_cb248bfa4c6f69d01fcf6c16482cad90);
+        
+    
+            var circle_marker_af256abfb03dbe20fbedb89e472a0656 = L.circleMarker(
+                [33.3083, 157.369293],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_af256abfb03dbe20fbedb89e472a0656.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A05 <br> <b>Dates: </b>2010/07/28 to 2010/08/31  <br><br><b>Depth: </b> -4289 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_791defdb88d22aff5d2a816a425164cd = L.marker(
+                [33.3083, 157.369293],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_cf0e064ac621728fa6ba74cba9b3d854 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_791defdb88d22aff5d2a816a425164cd.setIcon(div_icon_cf0e064ac621728fa6ba74cba9b3d854);
+        
+    
+            var circle_marker_f948598498b4e1fe5da20db11b2c807f = L.circleMarker(
+                [33.2272, 157.561905],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_f948598498b4e1fe5da20db11b2c807f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A06 <br> <b>Dates: </b>2010/07/28 to 2010/08/31  <br><br><b>Depth: </b> -3922 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_678a2c48be4a4f09fcd0c30d0c538e6e = L.marker(
+                [33.2272, 157.561905],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_22836622b1f89655202c23f8c3091718 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_678a2c48be4a4f09fcd0c30d0c538e6e.setIcon(div_icon_22836622b1f89655202c23f8c3091718);
+        
+    
+            var circle_marker_1845c591a5d773e4799b7300d001f731 = L.circleMarker(
+                [33.1455, 157.752502],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_1845c591a5d773e4799b7300d001f731.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A07 <br> <b>Dates: </b>2010/07/28 to 2010/08/31  <br><br><b>Depth: </b> -4016 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d5515aeb77d323eeb6dafce27d8a18a6 = L.marker(
+                [33.1455, 157.752502],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_ee7e5af24eb55e875551091ed4dd28c6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d5515aeb77d323eeb6dafce27d8a18a6.setIcon(div_icon_ee7e5af24eb55e875551091ed4dd28c6);
+        
+    
+            var circle_marker_e2c1a9c1ad08de972b053633b65b2751 = L.circleMarker(
+                [33.072102, 157.925003],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_e2c1a9c1ad08de972b053633b65b2751.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A08 <br> <b>Dates: </b>2010/07/28 to 2010/08/31  <br><br><b>Depth: </b> -3438 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a4969d9b788617ce40a9a89bed2fa22a = L.marker(
+                [33.072102, 157.925003],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_21171d0d46590f98de9f28cb0142a710 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a4969d9b788617ce40a9a89bed2fa22a.setIcon(div_icon_21171d0d46590f98de9f28cb0142a710);
+        
+    
+            var circle_marker_f6a40b3a50156c98168c4ec1b078ecd1 = L.circleMarker(
+                [32.981701, 158.137604],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_f6a40b3a50156c98168c4ec1b078ecd1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A09 <br> <b>Dates: </b>2010/07/28 to 2010/08/31  <br><br><b>Depth: </b> -3198 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_08842041a6512cf2ead235160d1fec98 = L.marker(
+                [32.981701, 158.137604],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_8d79a14b10eebe261bd810c662a6edb5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_08842041a6512cf2ead235160d1fec98.setIcon(div_icon_8d79a14b10eebe261bd810c662a6edb5);
+        
+    
+            var circle_marker_f6c6c00d8998d2ad596da5ce5eb306be = L.circleMarker(
+                [32.9207, 158.278107],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_f6c6c00d8998d2ad596da5ce5eb306be.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A10 <br> <b>Dates: </b>2010/07/28 to 2010/08/31  <br><br><b>Depth: </b> -2113 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4e51a244143f448ec06d14873da67891 = L.marker(
+                [32.9207, 158.278107],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_594b273902e8e78376b3ef4433956bfe = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4e51a244143f448ec06d14873da67891.setIcon(div_icon_594b273902e8e78376b3ef4433956bfe);
+        
+    
+            var circle_marker_e147b33daa606d006298e8f4c77f079d = L.circleMarker(
+                [32.8578, 158.420502],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_e147b33daa606d006298e8f4c77f079d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A11 <br> <b>Dates: </b>2010/07/28 to 2010/08/31  <br><br><b>Depth: </b> -2702 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3d907e9c601aed259648b54e3ac484af = L.marker(
+                [32.8578, 158.420502],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_34f844e2f52884a0d4e932f5c43a0a39 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3d907e9c601aed259648b54e3ac484af.setIcon(div_icon_34f844e2f52884a0d4e932f5c43a0a39);
+        
+    
+            var circle_marker_39815ac1c5771f6acae93ba3d456e01d = L.circleMarker(
+                [32.775398, 158.610901],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_39815ac1c5771f6acae93ba3d456e01d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A12 <br> <b>Dates: </b>2010/07/27 to 2010/09/01  <br><br><b>Depth: </b> -2480 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d4d3437832bb05b008e682004862fd20 = L.marker(
+                [32.775398, 158.610901],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_f3678cda3070b7c87945e5dabe6cb422 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d4d3437832bb05b008e682004862fd20.setIcon(div_icon_f3678cda3070b7c87945e5dabe6cb422);
+        
+    
+            var circle_marker_e0b9b9bd0087384b00163d7e5fc01dc2 = L.circleMarker(
+                [32.704498, 158.771393],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_e0b9b9bd0087384b00163d7e5fc01dc2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A13 <br> <b>Dates: </b>2010/07/27 to 2010/09/01  <br><br><b>Depth: </b> -2463 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5b26ab6127184d164c7092223678a1c9 = L.marker(
+                [32.704498, 158.771393],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_23c7473213150318650bd679d63a8ed7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5b26ab6127184d164c7092223678a1c9.setIcon(div_icon_23c7473213150318650bd679d63a8ed7);
+        
+    
+            var circle_marker_a753048edeb79f97ccd7eaee8249f034 = L.circleMarker(
+                [32.650398, 158.894806],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_a753048edeb79f97ccd7eaee8249f034.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A14 <br> <b>Dates: </b>2010/07/27 to 2010/09/01  <br><br><b>Depth: </b> -2537 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c19b67f71472453360f5753062c61bca = L.marker(
+                [32.650398, 158.894806],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_899ecaad172ca15f3cae2c50c39fd2e5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c19b67f71472453360f5753062c61bca.setIcon(div_icon_899ecaad172ca15f3cae2c50c39fd2e5);
+        
+    
+            var circle_marker_07aa53e15c24a19b866d0c0d97824492 = L.circleMarker(
+                [32.5457, 159.131104],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_07aa53e15c24a19b866d0c0d97824492.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A15 <br> <b>Dates: </b>2010/07/27 to 2010/09/01  <br><br><b>Depth: </b> -3080 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e04e810a33710b7e22f0f108d6de2bb9 = L.marker(
+                [32.5457, 159.131104],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_91e22163d71b44ee27083c37ddb930c4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e04e810a33710b7e22f0f108d6de2bb9.setIcon(div_icon_91e22163d71b44ee27083c37ddb930c4);
+        
+    
+            var circle_marker_6c8e8fce4bccabc550d1412e73459804 = L.circleMarker(
+                [32.453499, 159.338806],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_6c8e8fce4bccabc550d1412e73459804.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A16 <br> <b>Dates: </b>2010/07/27 to 2010/09/02  <br><br><b>Depth: </b> -3755 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f6319cd2efa1d1a8606de1948f5a8acb = L.marker(
+                [32.453499, 159.338806],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_247dc8de95b0bd9df4ae941efc5f6a45 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f6319cd2efa1d1a8606de1948f5a8acb.setIcon(div_icon_247dc8de95b0bd9df4ae941efc5f6a45);
+        
+    
+            var circle_marker_3072ea5584147037c18e7df6c67d1da4 = L.circleMarker(
+                [32.3568, 159.555206],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_3072ea5584147037c18e7df6c67d1da4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A17 <br> <b>Dates: </b>2010/07/27 to 2010/09/02  <br><br><b>Depth: </b> -4334 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b9d894447d32f7afd9c45b8cfbe34398 = L.marker(
+                [32.3568, 159.555206],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_ac04d309256fd17bc72582cb5ba6dee4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b9d894447d32f7afd9c45b8cfbe34398.setIcon(div_icon_ac04d309256fd17bc72582cb5ba6dee4);
+        
+    
+            var circle_marker_1d882cbbd2e5578dcb8aed951713d57d = L.circleMarker(
+                [32.271999, 159.743103],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_1d882cbbd2e5578dcb8aed951713d57d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A18 <br> <b>Dates: </b>2010/07/27 to 2010/09/02  <br><br><b>Depth: </b> -4494 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_78e263919cfbc74af93bae6070fe229b = L.marker(
+                [32.271999, 159.743103],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_b066a0c2c6fa472889e7e84a1effc181 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_78e263919cfbc74af93bae6070fe229b.setIcon(div_icon_b066a0c2c6fa472889e7e84a1effc181);
+        
+    
+            var circle_marker_7e3404d59231d487c381fb17fd58e38a = L.circleMarker(
+                [32.187599, 159.930298],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_7e3404d59231d487c381fb17fd58e38a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A19 <br> <b>Dates: </b>2010/07/27 to 2010/09/02  <br><br><b>Depth: </b> -4992 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_68a9d7c877486ca38a9641f207457d56 = L.marker(
+                [32.187599, 159.930298],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_1a8bf206e70e54958195a11b983070cb = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA19\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_68a9d7c877486ca38a9641f207457d56.setIcon(div_icon_1a8bf206e70e54958195a11b983070cb);
+        
+    
+            var circle_marker_da000799048999e35b07dbfb71a2a7e2 = L.circleMarker(
+                [32.1022, 160.117599],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_da000799048999e35b07dbfb71a2a7e2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A20 <br> <b>Dates: </b>2010/07/27 to 2010/09/02  <br><br><b>Depth: </b> -5162 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_93655f965aec77480764ccbe905aeeed = L.marker(
+                [32.1022, 160.117599],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_e971bb36e638ecc71c1798a4aaea8e5d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA20\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_93655f965aec77480764ccbe905aeeed.setIcon(div_icon_e971bb36e638ecc71c1798a4aaea8e5d);
+        
+    
+            var circle_marker_adac5e9d806e1b1e7966450e9f71648c = L.circleMarker(
+                [31.995399, 160.351196],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_adac5e9d806e1b1e7966450e9f71648c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> A21 <br> <b>Dates: </b>2010/07/27 to 2010/09/02  <br><br><b>Depth: </b> -5334 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fd86e395a92ced5bd3bbe9c90f2a9100 = L.marker(
+                [31.995399, 160.351196],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_933db66592520cd4a3dd66aefbfa006f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eA21\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fd86e395a92ced5bd3bbe9c90f2a9100.setIcon(div_icon_933db66592520cd4a3dd66aefbfa006f);
+        
+    
+            var circle_marker_2a02e919d1b58a4f42ed1e2147f40d80 = L.circleMarker(
+                [32.136501, 158.233002],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_2a02e919d1b58a4f42ed1e2147f40d80.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> B01 <br> <b>Dates: </b>2010/07/28 to 2010/09/01  <br><br><b>Depth: </b> -2671 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c0f974c1a305bc91b474f2b439bac9a4 = L.marker(
+                [32.136501, 158.233002],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_6b541e83adf5085acd948bf87a95a359 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eB01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c0f974c1a305bc91b474f2b439bac9a4.setIcon(div_icon_6b541e83adf5085acd948bf87a95a359);
+        
+    
+            var circle_marker_bdaaaf464ea491cac97b1680933e351b = L.circleMarker(
+                [32.298401, 158.326401],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_bdaaaf464ea491cac97b1680933e351b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> B02 <br> <b>Dates: </b>2010/07/28 to 2010/09/01  <br><br><b>Depth: </b> -2558 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fd8e68392c24001bc0d70f0153630b72 = L.marker(
+                [32.298401, 158.326401],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_41b6ba4de63a03ef7616b4db8253ee63 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eB02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fd8e68392c24001bc0d70f0153630b72.setIcon(div_icon_41b6ba4de63a03ef7616b4db8253ee63);
+        
+    
+            var circle_marker_7622f29d6b50c5cefa746ff2c7314fb2 = L.circleMarker(
+                [32.4594, 158.421204],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_7622f29d6b50c5cefa746ff2c7314fb2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> B03 <br> <b>Dates: </b>2010/07/28 to 2010/09/01  <br><br><b>Depth: </b> -2458 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_757b8e9c5dfcc68037931cbad0444048 = L.marker(
+                [32.4594, 158.421204],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_c25bf003308b3911363ba0b2b9c355d3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eB03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_757b8e9c5dfcc68037931cbad0444048.setIcon(div_icon_c25bf003308b3911363ba0b2b9c355d3);
+        
+    
+            var circle_marker_accb9548ea15b6e2e3b4adf2f8124181 = L.circleMarker(
+                [32.620399, 158.515701],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_accb9548ea15b6e2e3b4adf2f8124181.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> B04 <br> <b>Dates: </b>2010/07/28 to 2010/09/01  <br><br><b>Depth: </b> -2392 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cff5e3a11617e980e486d4f9eeaeab22 = L.marker(
+                [32.620399, 158.515701],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_d04ee0f3f20c5edb1affe70c000914d9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eB04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cff5e3a11617e980e486d4f9eeaeab22.setIcon(div_icon_d04ee0f3f20c5edb1affe70c000914d9);
+        
+    
+            var circle_marker_0c6712683a5f6a142f4a427e268b7a1f = L.circleMarker(
+                [32.942501, 158.705795],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_0c6712683a5f6a142f4a427e268b7a1f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> B05 <br> <b>Dates: </b>2010/07/27 to 2010/09/01  <br><br><b>Depth: </b> -2659 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b839fdec53e9f9b476ef0b0367554b36 = L.marker(
+                [32.942501, 158.705795],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_7993f72d04009ac5d8beab0ab1e98332 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eB05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b839fdec53e9f9b476ef0b0367554b36.setIcon(div_icon_7993f72d04009ac5d8beab0ab1e98332);
+        
+    
+            var circle_marker_9a5027ea2cb3e6130482ccfdb205655e = L.circleMarker(
+                [33.103401, 158.801895],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_9a5027ea2cb3e6130482ccfdb205655e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> B06 <br> <b>Dates: </b>2010/07/27 to 2010/08/31  <br><br><b>Depth: </b> -2996 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3c7242b37dd6b756a24468d80ec305a2 = L.marker(
+                [33.103401, 158.801895],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_ee0cd404e58f1058bfff796a693d50ea = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eB06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3c7242b37dd6b756a24468d80ec305a2.setIcon(div_icon_ee0cd404e58f1058bfff796a693d50ea);
+        
+    
+            var circle_marker_5caa235623f1a5e0fae7ac3d0feb2ee5 = L.circleMarker(
+                [33.2645, 158.8983],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9a0065", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            circle_marker_5caa235623f1a5e0fae7ac3d0feb2ee5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZL <br> <b>Station:</b> B07 <br> <b>Dates: </b>2010/07/26 to 2010/08/31  <br><br><b>Depth: </b> -3074 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Shatsky Rise Active Source Experiment OBSIP <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_05106df5ba2691495d7e79b5225a2007 = L.marker(
+                [33.2645, 158.8983],
+                {}
+            ).addTo(map_57e24e2099b4455fffe0224813da6a48);
+        
+    
+            var div_icon_1639ab928aa45512e5d84fbdf5e10513 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eB07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_05106df5ba2691495d7e79b5225a2007.setIcon(div_icon_1639ab928aa45512e5d84fbdf5e10513);
+        
+    
+            map_57e24e2099b4455fffe0224813da6a48.fitBounds(
+                [[31.995399, 156.598007], [33.629501, 160.351196]],
+                {}
+            );
+        </script>
+
+</html>

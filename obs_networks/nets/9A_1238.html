@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_f67d81d833567e3e5d6efee741140147 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network 9A: Loihi Seismicity </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Woods Hole Oceanographic Institution (WHOI)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Sep 2010 to Aug 2011</p>
+		<p id="net_header", class="headerDoi">DOI: <a href=""></a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_f67d81d833567e3e5d6efee741140147" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>9A</TD><TD>EFLK</TD><TD>2010/09/16</TD><TD>2011/07/29</TD><TD>18.927999</TD><TD>-155.178299</TD><TD>-3860</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>9A</TD><TD>EPIT</TD><TD>2010/09/17</TD><TD>2011/07/31</TD><TD>18.9226</TD><TD>-155.245605</TD><TD>-1169</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>9A</TD><TD>LONW</TD><TD>2010/09/18</TD><TD>2011/07/31</TD><TD>18.984699</TD><TD>-155.329102</TD><TD>-2350</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>9A</TD><TD>LOSE</TD><TD>2010/09/16</TD><TD>2011/07/30</TD><TD>18.834999</TD><TD>-155.161896</TD><TD>-4410</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>9A</TD><TD>LOSW</TD><TD>2010/09/15</TD><TD>2011/07/29</TD><TD>18.752899</TD><TD>-155.286194</TD><TD>-4693</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>9A</TD><TD>NRFT</TD><TD>2010/09/19</TD><TD>2011/07/29</TD><TD>18.9631</TD><TD>-155.264801</TD><TD>-1373</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>9A</TD><TD>PISC</TD><TD>2010/09/17</TD><TD>2011/07/30</TD><TD>18.917801</TD><TD>-155.263199</TD><TD>-999</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>9A</TD><TD>PPAU</TD><TD>2010/09/19</TD><TD>2011/07/30</TD><TD>19.024799</TD><TD>-155.213898</TD><TD>-2517</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>9A</TD><TD>SSMT</TD><TD>2010/09/17</TD><TD>2011/08/01</TD><TD>18.8908</TD><TD>-155.255493</TD><TD>-1332</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>9A</TD><TD>SSWR</TD><TD>2010/09/18</TD><TD>2011/08/01</TD><TD>18.913601</TD><TD>-155.362701</TD><TD>-3286</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>9A</TD><TD>STPF</TD><TD>2010/09/16</TD><TD>2011/07/30</TD><TD>18.9251</TD><TD>-155.202301</TD><TD>-3288</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>9A</TD><TD>WFLK</TD><TD>2010/09/18</TD><TD>2011/08/02</TD><TD>18.9154</TD><TD>-155.316605</TD><TD>-2962</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>EDH</TD><TD>100.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase C</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>EL1</TD><TD>100.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>EL2</TD><TD>100.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>ELZ</TD><TD>100.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>LDH</TD><TD>1.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase C</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>LL1</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>LL2</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>LLZ</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>VM0</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>VM1</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>VM2</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>VM3</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>VM4</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>VM5</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>VM6</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>VMU</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>VMV</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>VMW</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>VMZ</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>EFLK EPIT LONW LOSE LOSW NRFT PISC PPAU SSMT SSWR STPF WFLK</TD><TD>VPB</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_f67d81d833567e3e5d6efee741140147 = L.map(
+                "map_f67d81d833567e3e5d6efee741140147",
+                {
+                    center: [18.914483083333334, -155.25667450000012],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_e47262134dddca429a5c0078354dcab1 = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            var circle_marker_540254958e43d710a1edd83df89ed42a = L.circleMarker(
+                [18.927999, -155.178299],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ba4500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            circle_marker_540254958e43d710a1edd83df89ed42a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 9A <br> <b>Station:</b> EFLK <br> <b>Dates: </b>2010/09/16 to 2011/07/29  <br><br><b>Depth: </b> -3860 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Loihi Seismicity <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3066d224ca3d4259f891fbfd0a687dd4 = L.marker(
+                [18.927999, -155.178299],
+                {}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            var div_icon_7ede6ab4173066386668be6fa3d83d44 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEFLK\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3066d224ca3d4259f891fbfd0a687dd4.setIcon(div_icon_7ede6ab4173066386668be6fa3d83d44);
+        
+    
+            var circle_marker_8198ca8ca5dd4d5f37f4a67da314ade9 = L.circleMarker(
+                [18.9226, -155.245605],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ba4500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            circle_marker_8198ca8ca5dd4d5f37f4a67da314ade9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 9A <br> <b>Station:</b> EPIT <br> <b>Dates: </b>2010/09/17 to 2011/07/31  <br><br><b>Depth: </b> -1169 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Loihi Seismicity <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_493ffdacc3f720c458493ee954e0a1a1 = L.marker(
+                [18.9226, -155.245605],
+                {}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            var div_icon_0d984d8dca4527e107029af683dd5afa = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEPIT\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_493ffdacc3f720c458493ee954e0a1a1.setIcon(div_icon_0d984d8dca4527e107029af683dd5afa);
+        
+    
+            var circle_marker_fc07922beea95c5c56018952f68ad6ce = L.circleMarker(
+                [18.984699, -155.329102],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ba4500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            circle_marker_fc07922beea95c5c56018952f68ad6ce.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 9A <br> <b>Station:</b> LONW <br> <b>Dates: </b>2010/09/18 to 2011/07/31  <br><br><b>Depth: </b> -2350 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Loihi Seismicity <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_50aa7ee9d18b74cf29735af3044976e8 = L.marker(
+                [18.984699, -155.329102],
+                {}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            var div_icon_8bbe094b25d651f68a2af1584d8584c3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLONW\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_50aa7ee9d18b74cf29735af3044976e8.setIcon(div_icon_8bbe094b25d651f68a2af1584d8584c3);
+        
+    
+            var circle_marker_fbb88a59538f90d51a3085623d426926 = L.circleMarker(
+                [18.834999, -155.161896],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ba4500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            circle_marker_fbb88a59538f90d51a3085623d426926.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 9A <br> <b>Station:</b> LOSE <br> <b>Dates: </b>2010/09/16 to 2011/07/30  <br><br><b>Depth: </b> -4410 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Loihi Seismicity <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4298e1985d39198915cfa83890080cfa = L.marker(
+                [18.834999, -155.161896],
+                {}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            var div_icon_fc53714a6b62eed3cbe37ad0c52a045f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLOSE\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4298e1985d39198915cfa83890080cfa.setIcon(div_icon_fc53714a6b62eed3cbe37ad0c52a045f);
+        
+    
+            var circle_marker_e721fd700067d9abcc2c10ae8007279d = L.circleMarker(
+                [18.752899, -155.286194],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ba4500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            circle_marker_e721fd700067d9abcc2c10ae8007279d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 9A <br> <b>Station:</b> LOSW <br> <b>Dates: </b>2010/09/15 to 2011/07/29  <br><br><b>Depth: </b> -4693 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Loihi Seismicity <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0412e32636590fc629b8ecf9c6032d33 = L.marker(
+                [18.752899, -155.286194],
+                {}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            var div_icon_5086f777c3b0f288433205e10882bed3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLOSW\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0412e32636590fc629b8ecf9c6032d33.setIcon(div_icon_5086f777c3b0f288433205e10882bed3);
+        
+    
+            var circle_marker_7ec8bdb1e079604ffce1e84513655493 = L.circleMarker(
+                [18.9631, -155.264801],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ba4500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            circle_marker_7ec8bdb1e079604ffce1e84513655493.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 9A <br> <b>Station:</b> NRFT <br> <b>Dates: </b>2010/09/19 to 2011/07/29  <br><br><b>Depth: </b> -1373 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Loihi Seismicity <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2bcfcb18e7231ee9d777d69b7c6cda7f = L.marker(
+                [18.9631, -155.264801],
+                {}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            var div_icon_d45f401d7657bdbe448c652e9bcbd396 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNRFT\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2bcfcb18e7231ee9d777d69b7c6cda7f.setIcon(div_icon_d45f401d7657bdbe448c652e9bcbd396);
+        
+    
+            var circle_marker_b5f97f40a2cfb7c5f87e419f76db1273 = L.circleMarker(
+                [18.917801, -155.263199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ba4500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            circle_marker_b5f97f40a2cfb7c5f87e419f76db1273.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 9A <br> <b>Station:</b> PISC <br> <b>Dates: </b>2010/09/17 to 2011/07/30  <br><br><b>Depth: </b> -999 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Loihi Seismicity <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_37561e28ac312f6f2818fa49839244d9 = L.marker(
+                [18.917801, -155.263199],
+                {}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            var div_icon_4b4905025ccf8b36f6122a18a6a2c016 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003ePISC\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_37561e28ac312f6f2818fa49839244d9.setIcon(div_icon_4b4905025ccf8b36f6122a18a6a2c016);
+        
+    
+            var circle_marker_df7c2abfaa3b52bcd8f9c08de85dd33d = L.circleMarker(
+                [19.024799, -155.213898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ba4500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            circle_marker_df7c2abfaa3b52bcd8f9c08de85dd33d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 9A <br> <b>Station:</b> PPAU <br> <b>Dates: </b>2010/09/19 to 2011/07/30  <br><br><b>Depth: </b> -2517 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Loihi Seismicity <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_25fce6f446ce10fbbcbf97de505f28a3 = L.marker(
+                [19.024799, -155.213898],
+                {}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            var div_icon_df15472ccfa6b5656439477933ad59ac = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003ePPAU\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_25fce6f446ce10fbbcbf97de505f28a3.setIcon(div_icon_df15472ccfa6b5656439477933ad59ac);
+        
+    
+            var circle_marker_f15773db240a8cbeb35da5c1612ff413 = L.circleMarker(
+                [18.8908, -155.255493],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ba4500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            circle_marker_f15773db240a8cbeb35da5c1612ff413.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 9A <br> <b>Station:</b> SSMT <br> <b>Dates: </b>2010/09/17 to 2011/08/01  <br><br><b>Depth: </b> -1332 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Loihi Seismicity <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_47cdd92fee8cbdd76679c09b28108232 = L.marker(
+                [18.8908, -155.255493],
+                {}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            var div_icon_8deeaf7cc8474a4205623728ab949f82 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSSMT\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_47cdd92fee8cbdd76679c09b28108232.setIcon(div_icon_8deeaf7cc8474a4205623728ab949f82);
+        
+    
+            var circle_marker_194aa2a3cda3080c21200129c8d0d5b7 = L.circleMarker(
+                [18.913601, -155.362701],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ba4500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            circle_marker_194aa2a3cda3080c21200129c8d0d5b7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 9A <br> <b>Station:</b> SSWR <br> <b>Dates: </b>2010/09/18 to 2011/08/01  <br><br><b>Depth: </b> -3286 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Loihi Seismicity <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_45ed3ca4893767b07048773cf4fe8e0b = L.marker(
+                [18.913601, -155.362701],
+                {}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            var div_icon_c11629e6888013d5c31322c836b3931d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSSWR\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_45ed3ca4893767b07048773cf4fe8e0b.setIcon(div_icon_c11629e6888013d5c31322c836b3931d);
+        
+    
+            var circle_marker_101380b1a5dc30af1513eff64d891518 = L.circleMarker(
+                [18.9251, -155.202301],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ba4500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            circle_marker_101380b1a5dc30af1513eff64d891518.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 9A <br> <b>Station:</b> STPF <br> <b>Dates: </b>2010/09/16 to 2011/07/30  <br><br><b>Depth: </b> -3288 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Loihi Seismicity <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3e5e14c1be750c5575b019a3f1f25f98 = L.marker(
+                [18.9251, -155.202301],
+                {}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            var div_icon_9ab62f4970205eec2fcb56856b64a6b8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSTPF\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3e5e14c1be750c5575b019a3f1f25f98.setIcon(div_icon_9ab62f4970205eec2fcb56856b64a6b8);
+        
+    
+            var circle_marker_e108466fd3db27b01aa9c89a08197ac9 = L.circleMarker(
+                [18.9154, -155.316605],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ba4500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            circle_marker_e108466fd3db27b01aa9c89a08197ac9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 9A <br> <b>Station:</b> WFLK <br> <b>Dates: </b>2010/09/18 to 2011/08/02  <br><br><b>Depth: </b> -2962 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Loihi Seismicity <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_03e9ca04b2a9e456c364c568343bd22e = L.marker(
+                [18.9154, -155.316605],
+                {}
+            ).addTo(map_f67d81d833567e3e5d6efee741140147);
+        
+    
+            var div_icon_76ecc20b2ed59475f8978381ab6042c4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWFLK\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_03e9ca04b2a9e456c364c568343bd22e.setIcon(div_icon_76ecc20b2ed59475f8978381ab6042c4);
+        
+    
+            map_f67d81d833567e3e5d6efee741140147.fitBounds(
+                [[18.752899, -155.362701], [19.024799, -155.161896]],
+                {}
+            );
+        </script>
+
+</html>

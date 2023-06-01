@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_a7b6ae66e59951e34c51653c6c68f692 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network NT: USGS Geomagnetism Program </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   USGS</p>
+		<p id="net_header", class="headerDates">OBS deployed from Aug 2007 to Aug 2008</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/NT">https://doi.org/10.7914/SN/NT</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_a7b6ae66e59951e34c51653c6c68f692" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>NT</TD><TD>OBS01</TD><TD>2007/08/30</TD><TD>2008/06/12</TD><TD>37.055</TD><TD>-11.448</TD><TD>-5100</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br>BDH-BHE-BHN-BHZ (20.0 Hz) <br>LDH-LHE-LHN-LHZ (1.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS03</TD><TD>2007/08/29</TD><TD>2008/07/31</TD><TD>37.1</TD><TD>-10.229</TD><TD>-3932</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS04</TD><TD>2007/08/29</TD><TD>2008/06/25</TD><TD>36.952</TD><TD>-9.702</TD><TD>-1993</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS05</TD><TD>2007/08/29</TD><TD>2008/06/23</TD><TD>36.73</TD><TD>-10.552</TD><TD>-3095</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS06</TD><TD>2007/08/29</TD><TD>2008/07/20</TD><TD>36.708</TD><TD>-9.969</TD><TD>-2956</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS08</TD><TD>2007/08/30</TD><TD>2008/08/10</TD><TD>36.398</TD><TD>-10.921</TD><TD>-4671</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS09</TD><TD>2007/08/29</TD><TD>2008/04/29</TD><TD>36.372</TD><TD>-10.261</TD><TD>-4811</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS10</TD><TD>2007/09/01</TD><TD>2008/06/29</TD><TD>36.25</TD><TD>-8.601</TD><TD>-2067</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS11</TD><TD>2007/08/30</TD><TD>2008/05/02</TD><TD>36.066</TD><TD>-11.273</TD><TD>-4855</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS12</TD><TD>2007/08/30</TD><TD>2008/07/21</TD><TD>36.081</TD><TD>-10.59</TD><TD>-4860</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS13</TD><TD>2007/08/31</TD><TD>2008/07/14</TD><TD>36.022</TD><TD>-10.02</TD><TD>-4494</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS14</TD><TD>2007/09/02</TD><TD>2008/08/04</TD><TD>36.001</TD><TD>-9.4</TD><TD>-2439</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS15</TD><TD>2007/09/01</TD><TD>2008/04/07</TD><TD>35.999</TD><TD>-8.8</TD><TD>-3357</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS16</TD><TD>2007/09/01</TD><TD>2008/07/07</TD><TD>35.95</TD><TD>-8.251</TD><TD>-2069</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS17</TD><TD>2007/08/30</TD><TD>2008/05/28</TD><TD>35.779</TD><TD>-10.939</TD><TD>-4765</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS18</TD><TD>2007/08/31</TD><TD>2008/07/18</TD><TD>35.711</TD><TD>-10.339</TD><TD>-4605</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS19</TD><TD>2007/08/31</TD><TD>2008/07/17</TD><TD>35.633</TD><TD>-9.751</TD><TD>-4287</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS20</TD><TD>2007/09/01</TD><TD>2008/07/12</TD><TD>35.598</TD><TD>-9.1</TD><TD>-3449</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS21</TD><TD>2007/09/01</TD><TD>2008/07/09</TD><TD>35.646</TD><TD>-8.6</TD><TD>-2566</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS22</TD><TD>2007/08/31</TD><TD>2008/07/24</TD><TD>35.349</TD><TD>-10.402</TD><TD>-4095</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS23</TD><TD>2007/08/31</TD><TD>2008/06/28</TD><TD>35.117</TD><TD>-9.287</TD><TD>-3747</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS24</TD><TD>2007/11/27</TD><TD>2008/08/11</TD><TD>36.531</TD><TD>-9.282</TD><TD>-2439</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR><TR><TD>NT</TD><TD>OBS25</TD><TD>2007/11/24</TD><TD>2008/08/11</TD><TD>36.36</TD><TD>-9.571</TD><TD>-3234</TD><TD>HDH-HHE-HHN-HHZ (100.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_a7b6ae66e59951e34c51653c6c68f692 = L.map(
+                "map_a7b6ae66e59951e34c51653c6c68f692",
+                {
+                    center: [36.220719999999986, -10.007360000000004],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_7369c7de0dfea25e16ae66eae73f1943 = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var circle_marker_df079eb29d189861e6e8db37a4d9166b = L.circleMarker(
+                [37.055, -11.448],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_df079eb29d189861e6e8db37a4d9166b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS01 <br> <b>Dates: </b>2007/08/30 to 2008/06/12  <br><br><b>Depth: </b> -5100 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br>BDH-BHE-BHN-BHZ (20.0 Hz) <br>LDH-LHE-LHN-LHZ (1.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6e667fae7b3e0e783b8c771c1778e98e = L.marker(
+                [37.055, -11.448],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_5cc9b5d44aef131ecd205d3c05c6359e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6e667fae7b3e0e783b8c771c1778e98e.setIcon(div_icon_5cc9b5d44aef131ecd205d3c05c6359e);
+        
+    
+            var circle_marker_4ee988f5a1b2737a820cadf7f9c809ef = L.circleMarker(
+                [37.1, -10.229],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_4ee988f5a1b2737a820cadf7f9c809ef.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS03 <br> <b>Dates: </b>2007/08/29 to 2008/07/31  <br><br><b>Depth: </b> -3932 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bd009383f9ab0bd893008edb36206e35 = L.marker(
+                [37.1, -10.229],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_54ce8b6e00d182c47b615eff0a01d7ce = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_bd009383f9ab0bd893008edb36206e35.setIcon(div_icon_54ce8b6e00d182c47b615eff0a01d7ce);
+        
+    
+            var circle_marker_b4b64a01525066ffc1d94a6489229bfa = L.circleMarker(
+                [36.952, -9.702],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_b4b64a01525066ffc1d94a6489229bfa.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS04 <br> <b>Dates: </b>2007/08/29 to 2008/06/25  <br><br><b>Depth: </b> -1993 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0eda8398fe29a1923dec81a561176d01 = L.marker(
+                [36.952, -9.702],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_c5919599143c565b07ef771169ba0691 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0eda8398fe29a1923dec81a561176d01.setIcon(div_icon_c5919599143c565b07ef771169ba0691);
+        
+    
+            var circle_marker_69e46e5b530d2bf414a4ea717352f15f = L.circleMarker(
+                [36.73, -10.552],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_69e46e5b530d2bf414a4ea717352f15f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS05 <br> <b>Dates: </b>2007/08/29 to 2008/06/23  <br><br><b>Depth: </b> -3095 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d558efd9e895ba429864cc44ac8cf030 = L.marker(
+                [36.73, -10.552],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_b1ed3b75aba0f292a7d1de98ab6f9289 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d558efd9e895ba429864cc44ac8cf030.setIcon(div_icon_b1ed3b75aba0f292a7d1de98ab6f9289);
+        
+    
+            var circle_marker_8f0934560195a4b7e716fdcef92192f8 = L.circleMarker(
+                [36.708, -9.969],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_8f0934560195a4b7e716fdcef92192f8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS06 <br> <b>Dates: </b>2007/08/29 to 2008/07/20  <br><br><b>Depth: </b> -2956 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_325350a307bc580f096cecb6750607cc = L.marker(
+                [36.708, -9.969],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_9ec3d98f9adbf30d09204cdaea1aa795 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_325350a307bc580f096cecb6750607cc.setIcon(div_icon_9ec3d98f9adbf30d09204cdaea1aa795);
+        
+    
+            var circle_marker_0e83189307f3428bbcfbc97c21ac3f33 = L.circleMarker(
+                [36.398, -10.921],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_0e83189307f3428bbcfbc97c21ac3f33.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS08 <br> <b>Dates: </b>2007/08/30 to 2008/08/10  <br><br><b>Depth: </b> -4671 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3b9592a45f61b4d81b3bc728e9f6f3e1 = L.marker(
+                [36.398, -10.921],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_d5722dc1c7a8e5a9e27d5a25dd280773 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3b9592a45f61b4d81b3bc728e9f6f3e1.setIcon(div_icon_d5722dc1c7a8e5a9e27d5a25dd280773);
+        
+    
+            var circle_marker_7fbb3c743fa4f3b3c81fc005ed96fbcb = L.circleMarker(
+                [36.372, -10.261],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_7fbb3c743fa4f3b3c81fc005ed96fbcb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS09 <br> <b>Dates: </b>2007/08/29 to 2008/04/29  <br><br><b>Depth: </b> -4811 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6202b5c0b7944a714229b9700841dd9b = L.marker(
+                [36.372, -10.261],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_6e7bcba7186929769ae0610c57f9b031 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6202b5c0b7944a714229b9700841dd9b.setIcon(div_icon_6e7bcba7186929769ae0610c57f9b031);
+        
+    
+            var circle_marker_213dd101ce050934a9240543cb7f1aed = L.circleMarker(
+                [36.25, -8.601],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_213dd101ce050934a9240543cb7f1aed.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS10 <br> <b>Dates: </b>2007/09/01 to 2008/06/29  <br><br><b>Depth: </b> -2067 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cb5d45fc2868d6abe7f2346deff02a23 = L.marker(
+                [36.25, -8.601],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_c9a649d082290817ac2ce64be64f8ca8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cb5d45fc2868d6abe7f2346deff02a23.setIcon(div_icon_c9a649d082290817ac2ce64be64f8ca8);
+        
+    
+            var circle_marker_693717c4039714cd9c0e338d82acdef9 = L.circleMarker(
+                [36.066, -11.273],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_693717c4039714cd9c0e338d82acdef9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS11 <br> <b>Dates: </b>2007/08/30 to 2008/05/02  <br><br><b>Depth: </b> -4855 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e87ff7b2296864bb52433da02c14aa28 = L.marker(
+                [36.066, -11.273],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_275ff5c5f806513338b885bfee940a8b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e87ff7b2296864bb52433da02c14aa28.setIcon(div_icon_275ff5c5f806513338b885bfee940a8b);
+        
+    
+            var circle_marker_f98fc6324878f064858fd72681a7b014 = L.circleMarker(
+                [36.081, -10.59],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_f98fc6324878f064858fd72681a7b014.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS12 <br> <b>Dates: </b>2007/08/30 to 2008/07/21  <br><br><b>Depth: </b> -4860 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_50acab12f091594da740f4f72ea0b3f4 = L.marker(
+                [36.081, -10.59],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_bf2701770513ec428e86d494fceb5a0d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_50acab12f091594da740f4f72ea0b3f4.setIcon(div_icon_bf2701770513ec428e86d494fceb5a0d);
+        
+    
+            var circle_marker_2c9153877740ff0987bf06e11fc34a0a = L.circleMarker(
+                [36.022, -10.02],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_2c9153877740ff0987bf06e11fc34a0a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS13 <br> <b>Dates: </b>2007/08/31 to 2008/07/14  <br><br><b>Depth: </b> -4494 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8954d3219e1ad0dbc6ac9d496e3a9e15 = L.marker(
+                [36.022, -10.02],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_4d99e56e6a631afb1e4f02188295b90e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8954d3219e1ad0dbc6ac9d496e3a9e15.setIcon(div_icon_4d99e56e6a631afb1e4f02188295b90e);
+        
+    
+            var circle_marker_2e70bfe39b11000237b977083f6e799e = L.circleMarker(
+                [36.001, -9.4],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_2e70bfe39b11000237b977083f6e799e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS14 <br> <b>Dates: </b>2007/09/02 to 2008/08/04  <br><br><b>Depth: </b> -2439 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c29ff3a9f00ade91ad42f37417046546 = L.marker(
+                [36.001, -9.4],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_da3a3e950efc021da9aac8a4f34f8c60 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c29ff3a9f00ade91ad42f37417046546.setIcon(div_icon_da3a3e950efc021da9aac8a4f34f8c60);
+        
+    
+            var circle_marker_e7a09a603bcfc1c8e35c405137cc13a0 = L.circleMarker(
+                [35.999, -8.8],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_e7a09a603bcfc1c8e35c405137cc13a0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS15 <br> <b>Dates: </b>2007/09/01 to 2008/04/07  <br><br><b>Depth: </b> -3357 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_166a5f5aca9942221cc8e1ffa7b748ae = L.marker(
+                [35.999, -8.8],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_8d1b51c93dc47923c0353eef3d587ade = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_166a5f5aca9942221cc8e1ffa7b748ae.setIcon(div_icon_8d1b51c93dc47923c0353eef3d587ade);
+        
+    
+            var circle_marker_0f6d7220893106c84bd2fd505158228b = L.circleMarker(
+                [35.95, -8.251],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_0f6d7220893106c84bd2fd505158228b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS16 <br> <b>Dates: </b>2007/09/01 to 2008/07/07  <br><br><b>Depth: </b> -2069 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1fcc532b3bc37b8d405d79339df14c07 = L.marker(
+                [35.95, -8.251],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_0ea54d846588f10999ca19886d584f8b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1fcc532b3bc37b8d405d79339df14c07.setIcon(div_icon_0ea54d846588f10999ca19886d584f8b);
+        
+    
+            var circle_marker_1cfe767dfc8dd115a1334f2d9b3d0b2c = L.circleMarker(
+                [35.779, -10.939],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_1cfe767dfc8dd115a1334f2d9b3d0b2c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS17 <br> <b>Dates: </b>2007/08/30 to 2008/05/28  <br><br><b>Depth: </b> -4765 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_653f4178427583b3cab45db2c03091c0 = L.marker(
+                [35.779, -10.939],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_ddeabc0a2d512c621327539ad773fe00 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_653f4178427583b3cab45db2c03091c0.setIcon(div_icon_ddeabc0a2d512c621327539ad773fe00);
+        
+    
+            var circle_marker_613f3ecff02a6bae69973aa9a9a1564f = L.circleMarker(
+                [35.711, -10.339],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_613f3ecff02a6bae69973aa9a9a1564f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS18 <br> <b>Dates: </b>2007/08/31 to 2008/07/18  <br><br><b>Depth: </b> -4605 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_78e3ef6de4f094d2182e415e135bac89 = L.marker(
+                [35.711, -10.339],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_5e9a53d54897e02ce9411638ff2a76b5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_78e3ef6de4f094d2182e415e135bac89.setIcon(div_icon_5e9a53d54897e02ce9411638ff2a76b5);
+        
+    
+            var circle_marker_4e44512c80292bde3156f1e623bd3eee = L.circleMarker(
+                [35.633, -9.751],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_4e44512c80292bde3156f1e623bd3eee.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS19 <br> <b>Dates: </b>2007/08/31 to 2008/07/17  <br><br><b>Depth: </b> -4287 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ebb2ba8896ad6d0690338c18ac622ba1 = L.marker(
+                [35.633, -9.751],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_620a199eef69ae2edea33f2df2d6a934 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS19\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ebb2ba8896ad6d0690338c18ac622ba1.setIcon(div_icon_620a199eef69ae2edea33f2df2d6a934);
+        
+    
+            var circle_marker_8b014aa654fd90632e69532588f08481 = L.circleMarker(
+                [35.598, -9.1],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_8b014aa654fd90632e69532588f08481.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS20 <br> <b>Dates: </b>2007/09/01 to 2008/07/12  <br><br><b>Depth: </b> -3449 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_18d1668b1028b9e5fcea08000ba8c450 = L.marker(
+                [35.598, -9.1],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_d599f358a5bb63e5b50e1d6db9400304 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS20\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_18d1668b1028b9e5fcea08000ba8c450.setIcon(div_icon_d599f358a5bb63e5b50e1d6db9400304);
+        
+    
+            var circle_marker_f2f4080f50bf182fa88302036bcb7308 = L.circleMarker(
+                [35.646, -8.6],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_f2f4080f50bf182fa88302036bcb7308.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS21 <br> <b>Dates: </b>2007/09/01 to 2008/07/09  <br><br><b>Depth: </b> -2566 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f5ce2dc324f95700de1e65239ad2b345 = L.marker(
+                [35.646, -8.6],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_3a2aebb005898e2225fdc3d96da9d6d3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS21\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f5ce2dc324f95700de1e65239ad2b345.setIcon(div_icon_3a2aebb005898e2225fdc3d96da9d6d3);
+        
+    
+            var circle_marker_c8c246a3e7f91841a55e330ecd142072 = L.circleMarker(
+                [35.349, -10.402],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_c8c246a3e7f91841a55e330ecd142072.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS22 <br> <b>Dates: </b>2007/08/31 to 2008/07/24  <br><br><b>Depth: </b> -4095 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2d905e3562c97d7e19c7e78b11a1f90c = L.marker(
+                [35.349, -10.402],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_67d9d13a7f7bc55328397df1fc4d8896 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS22\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2d905e3562c97d7e19c7e78b11a1f90c.setIcon(div_icon_67d9d13a7f7bc55328397df1fc4d8896);
+        
+    
+            var circle_marker_046f26cce58f7b56e39837e45be0dc59 = L.circleMarker(
+                [35.117, -9.287],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_046f26cce58f7b56e39837e45be0dc59.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS23 <br> <b>Dates: </b>2007/08/31 to 2008/06/28  <br><br><b>Depth: </b> -3747 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3dc6d3775c21402eb704a7b33aed85a9 = L.marker(
+                [35.117, -9.287],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_1c91e3cc867e9b0f5c3013ed18b268aa = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS23\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3dc6d3775c21402eb704a7b33aed85a9.setIcon(div_icon_1c91e3cc867e9b0f5c3013ed18b268aa);
+        
+    
+            var circle_marker_74fc6e5f65bbb8dde2b4fbf39f0b3428 = L.circleMarker(
+                [36.531, -9.282],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_74fc6e5f65bbb8dde2b4fbf39f0b3428.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS24 <br> <b>Dates: </b>2007/11/27 to 2008/08/11  <br><br><b>Depth: </b> -2439 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_64fd632e84455bb745502fe13719c35b = L.marker(
+                [36.531, -9.282],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_0c987cb154bf4145b82993cf056d4d0f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS24\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_64fd632e84455bb745502fe13719c35b.setIcon(div_icon_0c987cb154bf4145b82993cf056d4d0f);
+        
+    
+            var circle_marker_952216bec98b5d511fb8cf25918d99ee = L.circleMarker(
+                [36.36, -9.571],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ae5100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            circle_marker_952216bec98b5d511fb8cf25918d99ee.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NT <br> <b>Station:</b> OBS25 <br> <b>Dates: </b>2007/11/24 to 2008/08/11  <br><br><b>Depth: </b> -3234 m <br> <br> <b>Channels:</b><br> HDH-HHE-HHN-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/NT <br><br> <b>Net name: </b> USGS Geomagnetism Program <br><br> <b>Operator: </b>  USGS</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eb6a83552cbb24d099abe829dab41cf5 = L.marker(
+                [36.36, -9.571],
+                {}
+            ).addTo(map_a7b6ae66e59951e34c51653c6c68f692);
+        
+    
+            var div_icon_c546af081382bc4553233f4e54ef7770 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS25\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_eb6a83552cbb24d099abe829dab41cf5.setIcon(div_icon_c546af081382bc4553233f4e54ef7770);
+        
+    
+            map_a7b6ae66e59951e34c51653c6c68f692.fitBounds(
+                [[35.117, -11.448], [37.1, -8.251]],
+                {}
+            );
+        </script>
+
+</html>

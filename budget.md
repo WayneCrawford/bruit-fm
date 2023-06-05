@@ -6,13 +6,13 @@ How the money is allocated and spent (excluding overhead)
 
 | Subject   | Description               | Budgeted | 2022  | Prevu 2023 | Comments |
 | --------- | ------------------------- | -------- | ----- | ---------- | -------- |
-| Postdoc WP2 | fellowship              | 120k€    | -     | 50 k€      | Presume commence 1 Mars 2023 |
+| Postdoc WP3 | fellowship              | 120k€    | -     | 15 k€      | Assume starts Sept 2023 |
 |           | Computer equipment        | 2,5k€    | -     | 2,5 k€     | |
-| Engineer  | Salary                    | 105k€    | 7,4k€ | 29,5 k€    | 50% temps |
+| Engineer  | Salary                    | 105k€    | 7,4k€ | 29,5 k€    | 50% time |
 |           | Computer equipment        | 2,5k€    | 2,5k€ | -          | |
 | Masters students | 4 Stipends         | 8k€      | -     | 4 k€       | |
 | Equipment | Installation of rotational seismometer in existing BBOBS | 20k€ | - | 15 k€ | |
-| Other     | Antarctic OBS deployments | 12k€     | 12k€  | -          | **soldé** |
+| Other     | Antarctic OBS deployments | 12k€     | 12k€  | -          | **paid** |
 |           | Transportation to/from BBOBS/OBS expts | 8k€ | 0,2 k€     | 1 k€ | |
 |           | Publication charges       | 12k€     | -     | -          | |
 | Travel    | Collaboration Schimmel    | 8k€      | -     | 2,6 k€     | |

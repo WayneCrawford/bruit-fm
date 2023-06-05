@@ -33,7 +33,6 @@ How the money is allocated and spent (excluding overhead)
 | Equipment | BBOBS test at Brest | 4k€ | - | |
 |  | Ship for Brest BBOBS test | 4k€ | - | |
 |  | Equipment transportation | 3k€ | - | |
-| Equipment | BBOBS test at Brest | 4k€ | - | |
 | Other | Publication charges | 6k€ | - | |
 | Travel | Collaboration Duval-Ker | 4.8k€ | - | |
 | | project meetings | 4k€ | - | |

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_dbb05a01c2ae926b3e6514a47c6cf1f6 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network ZX: Bransfield Strait </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   University of Washington</p>
+		<p id="net_header", class="headerDates">OBS deployed from Jan 2019 to Feb 2020</p>
+		<p id="net_header", class="headerDoi">DOI: <a href=""></a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_dbb05a01c2ae926b3e6514a47c6cf1f6" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>ZX</TD><TD>BRA13</TD><TD>2019/01/10</TD><TD>2020/02/14</TD><TD>-62.456</TD><TD>-58.5994</TD><TD>-1460</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZX</TD><TD>BRA14</TD><TD>2019/01/10</TD><TD>2020/02/14</TD><TD>-62.4797</TD><TD>-58.5699</TD><TD>-1495</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZX</TD><TD>BRA15</TD><TD>2019/01/10</TD><TD>2020/02/14</TD><TD>-62.4333</TD><TD>-58.5485</TD><TD>-1349</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZX</TD><TD>BRA16</TD><TD>2019/01/10</TD><TD>2020/02/17</TD><TD>-62.455</TD><TD>-58.5089</TD><TD>-1335</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZX</TD><TD>BRA18</TD><TD>2019/01/11</TD><TD>2020/02/14</TD><TD>-62.4222</TD><TD>-58.4942</TD><TD>-1254</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZX</TD><TD>BRA19</TD><TD>2019/01/11</TD><TD>2020/02/17</TD><TD>-62.4392</TD><TD>-58.4603</TD><TD>-1103</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZX</TD><TD>BRA20</TD><TD>2019/01/11</TD><TD>2020/02/17</TD><TD>-62.4685</TD><TD>-58.4549</TD><TD>-1374</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZX</TD><TD>BRA21</TD><TD>2019/01/11</TD><TD>2020/02/20</TD><TD>-62.4275</TD><TD>-58.414</TD><TD>-1092</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZX</TD><TD>BRA22</TD><TD>2019/01/11</TD><TD>2020/02/17</TD><TD>-62.4364</TD><TD>-58.3908</TD><TD>-1019</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZX</TD><TD>BRA23</TD><TD>2019/01/11</TD><TD>2020/02/17</TD><TD>-62.4637</TD><TD>-58.3867</TD><TD>-1365</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZX</TD><TD>BRA24</TD><TD>2019/01/16</TD><TD>2020/02/20</TD><TD>-62.3965</TD><TD>-58.4007</TD><TD>-1161</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZX</TD><TD>BRA25</TD><TD>2019/01/12</TD><TD>2020/02/20</TD><TD>-62.4143</TD><TD>-58.39</TD><TD>-1326</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZX</TD><TD>BRA26</TD><TD>2019/01/12</TD><TD>2020/02/20</TD><TD>-62.4213</TD><TD>-58.3379</TD><TD>-1431</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>ZX</TD><TD>BRA27</TD><TD>2019/01/11</TD><TD>2020/02/17</TD><TD>-62.4436</TD><TD>-58.3313</TD><TD>-1467</TD><TD>EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>EDH</TD><TD>200.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase C</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>ELZ</TD><TD>200.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>LDH</TD><TD>1.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase C</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>LL1</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>LL2</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>LLZ</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>SL1</TD><TD>100.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>SL2</TD><TD>100.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Compos</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>VM0</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>VM1</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>VM2</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>VM3</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>VM4</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>VM5</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>VM6</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>VMU</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>VMV</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>VMW</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>VMZ</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BRA13 BRA14 BRA15 BRA16 BRA18 BRA19 BRA20 BRA21 BRA22 BRA23 BRA24 BRA25 BRA26 BRA27</TD><TD>VPB</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_dbb05a01c2ae926b3e6514a47c6cf1f6 = L.map(
+                "map_dbb05a01c2ae926b3e6514a47c6cf1f6",
+                {
+                    center: [-62.439800000000076, -58.449107142857024],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_838ba9d7d101cc10fd4690f99da13ab5 = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var circle_marker_526dc901dce10c2e2ce0ae85c4ccc4b4 = L.circleMarker(
+                [-62.456, -58.5994],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_526dc901dce10c2e2ce0ae85c4ccc4b4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA13 <br> <b>Dates: </b>2019/01/10 to 2020/02/14  <br><br><b>Depth: </b> -1460 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a8aab629b7a1ff89c802444f71fe3eb0 = L.marker(
+                [-62.456, -58.5994],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_78e883f02b427ffbf78fe4fa5df6c851 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a8aab629b7a1ff89c802444f71fe3eb0.setIcon(div_icon_78e883f02b427ffbf78fe4fa5df6c851);
+        
+    
+            var circle_marker_d60165d1ba2edbd2f5cec62951b18098 = L.circleMarker(
+                [-62.4797, -58.5699],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_d60165d1ba2edbd2f5cec62951b18098.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA14 <br> <b>Dates: </b>2019/01/10 to 2020/02/14  <br><br><b>Depth: </b> -1495 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d4557f38ee5c478a6cd1a3cdac6f32c1 = L.marker(
+                [-62.4797, -58.5699],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_7809172d4ca2515923b679761b7d7bb7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d4557f38ee5c478a6cd1a3cdac6f32c1.setIcon(div_icon_7809172d4ca2515923b679761b7d7bb7);
+        
+    
+            var circle_marker_eff3fb89c5dd038960132547bcdca8da = L.circleMarker(
+                [-62.4333, -58.5485],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_eff3fb89c5dd038960132547bcdca8da.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA15 <br> <b>Dates: </b>2019/01/10 to 2020/02/14  <br><br><b>Depth: </b> -1349 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_787597d13ad269c4949c5451e1f28744 = L.marker(
+                [-62.4333, -58.5485],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_e23f6e8d3302e9a4709b715035cefb0b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_787597d13ad269c4949c5451e1f28744.setIcon(div_icon_e23f6e8d3302e9a4709b715035cefb0b);
+        
+    
+            var circle_marker_47aab115409e36ed92ceedd031407aec = L.circleMarker(
+                [-62.455, -58.5089],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_47aab115409e36ed92ceedd031407aec.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA16 <br> <b>Dates: </b>2019/01/10 to 2020/02/17  <br><br><b>Depth: </b> -1335 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a796336945cc5c01d30edfd1906826d9 = L.marker(
+                [-62.455, -58.5089],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_7937e586831c38117efc6790c3b568ef = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a796336945cc5c01d30edfd1906826d9.setIcon(div_icon_7937e586831c38117efc6790c3b568ef);
+        
+    
+            var circle_marker_6b0d12ea9e1bc872c274781afe0ae426 = L.circleMarker(
+                [-62.4222, -58.4942],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_6b0d12ea9e1bc872c274781afe0ae426.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA18 <br> <b>Dates: </b>2019/01/11 to 2020/02/14  <br><br><b>Depth: </b> -1254 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9131ac230debfae451bae1ccc35cd4ae = L.marker(
+                [-62.4222, -58.4942],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_bb07ca180e97d2581388a6504498830b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9131ac230debfae451bae1ccc35cd4ae.setIcon(div_icon_bb07ca180e97d2581388a6504498830b);
+        
+    
+            var circle_marker_8f4f57e00c579078a9798c76316b3b1e = L.circleMarker(
+                [-62.4392, -58.4603],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_8f4f57e00c579078a9798c76316b3b1e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA19 <br> <b>Dates: </b>2019/01/11 to 2020/02/17  <br><br><b>Depth: </b> -1103 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_221d4ae50dfeb7e92ad048744c9a8393 = L.marker(
+                [-62.4392, -58.4603],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_69d2f18981767d797a2f40d04e6e909d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA19\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_221d4ae50dfeb7e92ad048744c9a8393.setIcon(div_icon_69d2f18981767d797a2f40d04e6e909d);
+        
+    
+            var circle_marker_85623eeaf38d54eef179acfc00220314 = L.circleMarker(
+                [-62.4685, -58.4549],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_85623eeaf38d54eef179acfc00220314.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA20 <br> <b>Dates: </b>2019/01/11 to 2020/02/17  <br><br><b>Depth: </b> -1374 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8ad0c6a2fec419a66f6a91344bc98dc9 = L.marker(
+                [-62.4685, -58.4549],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_04838b6a3d98ceec038f7ba7f771fc54 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA20\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8ad0c6a2fec419a66f6a91344bc98dc9.setIcon(div_icon_04838b6a3d98ceec038f7ba7f771fc54);
+        
+    
+            var circle_marker_f021ba9309b364c112c9df9f957caeaa = L.circleMarker(
+                [-62.4275, -58.414],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_f021ba9309b364c112c9df9f957caeaa.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA21 <br> <b>Dates: </b>2019/01/11 to 2020/02/20  <br><br><b>Depth: </b> -1092 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a2f8352ceb42244a64dcbf8ea2423261 = L.marker(
+                [-62.4275, -58.414],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_842746b0255142aabe149d61f568f551 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA21\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a2f8352ceb42244a64dcbf8ea2423261.setIcon(div_icon_842746b0255142aabe149d61f568f551);
+        
+    
+            var circle_marker_2b04578906b8cae56e4ac165d47d70d6 = L.circleMarker(
+                [-62.4364, -58.3908],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_2b04578906b8cae56e4ac165d47d70d6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA22 <br> <b>Dates: </b>2019/01/11 to 2020/02/17  <br><br><b>Depth: </b> -1019 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1c9c4aa9905efaad72cc35caf40972c2 = L.marker(
+                [-62.4364, -58.3908],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_2e11fb7acabbb080d317f5f01a5664b6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA22\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1c9c4aa9905efaad72cc35caf40972c2.setIcon(div_icon_2e11fb7acabbb080d317f5f01a5664b6);
+        
+    
+            var circle_marker_4de4be7ab06e42c361924ecba2ca54d7 = L.circleMarker(
+                [-62.4637, -58.3867],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_4de4be7ab06e42c361924ecba2ca54d7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA23 <br> <b>Dates: </b>2019/01/11 to 2020/02/17  <br><br><b>Depth: </b> -1365 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5b4b827ad3d29983a9dd470b3893ba42 = L.marker(
+                [-62.4637, -58.3867],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_955d11dd995fa5e69456b2d3ac07ae7a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA23\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5b4b827ad3d29983a9dd470b3893ba42.setIcon(div_icon_955d11dd995fa5e69456b2d3ac07ae7a);
+        
+    
+            var circle_marker_f413fa6d74ac428a85cb397903899904 = L.circleMarker(
+                [-62.3965, -58.4007],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_f413fa6d74ac428a85cb397903899904.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA24 <br> <b>Dates: </b>2019/01/16 to 2020/02/20  <br><br><b>Depth: </b> -1161 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_06a2a9c43de4a8f118636c0a773ee89b = L.marker(
+                [-62.3965, -58.4007],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_da604f4a941929b073afb8810261d6d5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA24\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_06a2a9c43de4a8f118636c0a773ee89b.setIcon(div_icon_da604f4a941929b073afb8810261d6d5);
+        
+    
+            var circle_marker_584c82410f98509350d0fe3a7560427c = L.circleMarker(
+                [-62.4143, -58.39],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_584c82410f98509350d0fe3a7560427c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA25 <br> <b>Dates: </b>2019/01/12 to 2020/02/20  <br><br><b>Depth: </b> -1326 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_65635c98ba90537e205b138248fbc999 = L.marker(
+                [-62.4143, -58.39],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_a225e6fafd4d6344eef634e53493a83f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA25\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_65635c98ba90537e205b138248fbc999.setIcon(div_icon_a225e6fafd4d6344eef634e53493a83f);
+        
+    
+            var circle_marker_34057454cbfc1031ecbc2725d15db0e2 = L.circleMarker(
+                [-62.4213, -58.3379],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_34057454cbfc1031ecbc2725d15db0e2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA26 <br> <b>Dates: </b>2019/01/12 to 2020/02/20  <br><br><b>Depth: </b> -1431 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0ff1f571d0584c466a8b3dc6ae8a5767 = L.marker(
+                [-62.4213, -58.3379],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_517481c24ef0d67e92de42ebb1f9094d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA26\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0ff1f571d0584c466a8b3dc6ae8a5767.setIcon(div_icon_517481c24ef0d67e92de42ebb1f9094d);
+        
+    
+            var circle_marker_ce3532442bc8994846389c5b004b03d5 = L.circleMarker(
+                [-62.4436, -58.3313],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            circle_marker_ce3532442bc8994846389c5b004b03d5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZX <br> <b>Station:</b> BRA27 <br> <b>Dates: </b>2019/01/11 to 2020/02/17  <br><br><b>Depth: </b> -1467 m <br> <br> <b>Channels:</b><br> EDH-ELZ (200.0 Hz) <br>SL1-SL2 (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Bransfield Strait <br><br> <b>Operator: </b>  University of Washington</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6120e96f26f2b70fa8d2a391be35f14c = L.marker(
+                [-62.4436, -58.3313],
+                {}
+            ).addTo(map_dbb05a01c2ae926b3e6514a47c6cf1f6);
+        
+    
+            var div_icon_fe89f093b259a789f3c2a70b86985066 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBRA27\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6120e96f26f2b70fa8d2a391be35f14c.setIcon(div_icon_fe89f093b259a789f3c2a70b86985066);
+        
+    
+            map_dbb05a01c2ae926b3e6514a47c6cf1f6.fitBounds(
+                [[-62.4797, -58.5994], [-62.3965, -58.3313]],
+                {}
+            );
+        </script>
+
+</html>

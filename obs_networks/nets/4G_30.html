@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_56c627996c7fe948629151f34be09b42 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network 4G: EMSO-MOMAR </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Institut de Physique du Globe de Paris</p>
+		<p id="net_header", class="headerDates">OBS deployed from Aug 2008 to Sep 2009</p>
+		<p id="net_header", class="headerDoi">DOI: <a href=""></a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_56c627996c7fe948629151f34be09b42" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>4G</TD><TD>LSVNB</TD><TD>2008/08/11</TD><TD>2009/09/02</TD><TD>37.3217</TD><TD>-32.2777</TD><TD>-1859</TD><TD>BDH-SH1-SH2-SH3 (62.5 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>LSVNB</TD><TD>BDH</TD><TD>62.5</TD><TD>HiTech HTI-90-U hydrophone with integrated preamp, serial number 220xxx, 0.05-2500 Hz</TD></TR><TR><TD>LSVNB</TD><TD>SH1</TD><TD>62.5</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone, 395 ohm coil and 2490 ohm shunt</TD></TR><TR><TD>LSVNB</TD><TD>SH2</TD><TD>62.5</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone, 395 ohm coil and 2490 ohm shunt</TD></TR><TR><TD>LSVNB</TD><TD>SH3</TD><TD>62.5</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone, 395 ohm coil and 2490 ohm shunt</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_56c627996c7fe948629151f34be09b42 = L.map(
+                "map_56c627996c7fe948629151f34be09b42",
+                {
+                    center: [37.3217, -32.2777],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_8523cfb5027835940ac21dfd9349ed8b = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_56c627996c7fe948629151f34be09b42);
+        
+    
+            var circle_marker_e8f002165363f65f825d59cd9d20cf66 = L.circleMarker(
+                [37.3217, -32.2777],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a25d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_56c627996c7fe948629151f34be09b42);
+        
+    
+            circle_marker_e8f002165363f65f825d59cd9d20cf66.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVNB <br> <b>Dates: </b>2008/08/11 to 2009/09/02  <br><br><b>Depth: </b> -1859 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.5 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f591ce0421477bbad6cb7dfcb1c03766 = L.marker(
+                [37.3217, -32.2777],
+                {}
+            ).addTo(map_56c627996c7fe948629151f34be09b42);
+        
+    
+            var div_icon_7fe49c4ff12e160a7a8f6439fdf9719d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVNB\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f591ce0421477bbad6cb7dfcb1c03766.setIcon(div_icon_7fe49c4ff12e160a7a8f6439fdf9719d);
+        
+    
+            map_56c627996c7fe948629151f34be09b42.fitBounds(
+                [[37.3217, -32.2777], [37.3217, -32.2777]],
+                {}
+            );
+        </script>
+
+</html>

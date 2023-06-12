@@ -7,6 +7,7 @@
 | **iXblue**| GUATTARI| Frederic| Director| **Partner’s scientific leader**, WP 3.3 co-leader| 2.5 |
 | IPGP| STUTZMANN| Eléonore| Physicien| **WP3 leader**, WP2 co-leader| 18 |
 | IPGP| BARRUOL| Guilhem| Dir Rech CNRS| **WP5 leader**, WP2 co-leader| 18 |
+| IPGP| AMINIAN| Mohammad-Amin| doctoral| WP4: Compliance and noise | 6 |
 | IPGP| XXXX| XXXX| postdoc| WP3: Postdoctoral researcher| 36 |
 | IFREMER| REBEYROL| Simon| postdoc| WP4: PostDoctoral researcher| 18 |
 | IPGP| DREO| Richard | ingenieur (50%)| WPs 2 & 5: Data processing| 18 |

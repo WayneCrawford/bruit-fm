@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_bdffba2b824a22cdafe72288dfb95641 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network 2B: OBSIP: Bering Sea Active Source Experiment </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Woods Hole Oceanographic Institution (WHOI)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Aug 2011 to Aug 2011</p>
+		<p id="net_header", class="headerDoi">DOI: <a href=""></a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_bdffba2b824a22cdafe72288dfb95641" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>2B</TD><TD>OBS01</TD><TD>2011/08/21</TD><TD>2011/08/29</TD><TD>56.817699</TD><TD>174.817307</TD><TD>-3840</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS02</TD><TD>2011/08/21</TD><TD>2011/08/29</TD><TD>56.956299</TD><TD>175.030899</TD><TD>-3797</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS03</TD><TD>2011/08/22</TD><TD>2011/08/29</TD><TD>57.094501</TD><TD>175.246094</TD><TD>-3793</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS04</TD><TD>2011/08/21</TD><TD>2011/08/28</TD><TD>57.2337</TD><TD>175.460602</TD><TD>-3786</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS05</TD><TD>2011/08/21</TD><TD>2011/08/28</TD><TD>57.371799</TD><TD>175.677002</TD><TD>-3784</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS06</TD><TD>2011/08/21</TD><TD>2011/08/28</TD><TD>57.509602</TD><TD>175.893997</TD><TD>-3783</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS07</TD><TD>2011/08/20</TD><TD>2011/08/28</TD><TD>57.647301</TD><TD>176.111404</TD><TD>-3777</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS08</TD><TD>2011/08/20</TD><TD>2011/08/28</TD><TD>57.605</TD><TD>176.255707</TD><TD>-3792</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS09</TD><TD>2011/08/20</TD><TD>2011/08/28</TD><TD>57.5093</TD><TD>176.538498</TD><TD>-3785</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS10</TD><TD>2011/08/20</TD><TD>2011/08/27</TD><TD>57.412899</TD><TD>176.843399</TD><TD>-3793</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS11</TD><TD>2011/08/20</TD><TD>2011/08/27</TD><TD>57.323101</TD><TD>177.113007</TD><TD>-3811</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS12</TD><TD>2011/08/20</TD><TD>2011/08/27</TD><TD>57.233501</TD><TD>177.382202</TD><TD>-3811</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS13</TD><TD>2011/08/20</TD><TD>2011/08/27</TD><TD>57.1437</TD><TD>177.6548</TD><TD>-3817</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS14</TD><TD>2011/08/20</TD><TD>2011/08/27</TD><TD>57.119598</TD><TD>177.726196</TD><TD>-3818</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS15</TD><TD>2011/08/20</TD><TD>2011/08/27</TD><TD>57.093899</TD><TD>177.7892</TD><TD>-3801</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS16</TD><TD>2011/08/20</TD><TD>2011/08/27</TD><TD>57.070801</TD><TD>177.863007</TD><TD>-3815</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR><TR><TD>2B</TD><TD>OBS17</TD><TD>2011/08/20</TD><TD>2011/08/26</TD><TD>56.9813</TD><TD>178.132599</TD><TD>-3817</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15 OBS16 OBS17</TD><TD>EDH</TD><TD>200.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase B</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15 OBS16 OBS17</TD><TD>EL1</TD><TD>200.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15 OBS16 OBS17</TD><TD>EL2</TD><TD>200.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15 OBS16 OBS17</TD><TD>ELZ</TD><TD>200.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15 OBS16 OBS17</TD><TD>LDH</TD><TD>1.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase B</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15 OBS16 OBS17</TD><TD>LL1</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15 OBS16 OBS17</TD><TD>LL2</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15 OBS16 OBS17</TD><TD>LLZ</TD><TD>1.0</TD><TD>Geospace GS-11D/Quanterra Q330 Linear Phase Below</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_bdffba2b824a22cdafe72288dfb95641 = L.map(
+                "map_bdffba2b824a22cdafe72288dfb95641",
+                {
+                    center: [57.24258823529414, 176.56093647058805],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_0996564aee40386268aceeae6afbec51 = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var circle_marker_d4e0ca2c759190c40939e794f0f7d393 = L.circleMarker(
+                [56.817699, 174.817307],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_d4e0ca2c759190c40939e794f0f7d393.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS01 <br> <b>Dates: </b>2011/08/21 to 2011/08/29  <br><br><b>Depth: </b> -3840 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b04779b9b731d7628a766505b450956b = L.marker(
+                [56.817699, 174.817307],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_31ed5b5e7c54f1d598e7169b7092f389 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b04779b9b731d7628a766505b450956b.setIcon(div_icon_31ed5b5e7c54f1d598e7169b7092f389);
+        
+    
+            var circle_marker_f5f125187800094ebea6a88f4b8b6e5c = L.circleMarker(
+                [56.956299, 175.030899],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_f5f125187800094ebea6a88f4b8b6e5c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS02 <br> <b>Dates: </b>2011/08/21 to 2011/08/29  <br><br><b>Depth: </b> -3797 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_761610852c794e6cd6b96d0a0ea5e62b = L.marker(
+                [56.956299, 175.030899],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_48023c5f2e31ab5a295424c2cdbd02e7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_761610852c794e6cd6b96d0a0ea5e62b.setIcon(div_icon_48023c5f2e31ab5a295424c2cdbd02e7);
+        
+    
+            var circle_marker_d4633aba8e8a77d4bc3a6aec421d222f = L.circleMarker(
+                [57.094501, 175.246094],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_d4633aba8e8a77d4bc3a6aec421d222f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS03 <br> <b>Dates: </b>2011/08/22 to 2011/08/29  <br><br><b>Depth: </b> -3793 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c3c6215190fc964547ccf6b936b450bf = L.marker(
+                [57.094501, 175.246094],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_dc6c89523228e80911ca101fab75aac7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c3c6215190fc964547ccf6b936b450bf.setIcon(div_icon_dc6c89523228e80911ca101fab75aac7);
+        
+    
+            var circle_marker_6dadd3ba0f97c3376090a9afac56047c = L.circleMarker(
+                [57.2337, 175.460602],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_6dadd3ba0f97c3376090a9afac56047c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS04 <br> <b>Dates: </b>2011/08/21 to 2011/08/28  <br><br><b>Depth: </b> -3786 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ce497a0f06205077024e1888bf2e0036 = L.marker(
+                [57.2337, 175.460602],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_18fb61c16f28830013219967142ef84e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ce497a0f06205077024e1888bf2e0036.setIcon(div_icon_18fb61c16f28830013219967142ef84e);
+        
+    
+            var circle_marker_3a944b1fde9f89a9b9aea0cb73eb74a6 = L.circleMarker(
+                [57.371799, 175.677002],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_3a944b1fde9f89a9b9aea0cb73eb74a6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS05 <br> <b>Dates: </b>2011/08/21 to 2011/08/28  <br><br><b>Depth: </b> -3784 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fbb5744af6f4f1806ecbc1ec8ad89875 = L.marker(
+                [57.371799, 175.677002],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_4ac85fe97aee2853a76d375235e0cabd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fbb5744af6f4f1806ecbc1ec8ad89875.setIcon(div_icon_4ac85fe97aee2853a76d375235e0cabd);
+        
+    
+            var circle_marker_05741bf18fb980155f1a68d1a8eed1af = L.circleMarker(
+                [57.509602, 175.893997],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_05741bf18fb980155f1a68d1a8eed1af.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS06 <br> <b>Dates: </b>2011/08/21 to 2011/08/28  <br><br><b>Depth: </b> -3783 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_56316d6ed458545323d1a2fa71e58970 = L.marker(
+                [57.509602, 175.893997],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_8de473883165f02cf376d1cfb0a9ea5f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_56316d6ed458545323d1a2fa71e58970.setIcon(div_icon_8de473883165f02cf376d1cfb0a9ea5f);
+        
+    
+            var circle_marker_8a2822bc16a634071785d979d43a384a = L.circleMarker(
+                [57.647301, 176.111404],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_8a2822bc16a634071785d979d43a384a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS07 <br> <b>Dates: </b>2011/08/20 to 2011/08/28  <br><br><b>Depth: </b> -3777 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_de3daa2bb60a5603bfe30b7aea074216 = L.marker(
+                [57.647301, 176.111404],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_c792f965a7cf4cf0e56087e02a9b5acc = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_de3daa2bb60a5603bfe30b7aea074216.setIcon(div_icon_c792f965a7cf4cf0e56087e02a9b5acc);
+        
+    
+            var circle_marker_bd80d864a894f1a7dfbefb603bb800b5 = L.circleMarker(
+                [57.605, 176.255707],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_bd80d864a894f1a7dfbefb603bb800b5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS08 <br> <b>Dates: </b>2011/08/20 to 2011/08/28  <br><br><b>Depth: </b> -3792 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_da2fa1e36770adc9ea4f7c33b5718449 = L.marker(
+                [57.605, 176.255707],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_51f9d6c0a14be87922da292d343e81ef = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_da2fa1e36770adc9ea4f7c33b5718449.setIcon(div_icon_51f9d6c0a14be87922da292d343e81ef);
+        
+    
+            var circle_marker_643674365e1dc663a97360c1d99db13d = L.circleMarker(
+                [57.5093, 176.538498],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_643674365e1dc663a97360c1d99db13d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS09 <br> <b>Dates: </b>2011/08/20 to 2011/08/28  <br><br><b>Depth: </b> -3785 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5988cef239d907ed6ac0c8e6b40d1ef2 = L.marker(
+                [57.5093, 176.538498],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_f076ece87fea71fcef5612ec013b63ea = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5988cef239d907ed6ac0c8e6b40d1ef2.setIcon(div_icon_f076ece87fea71fcef5612ec013b63ea);
+        
+    
+            var circle_marker_9a4053cd878a23c8bb4897b51e8faeba = L.circleMarker(
+                [57.412899, 176.843399],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_9a4053cd878a23c8bb4897b51e8faeba.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS10 <br> <b>Dates: </b>2011/08/20 to 2011/08/27  <br><br><b>Depth: </b> -3793 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5510453688cd0e2ef3097f64a5852e13 = L.marker(
+                [57.412899, 176.843399],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_30135e42468d28553450b6c91c6af3a3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5510453688cd0e2ef3097f64a5852e13.setIcon(div_icon_30135e42468d28553450b6c91c6af3a3);
+        
+    
+            var circle_marker_c9995c617d5d2e00606722dd5ab38e8a = L.circleMarker(
+                [57.323101, 177.113007],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_c9995c617d5d2e00606722dd5ab38e8a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS11 <br> <b>Dates: </b>2011/08/20 to 2011/08/27  <br><br><b>Depth: </b> -3811 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_df8e49d5077e35b81ae81fd923c719a1 = L.marker(
+                [57.323101, 177.113007],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_8e467ab57a3c6c6301dcac7dfe753ca8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_df8e49d5077e35b81ae81fd923c719a1.setIcon(div_icon_8e467ab57a3c6c6301dcac7dfe753ca8);
+        
+    
+            var circle_marker_78adf84ae7766b4e065ad83bb85feaf0 = L.circleMarker(
+                [57.233501, 177.382202],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_78adf84ae7766b4e065ad83bb85feaf0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS12 <br> <b>Dates: </b>2011/08/20 to 2011/08/27  <br><br><b>Depth: </b> -3811 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b9f63684cd4cfcce77c320eaec62428e = L.marker(
+                [57.233501, 177.382202],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_402640bbaa054a5bf2f2d1d142cfcb1e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b9f63684cd4cfcce77c320eaec62428e.setIcon(div_icon_402640bbaa054a5bf2f2d1d142cfcb1e);
+        
+    
+            var circle_marker_1db613f8353e051b4c5844cc2c62e341 = L.circleMarker(
+                [57.1437, 177.6548],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_1db613f8353e051b4c5844cc2c62e341.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS13 <br> <b>Dates: </b>2011/08/20 to 2011/08/27  <br><br><b>Depth: </b> -3817 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fc5b03a472e077ce25c532c0eef11851 = L.marker(
+                [57.1437, 177.6548],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_16d32bb7367e1f12722e6c530ffe1369 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fc5b03a472e077ce25c532c0eef11851.setIcon(div_icon_16d32bb7367e1f12722e6c530ffe1369);
+        
+    
+            var circle_marker_e4345430704e37e93f116e11b1c46c98 = L.circleMarker(
+                [57.119598, 177.726196],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_e4345430704e37e93f116e11b1c46c98.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS14 <br> <b>Dates: </b>2011/08/20 to 2011/08/27  <br><br><b>Depth: </b> -3818 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_16fcd862d40565b7b2aed2ac28398291 = L.marker(
+                [57.119598, 177.726196],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_c02ac8f75099bc20ae76bd7910c7539f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_16fcd862d40565b7b2aed2ac28398291.setIcon(div_icon_c02ac8f75099bc20ae76bd7910c7539f);
+        
+    
+            var circle_marker_a379e51c0d06ee3288ca81f126034dd1 = L.circleMarker(
+                [57.093899, 177.7892],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_a379e51c0d06ee3288ca81f126034dd1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS15 <br> <b>Dates: </b>2011/08/20 to 2011/08/27  <br><br><b>Depth: </b> -3801 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f54d2144eb7d06a79a2647cfa40b70c5 = L.marker(
+                [57.093899, 177.7892],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_6a11c6b16223fc74d84af70a9c6ae2be = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f54d2144eb7d06a79a2647cfa40b70c5.setIcon(div_icon_6a11c6b16223fc74d84af70a9c6ae2be);
+        
+    
+            var circle_marker_d36044a186950e82b03e64cb4952f039 = L.circleMarker(
+                [57.070801, 177.863007],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_d36044a186950e82b03e64cb4952f039.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS16 <br> <b>Dates: </b>2011/08/20 to 2011/08/27  <br><br><b>Depth: </b> -3815 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_90725d4556e150cb5dfe1a6074b42aea = L.marker(
+                [57.070801, 177.863007],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_0b1677eba762cb230314f133535d7c5b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_90725d4556e150cb5dfe1a6074b42aea.setIcon(div_icon_0b1677eba762cb230314f133535d7c5b);
+        
+    
+            var circle_marker_438a654e2ebff3459f4547424ae67807 = L.circleMarker(
+                [56.9813, 178.132599],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28d700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            circle_marker_438a654e2ebff3459f4547424ae67807.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2B <br> <b>Station:</b> OBS17 <br> <b>Dates: </b>2011/08/20 to 2011/08/26  <br><br><b>Depth: </b> -3817 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> OBSIP: Bering Sea Active Source Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3033eae5b6cf2c46c869b99a3d8c1635 = L.marker(
+                [56.9813, 178.132599],
+                {}
+            ).addTo(map_bdffba2b824a22cdafe72288dfb95641);
+        
+    
+            var div_icon_a74380fd8d12d930d04bcb0dffedc865 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3033eae5b6cf2c46c869b99a3d8c1635.setIcon(div_icon_a74380fd8d12d930d04bcb0dffedc865);
+        
+    
+            map_bdffba2b824a22cdafe72288dfb95641.fitBounds(
+                [[56.817699, 174.817307], [57.647301, 178.132599]],
+                {}
+            );
+        </script>
+
+</html>

@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_1f27051e773795eb13faed1e7f3ab608 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network NM: Cooperative New Madrid Seismic Network </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by  CERI - University of Memphis</p>
+		<p id="net_header", class="headerDates">OBS deployed from Jun 2010 to Sep 2014</p>
+		<p id="net_header", class="headerDoi">DOI: <a href=""></a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_1f27051e773795eb13faed1e7f3ab608" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>NM</TD><TD>NM01</TD><TD>2010/06/16</TD><TD>2011/06/25</TD><TD>39.2006</TD><TD>154.7836</TD><TD>-5725</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM01</TD><TD>2012/08/21</TD><TD>2013/08/21</TD><TD>39.2041</TD><TD>154.778</TD><TD>-5719</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM01</TD><TD>2013/08/24</TD><TD>2014/06/10</TD><TD>39.1975</TD><TD>154.7626</TD><TD>-5736</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM02</TD><TD>2010/06/20</TD><TD>2011/06/24</TD><TD>39.701</TD><TD>153.3547</TD><TD>-5704</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM02</TD><TD>2012/08/24</TD><TD>2014/08/20</TD><TD>39.7057</TD><TD>153.3547</TD><TD>-5711</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM03</TD><TD>2010/06/15</TD><TD>2011/06/24</TD><TD>38.7618</TD><TD>155.9102</TD><TD>-5737</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM03</TD><TD>2012/08/24</TD><TD>2014/08/24</TD><TD>38.7592</TD><TD>155.9076</TD><TD>-5732</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM04</TD><TD>2010/06/21</TD><TD>2011/06/25</TD><TD>38.2101</TD><TD>154.2027</TD><TD>-5923</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM04</TD><TD>2012/08/20</TD><TD>2013/08/21</TD><TD>38.2107</TD><TD>154.2051</TD><TD>-5916</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM04</TD><TD>2013/08/24</TD><TD>2014/06/10</TD><TD>38.2101</TD><TD>154.2032</TD><TD>-5927</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM05</TD><TD>2010/06/21</TD><TD>2011/06/25</TD><TD>40.2508</TD><TD>155.4086</TD><TD>-5598</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM05</TD><TD>2012/08/21</TD><TD>2013/08/22</TD><TD>40.2545</TD><TD>155.41</TD><TD>-5593</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM05</TD><TD>2013/08/25</TD><TD>2014/06/08</TD><TD>40.254</TD><TD>155.4097</TD><TD>-5605</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM12</TD><TD>2012/08/26</TD><TD>2013/08/27</TD><TD>40.8173</TD><TD>157.1089</TD><TD>-5501</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM12</TD><TD>2013/08/27</TD><TD>2014/06/05</TD><TD>40.8163</TD><TD>157.1115</TD><TD>-5515</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM14</TD><TD>2012/09/01</TD><TD>2013/08/22</TD><TD>39.045</TD><TD>158.0088</TD><TD>-5487</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM14</TD><TD>2013/08/23</TD><TD>2014/09/01</TD><TD>39.045</TD><TD>158.0088</TD><TD>-5487</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM15</TD><TD>2012/08/26</TD><TD>2014/08/26</TD><TD>40.3554</TD><TD>158.4047</TD><TD>-5558</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM16</TD><TD>2012/08/11</TD><TD>2014/08/28</TD><TD>41.0205</TD><TD>159.1879</TD><TD>-5554</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM17</TD><TD>2012/08/28</TD><TD>2013/08/29</TD><TD>39.7656</TD><TD>159.853</TD><TD>-5519</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM17</TD><TD>2013/08/29</TD><TD>2014/09/26</TD><TD>39.7651</TD><TD>159.8578</TD><TD>-5531</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM18</TD><TD>2011/11/22</TD><TD>2013/07/01</TD><TD>30.1856</TD><TD>161.2934</TD><TD>-5927</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM19</TD><TD>2011/11/21</TD><TD>2013/07/01</TD><TD>29.1505</TD><TD>161.774</TD><TD>-5877</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM20</TD><TD>2011/11/23</TD><TD>2013/07/01</TD><TD>30.6413</TD><TD>162.5494</TD><TD>-5913</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM20</TD><TD>2013/09/03</TD><TD>2014/09/24</TD><TD>30.6451</TD><TD>162.5518</TD><TD>-5922</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM21</TD><TD>2011/11/21</TD><TD>2013/07/01</TD><TD>29.5419</TD><TD>162.8585</TD><TD>-5936</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM22</TD><TD>2011/11/24</TD><TD>2013/07/01</TD><TD>32.9519</TD><TD>163.8112</TD><TD>-6118</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM22</TD><TD>2013/09/01</TD><TD>2014/09/26</TD><TD>32.9507</TD><TD>163.8043</TD><TD>-6132</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM23</TD><TD>2011/11/23</TD><TD>2013/07/01</TD><TD>31.9236</TD><TD>164.4072</TD><TD>-6011</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM23</TD><TD>2013/09/02</TD><TD>2014/09/26</TD><TD>31.9237</TD><TD>164.4106</TD><TD>-6017</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM24</TD><TD>2011/11/23</TD><TD>2013/04/20</TD><TD>33.2166</TD><TD>165.2616</TD><TD>-6059</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM24</TD><TD>2013/09/01</TD><TD>2014/09/27</TD><TD>33.2178</TD><TD>165.2588</TD><TD>-6072</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM25</TD><TD>2011/11/23</TD><TD>2013/07/01</TD><TD>32.3157</TD><TD>165.4445</TD><TD>-6057</TD><TD></TD></TR><TR><TD>NM</TD><TD>NM25</TD><TD>2013/09/02</TD><TD>2014/09/27</TD><TD>32.3211</TD><TD>165.4442</TD><TD>-6064</TD><TD></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_1f27051e773795eb13faed1e7f3ab608 = L.map(
+                "map_1f27051e773795eb13faed1e7f3ab608",
+                {
+                    center: [36.51575882352942, 159.06181176470585],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_6eed8eebc3f58734fe9826f88b3d3e1c = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var circle_marker_1615569471cdda5a20f7817105e61447 = L.circleMarker(
+                [39.2006, 154.7836],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_1615569471cdda5a20f7817105e61447.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM01 <br> <b>Dates: </b>2010/06/16 to 2011/06/25  <br><br><b>Depth: </b> -5725 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b1946c34065b5dec81082f99bb8f4d5f = L.marker(
+                [39.2006, 154.7836],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_e02c2b54328149c0a6287583cd7dd710 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b1946c34065b5dec81082f99bb8f4d5f.setIcon(div_icon_e02c2b54328149c0a6287583cd7dd710);
+        
+    
+            var circle_marker_c45110cafe3863a6adf948e688d839ad = L.circleMarker(
+                [39.2041, 154.778],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_c45110cafe3863a6adf948e688d839ad.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM01 <br> <b>Dates: </b>2012/08/21 to 2013/08/21  <br><br><b>Depth: </b> -5719 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_85ef16c28079e17f9767046a63e82407 = L.marker(
+                [39.2041, 154.778],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_2b5c6ee51db9411bf4d7b5aa1f611255 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_85ef16c28079e17f9767046a63e82407.setIcon(div_icon_2b5c6ee51db9411bf4d7b5aa1f611255);
+        
+    
+            var circle_marker_ba71af27b8d07c07eb3ae79ab1812fbd = L.circleMarker(
+                [39.1975, 154.7626],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_ba71af27b8d07c07eb3ae79ab1812fbd.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM01 <br> <b>Dates: </b>2013/08/24 to 2014/06/10  <br><br><b>Depth: </b> -5736 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8417cfbf3661caf98fbe1e0077612c43 = L.marker(
+                [39.1975, 154.7626],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_fdc6bf85eb62b8a8c57832bf510645b5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8417cfbf3661caf98fbe1e0077612c43.setIcon(div_icon_fdc6bf85eb62b8a8c57832bf510645b5);
+        
+    
+            var circle_marker_2673f62821a09102ecb546b8d4a2c8bc = L.circleMarker(
+                [39.701, 153.3547],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_2673f62821a09102ecb546b8d4a2c8bc.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM02 <br> <b>Dates: </b>2010/06/20 to 2011/06/24  <br><br><b>Depth: </b> -5704 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2399721f69e722a71aa850d6b8986999 = L.marker(
+                [39.701, 153.3547],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_89d48fb861b20051f1dcec2541bca1a5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2399721f69e722a71aa850d6b8986999.setIcon(div_icon_89d48fb861b20051f1dcec2541bca1a5);
+        
+    
+            var circle_marker_7a1e2114c2be8d4f2f9635b2a9387d70 = L.circleMarker(
+                [39.7057, 153.3547],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_7a1e2114c2be8d4f2f9635b2a9387d70.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM02 <br> <b>Dates: </b>2012/08/24 to 2014/08/20  <br><br><b>Depth: </b> -5711 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_334c72426c86eca95407d214a8f40a7a = L.marker(
+                [39.7057, 153.3547],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_2343a931e857620fc5f6bb69b075cc76 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_334c72426c86eca95407d214a8f40a7a.setIcon(div_icon_2343a931e857620fc5f6bb69b075cc76);
+        
+    
+            var circle_marker_d3cd24f8ed0c988dd71fd9ce9d8afd38 = L.circleMarker(
+                [38.7618, 155.9102],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_d3cd24f8ed0c988dd71fd9ce9d8afd38.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM03 <br> <b>Dates: </b>2010/06/15 to 2011/06/24  <br><br><b>Depth: </b> -5737 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3371287a557117fac6f195cd922c46da = L.marker(
+                [38.7618, 155.9102],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_ddf9876d40593179564769fae0b9068a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3371287a557117fac6f195cd922c46da.setIcon(div_icon_ddf9876d40593179564769fae0b9068a);
+        
+    
+            var circle_marker_d218bf4d506502f541e332ba8922587a = L.circleMarker(
+                [38.7592, 155.9076],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_d218bf4d506502f541e332ba8922587a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM03 <br> <b>Dates: </b>2012/08/24 to 2014/08/24  <br><br><b>Depth: </b> -5732 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_77e6081d574376092b3e3172b636f3d5 = L.marker(
+                [38.7592, 155.9076],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_c0ac2f381b86f786d46e3f644b8255b8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_77e6081d574376092b3e3172b636f3d5.setIcon(div_icon_c0ac2f381b86f786d46e3f644b8255b8);
+        
+    
+            var circle_marker_2e06fc14cabe88e31fff954d8c198332 = L.circleMarker(
+                [38.2101, 154.2027],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_2e06fc14cabe88e31fff954d8c198332.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM04 <br> <b>Dates: </b>2010/06/21 to 2011/06/25  <br><br><b>Depth: </b> -5923 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dad157d1bc3856dab9e167837a1a69bb = L.marker(
+                [38.2101, 154.2027],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_4364814a7b070733969a1b3ec155ee73 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_dad157d1bc3856dab9e167837a1a69bb.setIcon(div_icon_4364814a7b070733969a1b3ec155ee73);
+        
+    
+            var circle_marker_55d1140726f3ce1e1cffc1a8b1b1512b = L.circleMarker(
+                [38.2107, 154.2051],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_55d1140726f3ce1e1cffc1a8b1b1512b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM04 <br> <b>Dates: </b>2012/08/20 to 2013/08/21  <br><br><b>Depth: </b> -5916 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_de0b38d5fb49e2c943d729c558b2e8d4 = L.marker(
+                [38.2107, 154.2051],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_197106937c337ba93de3e406aa1b105b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_de0b38d5fb49e2c943d729c558b2e8d4.setIcon(div_icon_197106937c337ba93de3e406aa1b105b);
+        
+    
+            var circle_marker_342750b8afd56fb00218a8901b1aff3c = L.circleMarker(
+                [38.2101, 154.2032],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_342750b8afd56fb00218a8901b1aff3c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM04 <br> <b>Dates: </b>2013/08/24 to 2014/06/10  <br><br><b>Depth: </b> -5927 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2b1855a8f05dec24a32da7f27f7d2417 = L.marker(
+                [38.2101, 154.2032],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_ec3f97f0e2c8eae04623a634c3e6e6f0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2b1855a8f05dec24a32da7f27f7d2417.setIcon(div_icon_ec3f97f0e2c8eae04623a634c3e6e6f0);
+        
+    
+            var circle_marker_ec458f5a215e011baf094868d0f4d861 = L.circleMarker(
+                [40.2508, 155.4086],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_ec458f5a215e011baf094868d0f4d861.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM05 <br> <b>Dates: </b>2010/06/21 to 2011/06/25  <br><br><b>Depth: </b> -5598 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0d01a3da684f1c15f8cca00b2a24b684 = L.marker(
+                [40.2508, 155.4086],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_c0583ac899e7195994ca3ce4ac8b2e85 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0d01a3da684f1c15f8cca00b2a24b684.setIcon(div_icon_c0583ac899e7195994ca3ce4ac8b2e85);
+        
+    
+            var circle_marker_9059b5d242ba56a82d9566b8ddcb8724 = L.circleMarker(
+                [40.2545, 155.41],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_9059b5d242ba56a82d9566b8ddcb8724.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM05 <br> <b>Dates: </b>2012/08/21 to 2013/08/22  <br><br><b>Depth: </b> -5593 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_84d64819cfc35c94e9320b1d392b3640 = L.marker(
+                [40.2545, 155.41],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_86608edb5e7c34b4db0fcb71b2bd7122 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_84d64819cfc35c94e9320b1d392b3640.setIcon(div_icon_86608edb5e7c34b4db0fcb71b2bd7122);
+        
+    
+            var circle_marker_a5e4a3951569e38af75eaea4d811a8dc = L.circleMarker(
+                [40.254, 155.4097],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_a5e4a3951569e38af75eaea4d811a8dc.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM05 <br> <b>Dates: </b>2013/08/25 to 2014/06/08  <br><br><b>Depth: </b> -5605 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_db39d5694603effe61cd1ffec68dfe76 = L.marker(
+                [40.254, 155.4097],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_b4aed65b3f095a72e2a400af6f2397b1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_db39d5694603effe61cd1ffec68dfe76.setIcon(div_icon_b4aed65b3f095a72e2a400af6f2397b1);
+        
+    
+            var circle_marker_ec8df36d21c9d50c9f0ffcfada0b32b6 = L.circleMarker(
+                [40.8173, 157.1089],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_ec8df36d21c9d50c9f0ffcfada0b32b6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM12 <br> <b>Dates: </b>2012/08/26 to 2013/08/27  <br><br><b>Depth: </b> -5501 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2f2e60a3ac7cbc4b6d5144d6da61cf03 = L.marker(
+                [40.8173, 157.1089],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_753ba6b2c3c82d3e2bdd6a94d1c7c808 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2f2e60a3ac7cbc4b6d5144d6da61cf03.setIcon(div_icon_753ba6b2c3c82d3e2bdd6a94d1c7c808);
+        
+    
+            var circle_marker_e1c2b85746f216dde7ecccfc112a51b2 = L.circleMarker(
+                [40.8163, 157.1115],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_e1c2b85746f216dde7ecccfc112a51b2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM12 <br> <b>Dates: </b>2013/08/27 to 2014/06/05  <br><br><b>Depth: </b> -5515 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0e0d0c2143c75d78af122ea34089a5e8 = L.marker(
+                [40.8163, 157.1115],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_689e119bfc767847e555c38235763f66 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0e0d0c2143c75d78af122ea34089a5e8.setIcon(div_icon_689e119bfc767847e555c38235763f66);
+        
+    
+            var circle_marker_21ab36cdd193a18ffcefae3f8a2161a5 = L.circleMarker(
+                [39.045, 158.0088],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_21ab36cdd193a18ffcefae3f8a2161a5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM14 <br> <b>Dates: </b>2012/09/01 to 2013/08/22  <br><br><b>Depth: </b> -5487 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_59d02f111df218ac28162d048f515efb = L.marker(
+                [39.045, 158.0088],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_34a003bf4bd8c30f7fa92f192a0546a2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_59d02f111df218ac28162d048f515efb.setIcon(div_icon_34a003bf4bd8c30f7fa92f192a0546a2);
+        
+    
+            var circle_marker_a18a0fffc43cd44e78cdf5781157d43a = L.circleMarker(
+                [39.045, 158.0088],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_a18a0fffc43cd44e78cdf5781157d43a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM14 <br> <b>Dates: </b>2013/08/23 to 2014/09/01  <br><br><b>Depth: </b> -5487 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_af52e1c7d693c6c8bf99b3275dddfe5a = L.marker(
+                [39.045, 158.0088],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_58bb05f78eb7fef9326ee7f3000ba518 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_af52e1c7d693c6c8bf99b3275dddfe5a.setIcon(div_icon_58bb05f78eb7fef9326ee7f3000ba518);
+        
+    
+            var circle_marker_debc8e976816cb39d1158df8aaf15cb0 = L.circleMarker(
+                [40.3554, 158.4047],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_debc8e976816cb39d1158df8aaf15cb0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM15 <br> <b>Dates: </b>2012/08/26 to 2014/08/26  <br><br><b>Depth: </b> -5558 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f7e1c1fd7400d2b35303e8f0bc058580 = L.marker(
+                [40.3554, 158.4047],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_02556b8009ac7046585e6d105097f9cf = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f7e1c1fd7400d2b35303e8f0bc058580.setIcon(div_icon_02556b8009ac7046585e6d105097f9cf);
+        
+    
+            var circle_marker_ed03fa5f97963c372cef54beeca665dd = L.circleMarker(
+                [41.0205, 159.1879],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_ed03fa5f97963c372cef54beeca665dd.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM16 <br> <b>Dates: </b>2012/08/11 to 2014/08/28  <br><br><b>Depth: </b> -5554 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_57a5ab5e0e19afd5d2c632fad9557cd0 = L.marker(
+                [41.0205, 159.1879],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_c585a4ae927ac311380432e8438355f7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_57a5ab5e0e19afd5d2c632fad9557cd0.setIcon(div_icon_c585a4ae927ac311380432e8438355f7);
+        
+    
+            var circle_marker_c74e1cb621822a30485247ab70bc722d = L.circleMarker(
+                [39.7656, 159.853],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_c74e1cb621822a30485247ab70bc722d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM17 <br> <b>Dates: </b>2012/08/28 to 2013/08/29  <br><br><b>Depth: </b> -5519 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a0ccc704965ae392852ed33b6ee70c71 = L.marker(
+                [39.7656, 159.853],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_3be2ac66bf371ddfc6f6aec7934c3c86 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a0ccc704965ae392852ed33b6ee70c71.setIcon(div_icon_3be2ac66bf371ddfc6f6aec7934c3c86);
+        
+    
+            var circle_marker_6f0017a6cfdcb144cb25b9342c32345a = L.circleMarker(
+                [39.7651, 159.8578],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_6f0017a6cfdcb144cb25b9342c32345a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM17 <br> <b>Dates: </b>2013/08/29 to 2014/09/26  <br><br><b>Depth: </b> -5531 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7f0226e4cdb4503dc2a830f0bb3bb4bc = L.marker(
+                [39.7651, 159.8578],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_b9d5121279e06eb5b00cf4afa589cc23 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7f0226e4cdb4503dc2a830f0bb3bb4bc.setIcon(div_icon_b9d5121279e06eb5b00cf4afa589cc23);
+        
+    
+            var circle_marker_4e4831ed2d84c38cfed595ed2249b915 = L.circleMarker(
+                [30.1856, 161.2934],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_4e4831ed2d84c38cfed595ed2249b915.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM18 <br> <b>Dates: </b>2011/11/22 to 2013/07/01  <br><br><b>Depth: </b> -5927 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dddfc7eacbd61f50a017e38d6ccd01b4 = L.marker(
+                [30.1856, 161.2934],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_7fb80f31d5a264c3376865093ae690ec = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_dddfc7eacbd61f50a017e38d6ccd01b4.setIcon(div_icon_7fb80f31d5a264c3376865093ae690ec);
+        
+    
+            var circle_marker_ad4189981bf4b8ab25e74c12d47fc022 = L.circleMarker(
+                [29.1505, 161.774],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_ad4189981bf4b8ab25e74c12d47fc022.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM19 <br> <b>Dates: </b>2011/11/21 to 2013/07/01  <br><br><b>Depth: </b> -5877 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2ce7d2758cb99db0d2a2b2c8b0a64345 = L.marker(
+                [29.1505, 161.774],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_0610ed292365e986a272a00b4851d3b0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM19\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2ce7d2758cb99db0d2a2b2c8b0a64345.setIcon(div_icon_0610ed292365e986a272a00b4851d3b0);
+        
+    
+            var circle_marker_909065c9f7972d8c36ea9d9ac0cb5668 = L.circleMarker(
+                [30.6413, 162.5494],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_909065c9f7972d8c36ea9d9ac0cb5668.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM20 <br> <b>Dates: </b>2011/11/23 to 2013/07/01  <br><br><b>Depth: </b> -5913 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d142c6e79b74bf1fad8bde592bbd330c = L.marker(
+                [30.6413, 162.5494],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_593b7c235e6cb7e3ea41dff19015458a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM20\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d142c6e79b74bf1fad8bde592bbd330c.setIcon(div_icon_593b7c235e6cb7e3ea41dff19015458a);
+        
+    
+            var circle_marker_4298412c211c9d53b46b44a6e674c912 = L.circleMarker(
+                [30.6451, 162.5518],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_4298412c211c9d53b46b44a6e674c912.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM20 <br> <b>Dates: </b>2013/09/03 to 2014/09/24  <br><br><b>Depth: </b> -5922 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8846f5d49c9bf8fc287c86f2920ade3f = L.marker(
+                [30.6451, 162.5518],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_31a21092fa3acf5ad8403db4ba97cf3d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM20\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8846f5d49c9bf8fc287c86f2920ade3f.setIcon(div_icon_31a21092fa3acf5ad8403db4ba97cf3d);
+        
+    
+            var circle_marker_5d4d9dce0934355f51fa99144a0b5143 = L.circleMarker(
+                [29.5419, 162.8585],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_5d4d9dce0934355f51fa99144a0b5143.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM21 <br> <b>Dates: </b>2011/11/21 to 2013/07/01  <br><br><b>Depth: </b> -5936 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f0916851f92ccd399188b4838ea03744 = L.marker(
+                [29.5419, 162.8585],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_62f9a999bcafd7ec96cb8b414388f1c4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM21\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f0916851f92ccd399188b4838ea03744.setIcon(div_icon_62f9a999bcafd7ec96cb8b414388f1c4);
+        
+    
+            var circle_marker_2ed26133e196fee986df18fb3aa556bd = L.circleMarker(
+                [32.9519, 163.8112],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_2ed26133e196fee986df18fb3aa556bd.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM22 <br> <b>Dates: </b>2011/11/24 to 2013/07/01  <br><br><b>Depth: </b> -6118 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_384557a47e1893d99e86816497f3bbec = L.marker(
+                [32.9519, 163.8112],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_f70db6a6bb127357740366c3d428e77d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM22\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_384557a47e1893d99e86816497f3bbec.setIcon(div_icon_f70db6a6bb127357740366c3d428e77d);
+        
+    
+            var circle_marker_cb33f2decef675a878b8daae02aad0a5 = L.circleMarker(
+                [32.9507, 163.8043],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_cb33f2decef675a878b8daae02aad0a5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM22 <br> <b>Dates: </b>2013/09/01 to 2014/09/26  <br><br><b>Depth: </b> -6132 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4eee2c893248646fddbf1dface793696 = L.marker(
+                [32.9507, 163.8043],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_cb29876abd888d6c6c822c28ad061216 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM22\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4eee2c893248646fddbf1dface793696.setIcon(div_icon_cb29876abd888d6c6c822c28ad061216);
+        
+    
+            var circle_marker_bb8a7b4dbe68856c54e881e4a8559cc7 = L.circleMarker(
+                [31.9236, 164.4072],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_bb8a7b4dbe68856c54e881e4a8559cc7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM23 <br> <b>Dates: </b>2011/11/23 to 2013/07/01  <br><br><b>Depth: </b> -6011 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e837b17c3d7b7f4c86760b13ca093e24 = L.marker(
+                [31.9236, 164.4072],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_2cb592fc0ded264ed3fee5196bcdf705 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM23\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e837b17c3d7b7f4c86760b13ca093e24.setIcon(div_icon_2cb592fc0ded264ed3fee5196bcdf705);
+        
+    
+            var circle_marker_28e5de1f553fbe4f82aad84d277306d0 = L.circleMarker(
+                [31.9237, 164.4106],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_28e5de1f553fbe4f82aad84d277306d0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM23 <br> <b>Dates: </b>2013/09/02 to 2014/09/26  <br><br><b>Depth: </b> -6017 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_75c8819393d247f8c0572c2920afded2 = L.marker(
+                [31.9237, 164.4106],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_0f0962f80a2b8e52f85638bbc76c39ea = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM23\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_75c8819393d247f8c0572c2920afded2.setIcon(div_icon_0f0962f80a2b8e52f85638bbc76c39ea);
+        
+    
+            var circle_marker_5d987cdfeef5e41d4b2bace3367d0c1a = L.circleMarker(
+                [33.2166, 165.2616],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_5d987cdfeef5e41d4b2bace3367d0c1a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM24 <br> <b>Dates: </b>2011/11/23 to 2013/04/20  <br><br><b>Depth: </b> -6059 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9c0da52d8b16a330ecabaa00a6284b70 = L.marker(
+                [33.2166, 165.2616],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_f2548712e19dc19f80a68a5bbb082cd2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM24\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9c0da52d8b16a330ecabaa00a6284b70.setIcon(div_icon_f2548712e19dc19f80a68a5bbb082cd2);
+        
+    
+            var circle_marker_cdfdc3543bff87c28f6dfdd47ede029b = L.circleMarker(
+                [33.2178, 165.2588],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_cdfdc3543bff87c28f6dfdd47ede029b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM24 <br> <b>Dates: </b>2013/09/01 to 2014/09/27  <br><br><b>Depth: </b> -6072 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d620f9bda8a29fdf3c9f60e9c672e8e5 = L.marker(
+                [33.2178, 165.2588],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_0b2e6d8bbfae6951a5327d04eda61c3b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM24\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d620f9bda8a29fdf3c9f60e9c672e8e5.setIcon(div_icon_0b2e6d8bbfae6951a5327d04eda61c3b);
+        
+    
+            var circle_marker_51cdde0692b7b0b9f8c99ec4d9937006 = L.circleMarker(
+                [32.3157, 165.4445],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_51cdde0692b7b0b9f8c99ec4d9937006.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM25 <br> <b>Dates: </b>2011/11/23 to 2013/07/01  <br><br><b>Depth: </b> -6057 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ea4dbe029c473f9a60d034d63b3c907f = L.marker(
+                [32.3157, 165.4445],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_83775f5a3712944ba12ac30bb5673fbd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM25\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ea4dbe029c473f9a60d034d63b3c907f.setIcon(div_icon_83775f5a3712944ba12ac30bb5673fbd);
+        
+    
+            var circle_marker_ff7b1d7ad5cdbf4ee5e7174287bf38c3 = L.circleMarker(
+                [32.3211, 165.4442],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            circle_marker_ff7b1d7ad5cdbf4ee5e7174287bf38c3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> NM <br> <b>Station:</b> NM25 <br> <b>Dates: </b>2013/09/02 to 2014/09/27  <br><br><b>Depth: </b> -6064 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Cooperative New Madrid Seismic Network <br><br> <b>Operator: </b> CERI - University of Memphis</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0d07d0719e4a2d2641fef4f7543539b3 = L.marker(
+                [32.3211, 165.4442],
+                {}
+            ).addTo(map_1f27051e773795eb13faed1e7f3ab608);
+        
+    
+            var div_icon_1d0aa8d200204d1c003af01600da002d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM25\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0d07d0719e4a2d2641fef4f7543539b3.setIcon(div_icon_1d0aa8d200204d1c003af01600da002d);
+        
+    
+            map_1f27051e773795eb13faed1e7f3ab608.fitBounds(
+                [[29.1505, 153.3547], [41.0205, 165.4445]],
+                {}
+            );
+        </script>
+
+</html>

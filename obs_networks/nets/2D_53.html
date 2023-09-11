@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_fd413782a0b377cb3dfa70c57a853bd5 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network 2D: Albacore </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   UC San Diego</p>
+		<p id="net_header", class="headerDates">OBS deployed from Aug 2010 to Sep 2011</p>
+		<p id="net_header", class="headerDoi">DOI: <a href=""></a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_fd413782a0b377cb3dfa70c57a853bd5" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>2D</TD><TD>OBS01</TD><TD>2010/08/15</TD><TD>2011/09/07</TD><TD>32.6213</TD><TD>-118.147003</TD><TD>-2043</TD><TD>BDH-SH1-SH2-SHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS02</TD><TD>2010/08/15</TD><TD>2011/09/08</TD><TD>32.811798</TD><TD>-118.803596</TD><TD>-1451</TD><TD>BDH-SH1-SH2-SHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS03</TD><TD>2010/08/16</TD><TD>2011/09/08</TD><TD>33.012901</TD><TD>-118.957397</TD><TD>-1730</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS04</TD><TD>2010/08/16</TD><TD>2010/08/17</TD><TD>33.318699</TD><TD>-119.1828</TD><TD>-1051</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS05</TD><TD>2010/08/17</TD><TD>2010/08/26</TD><TD>33.087002</TD><TD>-119.300201</TD><TD>-1617</TD><TD>BDH-SH1-SH2-SHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS05</TD><TD>2010/08/27</TD><TD>2011/09/09</TD><TD>33.087299</TD><TD>-119.2976</TD><TD>-1616</TD><TD>BDH-SH1-SH2-SHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS06</TD><TD>2010/08/16</TD><TD>2011/09/08</TD><TD>32.777</TD><TD>-119.857803</TD><TD>-1169</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS07</TD><TD>2010/08/18</TD><TD>2011/09/09</TD><TD>32.742199</TD><TD>-120.726501</TD><TD>-3769</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS08</TD><TD>2010/08/17</TD><TD>2011/09/09</TD><TD>32.654499</TD><TD>-121.342499</TD><TD>-3888</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS09</TD><TD>2010/08/18</TD><TD>2011/09/09</TD><TD>33.4086</TD><TD>-121.507202</TD><TD>-3819</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS10</TD><TD>2010/08/18</TD><TD>2011/09/10</TD><TD>33.310902</TD><TD>-122.195099</TD><TD>-3777</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS11</TD><TD>2010/08/18</TD><TD>2011/09/10</TD><TD>32.664501</TD><TD>-122.301598</TD><TD>-4185</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS12</TD><TD>2010/08/18</TD><TD>2011/09/10</TD><TD>32.644798</TD><TD>-123.088303</TD><TD>-4098</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS13</TD><TD>2010/08/18</TD><TD>2011/09/10</TD><TD>32.654999</TD><TD>-123.828598</TD><TD>-4281</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS14</TD><TD>2010/08/19</TD><TD>2010/08/20</TD><TD>32.635799</TD><TD>-124.632301</TD><TD>-4374</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS15</TD><TD>2010/08/19</TD><TD>2011/09/11</TD><TD>33.315701</TD><TD>-124.647202</TD><TD>-4248</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS16</TD><TD>2010/08/19</TD><TD>2011/09/11</TD><TD>34.011398</TD><TD>-124.638397</TD><TD>-4552</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS17</TD><TD>2010/08/20</TD><TD>2011/09/12</TD><TD>33.987</TD><TD>-123.839996</TD><TD>-4426</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS18</TD><TD>2010/08/21</TD><TD>2011/09/12</TD><TD>33.2999</TD><TD>-123.868401</TD><TD>-4461</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS19</TD><TD>2010/08/21</TD><TD>2011/09/12</TD><TD>33.302101</TD><TD>-123.0373</TD><TD>-4374</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS20</TD><TD>2010/08/21</TD><TD>2011/09/13</TD><TD>34.011002</TD><TD>-123.0326</TD><TD>-4293</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS21</TD><TD>2010/08/22</TD><TD>2011/09/13</TD><TD>34.032799</TD><TD>-122.286301</TD><TD>-3876</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS22</TD><TD>2010/08/23</TD><TD>2011/09/13</TD><TD>34.097801</TD><TD>-121.661697</TD><TD>-3562</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS23</TD><TD>2010/08/22</TD><TD>2011/09/13</TD><TD>34.148499</TD><TD>-121.086197</TD><TD>-2010</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS24</TD><TD>2010/08/22</TD><TD>2011/09/14</TD><TD>33.442699</TD><TD>-120.859001</TD><TD>-3571</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS25</TD><TD>2010/08/23</TD><TD>2011/09/14</TD><TD>33.5233</TD><TD>-120.459702</TD><TD>-1093</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS26</TD><TD>2010/08/24</TD><TD>2011/09/14</TD><TD>33.250301</TD><TD>-120.033096</TD><TD>-922</TD><TD>BDH-SH1-SH2-SHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS27</TD><TD>2010/08/24</TD><TD>2011/09/14</TD><TD>33.747501</TD><TD>-119.5923</TD><TD>-1894</TD><TD>BDH-SH1-SH2-SHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS28</TD><TD>2010/08/26</TD><TD>2011/09/14</TD><TD>33.543301</TD><TD>-119.4645</TD><TD>-1832</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS29</TD><TD>2010/08/25</TD><TD>2011/09/14</TD><TD>33.877201</TD><TD>-119.270203</TD><TD>-819</TD><TD>BDH-SH1-SH2-SHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS30</TD><TD>2010/08/25</TD><TD>2011/09/14</TD><TD>33.716999</TD><TD>-118.872902</TD><TD>-901</TD><TD>BDH-SH1-SH2-SHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS31</TD><TD>2010/08/25</TD><TD>2011/09/15</TD><TD>33.550301</TD><TD>-118.417702</TD><TD>-896</TD><TD>BDH-SH1-SH2-SHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS32</TD><TD>2010/08/26</TD><TD>2011/09/16</TD><TD>33.2085</TD><TD>-118.480202</TD><TD>-1248</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS33</TD><TD>2010/08/26</TD><TD>2011/09/16</TD><TD>33.1329</TD><TD>-118.151398</TD><TD>-1044</TD><TD>BDH-SH1-SH2-SHZ (50.0 Hz) <br></TD></TR><TR><TD>2D</TD><TD>OBS34</TD><TD>2010/08/26</TD><TD>2011/09/16</TD><TD>32.9347</TD><TD>-117.8181</TD><TD>-1025</TD><TD>BDH-BH1-BH2-BHZ-SH1-SH2-SHZ (50.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>OBS01 OBS02 OBS03 OBS04 OBS05 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS12 OBS13 OBS14 OBS15 OBS16 OBS17 OBS18 OBS19 OBS20 OBS21 OBS22 OBS23 OBS24 OBS25 OBS26 OBS27 OBS28 OBS29 OBS30 OBS31 OBS32 OBS33 OBS34</TD><TD>BDH</TD><TD>50.0</TD><TD>Differential Pressure Gauge OBSIP-SIO/ABALONES-4x4</TD></TR><TR><TD>OBS34</TD><TD>BH1</TD><TD>50.0</TD><TD>Mark Products L28/LCheapo 2000 4x4 Long Period</TD></TR><TR><TD>OBS03 OBS04 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS13 OBS14 OBS15 OBS16 OBS17 OBS18 OBS19 OBS20 OBS22 OBS23 OBS25 OBS28 OBS32</TD><TD>BH1</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Single-Sided/ABALONES-4x4</TD></TR><TR><TD>OBS12 OBS21 OBS24</TD><TD>BH1</TD><TD>50.0</TD><TD>Nanometrics Trillium 40 Single Sided/ABALONES-4x4</TD></TR><TR><TD>OBS34</TD><TD>BH2</TD><TD>50.0</TD><TD>Mark Products L28/LCheapo 2000 4x4 Long Period</TD></TR><TR><TD>OBS03 OBS04 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS13 OBS14 OBS15 OBS16 OBS17 OBS18 OBS19 OBS20 OBS22 OBS23 OBS25 OBS28 OBS32</TD><TD>BH2</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Single-Sided/ABALONES-4x4</TD></TR><TR><TD>OBS12 OBS21 OBS24</TD><TD>BH2</TD><TD>50.0</TD><TD>Nanometrics Trillium 40 Single Sided/ABALONES-4x4</TD></TR><TR><TD>OBS34</TD><TD>BHZ</TD><TD>50.0</TD><TD>Mark Products L28/LCheapo 2000 4x4 Long Period</TD></TR><TR><TD>OBS03 OBS04 OBS06 OBS07 OBS08 OBS09 OBS10 OBS11 OBS13 OBS14 OBS15 OBS16 OBS17 OBS18 OBS19 OBS20 OBS22 OBS23 OBS25 OBS28 OBS32</TD><TD>BHZ</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Single-Sided/ABALONES-4x4</TD></TR><TR><TD>OBS12 OBS21 OBS24</TD><TD>BHZ</TD><TD>50.0</TD><TD>Nanometrics Trillium 40 Single Sided/ABALONES-4x4</TD></TR><TR><TD>OBS01 OBS02 OBS05 OBS26 OBS27 OBS29 OBS30 OBS31 OBS33 OBS34</TD><TD>SH1</TD><TD>50.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR><TR><TD>OBS01 OBS02 OBS05 OBS26 OBS27 OBS29 OBS30 OBS31 OBS33 OBS34</TD><TD>SH2</TD><TD>50.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR><TR><TD>OBS01 OBS02 OBS05 OBS26 OBS27 OBS29 OBS30 OBS31 OBS33 OBS34</TD><TD>SHZ</TD><TD>50.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_fd413782a0b377cb3dfa70c57a853bd5 = L.map(
+                "map_fd413782a0b377cb3dfa70c57a853bd5",
+                {
+                    center: [33.294188111888104, -120.86851113286694],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_d6d34b1a5bc088b45ddf6e433fa11395 = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var circle_marker_0b52870a586ef9b3dc1be4bac6243c36 = L.circleMarker(
+                [32.6213, -118.147003],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_0b52870a586ef9b3dc1be4bac6243c36.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS01 <br> <b>Dates: </b>2010/08/15 to 2011/09/07  <br><br><b>Depth: </b> -2043 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_19ce66b99e19128e7455b3af0e1efab7 = L.marker(
+                [32.6213, -118.147003],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_c7b39ddfc5596a9e6ccba1067b6b03d6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_19ce66b99e19128e7455b3af0e1efab7.setIcon(div_icon_c7b39ddfc5596a9e6ccba1067b6b03d6);
+        
+    
+            var circle_marker_83629d54d16c9065e6eaab75d82e2584 = L.circleMarker(
+                [32.811798, -118.803596],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_83629d54d16c9065e6eaab75d82e2584.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS02 <br> <b>Dates: </b>2010/08/15 to 2011/09/08  <br><br><b>Depth: </b> -1451 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_efcadbeaeb362a661ccb9ea68d5f9b9b = L.marker(
+                [32.811798, -118.803596],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_58324b0c65ae90b15ef65fcc5c20e5e1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_efcadbeaeb362a661ccb9ea68d5f9b9b.setIcon(div_icon_58324b0c65ae90b15ef65fcc5c20e5e1);
+        
+    
+            var circle_marker_b7196802ab7310a0c3306d837a39ad51 = L.circleMarker(
+                [33.012901, -118.957397],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_b7196802ab7310a0c3306d837a39ad51.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS03 <br> <b>Dates: </b>2010/08/16 to 2011/09/08  <br><br><b>Depth: </b> -1730 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5d9a51fd964b4de16bdda2e247db952d = L.marker(
+                [33.012901, -118.957397],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_46fc9c9f75ca0b3784c1230ab7dcc1e6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5d9a51fd964b4de16bdda2e247db952d.setIcon(div_icon_46fc9c9f75ca0b3784c1230ab7dcc1e6);
+        
+    
+            var circle_marker_a6f845633d87916bc648df000dc39ca7 = L.circleMarker(
+                [33.318699, -119.1828],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_a6f845633d87916bc648df000dc39ca7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS04 <br> <b>Dates: </b>2010/08/16 to 2010/08/17  <br><br><b>Depth: </b> -1051 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4cbe403be631a81d657dc64920bfaade = L.marker(
+                [33.318699, -119.1828],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_65d443dab8c845a79207b94570f763dd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4cbe403be631a81d657dc64920bfaade.setIcon(div_icon_65d443dab8c845a79207b94570f763dd);
+        
+    
+            var circle_marker_fc5ddf5de0b9a1c57ce5cff5d6854df6 = L.circleMarker(
+                [33.087002, -119.300201],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_fc5ddf5de0b9a1c57ce5cff5d6854df6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS05 <br> <b>Dates: </b>2010/08/17 to 2010/08/26  <br><br><b>Depth: </b> -1617 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8dbd2880bd28e359ec8bbe0c98f523ff = L.marker(
+                [33.087002, -119.300201],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_4be00206473ccbb0b6b2c861103af0fb = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8dbd2880bd28e359ec8bbe0c98f523ff.setIcon(div_icon_4be00206473ccbb0b6b2c861103af0fb);
+        
+    
+            var circle_marker_28adcf0646b6f2f8439da937e735f8ca = L.circleMarker(
+                [33.087299, -119.2976],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_28adcf0646b6f2f8439da937e735f8ca.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS05 <br> <b>Dates: </b>2010/08/27 to 2011/09/09  <br><br><b>Depth: </b> -1616 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f493da8f349d25711dff95738f904e9a = L.marker(
+                [33.087299, -119.2976],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_7643584fb5e80c1956f4fe6e168851d6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f493da8f349d25711dff95738f904e9a.setIcon(div_icon_7643584fb5e80c1956f4fe6e168851d6);
+        
+    
+            var circle_marker_d8980f278e23ef646607d2799ffc6321 = L.circleMarker(
+                [32.777, -119.857803],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_d8980f278e23ef646607d2799ffc6321.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS06 <br> <b>Dates: </b>2010/08/16 to 2011/09/08  <br><br><b>Depth: </b> -1169 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_98373e3cb18b9600cddbbe03067c92a5 = L.marker(
+                [32.777, -119.857803],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_9dd667c61003d006b8015bc418162a8d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_98373e3cb18b9600cddbbe03067c92a5.setIcon(div_icon_9dd667c61003d006b8015bc418162a8d);
+        
+    
+            var circle_marker_7cec2c6388461c60cfc0e6fbf7d36518 = L.circleMarker(
+                [32.742199, -120.726501],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_7cec2c6388461c60cfc0e6fbf7d36518.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS07 <br> <b>Dates: </b>2010/08/18 to 2011/09/09  <br><br><b>Depth: </b> -3769 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_571c674673b8722b5e4e7b7c22c0381a = L.marker(
+                [32.742199, -120.726501],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_2325cfd86f21e4b5f70a73cdce8cbe81 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_571c674673b8722b5e4e7b7c22c0381a.setIcon(div_icon_2325cfd86f21e4b5f70a73cdce8cbe81);
+        
+    
+            var circle_marker_eff5de25430309b3933a6b4a25faeb57 = L.circleMarker(
+                [32.654499, -121.342499],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_eff5de25430309b3933a6b4a25faeb57.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS08 <br> <b>Dates: </b>2010/08/17 to 2011/09/09  <br><br><b>Depth: </b> -3888 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1e974b4ab7aae0e9b01dabfa9091a2f4 = L.marker(
+                [32.654499, -121.342499],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_3268f05272bc7d5a3f8d70cc69c10e41 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1e974b4ab7aae0e9b01dabfa9091a2f4.setIcon(div_icon_3268f05272bc7d5a3f8d70cc69c10e41);
+        
+    
+            var circle_marker_26de630c0a838d2ea83e99c2e65121f9 = L.circleMarker(
+                [33.4086, -121.507202],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_26de630c0a838d2ea83e99c2e65121f9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS09 <br> <b>Dates: </b>2010/08/18 to 2011/09/09  <br><br><b>Depth: </b> -3819 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5a0d902af39337ae8727645eb7083849 = L.marker(
+                [33.4086, -121.507202],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_e7317e1dd6d3a3d3d099cccaa6cb3482 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5a0d902af39337ae8727645eb7083849.setIcon(div_icon_e7317e1dd6d3a3d3d099cccaa6cb3482);
+        
+    
+            var circle_marker_20fb3af43d53a696546eb10a337f3af5 = L.circleMarker(
+                [33.310902, -122.195099],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_20fb3af43d53a696546eb10a337f3af5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS10 <br> <b>Dates: </b>2010/08/18 to 2011/09/10  <br><br><b>Depth: </b> -3777 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0884442ed51b284c4230da4d1ebe7f8b = L.marker(
+                [33.310902, -122.195099],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_1e316f4085a7337ab9d815b22f9635e7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0884442ed51b284c4230da4d1ebe7f8b.setIcon(div_icon_1e316f4085a7337ab9d815b22f9635e7);
+        
+    
+            var circle_marker_8b6a6d4ca09da2abd9a1777156392e78 = L.circleMarker(
+                [32.664501, -122.301598],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_8b6a6d4ca09da2abd9a1777156392e78.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS11 <br> <b>Dates: </b>2010/08/18 to 2011/09/10  <br><br><b>Depth: </b> -4185 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cad991c405f22a69e8d6820818fff414 = L.marker(
+                [32.664501, -122.301598],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_90baeaa5081b25cc7d287d349c9fb363 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cad991c405f22a69e8d6820818fff414.setIcon(div_icon_90baeaa5081b25cc7d287d349c9fb363);
+        
+    
+            var circle_marker_6ef46aace8a252e72e0b91364ce7732f = L.circleMarker(
+                [32.644798, -123.088303],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_6ef46aace8a252e72e0b91364ce7732f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS12 <br> <b>Dates: </b>2010/08/18 to 2011/09/10  <br><br><b>Depth: </b> -4098 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_912a60ae1ef548c89204057ae79a7416 = L.marker(
+                [32.644798, -123.088303],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_21e4271ce6e1aeae4ba6a1d0f6146890 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_912a60ae1ef548c89204057ae79a7416.setIcon(div_icon_21e4271ce6e1aeae4ba6a1d0f6146890);
+        
+    
+            var circle_marker_cc2e4bc23dcd57004b5bfd830381ac87 = L.circleMarker(
+                [32.654999, -123.828598],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_cc2e4bc23dcd57004b5bfd830381ac87.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS13 <br> <b>Dates: </b>2010/08/18 to 2011/09/10  <br><br><b>Depth: </b> -4281 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_798c06bd21be50f09e3d66e1c923f693 = L.marker(
+                [32.654999, -123.828598],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_500a1c7d6f15d9dfa556a2eae7b09827 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_798c06bd21be50f09e3d66e1c923f693.setIcon(div_icon_500a1c7d6f15d9dfa556a2eae7b09827);
+        
+    
+            var circle_marker_44b8ea157230c224b09a1254a3dfe76a = L.circleMarker(
+                [32.635799, -124.632301],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_44b8ea157230c224b09a1254a3dfe76a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS14 <br> <b>Dates: </b>2010/08/19 to 2010/08/20  <br><br><b>Depth: </b> -4374 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cb1ba61d7a73c67079c5e974b22b023b = L.marker(
+                [32.635799, -124.632301],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_b5a1fe28ee8ab6d73f0299d87eb4ddf3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cb1ba61d7a73c67079c5e974b22b023b.setIcon(div_icon_b5a1fe28ee8ab6d73f0299d87eb4ddf3);
+        
+    
+            var circle_marker_0853d38c30e14209b7f9143913015807 = L.circleMarker(
+                [33.315701, -124.647202],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_0853d38c30e14209b7f9143913015807.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS15 <br> <b>Dates: </b>2010/08/19 to 2011/09/11  <br><br><b>Depth: </b> -4248 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9ca19c26dfbf5b1562257d3dde183907 = L.marker(
+                [33.315701, -124.647202],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_d70f8b4e6d2bdc84c5daad561da97869 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9ca19c26dfbf5b1562257d3dde183907.setIcon(div_icon_d70f8b4e6d2bdc84c5daad561da97869);
+        
+    
+            var circle_marker_60e01072d609e6f82e41de8aa2342b08 = L.circleMarker(
+                [34.011398, -124.638397],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_60e01072d609e6f82e41de8aa2342b08.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS16 <br> <b>Dates: </b>2010/08/19 to 2011/09/11  <br><br><b>Depth: </b> -4552 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7e9300131a8e6b75189b9a0614362bd4 = L.marker(
+                [34.011398, -124.638397],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_7e62fc771a00ca999343e3eb4c7a6f87 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7e9300131a8e6b75189b9a0614362bd4.setIcon(div_icon_7e62fc771a00ca999343e3eb4c7a6f87);
+        
+    
+            var circle_marker_abeb99cb3a84d802209c027feea3823a = L.circleMarker(
+                [33.987, -123.839996],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_abeb99cb3a84d802209c027feea3823a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS17 <br> <b>Dates: </b>2010/08/20 to 2011/09/12  <br><br><b>Depth: </b> -4426 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_434fa1db193a77a40381d4feda24c914 = L.marker(
+                [33.987, -123.839996],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_184557744d9ffae70001bc32c54794f5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_434fa1db193a77a40381d4feda24c914.setIcon(div_icon_184557744d9ffae70001bc32c54794f5);
+        
+    
+            var circle_marker_2b04f1ea9c2d72279752a46b91296a60 = L.circleMarker(
+                [33.2999, -123.868401],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_2b04f1ea9c2d72279752a46b91296a60.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS18 <br> <b>Dates: </b>2010/08/21 to 2011/09/12  <br><br><b>Depth: </b> -4461 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f45629c81c5c1f426deb78ec45e0bd94 = L.marker(
+                [33.2999, -123.868401],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_b478e8886aaf7fa0845bdcd5e7742168 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f45629c81c5c1f426deb78ec45e0bd94.setIcon(div_icon_b478e8886aaf7fa0845bdcd5e7742168);
+        
+    
+            var circle_marker_6198c9525c05ea4ded8de3eb05b5a27d = L.circleMarker(
+                [33.302101, -123.0373],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_6198c9525c05ea4ded8de3eb05b5a27d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS19 <br> <b>Dates: </b>2010/08/21 to 2011/09/12  <br><br><b>Depth: </b> -4374 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5cb85aeb1d408678078f59b50e4addb1 = L.marker(
+                [33.302101, -123.0373],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_2c322c89ba50dfbb0f3f47f6153e28d9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS19\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5cb85aeb1d408678078f59b50e4addb1.setIcon(div_icon_2c322c89ba50dfbb0f3f47f6153e28d9);
+        
+    
+            var circle_marker_d5e0849a1c8f4fc770d37a038cd79d70 = L.circleMarker(
+                [34.011002, -123.0326],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_d5e0849a1c8f4fc770d37a038cd79d70.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS20 <br> <b>Dates: </b>2010/08/21 to 2011/09/13  <br><br><b>Depth: </b> -4293 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2396d03d9b0886a0b4ee11049c2a1253 = L.marker(
+                [34.011002, -123.0326],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_0c0792818e089f1c826e808b4955186a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS20\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2396d03d9b0886a0b4ee11049c2a1253.setIcon(div_icon_0c0792818e089f1c826e808b4955186a);
+        
+    
+            var circle_marker_7347115d378395876c0f6043c70cc70a = L.circleMarker(
+                [34.032799, -122.286301],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_7347115d378395876c0f6043c70cc70a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS21 <br> <b>Dates: </b>2010/08/22 to 2011/09/13  <br><br><b>Depth: </b> -3876 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_03746026984d6c152241d77aa12d5bd8 = L.marker(
+                [34.032799, -122.286301],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_d3128e10142fbb037b6c95ac5b602456 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS21\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_03746026984d6c152241d77aa12d5bd8.setIcon(div_icon_d3128e10142fbb037b6c95ac5b602456);
+        
+    
+            var circle_marker_2ec9ce1c005aad2fa7bf849ec7037c34 = L.circleMarker(
+                [34.097801, -121.661697],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_2ec9ce1c005aad2fa7bf849ec7037c34.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS22 <br> <b>Dates: </b>2010/08/23 to 2011/09/13  <br><br><b>Depth: </b> -3562 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bcb01cb808f9700bb2a7c8e891091bef = L.marker(
+                [34.097801, -121.661697],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_41599b2406ee30a0def52794d5b77f46 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS22\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_bcb01cb808f9700bb2a7c8e891091bef.setIcon(div_icon_41599b2406ee30a0def52794d5b77f46);
+        
+    
+            var circle_marker_aba1f095c40306f01449ad60ffecb907 = L.circleMarker(
+                [34.148499, -121.086197],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_aba1f095c40306f01449ad60ffecb907.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS23 <br> <b>Dates: </b>2010/08/22 to 2011/09/13  <br><br><b>Depth: </b> -2010 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_352a8e213b6743a0e10028c828b5a37b = L.marker(
+                [34.148499, -121.086197],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_cf965a189c8253024f80f9f1df3714c7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS23\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_352a8e213b6743a0e10028c828b5a37b.setIcon(div_icon_cf965a189c8253024f80f9f1df3714c7);
+        
+    
+            var circle_marker_7c36fe218b1e3f73032c74d5fdcf4c58 = L.circleMarker(
+                [33.442699, -120.859001],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_7c36fe218b1e3f73032c74d5fdcf4c58.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS24 <br> <b>Dates: </b>2010/08/22 to 2011/09/14  <br><br><b>Depth: </b> -3571 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_890aaf86aefe7d00a2d3a5d049ac7211 = L.marker(
+                [33.442699, -120.859001],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_701c542d500aa33f30ded39cfaff4e36 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS24\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_890aaf86aefe7d00a2d3a5d049ac7211.setIcon(div_icon_701c542d500aa33f30ded39cfaff4e36);
+        
+    
+            var circle_marker_dc0c25c6840cbd23e31df1478104a1b9 = L.circleMarker(
+                [33.5233, -120.459702],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_dc0c25c6840cbd23e31df1478104a1b9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS25 <br> <b>Dates: </b>2010/08/23 to 2011/09/14  <br><br><b>Depth: </b> -1093 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d5f6f04f7ebf596ade31772b08ccba51 = L.marker(
+                [33.5233, -120.459702],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_dfb672e93a29f5b5b17fbfd83d00841c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS25\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d5f6f04f7ebf596ade31772b08ccba51.setIcon(div_icon_dfb672e93a29f5b5b17fbfd83d00841c);
+        
+    
+            var circle_marker_ae91188193970bbeb5ab3ec0f3448808 = L.circleMarker(
+                [33.250301, -120.033096],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_ae91188193970bbeb5ab3ec0f3448808.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS26 <br> <b>Dates: </b>2010/08/24 to 2011/09/14  <br><br><b>Depth: </b> -922 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_26d126a91cf5657a6c3089d1bb4acd25 = L.marker(
+                [33.250301, -120.033096],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_09b15953c7e1695d26b23aa61101b60e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS26\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_26d126a91cf5657a6c3089d1bb4acd25.setIcon(div_icon_09b15953c7e1695d26b23aa61101b60e);
+        
+    
+            var circle_marker_e65b2af97a8bda868303272b41fe4537 = L.circleMarker(
+                [33.747501, -119.5923],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_e65b2af97a8bda868303272b41fe4537.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS27 <br> <b>Dates: </b>2010/08/24 to 2011/09/14  <br><br><b>Depth: </b> -1894 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f2bcc536d5a02cabd951f010144e16ce = L.marker(
+                [33.747501, -119.5923],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_81f2bf69dfb18baea71f447f0c8b7978 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS27\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f2bcc536d5a02cabd951f010144e16ce.setIcon(div_icon_81f2bf69dfb18baea71f447f0c8b7978);
+        
+    
+            var circle_marker_86caf15bccd0f7e4ab94add80dc808ff = L.circleMarker(
+                [33.543301, -119.4645],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_86caf15bccd0f7e4ab94add80dc808ff.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS28 <br> <b>Dates: </b>2010/08/26 to 2011/09/14  <br><br><b>Depth: </b> -1832 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5d965d7b428b899eca9ca190e15fbdbe = L.marker(
+                [33.543301, -119.4645],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_2433182a92afed966d89a760d7b89c47 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS28\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5d965d7b428b899eca9ca190e15fbdbe.setIcon(div_icon_2433182a92afed966d89a760d7b89c47);
+        
+    
+            var circle_marker_97dae154f0b435687605208fa4009c8f = L.circleMarker(
+                [33.877201, -119.270203],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_97dae154f0b435687605208fa4009c8f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS29 <br> <b>Dates: </b>2010/08/25 to 2011/09/14  <br><br><b>Depth: </b> -819 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d9b25bff74fd1ddc8f733b455ce011ae = L.marker(
+                [33.877201, -119.270203],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_177c9de27364f6f5c9e5f329dac7bfcd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS29\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d9b25bff74fd1ddc8f733b455ce011ae.setIcon(div_icon_177c9de27364f6f5c9e5f329dac7bfcd);
+        
+    
+            var circle_marker_04a51b95ec486577c109425ceda1e009 = L.circleMarker(
+                [33.716999, -118.872902],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_04a51b95ec486577c109425ceda1e009.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS30 <br> <b>Dates: </b>2010/08/25 to 2011/09/14  <br><br><b>Depth: </b> -901 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_898a7412855d04ef509e9209a891d02f = L.marker(
+                [33.716999, -118.872902],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_be56623f439d00d1946aa84f3d4978e2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS30\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_898a7412855d04ef509e9209a891d02f.setIcon(div_icon_be56623f439d00d1946aa84f3d4978e2);
+        
+    
+            var circle_marker_b37ae1783af4ae0735e1a28f23b00a5d = L.circleMarker(
+                [33.550301, -118.417702],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_b37ae1783af4ae0735e1a28f23b00a5d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS31 <br> <b>Dates: </b>2010/08/25 to 2011/09/15  <br><br><b>Depth: </b> -896 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6a0a0ce19ed3641e6a39694fc23aaf38 = L.marker(
+                [33.550301, -118.417702],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_4cd078275fe157e968983e83dd9aab04 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS31\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6a0a0ce19ed3641e6a39694fc23aaf38.setIcon(div_icon_4cd078275fe157e968983e83dd9aab04);
+        
+    
+            var circle_marker_dbb5d21518291127046e95eb48fcd959 = L.circleMarker(
+                [33.2085, -118.480202],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_dbb5d21518291127046e95eb48fcd959.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS32 <br> <b>Dates: </b>2010/08/26 to 2011/09/16  <br><br><b>Depth: </b> -1248 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_26dab89151cc29e1e8d691b4a94fec00 = L.marker(
+                [33.2085, -118.480202],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_f8f62c004f7c5c5b044cd7d2e60f2f1b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS32\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_26dab89151cc29e1e8d691b4a94fec00.setIcon(div_icon_f8f62c004f7c5c5b044cd7d2e60f2f1b);
+        
+    
+            var circle_marker_1007efc4c216189ba3c8d752525dbaa0 = L.circleMarker(
+                [33.1329, -118.151398],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_1007efc4c216189ba3c8d752525dbaa0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS33 <br> <b>Dates: </b>2010/08/26 to 2011/09/16  <br><br><b>Depth: </b> -1044 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ae6609d92b5cf9e977f538b202ec76b6 = L.marker(
+                [33.1329, -118.151398],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_5674e38b4efac139c948cee04df082ae = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS33\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ae6609d92b5cf9e977f538b202ec76b6.setIcon(div_icon_5674e38b4efac139c948cee04df082ae);
+        
+    
+            var circle_marker_58f59f2a6260e6cab8a8027b534458b1 = L.circleMarker(
+                [32.9347, -117.8181],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#669900", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            circle_marker_58f59f2a6260e6cab8a8027b534458b1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2D <br> <b>Station:</b> OBS34 <br> <b>Dates: </b>2010/08/26 to 2011/09/16  <br><br><b>Depth: </b> -1025 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ-SH1-SH2-SHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Albacore <br><br> <b>Operator: </b>  UC San Diego</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d3805b21d9e437d4d50c187d1aad5ef5 = L.marker(
+                [32.9347, -117.8181],
+                {}
+            ).addTo(map_fd413782a0b377cb3dfa70c57a853bd5);
+        
+    
+            var div_icon_7f76b4a7926458310965f00f0e70c025 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS34\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d3805b21d9e437d4d50c187d1aad5ef5.setIcon(div_icon_7f76b4a7926458310965f00f0e70c025);
+        
+    
+            map_fd413782a0b377cb3dfa70c57a853bd5.fitBounds(
+                [[32.6213, -124.647202], [34.148499, -117.8181]],
+                {}
+            );
+        </script>
+
+</html>

@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_f2392a41f47a1b88a231a3b3e1d318ab {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network XE: Pacific Array - Haxby </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   IRIS HQ (DC)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Apr 2018 to May 2019</p>
+		<p id="net_header", class="headerDoi">DOI: <a href=""></a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_f2392a41f47a1b88a231a3b3e1d318ab" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>XE</TD><TD>CC01</TD><TD>2018/04/24</TD><TD>2019/05/23</TD><TD>-4.04578</TD><TD>-132.47451</TD><TD>-4768</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>CC02</TD><TD>2018/04/24</TD><TD>2019/05/23</TD><TD>-4.46461</TD><TD>-132.58299</TD><TD>-4444</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>CC03</TD><TD>2018/04/24</TD><TD>2019/01/29</TD><TD>-4.8816</TD><TD>-132.68895</TD><TD>-4739</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>CC04</TD><TD>2018/04/22</TD><TD>2019/05/21</TD><TD>-5.19374</TD><TD>-132.78996</TD><TD>-4615</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>CC05</TD><TD>2018/04/21</TD><TD>2019/05/21</TD><TD>-5.51738</TD><TD>-132.873</TD><TD>-4798</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>CC06</TD><TD>2018/04/21</TD><TD>2019/05/21</TD><TD>-5.83853</TD><TD>-132.9518</TD><TD>-4824</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>CC07</TD><TD>2018/04/21</TD><TD>2019/05/20</TD><TD>-6.15879</TD><TD>-133.0464</TD><TD>-4628</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>CC08</TD><TD>2018/04/19</TD><TD>2019/05/19</TD><TD>-6.48164</TD><TD>-133.1233</TD><TD>-4745</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>CC09</TD><TD>2018/04/19</TD><TD>2019/05/18</TD><TD>-6.79945</TD><TD>-133.2164</TD><TD>-4615</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>CC10</TD><TD>2018/04/19</TD><TD>2018/06/08</TD><TD>-7.11482</TD><TD>-133.34575</TD><TD>-4618</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>CC11</TD><TD>2018/04/19</TD><TD>2019/05/19</TD><TD>-7.53678</TD><TD>-133.4166</TD><TD>-4636</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>CC12</TD><TD>2018/04/18</TD><TD>2018/05/06</TD><TD>-7.9544</TD><TD>-133.5317</TD><TD>-4595</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>EC01</TD><TD>2018/04/23</TD><TD>2019/03/08</TD><TD>-4.72613</TD><TD>-131.48519</TD><TD>-4576</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>EC02</TD><TD>2018/04/22</TD><TD>2018/09/26</TD><TD>-5.46195</TD><TD>-131.87689</TD><TD>-4773</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>EC03</TD><TD>2018/04/20</TD><TD>2018/10/09</TD><TD>-6.29162</TD><TD>-131.91041</TD><TD>-4742</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>EC04</TD><TD>2018/04/20</TD><TD>2019/02/12</TD><TD>-7.02749</TD><TD>-132.29424</TD><TD>-4778</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>EC05</TD><TD>2018/04/18</TD><TD>2019/05/16</TD><TD>-7.85622</TD><TD>-132.32978</TD><TD>-4587</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>EE01</TD><TD>2018/04/16</TD><TD>2019/05/14</TD><TD>-4.94698</TD><TD>-130.38143</TD><TD>-4645</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>EE02</TD><TD>2018/04/16</TD><TD>2019/04/08</TD><TD>-5.97635</TD><TD>-130.88959</TD><TD>-4632</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>EE03</TD><TD>2018/04/17</TD><TD>2019/03/11</TD><TD>-7.06435</TD><TD>-131.17881</TD><TD>-4628</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>EE04</TD><TD>2018/04/17</TD><TD>2019/05/26</TD><TD>-8.20435</TD><TD>-131.2551</TD><TD>-4683</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>WC01</TD><TD>2018/04/25</TD><TD>2019/03/07</TD><TD>-4.14331</TD><TD>-133.66494</TD><TD>-4483</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>WC02</TD><TD>2018/04/25</TD><TD>2019/05/22</TD><TD>-4.97259</TD><TD>-133.70537</TD><TD>-4618</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>WC03</TD><TD>2018/04/26</TD><TD>2019/05/20</TD><TD>-5.7077</TD><TD>-134.0913</TD><TD>-4483</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>WC04</TD><TD>2018/04/26</TD><TD>2019/05/20</TD><TD>-6.53525</TD><TD>-134.1305</TD><TD>-4534</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>WC05</TD><TD>2018/04/27</TD><TD>2019/05/18</TD><TD>-7.26945</TD><TD>-134.5177</TD><TD>-4478</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>WW01</TD><TD>2018/04/29</TD><TD>2019/01/04</TD><TD>-3.78521</TD><TD>-134.73696</TD><TD>-4534</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>WW02</TD><TD>2018/04/28</TD><TD>2018/10/11</TD><TD>-4.92831</TD><TD>-134.81356</TD><TD>-4681</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>WW03</TD><TD>2018/04/28</TD><TD>2019/05/17</TD><TD>-6.01551</TD><TD>-135.112</TD><TD>-4386</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>XE</TD><TD>WW04</TD><TD>2018/04/27</TD><TD>2019/05/17</TD><TD>-7.0385</TD><TD>-135.62722</TD><TD>-4490</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>CC01 CC02 CC03 CC04 CC05 CC06 CC07 CC08 CC09 CC10 CC11 CC12 EC01 EC02 EC03 EC04 EC05 EE01 EE02 EE03 EE04 WC01 WC02 WC03 WC04 WC05 WW01 WW02 WW03 WW04</TD><TD>BDH</TD><TD>50.0</TD><TD>DPG OBSIP-SIO/ABALONES</TD></TR><TR><TD>CC02 CC05 CC11 EE03 WW02</TD><TD>BH1</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Sec Response sn 0-399/ABA</TD></TR><TR><TD>CC01 CC03 CC04 CC06 CC07 CC08 CC09 CC10 CC12 EC01 EC02 EC03 EC04 EC05 EE01 EE02 EE04 WC01 WC02 WC03 WC04 WC05 WW01 WW03 WW04</TD><TD>BH1</TD><TD>50.0</TD><TD>T240 Single-Sided/ABALONES</TD></TR><TR><TD>CC02 CC05 CC11 EE03 WW02</TD><TD>BH2</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Sec Response sn 0-399/ABA</TD></TR><TR><TD>CC01 CC03 CC04 CC06 CC07 CC08 CC09 CC10 CC12 EC01 EC02 EC03 EC04 EC05 EE01 EE02 EE04 WC01 WC02 WC03 WC04 WC05 WW01 WW03 WW04</TD><TD>BH2</TD><TD>50.0</TD><TD>T240 Single-Sided/ABALONES</TD></TR><TR><TD>CC02 CC05 CC11 EE03 WW02</TD><TD>BHZ</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Sec Response sn 0-399/ABA</TD></TR><TR><TD>CC01 CC03 CC04 CC06 CC07 CC08 CC09 CC10 CC12 EC01 EC02 EC03 EC04 EC05 EE01 EE02 EE04 WC01 WC02 WC03 WC04 WC05 WW01 WW03 WW04</TD><TD>BHZ</TD><TD>50.0</TD><TD>T240 Single-Sided/ABALONES</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_f2392a41f47a1b88a231a3b3e1d318ab = L.map(
+                "map_f2392a41f47a1b88a231a3b3e1d318ab",
+                {
+                    center: [-5.997959666666661, -133.00141166666648],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_0ffd57584dc0a481b42c0600379dfd4d = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var circle_marker_13477e86f7804af6785f85ac83a78fc7 = L.circleMarker(
+                [-4.04578, -132.47451],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_13477e86f7804af6785f85ac83a78fc7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> CC01 <br> <b>Dates: </b>2018/04/24 to 2019/05/23  <br><br><b>Depth: </b> -4768 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2e235f9e94bf8cff7818e08407ed9da4 = L.marker(
+                [-4.04578, -132.47451],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_3d102bf3b21ceaed8be90416ff8546f7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCC01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2e235f9e94bf8cff7818e08407ed9da4.setIcon(div_icon_3d102bf3b21ceaed8be90416ff8546f7);
+        
+    
+            var circle_marker_ed7711a731408bef38d980d378060787 = L.circleMarker(
+                [-4.46461, -132.58299],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_ed7711a731408bef38d980d378060787.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> CC02 <br> <b>Dates: </b>2018/04/24 to 2019/05/23  <br><br><b>Depth: </b> -4444 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_42970c310237db20197ca97d16002994 = L.marker(
+                [-4.46461, -132.58299],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_ca3076770519836edd81c7fa894f241c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCC02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_42970c310237db20197ca97d16002994.setIcon(div_icon_ca3076770519836edd81c7fa894f241c);
+        
+    
+            var circle_marker_ce910f9ae4efc3ad9d426b12531254cb = L.circleMarker(
+                [-4.8816, -132.68895],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_ce910f9ae4efc3ad9d426b12531254cb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> CC03 <br> <b>Dates: </b>2018/04/24 to 2019/01/29  <br><br><b>Depth: </b> -4739 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6b1fb4196d87f771210f358a6eb606eb = L.marker(
+                [-4.8816, -132.68895],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_135d0584e0aa3ef4cd7646af898c739e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCC03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6b1fb4196d87f771210f358a6eb606eb.setIcon(div_icon_135d0584e0aa3ef4cd7646af898c739e);
+        
+    
+            var circle_marker_180c07ce3f9002e952dc3c44436afb42 = L.circleMarker(
+                [-5.19374, -132.78996],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_180c07ce3f9002e952dc3c44436afb42.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> CC04 <br> <b>Dates: </b>2018/04/22 to 2019/05/21  <br><br><b>Depth: </b> -4615 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2fa900cedd2a3abdaf7aca3be02f1e0c = L.marker(
+                [-5.19374, -132.78996],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_15d66a0f33988217aebf9f257b65fbfd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCC04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2fa900cedd2a3abdaf7aca3be02f1e0c.setIcon(div_icon_15d66a0f33988217aebf9f257b65fbfd);
+        
+    
+            var circle_marker_8fe570916ba169f10beb07ece2232ca2 = L.circleMarker(
+                [-5.51738, -132.873],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_8fe570916ba169f10beb07ece2232ca2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> CC05 <br> <b>Dates: </b>2018/04/21 to 2019/05/21  <br><br><b>Depth: </b> -4798 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5ad00a8a70645d9835f9408c26218c20 = L.marker(
+                [-5.51738, -132.873],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_39716ffa4787ce8fae586cc7e5257797 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCC05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5ad00a8a70645d9835f9408c26218c20.setIcon(div_icon_39716ffa4787ce8fae586cc7e5257797);
+        
+    
+            var circle_marker_1037fdbcd2fc705d38949ec0f536648a = L.circleMarker(
+                [-5.83853, -132.9518],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_1037fdbcd2fc705d38949ec0f536648a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> CC06 <br> <b>Dates: </b>2018/04/21 to 2019/05/21  <br><br><b>Depth: </b> -4824 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b5f5d055c0708ff711354a880f8b6af1 = L.marker(
+                [-5.83853, -132.9518],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_447068321d22f273c46627641d1f323a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCC06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b5f5d055c0708ff711354a880f8b6af1.setIcon(div_icon_447068321d22f273c46627641d1f323a);
+        
+    
+            var circle_marker_33c27d2e28eb4436eecda7aac0f384d2 = L.circleMarker(
+                [-6.15879, -133.0464],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_33c27d2e28eb4436eecda7aac0f384d2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> CC07 <br> <b>Dates: </b>2018/04/21 to 2019/05/20  <br><br><b>Depth: </b> -4628 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_15b9f58319d38a4d3bafc4f1d1f7824b = L.marker(
+                [-6.15879, -133.0464],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_2e4cf08bf9baadf67027254a38aeaccd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCC07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_15b9f58319d38a4d3bafc4f1d1f7824b.setIcon(div_icon_2e4cf08bf9baadf67027254a38aeaccd);
+        
+    
+            var circle_marker_97e15dfa93f994e54d0623a6d6c1419e = L.circleMarker(
+                [-6.48164, -133.1233],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_97e15dfa93f994e54d0623a6d6c1419e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> CC08 <br> <b>Dates: </b>2018/04/19 to 2019/05/19  <br><br><b>Depth: </b> -4745 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_204565f28e4e76521b0a692e876a5b41 = L.marker(
+                [-6.48164, -133.1233],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_f312e2d4f366f91a10b1874517237e31 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCC08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_204565f28e4e76521b0a692e876a5b41.setIcon(div_icon_f312e2d4f366f91a10b1874517237e31);
+        
+    
+            var circle_marker_4a166d7ce110f029543d2deae4fbad69 = L.circleMarker(
+                [-6.79945, -133.2164],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_4a166d7ce110f029543d2deae4fbad69.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> CC09 <br> <b>Dates: </b>2018/04/19 to 2019/05/18  <br><br><b>Depth: </b> -4615 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e09b182cb51297d96a501244d8da32c5 = L.marker(
+                [-6.79945, -133.2164],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_4b7df8dd90655b147f101e51b71cdf3f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCC09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e09b182cb51297d96a501244d8da32c5.setIcon(div_icon_4b7df8dd90655b147f101e51b71cdf3f);
+        
+    
+            var circle_marker_0af655f91b3f9dcfc3bc78013a824254 = L.circleMarker(
+                [-7.11482, -133.34575],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_0af655f91b3f9dcfc3bc78013a824254.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> CC10 <br> <b>Dates: </b>2018/04/19 to 2018/06/08  <br><br><b>Depth: </b> -4618 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_38a70728aef6dd98f206f12e137c281a = L.marker(
+                [-7.11482, -133.34575],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_ff2bfcd1ddbd1e607d7429efdbe3c282 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCC10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_38a70728aef6dd98f206f12e137c281a.setIcon(div_icon_ff2bfcd1ddbd1e607d7429efdbe3c282);
+        
+    
+            var circle_marker_084ed8c77f90f4226a4ce816283d7754 = L.circleMarker(
+                [-7.53678, -133.4166],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_084ed8c77f90f4226a4ce816283d7754.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> CC11 <br> <b>Dates: </b>2018/04/19 to 2019/05/19  <br><br><b>Depth: </b> -4636 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_94f15ced63ad2f1e33f1df3b7218afc4 = L.marker(
+                [-7.53678, -133.4166],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_ee50ba6db3418b67dc99f01b577a6c2d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCC11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_94f15ced63ad2f1e33f1df3b7218afc4.setIcon(div_icon_ee50ba6db3418b67dc99f01b577a6c2d);
+        
+    
+            var circle_marker_930e3154977c219e3f4bfba5df948904 = L.circleMarker(
+                [-7.9544, -133.5317],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_930e3154977c219e3f4bfba5df948904.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> CC12 <br> <b>Dates: </b>2018/04/18 to 2018/05/06  <br><br><b>Depth: </b> -4595 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cc703acb851f38c0d27c77d20e0fd04a = L.marker(
+                [-7.9544, -133.5317],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_9a4ac3a4815471e99cacc6cb88633eaa = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCC12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cc703acb851f38c0d27c77d20e0fd04a.setIcon(div_icon_9a4ac3a4815471e99cacc6cb88633eaa);
+        
+    
+            var circle_marker_40fb1cc8c0772b49425679701b1df3e4 = L.circleMarker(
+                [-4.72613, -131.48519],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_40fb1cc8c0772b49425679701b1df3e4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> EC01 <br> <b>Dates: </b>2018/04/23 to 2019/03/08  <br><br><b>Depth: </b> -4576 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_69f8648823389d45b711fcc3b26e7ae0 = L.marker(
+                [-4.72613, -131.48519],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_7174aae4e8b9526ceadd377b67dda799 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEC01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_69f8648823389d45b711fcc3b26e7ae0.setIcon(div_icon_7174aae4e8b9526ceadd377b67dda799);
+        
+    
+            var circle_marker_97bd0f3d60934340492ee81d4d51b11b = L.circleMarker(
+                [-5.46195, -131.87689],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_97bd0f3d60934340492ee81d4d51b11b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> EC02 <br> <b>Dates: </b>2018/04/22 to 2018/09/26  <br><br><b>Depth: </b> -4773 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_27d2c001df9b087dd385faf6f8391fb7 = L.marker(
+                [-5.46195, -131.87689],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_c8555fb888da7f32fce99d442d6e775d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEC02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_27d2c001df9b087dd385faf6f8391fb7.setIcon(div_icon_c8555fb888da7f32fce99d442d6e775d);
+        
+    
+            var circle_marker_7174602691054a7f5121b90dc170e82e = L.circleMarker(
+                [-6.29162, -131.91041],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_7174602691054a7f5121b90dc170e82e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> EC03 <br> <b>Dates: </b>2018/04/20 to 2018/10/09  <br><br><b>Depth: </b> -4742 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6a7bc0145222fd866d237cefd48d42f5 = L.marker(
+                [-6.29162, -131.91041],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_e0b7afefcf310dbf83dcc6104dd45db4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEC03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6a7bc0145222fd866d237cefd48d42f5.setIcon(div_icon_e0b7afefcf310dbf83dcc6104dd45db4);
+        
+    
+            var circle_marker_c0546b92f2e0011d8844fd043128e676 = L.circleMarker(
+                [-7.02749, -132.29424],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_c0546b92f2e0011d8844fd043128e676.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> EC04 <br> <b>Dates: </b>2018/04/20 to 2019/02/12  <br><br><b>Depth: </b> -4778 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_516cbde750a1ec3754b48db852ab2a8a = L.marker(
+                [-7.02749, -132.29424],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_70a277c0f8bc5458fe2f303ff0094cb8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEC04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_516cbde750a1ec3754b48db852ab2a8a.setIcon(div_icon_70a277c0f8bc5458fe2f303ff0094cb8);
+        
+    
+            var circle_marker_8d1bf0547380618f21fe6cce64ba0d0b = L.circleMarker(
+                [-7.85622, -132.32978],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_8d1bf0547380618f21fe6cce64ba0d0b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> EC05 <br> <b>Dates: </b>2018/04/18 to 2019/05/16  <br><br><b>Depth: </b> -4587 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_74d657403e1065d3ac8832120de83860 = L.marker(
+                [-7.85622, -132.32978],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_d362a1dcceebd725228e67ad9d9a0624 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEC05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_74d657403e1065d3ac8832120de83860.setIcon(div_icon_d362a1dcceebd725228e67ad9d9a0624);
+        
+    
+            var circle_marker_9e5ec0e3358b80bfe279dd4bad18d5c7 = L.circleMarker(
+                [-4.94698, -130.38143],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_9e5ec0e3358b80bfe279dd4bad18d5c7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> EE01 <br> <b>Dates: </b>2018/04/16 to 2019/05/14  <br><br><b>Depth: </b> -4645 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e2e117007092de62931c6a27368cf232 = L.marker(
+                [-4.94698, -130.38143],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_2e4dcf6648437ffaa1d8557ff73cd24c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEE01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e2e117007092de62931c6a27368cf232.setIcon(div_icon_2e4dcf6648437ffaa1d8557ff73cd24c);
+        
+    
+            var circle_marker_095714843d4cb114fdecab135468bd0b = L.circleMarker(
+                [-5.97635, -130.88959],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_095714843d4cb114fdecab135468bd0b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> EE02 <br> <b>Dates: </b>2018/04/16 to 2019/04/08  <br><br><b>Depth: </b> -4632 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9b124783e9095541daba7c5af389fc51 = L.marker(
+                [-5.97635, -130.88959],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_595cae03576f32dfec50680dcdb2bf37 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEE02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9b124783e9095541daba7c5af389fc51.setIcon(div_icon_595cae03576f32dfec50680dcdb2bf37);
+        
+    
+            var circle_marker_869847a50d377b07d370584f746755d4 = L.circleMarker(
+                [-7.06435, -131.17881],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_869847a50d377b07d370584f746755d4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> EE03 <br> <b>Dates: </b>2018/04/17 to 2019/03/11  <br><br><b>Depth: </b> -4628 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ce01aab4185e5e7c9aed376acaca30b3 = L.marker(
+                [-7.06435, -131.17881],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_c31ab609305e682bc43469fbcdec83fd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEE03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ce01aab4185e5e7c9aed376acaca30b3.setIcon(div_icon_c31ab609305e682bc43469fbcdec83fd);
+        
+    
+            var circle_marker_c86363575efc7e653e2d7830afdde5c8 = L.circleMarker(
+                [-8.20435, -131.2551],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_c86363575efc7e653e2d7830afdde5c8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> EE04 <br> <b>Dates: </b>2018/04/17 to 2019/05/26  <br><br><b>Depth: </b> -4683 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cf8c53ada16d0d6bc3b472726d244f4f = L.marker(
+                [-8.20435, -131.2551],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_399f365bb84757e675ad012e808d43a6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEE04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cf8c53ada16d0d6bc3b472726d244f4f.setIcon(div_icon_399f365bb84757e675ad012e808d43a6);
+        
+    
+            var circle_marker_33eb9e4c7728d62cd58641222da277fc = L.circleMarker(
+                [-4.14331, -133.66494],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_33eb9e4c7728d62cd58641222da277fc.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> WC01 <br> <b>Dates: </b>2018/04/25 to 2019/03/07  <br><br><b>Depth: </b> -4483 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4b6571f0e3285da8b4f97a0e288a5b88 = L.marker(
+                [-4.14331, -133.66494],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_480c11ffc6de24261a3c28cdcfa32cf7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWC01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4b6571f0e3285da8b4f97a0e288a5b88.setIcon(div_icon_480c11ffc6de24261a3c28cdcfa32cf7);
+        
+    
+            var circle_marker_a56de07fb3a4349af18c2010d1f51a6f = L.circleMarker(
+                [-4.97259, -133.70537],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_a56de07fb3a4349af18c2010d1f51a6f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> WC02 <br> <b>Dates: </b>2018/04/25 to 2019/05/22  <br><br><b>Depth: </b> -4618 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e22e0b84d96a56a11ff617607e789f63 = L.marker(
+                [-4.97259, -133.70537],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_fd7d95a15b73d6141386d51c8829eb43 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWC02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e22e0b84d96a56a11ff617607e789f63.setIcon(div_icon_fd7d95a15b73d6141386d51c8829eb43);
+        
+    
+            var circle_marker_8e6fd84a23ee6c279a08715f1cbead76 = L.circleMarker(
+                [-5.7077, -134.0913],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_8e6fd84a23ee6c279a08715f1cbead76.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> WC03 <br> <b>Dates: </b>2018/04/26 to 2019/05/20  <br><br><b>Depth: </b> -4483 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7cd7013963f6f9298334b6d87f592ad6 = L.marker(
+                [-5.7077, -134.0913],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_ee2e4515daa8a6d3e8ec6b5e7d93aa16 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWC03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7cd7013963f6f9298334b6d87f592ad6.setIcon(div_icon_ee2e4515daa8a6d3e8ec6b5e7d93aa16);
+        
+    
+            var circle_marker_7329bb3a31aa23a7ce22a24bc413d8c3 = L.circleMarker(
+                [-6.53525, -134.1305],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_7329bb3a31aa23a7ce22a24bc413d8c3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> WC04 <br> <b>Dates: </b>2018/04/26 to 2019/05/20  <br><br><b>Depth: </b> -4534 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9540cc7b4d81446974e3bdf1a4acd9f8 = L.marker(
+                [-6.53525, -134.1305],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_5217a246e63880ef7c27c50d68969499 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWC04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9540cc7b4d81446974e3bdf1a4acd9f8.setIcon(div_icon_5217a246e63880ef7c27c50d68969499);
+        
+    
+            var circle_marker_fd94bfcbff02f0b098177ef3286dd5e7 = L.circleMarker(
+                [-7.26945, -134.5177],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_fd94bfcbff02f0b098177ef3286dd5e7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> WC05 <br> <b>Dates: </b>2018/04/27 to 2019/05/18  <br><br><b>Depth: </b> -4478 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3006af29bd6a1cddd7c68446c28c9271 = L.marker(
+                [-7.26945, -134.5177],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_b1784ba55ed01de41e75b1fb563b19ce = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWC05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3006af29bd6a1cddd7c68446c28c9271.setIcon(div_icon_b1784ba55ed01de41e75b1fb563b19ce);
+        
+    
+            var circle_marker_04352c4a8cf9134b5ebca48ac853f3ae = L.circleMarker(
+                [-3.78521, -134.73696],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_04352c4a8cf9134b5ebca48ac853f3ae.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> WW01 <br> <b>Dates: </b>2018/04/29 to 2019/01/04  <br><br><b>Depth: </b> -4534 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0703a92673da5c63075a21c324ede959 = L.marker(
+                [-3.78521, -134.73696],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_44201c8eae079423ee8c1d6aabcbd737 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWW01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0703a92673da5c63075a21c324ede959.setIcon(div_icon_44201c8eae079423ee8c1d6aabcbd737);
+        
+    
+            var circle_marker_640ee13e5c87e624aac1a45ab49cd559 = L.circleMarker(
+                [-4.92831, -134.81356],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_640ee13e5c87e624aac1a45ab49cd559.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> WW02 <br> <b>Dates: </b>2018/04/28 to 2018/10/11  <br><br><b>Depth: </b> -4681 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1345644dd42e86d02f9ac900e6c764f1 = L.marker(
+                [-4.92831, -134.81356],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_aaa8b4a9aa47a72845818aafa1ef7149 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWW02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1345644dd42e86d02f9ac900e6c764f1.setIcon(div_icon_aaa8b4a9aa47a72845818aafa1ef7149);
+        
+    
+            var circle_marker_91807dd39d50f9ef833f909e3922218a = L.circleMarker(
+                [-6.01551, -135.112],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_91807dd39d50f9ef833f909e3922218a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> WW03 <br> <b>Dates: </b>2018/04/28 to 2019/05/17  <br><br><b>Depth: </b> -4386 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2b4a6e4303bf33eef50219f4a6552fe8 = L.marker(
+                [-6.01551, -135.112],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_c147f973e54284ae1f1ff8e468b2fe72 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWW03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2b4a6e4303bf33eef50219f4a6552fe8.setIcon(div_icon_c147f973e54284ae1f1ff8e468b2fe72);
+        
+    
+            var circle_marker_f2ceef9309d00d8c834ad920b3133e42 = L.circleMarker(
+                [-7.0385, -135.62722],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ee100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            circle_marker_f2ceef9309d00d8c834ad920b3133e42.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XE <br> <b>Station:</b> WW04 <br> <b>Dates: </b>2018/04/27 to 2019/05/17  <br><br><b>Depth: </b> -4490 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b>  <br><br> <b>Net name: </b> Pacific Array - Haxby <br><br> <b>Operator: </b>  IRIS HQ (DC)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3bd8e52c90acdc9891b3f7f9caece77c = L.marker(
+                [-7.0385, -135.62722],
+                {}
+            ).addTo(map_f2392a41f47a1b88a231a3b3e1d318ab);
+        
+    
+            var div_icon_f9106a72338f73c689c5df82db90d454 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWW04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3bd8e52c90acdc9891b3f7f9caece77c.setIcon(div_icon_f9106a72338f73c689c5df82db90d454);
+        
+    
+            map_f2392a41f47a1b88a231a3b3e1d318ab.fitBounds(
+                [[-8.20435, -135.62722], [-3.78521, -130.38143]],
+                {}
+            );
+        </script>
+
+</html>

@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_2fbb4f03c0110bed6b774e0d4adfe868 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network XW: Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   IRIS OBSIP (OBSIP)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Oct 2016 to Dec 2016</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/XW_2016">https://doi.org/10.7914/SN/XW_2016</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_2fbb4f03c0110bed6b774e0d4adfe868" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>XW</TD><TD>SS04</TD><TD>2016/10/29</TD><TD>2016/11/29</TD><TD>-21.12392</TD><TD>-70.62265</TD><TD>-1827</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS05</TD><TD>2016/10/29</TD><TD>2016/11/29</TD><TD>-20.991011</TD><TD>-70.640312</TD><TD>-1639</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS06</TD><TD>2016/10/28</TD><TD>2016/11/29</TD><TD>-20.85512</TD><TD>-70.660339</TD><TD>-1785</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS07</TD><TD>2016/10/28</TD><TD>2016/11/29</TD><TD>-20.732639</TD><TD>-70.683502</TD><TD>-1912</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS08</TD><TD>2016/10/27</TD><TD>2016/11/30</TD><TD>-20.5639</TD><TD>-70.695839</TD><TD>-1641</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS10</TD><TD>2016/10/27</TD><TD>2016/12/01</TD><TD>-20.294161</TD><TD>-70.73111</TD><TD>-2112</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS11</TD><TD>2016/10/27</TD><TD>2016/12/01</TD><TD>-20.15259</TD><TD>-70.749199</TD><TD>-2100</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS12</TD><TD>2016/10/27</TD><TD>2016/12/02</TD><TD>-20.019341</TD><TD>-70.769203</TD><TD>-1383</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS16</TD><TD>2016/10/26</TD><TD>2016/12/02</TD><TD>-19.45178</TD><TD>-70.855873</TD><TD>-1430</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS17</TD><TD>2016/10/24</TD><TD>2016/12/03</TD><TD>-19.306589</TD><TD>-70.870239</TD><TD>-980</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS18</TD><TD>2016/10/24</TD><TD>2016/12/03</TD><TD>-19.183599</TD><TD>-70.892311</TD><TD>-1520</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS19</TD><TD>2016/10/23</TD><TD>2016/12/03</TD><TD>-19.040085</TD><TD>-70.905281</TD><TD>-1580</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS20</TD><TD>2016/10/23</TD><TD>2016/12/03</TD><TD>-18.908386</TD><TD>-70.926254</TD><TD>-1525</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS21</TD><TD>2016/10/25</TD><TD>2016/11/02</TD><TD>-20.31501</TD><TD>-72.440041</TD><TD>-4423</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS21A</TD><TD>2016/11/02</TD><TD>2016/12/06</TD><TD>-20.31518</TD><TD>-72.438164</TD><TD>-4400</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS22</TD><TD>2016/10/25</TD><TD>2016/12/06</TD><TD>-20.24737</TD><TD>-72.297401</TD><TD>-4158</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS23</TD><TD>2016/10/25</TD><TD>2016/12/06</TD><TD>-20.18539</TD><TD>-72.162437</TD><TD>-2853</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS24</TD><TD>2016/10/25</TD><TD>2016/12/06</TD><TD>-20.124901</TD><TD>-72.033081</TD><TD>-3330</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS25</TD><TD>2016/10/25</TD><TD>2016/12/06</TD><TD>-20.062969</TD><TD>-71.900047</TD><TD>-4555</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS26</TD><TD>2016/10/25</TD><TD>2016/12/06</TD><TD>-20.004589</TD><TD>-71.770416</TD><TD>-4564</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS29</TD><TD>2016/10/24</TD><TD>2016/12/04</TD><TD>-19.758801</TD><TD>-71.224167</TD><TD>-5244</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS30</TD><TD>2016/10/26</TD><TD>2016/12/04</TD><TD>-19.703699</TD><TD>-71.11348</TD><TD>-4221</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS32</TD><TD>2016/10/26</TD><TD>2016/12/02</TD><TD>-19.519279</TD><TD>-70.691101</TD><TD>-772</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS33</TD><TD>2016/10/24</TD><TD>2016/12/02</TD><TD>-19.459351</TD><TD>-70.565979</TD><TD>-775</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS34</TD><TD>2016/10/24</TD><TD>2016/12/02</TD><TD>-19.402275</TD><TD>-70.442223</TD><TD>-735</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS35</TD><TD>2016/10/24</TD><TD>2016/12/03</TD><TD>-19.403179</TD><TD>-71.16304</TD><TD>-3153</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS36</TD><TD>2016/10/24</TD><TD>2016/12/03</TD><TD>-19.3494</TD><TD>-71.004349</TD><TD>-1697</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS37</TD><TD>2016/10/24</TD><TD>2016/12/03</TD><TD>-19.25618</TD><TD>-70.725975</TD><TD>-1049</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS38</TD><TD>2016/10/26</TD><TD>2016/12/03</TD><TD>-19.55237</TD><TD>-71.135712</TD><TD>-3634</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS39</TD><TD>2016/10/26</TD><TD>2016/12/03</TD><TD>-19.496679</TD><TD>-70.985542</TD><TD>-2412</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS40</TD><TD>2016/10/24</TD><TD>2016/12/03</TD><TD>-19.37879</TD><TD>-70.71386</TD><TD>-870</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS41</TD><TD>2016/10/24</TD><TD>2016/12/03</TD><TD>-19.321737</TD><TD>-70.596085</TD><TD>-934</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS42</TD><TD>2016/10/26</TD><TD>2016/12/04</TD><TD>-19.850161</TD><TD>-71.092758</TD><TD>-4142</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS43</TD><TD>2016/10/26</TD><TD>2016/12/04</TD><TD>-19.79281</TD><TD>-70.94339</TD><TD>-3070</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS45</TD><TD>2016/10/26</TD><TD>2016/12/02</TD><TD>-19.605391</TD><TD>-70.540962</TD><TD>-729</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS48</TD><TD>2016/10/26</TD><TD>2016/12/01</TD><TD>-19.936159</TD><TD>-70.926422</TD><TD>-2689</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS49</TD><TD>2016/10/27</TD><TD>2016/12/02</TD><TD>-19.83201</TD><TD>-70.627792</TD><TD>-1303</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS50</TD><TD>2016/10/26</TD><TD>2016/12/02</TD><TD>-19.770081</TD><TD>-70.501839</TD><TD>-998</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS51</TD><TD>2016/10/25</TD><TD>2016/12/01</TD><TD>-20.249729</TD><TD>-71.021973</TD><TD>-3995</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS52</TD><TD>2016/10/26</TD><TD>2016/12/01</TD><TD>-20.07019</TD><TD>-70.912872</TD><TD>-2729</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS53</TD><TD>2016/10/27</TD><TD>2016/12/02</TD><TD>-19.96063</TD><TD>-70.60125</TD><TD>-1236</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS54</TD><TD>2016/10/27</TD><TD>2016/12/02</TD><TD>-19.914249</TD><TD>-70.469231</TD><TD>-1177</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS55</TD><TD>2016/10/27</TD><TD>2016/12/01</TD><TD>-20.35981</TD><TD>-71.002502</TD><TD>-4261</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS57</TD><TD>2016/10/27</TD><TD>2016/12/01</TD><TD>-20.102751</TD><TD>-70.581123</TD><TD>-1179</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS58</TD><TD>2016/10/27</TD><TD>2016/12/01</TD><TD>-20.06682</TD><TD>-70.436417</TD><TD>-1150</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS59</TD><TD>2016/10/27</TD><TD>2016/12/01</TD><TD>-20.32408</TD><TD>-70.879303</TD><TD>-3277</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS60</TD><TD>2016/10/27</TD><TD>2016/12/01</TD><TD>-20.24992</TD><TD>-70.571602</TD><TD>-1071</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS61</TD><TD>2016/10/28</TD><TD>2016/11/30</TD><TD>-20.591789</TD><TD>-70.841278</TD><TD>-2436</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS64</TD><TD>2016/10/27</TD><TD>2016/11/30</TD><TD>-20.54295</TD><TD>-70.552582</TD><TD>-884</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS67</TD><TD>2016/10/27</TD><TD>2016/11/30</TD><TD>-20.48863</TD><TD>-70.991219</TD><TD>-4063</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR><TR><TD>XW</TD><TD>SS68</TD><TD>2016/10/28</TD><TD>2016/11/30</TD><TD>-20.63176</TD><TD>-70.972717</TD><TD>-3772</TD><TD>EDH-EL1-EL2-ELZ (200.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>SS04 SS05 SS06 SS07 SS08 SS10 SS11 SS12 SS16 SS17 SS18 SS19 SS20 SS21 SS21A SS22 SS23 SS24 SS25 SS26 SS29 SS30 SS32 SS33 SS34 SS35 SS36 SS37 SS38 SS39 SS40 SS41 SS42 SS43 SS45 SS48 SS49 SS50 SS51 SS52 SS53 SS54 SS55 SS57 SS58 SS59 SS60 SS61 SS64 SS67 SS68</TD><TD>EDH</TD><TD>200.0</TD><TD>HTI_90_U Hydrophone OBSIP-SIO/ABALONES</TD></TR><TR><TD>SS04 SS05 SS06 SS07 SS08 SS10 SS11 SS12 SS16 SS17 SS18 SS19 SS20 SS21 SS21A SS22 SS23 SS24 SS25 SS26 SS29 SS30 SS32 SS33 SS34 SS35 SS36 SS37 SS38 SS39 SS40 SS41 SS42 SS43 SS45 SS48 SS49 SS50 SS51 SS52 SS53 SS54 SS55 SS57 SS58 SS59 SS60 SS61 SS64 SS67 SS68</TD><TD>EL1</TD><TD>200.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES</TD></TR><TR><TD>SS04 SS05 SS06 SS07 SS08 SS10 SS11 SS12 SS16 SS17 SS18 SS19 SS20 SS21 SS21A SS22 SS23 SS24 SS25 SS26 SS29 SS30 SS32 SS33 SS34 SS35 SS36 SS37 SS38 SS39 SS40 SS41 SS42 SS43 SS45 SS48 SS49 SS50 SS51 SS52 SS53 SS54 SS55 SS57 SS58 SS59 SS60 SS61 SS64 SS67 SS68</TD><TD>EL2</TD><TD>200.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES</TD></TR><TR><TD>SS04 SS05 SS06 SS07 SS08 SS10 SS11 SS12 SS16 SS17 SS18 SS19 SS20 SS21 SS21A SS22 SS23 SS24 SS25 SS26 SS29 SS30 SS32 SS33 SS34 SS35 SS36 SS37 SS38 SS39 SS40 SS41 SS42 SS43 SS45 SS48 SS49 SS50 SS51 SS52 SS53 SS54 SS55 SS57 SS58 SS59 SS60 SS61 SS64 SS67 SS68</TD><TD>ELZ</TD><TD>200.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_2fbb4f03c0110bed6b774e0d4adfe868 = L.map(
+                "map_2fbb4f03c0110bed6b774e0d4adfe868",
+                {
+                    center: [-19.957258627450994, -70.9778910588235],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_5fa3b9118ada2c04387985df7a5e8bb3 = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var circle_marker_bf19d389e42149b456d15c10144d8aa7 = L.circleMarker(
+                [-21.12392, -70.62265],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_bf19d389e42149b456d15c10144d8aa7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS04 <br> <b>Dates: </b>2016/10/29 to 2016/11/29  <br><br><b>Depth: </b> -1827 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5ceae1208aa69fc9564169a76ee96064 = L.marker(
+                [-21.12392, -70.62265],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_012767ad8ba3d7bebdd1f15114a7d59d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5ceae1208aa69fc9564169a76ee96064.setIcon(div_icon_012767ad8ba3d7bebdd1f15114a7d59d);
+        
+    
+            var circle_marker_cbb1a7cd8fc0c1d4bbe1ac1f546603d4 = L.circleMarker(
+                [-20.991011, -70.640312],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_cbb1a7cd8fc0c1d4bbe1ac1f546603d4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS05 <br> <b>Dates: </b>2016/10/29 to 2016/11/29  <br><br><b>Depth: </b> -1639 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ebf5c207fbd514ad57dce0e57b12e216 = L.marker(
+                [-20.991011, -70.640312],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_8401c18477a524956709049db83b0205 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ebf5c207fbd514ad57dce0e57b12e216.setIcon(div_icon_8401c18477a524956709049db83b0205);
+        
+    
+            var circle_marker_96ae7eceebbaf23908293c8898dc85a8 = L.circleMarker(
+                [-20.85512, -70.660339],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_96ae7eceebbaf23908293c8898dc85a8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS06 <br> <b>Dates: </b>2016/10/28 to 2016/11/29  <br><br><b>Depth: </b> -1785 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d0df8414d09d6f2dfadbd7f3c4479657 = L.marker(
+                [-20.85512, -70.660339],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_770c51219c1ef2e34994180d7fea1932 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d0df8414d09d6f2dfadbd7f3c4479657.setIcon(div_icon_770c51219c1ef2e34994180d7fea1932);
+        
+    
+            var circle_marker_0d37f188b0f72049487945bc289370fc = L.circleMarker(
+                [-20.732639, -70.683502],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_0d37f188b0f72049487945bc289370fc.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS07 <br> <b>Dates: </b>2016/10/28 to 2016/11/29  <br><br><b>Depth: </b> -1912 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e30225ff4373ee66d6776b3352cee771 = L.marker(
+                [-20.732639, -70.683502],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_1ccdc4ea7a384e6d1d6463546e84b2c9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e30225ff4373ee66d6776b3352cee771.setIcon(div_icon_1ccdc4ea7a384e6d1d6463546e84b2c9);
+        
+    
+            var circle_marker_663b01eca2e1affb2f130cd28f07e61b = L.circleMarker(
+                [-20.5639, -70.695839],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_663b01eca2e1affb2f130cd28f07e61b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS08 <br> <b>Dates: </b>2016/10/27 to 2016/11/30  <br><br><b>Depth: </b> -1641 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8f6f4581e96925ff981814c9b0e0385d = L.marker(
+                [-20.5639, -70.695839],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_2836956751d8a3a763f8c8fa64e86262 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8f6f4581e96925ff981814c9b0e0385d.setIcon(div_icon_2836956751d8a3a763f8c8fa64e86262);
+        
+    
+            var circle_marker_db1f887050c5fa6ee5b98ce7aab1b71b = L.circleMarker(
+                [-20.294161, -70.73111],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_db1f887050c5fa6ee5b98ce7aab1b71b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS10 <br> <b>Dates: </b>2016/10/27 to 2016/12/01  <br><br><b>Depth: </b> -2112 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e58ce21d08fda6b223005055a1757e7c = L.marker(
+                [-20.294161, -70.73111],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_1272567922ffc5f9db764401f0cc4e83 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e58ce21d08fda6b223005055a1757e7c.setIcon(div_icon_1272567922ffc5f9db764401f0cc4e83);
+        
+    
+            var circle_marker_e38fce0fc3ed1fe321194e5eb892b422 = L.circleMarker(
+                [-20.15259, -70.749199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_e38fce0fc3ed1fe321194e5eb892b422.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS11 <br> <b>Dates: </b>2016/10/27 to 2016/12/01  <br><br><b>Depth: </b> -2100 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d3f8b9adc8a1b48f2b74e4553b247977 = L.marker(
+                [-20.15259, -70.749199],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_f9f1dd98e8eb7958a217df31d8897d26 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d3f8b9adc8a1b48f2b74e4553b247977.setIcon(div_icon_f9f1dd98e8eb7958a217df31d8897d26);
+        
+    
+            var circle_marker_0d011997e1fded7e4e9a09f4de4c8c9e = L.circleMarker(
+                [-20.019341, -70.769203],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_0d011997e1fded7e4e9a09f4de4c8c9e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS12 <br> <b>Dates: </b>2016/10/27 to 2016/12/02  <br><br><b>Depth: </b> -1383 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bbe102fedd08ce5b4c5629d4afb379f0 = L.marker(
+                [-20.019341, -70.769203],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_52661c58cc94e035867ef93ab1c07878 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_bbe102fedd08ce5b4c5629d4afb379f0.setIcon(div_icon_52661c58cc94e035867ef93ab1c07878);
+        
+    
+            var circle_marker_f333fbea8ed1c1e95fd12afd4cc3826a = L.circleMarker(
+                [-19.45178, -70.855873],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_f333fbea8ed1c1e95fd12afd4cc3826a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS16 <br> <b>Dates: </b>2016/10/26 to 2016/12/02  <br><br><b>Depth: </b> -1430 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_10a7a3401705e1eea169c5b9c4e149dc = L.marker(
+                [-19.45178, -70.855873],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_a4131c7fc194cbb6ca649ef16584bc42 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_10a7a3401705e1eea169c5b9c4e149dc.setIcon(div_icon_a4131c7fc194cbb6ca649ef16584bc42);
+        
+    
+            var circle_marker_ba939fadc228b28ae9f09570ba44cf11 = L.circleMarker(
+                [-19.306589, -70.870239],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_ba939fadc228b28ae9f09570ba44cf11.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS17 <br> <b>Dates: </b>2016/10/24 to 2016/12/03  <br><br><b>Depth: </b> -980 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_af09104dbecccb28fe655ba446c64065 = L.marker(
+                [-19.306589, -70.870239],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_5c3c9c4f928659301b2403dec0987698 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_af09104dbecccb28fe655ba446c64065.setIcon(div_icon_5c3c9c4f928659301b2403dec0987698);
+        
+    
+            var circle_marker_f082bb967c6e913863d7996d5abb4265 = L.circleMarker(
+                [-19.183599, -70.892311],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_f082bb967c6e913863d7996d5abb4265.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS18 <br> <b>Dates: </b>2016/10/24 to 2016/12/03  <br><br><b>Depth: </b> -1520 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_352af3435c36a3c36dd0cb775c2c121b = L.marker(
+                [-19.183599, -70.892311],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_3d6e25b41e8bc4de98b7f761f6ca0eed = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_352af3435c36a3c36dd0cb775c2c121b.setIcon(div_icon_3d6e25b41e8bc4de98b7f761f6ca0eed);
+        
+    
+            var circle_marker_27c61affdd029fc7c2c86a1bdc8e283c = L.circleMarker(
+                [-19.040085, -70.905281],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_27c61affdd029fc7c2c86a1bdc8e283c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS19 <br> <b>Dates: </b>2016/10/23 to 2016/12/03  <br><br><b>Depth: </b> -1580 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0938c5208d10d630af0dafd25472faf2 = L.marker(
+                [-19.040085, -70.905281],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_0a8e6fe782adb0f2b21e6417344bb4f4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS19\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0938c5208d10d630af0dafd25472faf2.setIcon(div_icon_0a8e6fe782adb0f2b21e6417344bb4f4);
+        
+    
+            var circle_marker_e08364a69999b41c0e4c5be0b853c326 = L.circleMarker(
+                [-18.908386, -70.926254],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_e08364a69999b41c0e4c5be0b853c326.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS20 <br> <b>Dates: </b>2016/10/23 to 2016/12/03  <br><br><b>Depth: </b> -1525 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2ee0dad5cd557afbeebd82592073eaa0 = L.marker(
+                [-18.908386, -70.926254],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_f4c6e18b833a554dc019894541de2a3a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS20\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2ee0dad5cd557afbeebd82592073eaa0.setIcon(div_icon_f4c6e18b833a554dc019894541de2a3a);
+        
+    
+            var circle_marker_e65f5271f1ae53f2ab37de28fdcb3994 = L.circleMarker(
+                [-20.31501, -72.440041],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_e65f5271f1ae53f2ab37de28fdcb3994.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS21 <br> <b>Dates: </b>2016/10/25 to 2016/11/02  <br><br><b>Depth: </b> -4423 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_31c6dc9f915aec7fe326cdf21901c897 = L.marker(
+                [-20.31501, -72.440041],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_ac594eea4d2641159a69e87826302f2a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS21\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_31c6dc9f915aec7fe326cdf21901c897.setIcon(div_icon_ac594eea4d2641159a69e87826302f2a);
+        
+    
+            var circle_marker_3f6f44150d7ed2b551b9a3436d6b4fd4 = L.circleMarker(
+                [-20.31518, -72.438164],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_3f6f44150d7ed2b551b9a3436d6b4fd4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS21A <br> <b>Dates: </b>2016/11/02 to 2016/12/06  <br><br><b>Depth: </b> -4400 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b59ec3f7c1ff7173711c6e51dd0a5c04 = L.marker(
+                [-20.31518, -72.438164],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_5696ac861abc7c16c6541de506b31c32 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS21A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b59ec3f7c1ff7173711c6e51dd0a5c04.setIcon(div_icon_5696ac861abc7c16c6541de506b31c32);
+        
+    
+            var circle_marker_c9b6a3c205a1990ff88a2093f23acbc8 = L.circleMarker(
+                [-20.24737, -72.297401],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_c9b6a3c205a1990ff88a2093f23acbc8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS22 <br> <b>Dates: </b>2016/10/25 to 2016/12/06  <br><br><b>Depth: </b> -4158 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eadbad2a501424af02286f69a7a8d27f = L.marker(
+                [-20.24737, -72.297401],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_282950f062c9479ab111abadc10a5ac1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS22\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_eadbad2a501424af02286f69a7a8d27f.setIcon(div_icon_282950f062c9479ab111abadc10a5ac1);
+        
+    
+            var circle_marker_3d72824f7b585abc32deaa8d34b8a8a9 = L.circleMarker(
+                [-20.18539, -72.162437],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_3d72824f7b585abc32deaa8d34b8a8a9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS23 <br> <b>Dates: </b>2016/10/25 to 2016/12/06  <br><br><b>Depth: </b> -2853 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f7dc77af4986be9dd8a8d811d928ebe9 = L.marker(
+                [-20.18539, -72.162437],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_f9b2f3051fc4d8e85d560c31ac8375a6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS23\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f7dc77af4986be9dd8a8d811d928ebe9.setIcon(div_icon_f9b2f3051fc4d8e85d560c31ac8375a6);
+        
+    
+            var circle_marker_ad2560dda6f304426997ecef793683b1 = L.circleMarker(
+                [-20.124901, -72.033081],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_ad2560dda6f304426997ecef793683b1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS24 <br> <b>Dates: </b>2016/10/25 to 2016/12/06  <br><br><b>Depth: </b> -3330 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9ea0a5d204f4a2c515d4c6f85a7d44ce = L.marker(
+                [-20.124901, -72.033081],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_69a84fce0d7e1449d4731aef20d6e241 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS24\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9ea0a5d204f4a2c515d4c6f85a7d44ce.setIcon(div_icon_69a84fce0d7e1449d4731aef20d6e241);
+        
+    
+            var circle_marker_8107a8aafb94dcdc127ddedf0d2f97df = L.circleMarker(
+                [-20.062969, -71.900047],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_8107a8aafb94dcdc127ddedf0d2f97df.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS25 <br> <b>Dates: </b>2016/10/25 to 2016/12/06  <br><br><b>Depth: </b> -4555 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b9f56a82580cab126d99cb5d6319a76d = L.marker(
+                [-20.062969, -71.900047],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_a0d56b4ecbc60e283406914f2904a65d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS25\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b9f56a82580cab126d99cb5d6319a76d.setIcon(div_icon_a0d56b4ecbc60e283406914f2904a65d);
+        
+    
+            var circle_marker_b9cd1b99e2d5c2c0f4559eebb003aa04 = L.circleMarker(
+                [-20.004589, -71.770416],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_b9cd1b99e2d5c2c0f4559eebb003aa04.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS26 <br> <b>Dates: </b>2016/10/25 to 2016/12/06  <br><br><b>Depth: </b> -4564 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_462239b7b7905f1369ba3496292d536a = L.marker(
+                [-20.004589, -71.770416],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_84bccb1506fc8e06ccf7e3950d45a090 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS26\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_462239b7b7905f1369ba3496292d536a.setIcon(div_icon_84bccb1506fc8e06ccf7e3950d45a090);
+        
+    
+            var circle_marker_2b410220c8a7d08cf959397b639e4635 = L.circleMarker(
+                [-19.758801, -71.224167],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_2b410220c8a7d08cf959397b639e4635.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS29 <br> <b>Dates: </b>2016/10/24 to 2016/12/04  <br><br><b>Depth: </b> -5244 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_34f4374c9e8b88eed966956b7c120c37 = L.marker(
+                [-19.758801, -71.224167],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_61cb0d4b5609707d041bdec653fbf585 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS29\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_34f4374c9e8b88eed966956b7c120c37.setIcon(div_icon_61cb0d4b5609707d041bdec653fbf585);
+        
+    
+            var circle_marker_4cb8fd1eb841ed4141bee4ec452bfa38 = L.circleMarker(
+                [-19.703699, -71.11348],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_4cb8fd1eb841ed4141bee4ec452bfa38.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS30 <br> <b>Dates: </b>2016/10/26 to 2016/12/04  <br><br><b>Depth: </b> -4221 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0cc99aface39d5124e182fc663ed3b56 = L.marker(
+                [-19.703699, -71.11348],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_2c72b94b38336be904402ddcff62f7d2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS30\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0cc99aface39d5124e182fc663ed3b56.setIcon(div_icon_2c72b94b38336be904402ddcff62f7d2);
+        
+    
+            var circle_marker_8121ec7f8a4473c71866b721bae115d1 = L.circleMarker(
+                [-19.519279, -70.691101],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_8121ec7f8a4473c71866b721bae115d1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS32 <br> <b>Dates: </b>2016/10/26 to 2016/12/02  <br><br><b>Depth: </b> -772 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_54236cecd06cc8a73245087c42b3491c = L.marker(
+                [-19.519279, -70.691101],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_90f26c5413261fa04653977475569249 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS32\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_54236cecd06cc8a73245087c42b3491c.setIcon(div_icon_90f26c5413261fa04653977475569249);
+        
+    
+            var circle_marker_c5370b78d72ccec9f991bfe969e8df52 = L.circleMarker(
+                [-19.459351, -70.565979],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_c5370b78d72ccec9f991bfe969e8df52.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS33 <br> <b>Dates: </b>2016/10/24 to 2016/12/02  <br><br><b>Depth: </b> -775 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_23c869bdea7dec1b17665990017c1278 = L.marker(
+                [-19.459351, -70.565979],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_fd629c5685bc5c6f3f959c67a27592d1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS33\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_23c869bdea7dec1b17665990017c1278.setIcon(div_icon_fd629c5685bc5c6f3f959c67a27592d1);
+        
+    
+            var circle_marker_b76b0e296a42dd9ceb783fdfcfed0067 = L.circleMarker(
+                [-19.402275, -70.442223],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_b76b0e296a42dd9ceb783fdfcfed0067.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS34 <br> <b>Dates: </b>2016/10/24 to 2016/12/02  <br><br><b>Depth: </b> -735 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_33934d7f7ba7681a3457071e5438ed69 = L.marker(
+                [-19.402275, -70.442223],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_9da5f8a4897368553d73c9cc6f4760f6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS34\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_33934d7f7ba7681a3457071e5438ed69.setIcon(div_icon_9da5f8a4897368553d73c9cc6f4760f6);
+        
+    
+            var circle_marker_060ac20ab70444c907ecf009d5929851 = L.circleMarker(
+                [-19.403179, -71.16304],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_060ac20ab70444c907ecf009d5929851.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS35 <br> <b>Dates: </b>2016/10/24 to 2016/12/03  <br><br><b>Depth: </b> -3153 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ca24aa3c869656240ff308a06171ff1b = L.marker(
+                [-19.403179, -71.16304],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_3fcdd7f93b2b1052fd243eb3fb6a665f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS35\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ca24aa3c869656240ff308a06171ff1b.setIcon(div_icon_3fcdd7f93b2b1052fd243eb3fb6a665f);
+        
+    
+            var circle_marker_5011745767df8ce0f696a7e28f29610f = L.circleMarker(
+                [-19.3494, -71.004349],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_5011745767df8ce0f696a7e28f29610f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS36 <br> <b>Dates: </b>2016/10/24 to 2016/12/03  <br><br><b>Depth: </b> -1697 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2602205f78903007f4956c80eeb1610b = L.marker(
+                [-19.3494, -71.004349],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_e8a73313cd1ac4d9e70da50b16125c48 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS36\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2602205f78903007f4956c80eeb1610b.setIcon(div_icon_e8a73313cd1ac4d9e70da50b16125c48);
+        
+    
+            var circle_marker_99059c7313d7f7a7ebaa46e14e753227 = L.circleMarker(
+                [-19.25618, -70.725975],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_99059c7313d7f7a7ebaa46e14e753227.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS37 <br> <b>Dates: </b>2016/10/24 to 2016/12/03  <br><br><b>Depth: </b> -1049 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_32deab5dfda1e3d348ee60b8f498a2f5 = L.marker(
+                [-19.25618, -70.725975],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_e89593264db3d9cb13d7bddd3a1fc4f8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS37\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_32deab5dfda1e3d348ee60b8f498a2f5.setIcon(div_icon_e89593264db3d9cb13d7bddd3a1fc4f8);
+        
+    
+            var circle_marker_f94131baa309b7857fd051a49ebac76a = L.circleMarker(
+                [-19.55237, -71.135712],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_f94131baa309b7857fd051a49ebac76a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS38 <br> <b>Dates: </b>2016/10/26 to 2016/12/03  <br><br><b>Depth: </b> -3634 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_15510c67df4458fc3a046ace0d1629a4 = L.marker(
+                [-19.55237, -71.135712],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_a922b7f4353acc4cbe49c7b24e99cc25 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS38\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_15510c67df4458fc3a046ace0d1629a4.setIcon(div_icon_a922b7f4353acc4cbe49c7b24e99cc25);
+        
+    
+            var circle_marker_d246a8ef32c4582dd87d3b91d18843fa = L.circleMarker(
+                [-19.496679, -70.985542],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_d246a8ef32c4582dd87d3b91d18843fa.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS39 <br> <b>Dates: </b>2016/10/26 to 2016/12/03  <br><br><b>Depth: </b> -2412 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2e2d5345379855c2a3998ed4547512c0 = L.marker(
+                [-19.496679, -70.985542],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_cb6cc63196c23e0317ce646aec8fc2e8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS39\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2e2d5345379855c2a3998ed4547512c0.setIcon(div_icon_cb6cc63196c23e0317ce646aec8fc2e8);
+        
+    
+            var circle_marker_290d21a6d0b7e3dca9b7d8fd2cbd62a1 = L.circleMarker(
+                [-19.37879, -70.71386],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_290d21a6d0b7e3dca9b7d8fd2cbd62a1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS40 <br> <b>Dates: </b>2016/10/24 to 2016/12/03  <br><br><b>Depth: </b> -870 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_73a2bf21e3e1a4ae658dfee962d38a1b = L.marker(
+                [-19.37879, -70.71386],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_2e8cc609eeffdbbbbdeb92c30d5444df = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS40\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_73a2bf21e3e1a4ae658dfee962d38a1b.setIcon(div_icon_2e8cc609eeffdbbbbdeb92c30d5444df);
+        
+    
+            var circle_marker_5d5a35c98c9e9a510ff9b0209cf0c587 = L.circleMarker(
+                [-19.321737, -70.596085],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_5d5a35c98c9e9a510ff9b0209cf0c587.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS41 <br> <b>Dates: </b>2016/10/24 to 2016/12/03  <br><br><b>Depth: </b> -934 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a9d5f32a033435c54d5ad1c48ead5430 = L.marker(
+                [-19.321737, -70.596085],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_be420087bce13a3db52f93ba3bf78e91 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS41\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a9d5f32a033435c54d5ad1c48ead5430.setIcon(div_icon_be420087bce13a3db52f93ba3bf78e91);
+        
+    
+            var circle_marker_1d3de0d51405f4b380cb277f8308c63a = L.circleMarker(
+                [-19.850161, -71.092758],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_1d3de0d51405f4b380cb277f8308c63a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS42 <br> <b>Dates: </b>2016/10/26 to 2016/12/04  <br><br><b>Depth: </b> -4142 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1839e42ee95f0be95c3dfb4ecd0885ae = L.marker(
+                [-19.850161, -71.092758],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_932bdcfaf7678582307904fc850f0e39 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS42\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1839e42ee95f0be95c3dfb4ecd0885ae.setIcon(div_icon_932bdcfaf7678582307904fc850f0e39);
+        
+    
+            var circle_marker_216809f8009035ca341f426e3ea0a29c = L.circleMarker(
+                [-19.79281, -70.94339],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_216809f8009035ca341f426e3ea0a29c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS43 <br> <b>Dates: </b>2016/10/26 to 2016/12/04  <br><br><b>Depth: </b> -3070 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5173c176ed5c9dfec1196bc2be2018ec = L.marker(
+                [-19.79281, -70.94339],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_814be61c8e55bdc41da4fec92344b395 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS43\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5173c176ed5c9dfec1196bc2be2018ec.setIcon(div_icon_814be61c8e55bdc41da4fec92344b395);
+        
+    
+            var circle_marker_59fa4d2600d8e362769163154f29053d = L.circleMarker(
+                [-19.605391, -70.540962],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_59fa4d2600d8e362769163154f29053d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS45 <br> <b>Dates: </b>2016/10/26 to 2016/12/02  <br><br><b>Depth: </b> -729 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_343fccfb57e2618b9a25d435735ac367 = L.marker(
+                [-19.605391, -70.540962],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_2f33a1626a075067394965bbaf35f5f2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS45\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_343fccfb57e2618b9a25d435735ac367.setIcon(div_icon_2f33a1626a075067394965bbaf35f5f2);
+        
+    
+            var circle_marker_bca5c8aefb6dbfcfd7026202d1ff0e2d = L.circleMarker(
+                [-19.936159, -70.926422],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_bca5c8aefb6dbfcfd7026202d1ff0e2d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS48 <br> <b>Dates: </b>2016/10/26 to 2016/12/01  <br><br><b>Depth: </b> -2689 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_40cfab42c6277eb8bb13ed8a95744133 = L.marker(
+                [-19.936159, -70.926422],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_ffb8615a35bfe7c7229f98735b4ee944 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS48\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_40cfab42c6277eb8bb13ed8a95744133.setIcon(div_icon_ffb8615a35bfe7c7229f98735b4ee944);
+        
+    
+            var circle_marker_c5e8984be3a527c460efeabf8aa7e33a = L.circleMarker(
+                [-19.83201, -70.627792],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_c5e8984be3a527c460efeabf8aa7e33a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS49 <br> <b>Dates: </b>2016/10/27 to 2016/12/02  <br><br><b>Depth: </b> -1303 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8d757629be5caa85d7572fb865e0040b = L.marker(
+                [-19.83201, -70.627792],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_7277b2fe3de7933cac91a974ae137a73 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS49\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8d757629be5caa85d7572fb865e0040b.setIcon(div_icon_7277b2fe3de7933cac91a974ae137a73);
+        
+    
+            var circle_marker_1a20af8551c2e115b2d4abce2598b1b7 = L.circleMarker(
+                [-19.770081, -70.501839],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_1a20af8551c2e115b2d4abce2598b1b7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS50 <br> <b>Dates: </b>2016/10/26 to 2016/12/02  <br><br><b>Depth: </b> -998 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_818b09aad21fa9a7c0bde7ae9cc6d5c9 = L.marker(
+                [-19.770081, -70.501839],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_bd389d90166c580649846aef1e85c0e8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS50\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_818b09aad21fa9a7c0bde7ae9cc6d5c9.setIcon(div_icon_bd389d90166c580649846aef1e85c0e8);
+        
+    
+            var circle_marker_b917b9d0c824143243c6ece382e3efc5 = L.circleMarker(
+                [-20.249729, -71.021973],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_b917b9d0c824143243c6ece382e3efc5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS51 <br> <b>Dates: </b>2016/10/25 to 2016/12/01  <br><br><b>Depth: </b> -3995 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_638392c462bb7357bbf1c01ca0cd4a43 = L.marker(
+                [-20.249729, -71.021973],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_1b600a71f998b371e7ca259ef8b1758c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS51\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_638392c462bb7357bbf1c01ca0cd4a43.setIcon(div_icon_1b600a71f998b371e7ca259ef8b1758c);
+        
+    
+            var circle_marker_fc3986a07c13832e97e90716defe1b0e = L.circleMarker(
+                [-20.07019, -70.912872],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_fc3986a07c13832e97e90716defe1b0e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS52 <br> <b>Dates: </b>2016/10/26 to 2016/12/01  <br><br><b>Depth: </b> -2729 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_29772bbf23a0d9070adf93cf2032db5d = L.marker(
+                [-20.07019, -70.912872],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_7d31f86d183dd433cb64bde13b9f9c58 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS52\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_29772bbf23a0d9070adf93cf2032db5d.setIcon(div_icon_7d31f86d183dd433cb64bde13b9f9c58);
+        
+    
+            var circle_marker_d668a85adfdd010b8c8f8ce4df72b778 = L.circleMarker(
+                [-19.96063, -70.60125],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_d668a85adfdd010b8c8f8ce4df72b778.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS53 <br> <b>Dates: </b>2016/10/27 to 2016/12/02  <br><br><b>Depth: </b> -1236 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_40af3a4c72c5c4b5c6e3e1bbbfd39eb7 = L.marker(
+                [-19.96063, -70.60125],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_7c0bea0b0d215f03e6929707cf740981 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS53\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_40af3a4c72c5c4b5c6e3e1bbbfd39eb7.setIcon(div_icon_7c0bea0b0d215f03e6929707cf740981);
+        
+    
+            var circle_marker_61055ae52ac1dc007a796a9743a916e7 = L.circleMarker(
+                [-19.914249, -70.469231],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_61055ae52ac1dc007a796a9743a916e7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS54 <br> <b>Dates: </b>2016/10/27 to 2016/12/02  <br><br><b>Depth: </b> -1177 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_936dd220c100875ab0b02cae3b010cd1 = L.marker(
+                [-19.914249, -70.469231],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_0fafcb09058fbfe80e0381f88c2f1091 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS54\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_936dd220c100875ab0b02cae3b010cd1.setIcon(div_icon_0fafcb09058fbfe80e0381f88c2f1091);
+        
+    
+            var circle_marker_6db9f6d483106e9a8b6f39748d94549b = L.circleMarker(
+                [-20.35981, -71.002502],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_6db9f6d483106e9a8b6f39748d94549b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS55 <br> <b>Dates: </b>2016/10/27 to 2016/12/01  <br><br><b>Depth: </b> -4261 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8c4d11b1fadeee06524eb6a851c7f249 = L.marker(
+                [-20.35981, -71.002502],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_9ec11f92ac411a0f60a9dcc6bbdfcb17 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS55\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8c4d11b1fadeee06524eb6a851c7f249.setIcon(div_icon_9ec11f92ac411a0f60a9dcc6bbdfcb17);
+        
+    
+            var circle_marker_6279551fe198f3e1b7f48abf7116fa97 = L.circleMarker(
+                [-20.102751, -70.581123],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_6279551fe198f3e1b7f48abf7116fa97.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS57 <br> <b>Dates: </b>2016/10/27 to 2016/12/01  <br><br><b>Depth: </b> -1179 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0cd228011d32ceae9063cac9e0524335 = L.marker(
+                [-20.102751, -70.581123],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_0f5250da0f76e69b1f5a38f33dfd91ea = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS57\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0cd228011d32ceae9063cac9e0524335.setIcon(div_icon_0f5250da0f76e69b1f5a38f33dfd91ea);
+        
+    
+            var circle_marker_2879cb675a603b64a643edfd8cc13d80 = L.circleMarker(
+                [-20.06682, -70.436417],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_2879cb675a603b64a643edfd8cc13d80.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS58 <br> <b>Dates: </b>2016/10/27 to 2016/12/01  <br><br><b>Depth: </b> -1150 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a8bbc59230ed45ba70502138f8a8b055 = L.marker(
+                [-20.06682, -70.436417],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_2845934d1699b051c5f033870ba592b2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS58\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a8bbc59230ed45ba70502138f8a8b055.setIcon(div_icon_2845934d1699b051c5f033870ba592b2);
+        
+    
+            var circle_marker_01621f5c0c76a27e47447d3add43ced8 = L.circleMarker(
+                [-20.32408, -70.879303],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_01621f5c0c76a27e47447d3add43ced8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS59 <br> <b>Dates: </b>2016/10/27 to 2016/12/01  <br><br><b>Depth: </b> -3277 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3d05d11bc58c1d9f1d5e1cc632524daf = L.marker(
+                [-20.32408, -70.879303],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_6bdfb4f80fc63642e1ca77ed35c1f35e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS59\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3d05d11bc58c1d9f1d5e1cc632524daf.setIcon(div_icon_6bdfb4f80fc63642e1ca77ed35c1f35e);
+        
+    
+            var circle_marker_621d5858b4178d306e1caa4c7db91d23 = L.circleMarker(
+                [-20.24992, -70.571602],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_621d5858b4178d306e1caa4c7db91d23.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS60 <br> <b>Dates: </b>2016/10/27 to 2016/12/01  <br><br><b>Depth: </b> -1071 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a201da2ec2687695e8b9d4acb35fc01b = L.marker(
+                [-20.24992, -70.571602],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_8aeb9ae83236fc8b51f97a9bf8409f73 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS60\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a201da2ec2687695e8b9d4acb35fc01b.setIcon(div_icon_8aeb9ae83236fc8b51f97a9bf8409f73);
+        
+    
+            var circle_marker_7bf6a64ee07876cd1079c5c2bd164707 = L.circleMarker(
+                [-20.591789, -70.841278],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_7bf6a64ee07876cd1079c5c2bd164707.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS61 <br> <b>Dates: </b>2016/10/28 to 2016/11/30  <br><br><b>Depth: </b> -2436 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2e0ed23d93ee740617c89e5089fd1288 = L.marker(
+                [-20.591789, -70.841278],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_108ebe5dca5b804b212d44b230887417 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS61\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2e0ed23d93ee740617c89e5089fd1288.setIcon(div_icon_108ebe5dca5b804b212d44b230887417);
+        
+    
+            var circle_marker_a8fee219e9d337ca244bde9838878e43 = L.circleMarker(
+                [-20.54295, -70.552582],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_a8fee219e9d337ca244bde9838878e43.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS64 <br> <b>Dates: </b>2016/10/27 to 2016/11/30  <br><br><b>Depth: </b> -884 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dcff099ddf5633f9ee84c92b75ab0c04 = L.marker(
+                [-20.54295, -70.552582],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_883a35131482aa32722808cb780aafc9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS64\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_dcff099ddf5633f9ee84c92b75ab0c04.setIcon(div_icon_883a35131482aa32722808cb780aafc9);
+        
+    
+            var circle_marker_ac2bea3443500d9facb6c8d9276b402a = L.circleMarker(
+                [-20.48863, -70.991219],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_ac2bea3443500d9facb6c8d9276b402a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS67 <br> <b>Dates: </b>2016/10/27 to 2016/11/30  <br><br><b>Depth: </b> -4063 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a0639d0de7393f1c7e9fc82638ebc225 = L.marker(
+                [-20.48863, -70.991219],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_db96d8abac5d42244ad63c3525edd052 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS67\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a0639d0de7393f1c7e9fc82638ebc225.setIcon(div_icon_db96d8abac5d42244ad63c3525edd052);
+        
+    
+            var circle_marker_8d91a123ce417d05e807748cbc4279d7 = L.circleMarker(
+                [-20.63176, -70.972717],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea1500", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            circle_marker_8d91a123ce417d05e807748cbc4279d7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XW <br> <b>Station:</b> SS68 <br> <b>Dates: </b>2016/10/28 to 2016/11/30  <br><br><b>Depth: </b> -3772 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XW_2016 <br><br> <b>Net name: </b> Pisagua/Iquique Crustal Tomography to Understand the Region of the Earthquake Source - OBSIP OBS Component <br><br> <b>Operator: </b>  IRIS OBSIP (OBSIP)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_63f0b4337b0fd01fa1b94e8feabacfb9 = L.marker(
+                [-20.63176, -70.972717],
+                {}
+            ).addTo(map_2fbb4f03c0110bed6b774e0d4adfe868);
+        
+    
+            var div_icon_47cbdab8ee1c109f30a1295657bf4d33 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSS68\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_63f0b4337b0fd01fa1b94e8feabacfb9.setIcon(div_icon_47cbdab8ee1c109f30a1295657bf4d33);
+        
+    
+            map_2fbb4f03c0110bed6b774e0d4adfe868.fitBounds(
+                [[-21.12392, -72.440041], [-18.908386, -70.436417]],
+                {}
+            );
+        </script>
+
+</html>

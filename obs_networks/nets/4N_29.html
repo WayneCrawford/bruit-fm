@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_40645c89cb5d291a95c13c7a5d61ccf5 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network 4N: China-Western Australia Seismic array </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Macquarie University (Australia)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Sep 2017 to Jun 2018</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/4N_2017">https://doi.org/10.7914/SN/4N_2017</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_40645c89cb5d291a95c13c7a5d61ccf5" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>4N</TD><TD>CNP04</TD><TD>2017/09/08</TD><TD>2018/05/13</TD><TD>-15.479385</TD><TD>118.771692</TD><TD>-4050</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>4N</TD><TD>CNP07</TD><TD>2017/09/09</TD><TD>2018/05/13</TD><TD>-15.908652</TD><TD>119.08104</TD><TD>-2266</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>4N</TD><TD>CNP09</TD><TD>2017/09/10</TD><TD>2018/05/13</TD><TD>-16.196122</TD><TD>119.284812</TD><TD>-1508</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>4N</TD><TD>CNP11</TD><TD>2017/09/10</TD><TD>2018/05/13</TD><TD>-16.481552</TD><TD>119.48762</TD><TD>-774</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>4N</TD><TD>CNP13</TD><TD>2017/09/10</TD><TD>2018/03/05</TD><TD>-16.770303</TD><TD>119.693962</TD><TD>-487</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>4N</TD><TD>CNP15</TD><TD>2017/09/10</TD><TD>2018/06/18</TD><TD>-17.106927</TD><TD>119.818668</TD><TD>-378</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>4N</TD><TD>CNP17</TD><TD>2017/09/11</TD><TD>2018/05/13</TD><TD>-17.454923</TD><TD>119.950742</TD><TD>-264</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>4N</TD><TD>CNP21</TD><TD>2017/09/11</TD><TD>2018/05/13</TD><TD>-18.084148</TD><TD>120.401883</TD><TD>-90</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>CNP04 CNP07 CNP09 CNP11 CNP13 CNP15 CNP17 CNP21</TD><TD>HDH</TD><TD>100.0</TD><TD>High Tech Inc. HTI-94-SSQ 2-30kHz</TD></TR><TR><TD>CNP04 CNP07 CNP09 CNP11 CNP13 CNP15 CNP17 CNP21</TD><TD>HH1</TD><TD>100.0</TD><TD>Guralp CMG-6T 60s (BB)</TD></TR><TR><TD>CNP04 CNP07 CNP09 CNP11 CNP13 CNP15 CNP17 CNP21</TD><TD>HH2</TD><TD>100.0</TD><TD>Guralp CMG-6T 60s (BB)</TD></TR><TR><TD>CNP04 CNP07 CNP09 CNP11 CNP13 CNP15 CNP17 CNP21</TD><TD>HHZ</TD><TD>100.0</TD><TD>Guralp CMG-6T 60s (BB)</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_40645c89cb5d291a95c13c7a5d61ccf5 = L.map(
+                "map_40645c89cb5d291a95c13c7a5d61ccf5",
+                {
+                    center: [-16.685251500000003, 119.561302375],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_e962db7b5e7bd6464e4d4f09deeab430 = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            var circle_marker_e5c77161e94c1f6ecc5b5f80d8f151af = L.circleMarker(
+                [-15.479385, 118.771692],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44bb00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            circle_marker_e5c77161e94c1f6ecc5b5f80d8f151af.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4N <br> <b>Station:</b> CNP04 <br> <b>Dates: </b>2017/09/08 to 2018/05/13  <br><br><b>Depth: </b> -4050 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/4N_2017 <br><br> <b>Net name: </b> China-Western Australia Seismic array <br><br> <b>Operator: </b>  Macquarie University (Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d829a149a56733b42e6f63e14811507f = L.marker(
+                [-15.479385, 118.771692],
+                {}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            var div_icon_7b12a15446eac27d5a177546196399a8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCNP04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d829a149a56733b42e6f63e14811507f.setIcon(div_icon_7b12a15446eac27d5a177546196399a8);
+        
+    
+            var circle_marker_9fad831c48ca199da4cb70a8a2c0e597 = L.circleMarker(
+                [-15.908652, 119.08104],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44bb00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            circle_marker_9fad831c48ca199da4cb70a8a2c0e597.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4N <br> <b>Station:</b> CNP07 <br> <b>Dates: </b>2017/09/09 to 2018/05/13  <br><br><b>Depth: </b> -2266 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/4N_2017 <br><br> <b>Net name: </b> China-Western Australia Seismic array <br><br> <b>Operator: </b>  Macquarie University (Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_654751eae69172d4416b523fc771bb6f = L.marker(
+                [-15.908652, 119.08104],
+                {}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            var div_icon_24714122a434f019dedaf4595d407c89 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCNP07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_654751eae69172d4416b523fc771bb6f.setIcon(div_icon_24714122a434f019dedaf4595d407c89);
+        
+    
+            var circle_marker_cc50ea77705595c42368789e37a6d993 = L.circleMarker(
+                [-16.196122, 119.284812],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44bb00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            circle_marker_cc50ea77705595c42368789e37a6d993.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4N <br> <b>Station:</b> CNP09 <br> <b>Dates: </b>2017/09/10 to 2018/05/13  <br><br><b>Depth: </b> -1508 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/4N_2017 <br><br> <b>Net name: </b> China-Western Australia Seismic array <br><br> <b>Operator: </b>  Macquarie University (Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ab2eb39ba8ae1ef7ee3c99a452e4a13c = L.marker(
+                [-16.196122, 119.284812],
+                {}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            var div_icon_cd0b06532599366905495833bc39b5a1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCNP09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ab2eb39ba8ae1ef7ee3c99a452e4a13c.setIcon(div_icon_cd0b06532599366905495833bc39b5a1);
+        
+    
+            var circle_marker_1026919a04a6d82b4273cae65dde574c = L.circleMarker(
+                [-16.481552, 119.48762],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44bb00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            circle_marker_1026919a04a6d82b4273cae65dde574c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4N <br> <b>Station:</b> CNP11 <br> <b>Dates: </b>2017/09/10 to 2018/05/13  <br><br><b>Depth: </b> -774 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/4N_2017 <br><br> <b>Net name: </b> China-Western Australia Seismic array <br><br> <b>Operator: </b>  Macquarie University (Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_073337f301cd5488ffc640a3b08e8b99 = L.marker(
+                [-16.481552, 119.48762],
+                {}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            var div_icon_e4a99e89ce20b52a1ef2680d4174cdb2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCNP11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_073337f301cd5488ffc640a3b08e8b99.setIcon(div_icon_e4a99e89ce20b52a1ef2680d4174cdb2);
+        
+    
+            var circle_marker_80fbbf96da67e5ddc2a412d9d563fa93 = L.circleMarker(
+                [-16.770303, 119.693962],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44bb00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            circle_marker_80fbbf96da67e5ddc2a412d9d563fa93.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4N <br> <b>Station:</b> CNP13 <br> <b>Dates: </b>2017/09/10 to 2018/03/05  <br><br><b>Depth: </b> -487 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/4N_2017 <br><br> <b>Net name: </b> China-Western Australia Seismic array <br><br> <b>Operator: </b>  Macquarie University (Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e212e52148d1cd939d5fb46049d4b8f2 = L.marker(
+                [-16.770303, 119.693962],
+                {}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            var div_icon_cfe11a425b4a2e0160070c43d03b1a8b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCNP13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e212e52148d1cd939d5fb46049d4b8f2.setIcon(div_icon_cfe11a425b4a2e0160070c43d03b1a8b);
+        
+    
+            var circle_marker_3143ddf515c00cd383fec49768030347 = L.circleMarker(
+                [-17.106927, 119.818668],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44bb00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            circle_marker_3143ddf515c00cd383fec49768030347.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4N <br> <b>Station:</b> CNP15 <br> <b>Dates: </b>2017/09/10 to 2018/06/18  <br><br><b>Depth: </b> -378 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/4N_2017 <br><br> <b>Net name: </b> China-Western Australia Seismic array <br><br> <b>Operator: </b>  Macquarie University (Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_752bd0c291047688eff73a06218d0427 = L.marker(
+                [-17.106927, 119.818668],
+                {}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            var div_icon_1660d8a71bec708f932d8a676122ab2b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCNP15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_752bd0c291047688eff73a06218d0427.setIcon(div_icon_1660d8a71bec708f932d8a676122ab2b);
+        
+    
+            var circle_marker_dfa04852b2bd265472a7ec2669969e0e = L.circleMarker(
+                [-17.454923, 119.950742],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44bb00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            circle_marker_dfa04852b2bd265472a7ec2669969e0e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4N <br> <b>Station:</b> CNP17 <br> <b>Dates: </b>2017/09/11 to 2018/05/13  <br><br><b>Depth: </b> -264 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/4N_2017 <br><br> <b>Net name: </b> China-Western Australia Seismic array <br><br> <b>Operator: </b>  Macquarie University (Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e7783205d023b63255f0e851ecf3b221 = L.marker(
+                [-17.454923, 119.950742],
+                {}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            var div_icon_4a9ccacf1fdef64897b8cda91db43c6b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCNP17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e7783205d023b63255f0e851ecf3b221.setIcon(div_icon_4a9ccacf1fdef64897b8cda91db43c6b);
+        
+    
+            var circle_marker_56190395da427584caf91ce73856fef2 = L.circleMarker(
+                [-18.084148, 120.401883],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44bb00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            circle_marker_56190395da427584caf91ce73856fef2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4N <br> <b>Station:</b> CNP21 <br> <b>Dates: </b>2017/09/11 to 2018/05/13  <br><br><b>Depth: </b> -90 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/4N_2017 <br><br> <b>Net name: </b> China-Western Australia Seismic array <br><br> <b>Operator: </b>  Macquarie University (Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_65638fa687a2ff16ea828ac41655ac82 = L.marker(
+                [-18.084148, 120.401883],
+                {}
+            ).addTo(map_40645c89cb5d291a95c13c7a5d61ccf5);
+        
+    
+            var div_icon_91e8e5c68ea6441a38dc499a723e82f1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCNP21\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_65638fa687a2ff16ea828ac41655ac82.setIcon(div_icon_91e8e5c68ea6441a38dc499a723e82f1);
+        
+    
+            map_40645c89cb5d291a95c13c7a5d61ccf5.fitBounds(
+                [[-18.084148, 118.771692], [-15.479385, 120.401883]],
+                {}
+            );
+        </script>
+
+</html>

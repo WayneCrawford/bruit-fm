@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_9cec25ae6ba6bd33646b8c808557b087 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network 3F: Macquarie Ridge </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Australian National University (ANU, Australia)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Oct 2020 to Nov 2021</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/3F_2020">https://doi.org/10.7914/SN/3F_2020</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_9cec25ae6ba6bd33646b8c808557b087" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>3F</TD><TD>MRO01</TD><TD>2020/10/08</TD><TD>2021/06/14</TD><TD>-54.0875</TD><TD>159.3706</TD><TD>-4996</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO03</TD><TD>2020/10/16</TD><TD>2021/11/18</TD><TD>-54.3235</TD><TD>159.1728</TD><TD>-3635</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO06</TD><TD>2020/10/29</TD><TD>2021/11/17</TD><TD>-54.4054</TD><TD>158.8484</TD><TD>-520</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO07</TD><TD>2020/10/29</TD><TD>2021/11/17</TD><TD>-54.2759</TD><TD>158.7031</TD><TD>-3006</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO10</TD><TD>2020/10/24</TD><TD>2021/10/25</TD><TD>-54.7411</TD><TD>159.1672</TD><TD>-5363</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO11</TD><TD>2020/10/26</TD><TD>2021/11/16</TD><TD>-54.9659</TD><TD>158.6439</TD><TD>-896</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO12</TD><TD>2020/10/26</TD><TD>2021/11/26</TD><TD>-55.0369</TD><TD>158.8531</TD><TD>-2425</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO13</TD><TD>2020/10/20</TD><TD>2021/11/26</TD><TD>-55.1308</TD><TD>158.8697</TD><TD>-3764</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO16</TD><TD>2020/10/22</TD><TD>2021/11/12</TD><TD>-55.2433</TD><TD>159.1772</TD><TD>-5104</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO20</TD><TD>2020/10/22</TD><TD>2021/11/16</TD><TD>-55.3335</TD><TD>158.5508</TD><TD>-2386</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO22</TD><TD>2020/10/30</TD><TD>2021/02/27</TD><TD>-54.0956</TD><TD>158.5276</TD><TD>-3966</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO23</TD><TD>2020/10/18</TD><TD>2021/11/16</TD><TD>-54.8108</TD><TD>158.6844</TD><TD>-975</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO24</TD><TD>2020/10/18</TD><TD>2021/11/17</TD><TD>-54.6606</TD><TD>158.709</TD><TD>-884</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO27</TD><TD>2020/10/23</TD><TD>2021/10/17</TD><TD>-55.0767</TD><TD>159.2017</TD><TD>-5517</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>3F</TD><TD>MRO18</TD><TD>2020/10/29</TD><TD>2021/02/22</TD><TD>-55.1968</TD><TD>158.1893</TD><TD>-4435</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>MRO03 MRO06 MRO07 MRO11 MRO12 MRO13 MRO20 MRO22 MRO23 MRO24</TD><TD>BDH</TD><TD>50.0</TD><TD>IGG CAS Hydrophone (300 Counts/Pa)</TD></TR><TR><TD>MRO03 MRO06 MRO07 MRO11 MRO12 MRO13 MRO20 MRO22 MRO23 MRO24</TD><TD>BH1</TD><TD>50.0</TD><TD>IGG CAS G-type 60s Broadband OBS</TD></TR><TR><TD>MRO03 MRO06 MRO07 MRO11 MRO12 MRO13 MRO20 MRO22 MRO23 MRO24</TD><TD>BH2</TD><TD>50.0</TD><TD>IGG CAS G-type 60s Broadband OBS</TD></TR><TR><TD>MRO03 MRO06 MRO07 MRO11 MRO12 MRO13 MRO20 MRO22 MRO23 MRO24</TD><TD>BHZ</TD><TD>50.0</TD><TD>IGG CAS G-type 60s Broadband OBS</TD></TR><TR><TD>MRO01 MRO10 MRO16 MRO27 MRO18</TD><TD>HDH</TD><TD>100.0</TD><TD>High Tech Inc. HTI-94-SSQ 2-30kHz</TD></TR><TR><TD>MRO01 MRO10 MRO16 MRO27 MRO18</TD><TD>HH1</TD><TD>100.0</TD><TD>Guralp CMG-6T 60s (BB)</TD></TR><TR><TD>MRO01 MRO10 MRO16 MRO27 MRO18</TD><TD>HH2</TD><TD>100.0</TD><TD>Guralp CMG-6T 60s (BB)</TD></TR><TR><TD>MRO01 MRO10 MRO16 MRO27 MRO18</TD><TD>HHZ</TD><TD>100.0</TD><TD>Guralp CMG-6T 60s (BB)</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_9cec25ae6ba6bd33646b8c808557b087 = L.map(
+                "map_9cec25ae6ba6bd33646b8c808557b087",
+                {
+                    center: [-54.75895333333338, 158.8445866666667],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_1d94d9b45c309205c39f4345fcb73904 = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var circle_marker_0c071e74e154bdc795051303acad6db9 = L.circleMarker(
+                [-54.0875, 159.3706],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_0c071e74e154bdc795051303acad6db9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO01 <br> <b>Dates: </b>2020/10/08 to 2021/06/14  <br><br><b>Depth: </b> -4996 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_025028d8fe17cc47c8e80e31537e6cda = L.marker(
+                [-54.0875, 159.3706],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_02e424e95382de0c64c89205027828f6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_025028d8fe17cc47c8e80e31537e6cda.setIcon(div_icon_02e424e95382de0c64c89205027828f6);
+        
+    
+            var circle_marker_aedd07102f13a23d9885ed5d32b9649a = L.circleMarker(
+                [-54.3235, 159.1728],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_aedd07102f13a23d9885ed5d32b9649a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO03 <br> <b>Dates: </b>2020/10/16 to 2021/11/18  <br><br><b>Depth: </b> -3635 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a99c9860b7589adc3ea37296c06285ea = L.marker(
+                [-54.3235, 159.1728],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_bb1d441881290b686635499f159e25c4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a99c9860b7589adc3ea37296c06285ea.setIcon(div_icon_bb1d441881290b686635499f159e25c4);
+        
+    
+            var circle_marker_992a3808b1610fe807f9311e773d2d98 = L.circleMarker(
+                [-54.4054, 158.8484],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_992a3808b1610fe807f9311e773d2d98.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO06 <br> <b>Dates: </b>2020/10/29 to 2021/11/17  <br><br><b>Depth: </b> -520 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4c53b480aee62bb59041618c02c346bf = L.marker(
+                [-54.4054, 158.8484],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_47d280de936e28a030acb087e77a3926 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4c53b480aee62bb59041618c02c346bf.setIcon(div_icon_47d280de936e28a030acb087e77a3926);
+        
+    
+            var circle_marker_a5bf8cc944d54a204291a880bfcbf3da = L.circleMarker(
+                [-54.2759, 158.7031],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_a5bf8cc944d54a204291a880bfcbf3da.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO07 <br> <b>Dates: </b>2020/10/29 to 2021/11/17  <br><br><b>Depth: </b> -3006 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a982c7f3f1ea6212d1f8d96165cb67bd = L.marker(
+                [-54.2759, 158.7031],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_f9e467cfbab46e0afd5d5271a73f782d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a982c7f3f1ea6212d1f8d96165cb67bd.setIcon(div_icon_f9e467cfbab46e0afd5d5271a73f782d);
+        
+    
+            var circle_marker_9ede488bdcff738415308f846733effe = L.circleMarker(
+                [-54.7411, 159.1672],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_9ede488bdcff738415308f846733effe.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO10 <br> <b>Dates: </b>2020/10/24 to 2021/10/25  <br><br><b>Depth: </b> -5363 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c098c35c999521e4a45c9b920f642cf2 = L.marker(
+                [-54.7411, 159.1672],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_d7c3cc73a6a0c14df5c3ef3b00292d40 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c098c35c999521e4a45c9b920f642cf2.setIcon(div_icon_d7c3cc73a6a0c14df5c3ef3b00292d40);
+        
+    
+            var circle_marker_b0c4c1d73b41b362e5ecd5fc1d5cf55d = L.circleMarker(
+                [-54.9659, 158.6439],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_b0c4c1d73b41b362e5ecd5fc1d5cf55d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO11 <br> <b>Dates: </b>2020/10/26 to 2021/11/16  <br><br><b>Depth: </b> -896 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bbf3281b7cfd864c49fc64918d1f3660 = L.marker(
+                [-54.9659, 158.6439],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_f146901fa916a654a7c5661df2d8721b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_bbf3281b7cfd864c49fc64918d1f3660.setIcon(div_icon_f146901fa916a654a7c5661df2d8721b);
+        
+    
+            var circle_marker_75b61e5cbdae3e67b1569419c3a6f4b5 = L.circleMarker(
+                [-55.0369, 158.8531],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_75b61e5cbdae3e67b1569419c3a6f4b5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO12 <br> <b>Dates: </b>2020/10/26 to 2021/11/26  <br><br><b>Depth: </b> -2425 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c36f129e4fdda934045555da7df5b36f = L.marker(
+                [-55.0369, 158.8531],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_4708edeedc262582aa48fbbcd9c1d00f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c36f129e4fdda934045555da7df5b36f.setIcon(div_icon_4708edeedc262582aa48fbbcd9c1d00f);
+        
+    
+            var circle_marker_5e9d03c906b9d90adf7ed029dc18a0ad = L.circleMarker(
+                [-55.1308, 158.8697],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_5e9d03c906b9d90adf7ed029dc18a0ad.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO13 <br> <b>Dates: </b>2020/10/20 to 2021/11/26  <br><br><b>Depth: </b> -3764 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4f2086bbcf64b129cc257494df6145ab = L.marker(
+                [-55.1308, 158.8697],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_f4518683640c3b62c5ac4e6633f498f0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4f2086bbcf64b129cc257494df6145ab.setIcon(div_icon_f4518683640c3b62c5ac4e6633f498f0);
+        
+    
+            var circle_marker_cc18a8578b1b3f134b0cb047ed409071 = L.circleMarker(
+                [-55.2433, 159.1772],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_cc18a8578b1b3f134b0cb047ed409071.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO16 <br> <b>Dates: </b>2020/10/22 to 2021/11/12  <br><br><b>Depth: </b> -5104 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_037d62f1da22e7cfbb1ddcbce76a319e = L.marker(
+                [-55.2433, 159.1772],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_3336543df8e9d713a839578c02da2409 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_037d62f1da22e7cfbb1ddcbce76a319e.setIcon(div_icon_3336543df8e9d713a839578c02da2409);
+        
+    
+            var circle_marker_ef06041a8fbd96d0e9d491a14d10dd8d = L.circleMarker(
+                [-55.3335, 158.5508],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_ef06041a8fbd96d0e9d491a14d10dd8d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO20 <br> <b>Dates: </b>2020/10/22 to 2021/11/16  <br><br><b>Depth: </b> -2386 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5ddecf50999ac7b8589e1fb2994f6fab = L.marker(
+                [-55.3335, 158.5508],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_70d45aa7b1a58f6d168b1869cdbedb77 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO20\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5ddecf50999ac7b8589e1fb2994f6fab.setIcon(div_icon_70d45aa7b1a58f6d168b1869cdbedb77);
+        
+    
+            var circle_marker_9c3f0e43c937546b81589871a850aa7b = L.circleMarker(
+                [-54.0956, 158.5276],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_9c3f0e43c937546b81589871a850aa7b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO22 <br> <b>Dates: </b>2020/10/30 to 2021/02/27  <br><br><b>Depth: </b> -3966 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_013477850a0b63b13fd528a8f6b07612 = L.marker(
+                [-54.0956, 158.5276],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_9f45caf283a0171b3a5f7fb2c741ba4a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO22\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_013477850a0b63b13fd528a8f6b07612.setIcon(div_icon_9f45caf283a0171b3a5f7fb2c741ba4a);
+        
+    
+            var circle_marker_75cbc3feefcf7ec625ab7832091f2d93 = L.circleMarker(
+                [-54.8108, 158.6844],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_75cbc3feefcf7ec625ab7832091f2d93.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO23 <br> <b>Dates: </b>2020/10/18 to 2021/11/16  <br><br><b>Depth: </b> -975 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fc695ac8924b968a806007375fffa8a0 = L.marker(
+                [-54.8108, 158.6844],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_c848fdf5303aa34ba7ceb558bc5685d1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO23\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fc695ac8924b968a806007375fffa8a0.setIcon(div_icon_c848fdf5303aa34ba7ceb558bc5685d1);
+        
+    
+            var circle_marker_c6321f508b2dfc3a7e7c9df20639fb22 = L.circleMarker(
+                [-54.6606, 158.709],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_c6321f508b2dfc3a7e7c9df20639fb22.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO24 <br> <b>Dates: </b>2020/10/18 to 2021/11/17  <br><br><b>Depth: </b> -884 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_92c86fa7711e7367891d08d85838d344 = L.marker(
+                [-54.6606, 158.709],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_71954169903be5a4b303150dbd108930 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO24\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_92c86fa7711e7367891d08d85838d344.setIcon(div_icon_71954169903be5a4b303150dbd108930);
+        
+    
+            var circle_marker_719009c4e429e7bd7c0aa302c2748b3d = L.circleMarker(
+                [-55.0767, 159.2017],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_719009c4e429e7bd7c0aa302c2748b3d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO27 <br> <b>Dates: </b>2020/10/23 to 2021/10/17  <br><br><b>Depth: </b> -5517 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8e22d06531144afa78b4c2ebdadd446a = L.marker(
+                [-55.0767, 159.2017],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_77a13b2113483d6703c659d0a6441458 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO27\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8e22d06531144afa78b4c2ebdadd446a.setIcon(div_icon_77a13b2113483d6703c659d0a6441458);
+        
+    
+            var circle_marker_1505d3ad28ef72e1302703664c84a752 = L.circleMarker(
+                [-55.1968, 158.1893],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bc0043", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            circle_marker_1505d3ad28ef72e1302703664c84a752.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 3F <br> <b>Station:</b> MRO18 <br> <b>Dates: </b>2020/10/29 to 2021/02/22  <br><br><b>Depth: </b> -4435 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/3F_2020 <br><br> <b>Net name: </b> Macquarie Ridge <br><br> <b>Operator: </b>  Australian National University (ANU, Australia)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9ba3092eea1c36e2be5f9a880e856663 = L.marker(
+                [-55.1968, 158.1893],
+                {}
+            ).addTo(map_9cec25ae6ba6bd33646b8c808557b087);
+        
+    
+            var div_icon_ea9377f3778c2bab6eee28ec52248822 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMRO18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9ba3092eea1c36e2be5f9a880e856663.setIcon(div_icon_ea9377f3778c2bab6eee28ec52248822);
+        
+    
+            map_9cec25ae6ba6bd33646b8c808557b087.fitBounds(
+                [[-55.3335, 158.1893], [-54.0875, 159.3706]],
+                {}
+            );
+        </script>
+
+</html>

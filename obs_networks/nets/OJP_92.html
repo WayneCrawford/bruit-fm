@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_eccfad01f66c07187be15402b8c5c25a {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network OJP: / </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by  Unknown</p>
+		<p id="net_header", class="headerDates">OBS deployed from Nov 2014 to Sep 2016</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.5918/jamstecr.26.54">https://doi.org/10.5918/jamstecr.26.54</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_eccfad01f66c07187be15402b8c5c25a" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>OJP</TD><TD>OJ01</TD><TD>Nat</TD><TD>Nat</TD><TD>4.9957</TD><TD>147.005</TD><TD>-4275</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ02</TD><TD>2015/01/08</TD><TD>2016/09/29</TD><TD>2.0381</TD><TD>146.9911</TD><TD>-4486</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ03</TD><TD>2015/01/09</TD><TD>2016/09/30</TD><TD>0.0585</TD><TD>147.0352</TD><TD>-4486</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ04</TD><TD>2014/12/17</TD><TD>2016/09/05</TD><TD>4.45</TD><TD>150.3829</TD><TD>-3987</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ05</TD><TD>2014/12/10</TD><TD>2016/08/30</TD><TD>-0.6154</TD><TD>153.0018</TD><TD>-4337</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ06</TD><TD>2014/12/26</TD><TD>2016/09/14</TD><TD>-4.9729</TD><TD>156.0448</TD><TD>-1491</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ07</TD><TD>Nat</TD><TD>Nat</TD><TD>-1.9711</TD><TD>155.9971</TD><TD>-1743</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ08</TD><TD>2014/12/30</TD><TD>2016/09/20</TD><TD>0.0362</TD><TD>156.0004</TD><TD>-1959</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ09</TD><TD>2015/01/01</TD><TD>2016/09/22</TD><TD>2.0216</TD><TD>156.0073</TD><TD>-2583</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ10</TD><TD>Nat</TD><TD>Nat</TD><TD>5.0093</TD><TD>156.0128</TD><TD>-3608</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ11</TD><TD>2015/01/04</TD><TD>2016/09/25</TD><TD>8.0129</TD><TD>156.0244</TD><TD>-4875</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ12</TD><TD>2014/12/22</TD><TD>2016/09/11</TD><TD>4.0016</TD><TD>159.9176</TD><TD>-3756</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ13</TD><TD>2014/12/23</TD><TD>2016/09/13</TD><TD>1.9263</TD><TD>160.0163</TD><TD>-2948</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ14</TD><TD>2014/12/24</TD><TD>2016/09/14</TD><TD>-2.1477</TD><TD>159.9271</TD><TD>-2491</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ15</TD><TD>2014/12/07</TD><TD>2016/08/26</TD><TD>-5.9648</TD><TD>160.0408</TD><TD>-1813</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ16</TD><TD>2014/12/05</TD><TD>2016/08/25</TD><TD>-6.4173</TD><TD>163.4168</TD><TD>-3558</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ17</TD><TD>Nat</TD><TD>Nat</TD><TD>-0.9852</TD><TD>164.0085</TD><TD>-4435</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ18</TD><TD>2014/11/28</TD><TD>2016/08/18</TD><TD>-3.8878</TD><TD>166.7081</TD><TD>-3441</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ19</TD><TD>2014/11/24</TD><TD>2016/08/15</TD><TD>-8.0121</TD><TD>170.0531</TD><TD>-4860</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ20</TD><TD>2014/11/19</TD><TD>2016/08/10</TD><TD>-2.9457</TD><TD>174.9907</TD><TD>-5077</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ21</TD><TD>Nat</TD><TD>Nat</TD><TD>0.0258</TD><TD>170.0046</TD><TD>-4458</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ22</TD><TD>2014/11/17</TD><TD>2016/08/07</TD><TD>2.871</TD><TD>166.0263</TD><TD>-4309</TD><TD></TD></TR><TR><TD>OJP</TD><TD>OJ23</TD><TD>Nat</TD><TD>Nat</TD><TD>6.9544</TD><TD>164.4966</TD><TD>-5117</TD><TD></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_eccfad01f66c07187be15402b8c5c25a = L.map(
+                "map_eccfad01f66c07187be15402b8c5c25a",
+                {
+                    center: [0.19484347826086945, 159.13518695652172],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_3080d97f187d24ac7e2428886438b74e = L.tileLayer.wms(
+                "https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var circle_marker_56d34953fce0acac7324086015a17bdb = L.circleMarker(
+                [4.9957, 147.005],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_56d34953fce0acac7324086015a17bdb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ01 <br> <b>Dates: </b>Nat to Nat  <br><br><b>Depth: </b> -4275 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ea378fd1de3de2076085d7be56d8bd21 = L.marker(
+                [4.9957, 147.005],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_c870b4178e41737c934e6f09508468bc = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ea378fd1de3de2076085d7be56d8bd21.setIcon(div_icon_c870b4178e41737c934e6f09508468bc);
+        
+    
+            var circle_marker_435d529895f1d5618279910da6884d7e = L.circleMarker(
+                [2.0381, 146.9911],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_435d529895f1d5618279910da6884d7e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ02 <br> <b>Dates: </b>2015/01/08 to 2016/09/29  <br><br><b>Depth: </b> -4486 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1bb3906a545c6bbaccb095bc829e67e2 = L.marker(
+                [2.0381, 146.9911],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_76020a44ad595f543f5343e02cdadf80 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1bb3906a545c6bbaccb095bc829e67e2.setIcon(div_icon_76020a44ad595f543f5343e02cdadf80);
+        
+    
+            var circle_marker_d084ad33d21d0c0b42d5404db1eba0df = L.circleMarker(
+                [0.0585, 147.0352],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_d084ad33d21d0c0b42d5404db1eba0df.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ03 <br> <b>Dates: </b>2015/01/09 to 2016/09/30  <br><br><b>Depth: </b> -4486 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6c7589e5b5c99735a076d1aae1afb3e6 = L.marker(
+                [0.0585, 147.0352],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_81debfe73ce1c750baaac98d06d2ab85 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6c7589e5b5c99735a076d1aae1afb3e6.setIcon(div_icon_81debfe73ce1c750baaac98d06d2ab85);
+        
+    
+            var circle_marker_bc292f743ddedcaa202e66a453ccbbe2 = L.circleMarker(
+                [4.45, 150.3829],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_bc292f743ddedcaa202e66a453ccbbe2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ04 <br> <b>Dates: </b>2014/12/17 to 2016/09/05  <br><br><b>Depth: </b> -3987 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2905660f7445c0a06b313982fe84590e = L.marker(
+                [4.45, 150.3829],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_6511a8c6f01f1d8d626f3bfbd70d8bd1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2905660f7445c0a06b313982fe84590e.setIcon(div_icon_6511a8c6f01f1d8d626f3bfbd70d8bd1);
+        
+    
+            var circle_marker_0541586c012d07e91328a79496119442 = L.circleMarker(
+                [-0.6154, 153.0018],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_0541586c012d07e91328a79496119442.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ05 <br> <b>Dates: </b>2014/12/10 to 2016/08/30  <br><br><b>Depth: </b> -4337 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c575e98270f6a803e43e803485f76abd = L.marker(
+                [-0.6154, 153.0018],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_96fd3f09a6204a489940aa7cdf43a74b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c575e98270f6a803e43e803485f76abd.setIcon(div_icon_96fd3f09a6204a489940aa7cdf43a74b);
+        
+    
+            var circle_marker_a7210aa6fd17e6617d8a2e780d6cf887 = L.circleMarker(
+                [-4.9729, 156.0448],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_a7210aa6fd17e6617d8a2e780d6cf887.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ06 <br> <b>Dates: </b>2014/12/26 to 2016/09/14  <br><br><b>Depth: </b> -1491 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4fd3a96d46b063e4544ab5f6fdc37bc9 = L.marker(
+                [-4.9729, 156.0448],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_425557bfd1acf93febf1b6a7667a9773 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4fd3a96d46b063e4544ab5f6fdc37bc9.setIcon(div_icon_425557bfd1acf93febf1b6a7667a9773);
+        
+    
+            var circle_marker_ff60f0e641e1b297cee937a0ae993287 = L.circleMarker(
+                [-1.9711, 155.9971],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_ff60f0e641e1b297cee937a0ae993287.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ07 <br> <b>Dates: </b>Nat to Nat  <br><br><b>Depth: </b> -1743 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_641ad47580720358d6c7f076f05cfd5f = L.marker(
+                [-1.9711, 155.9971],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_218bc4e26806015f7fe1ad4fd9e3686c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_641ad47580720358d6c7f076f05cfd5f.setIcon(div_icon_218bc4e26806015f7fe1ad4fd9e3686c);
+        
+    
+            var circle_marker_489979e9a90ef9ff73327b0e012d80c0 = L.circleMarker(
+                [0.0362, 156.0004],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_489979e9a90ef9ff73327b0e012d80c0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ08 <br> <b>Dates: </b>2014/12/30 to 2016/09/20  <br><br><b>Depth: </b> -1959 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3f4da93333a6cb5fca475faa3ae12c4d = L.marker(
+                [0.0362, 156.0004],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_fbdabf5644e5b2987f93356428ff4b9b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3f4da93333a6cb5fca475faa3ae12c4d.setIcon(div_icon_fbdabf5644e5b2987f93356428ff4b9b);
+        
+    
+            var circle_marker_530f3e592813943a3967ffe967bf203c = L.circleMarker(
+                [2.0216, 156.0073],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_530f3e592813943a3967ffe967bf203c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ09 <br> <b>Dates: </b>2015/01/01 to 2016/09/22  <br><br><b>Depth: </b> -2583 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8263c87eda102866138893fb3d146fcd = L.marker(
+                [2.0216, 156.0073],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_c749d75d575d3d3b2fa4361395ab1400 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8263c87eda102866138893fb3d146fcd.setIcon(div_icon_c749d75d575d3d3b2fa4361395ab1400);
+        
+    
+            var circle_marker_66cf2107ad15fede4ea1cf53c14b0276 = L.circleMarker(
+                [5.0093, 156.0128],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_66cf2107ad15fede4ea1cf53c14b0276.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ10 <br> <b>Dates: </b>Nat to Nat  <br><br><b>Depth: </b> -3608 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0ff2811fd0e7814467a38a564993508b = L.marker(
+                [5.0093, 156.0128],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_7a6ad959dc583f5c3d652a2446b1b0c4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0ff2811fd0e7814467a38a564993508b.setIcon(div_icon_7a6ad959dc583f5c3d652a2446b1b0c4);
+        
+    
+            var circle_marker_01e87c6003feee64bec61ebd4376e479 = L.circleMarker(
+                [8.0129, 156.0244],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_01e87c6003feee64bec61ebd4376e479.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ11 <br> <b>Dates: </b>2015/01/04 to 2016/09/25  <br><br><b>Depth: </b> -4875 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1c16af88b5499879d5a3390a57d21e16 = L.marker(
+                [8.0129, 156.0244],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_00a037709f98aa43111ef02ac109f403 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1c16af88b5499879d5a3390a57d21e16.setIcon(div_icon_00a037709f98aa43111ef02ac109f403);
+        
+    
+            var circle_marker_6dc598fff9c0a9c1460dae87110b2091 = L.circleMarker(
+                [4.0016, 159.9176],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_6dc598fff9c0a9c1460dae87110b2091.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ12 <br> <b>Dates: </b>2014/12/22 to 2016/09/11  <br><br><b>Depth: </b> -3756 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3680d336f44f8d94e3174cc49d27cdb6 = L.marker(
+                [4.0016, 159.9176],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_82ec7b542e5b03eacbeeac537ac6871c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3680d336f44f8d94e3174cc49d27cdb6.setIcon(div_icon_82ec7b542e5b03eacbeeac537ac6871c);
+        
+    
+            var circle_marker_3a7df19111f6dd7de226818171915973 = L.circleMarker(
+                [1.9263, 160.0163],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_3a7df19111f6dd7de226818171915973.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ13 <br> <b>Dates: </b>2014/12/23 to 2016/09/13  <br><br><b>Depth: </b> -2948 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b4b86e7ad1d21d7482f3d8898d06b0a3 = L.marker(
+                [1.9263, 160.0163],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_f68a0abfa54dc3d489a78a9e1a23cb91 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b4b86e7ad1d21d7482f3d8898d06b0a3.setIcon(div_icon_f68a0abfa54dc3d489a78a9e1a23cb91);
+        
+    
+            var circle_marker_eac195d71a2a8f0809bae187a1b3d103 = L.circleMarker(
+                [-2.1477, 159.9271],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_eac195d71a2a8f0809bae187a1b3d103.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ14 <br> <b>Dates: </b>2014/12/24 to 2016/09/14  <br><br><b>Depth: </b> -2491 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_415e45e0df2fdf82a5bfcc96b910d0a2 = L.marker(
+                [-2.1477, 159.9271],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_541ae2f1bb6159642554714439bcc15b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_415e45e0df2fdf82a5bfcc96b910d0a2.setIcon(div_icon_541ae2f1bb6159642554714439bcc15b);
+        
+    
+            var circle_marker_0b854ab8b496dfbaa0605053665719b2 = L.circleMarker(
+                [-5.9648, 160.0408],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_0b854ab8b496dfbaa0605053665719b2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ15 <br> <b>Dates: </b>2014/12/07 to 2016/08/26  <br><br><b>Depth: </b> -1813 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8835525ca52a525ee6b258fd55cdfd69 = L.marker(
+                [-5.9648, 160.0408],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_85c2c51dd974c9183fc71837cf07d28f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8835525ca52a525ee6b258fd55cdfd69.setIcon(div_icon_85c2c51dd974c9183fc71837cf07d28f);
+        
+    
+            var circle_marker_350474f2c7a4f7ffdbb1cfe0bddf8955 = L.circleMarker(
+                [-6.4173, 163.4168],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_350474f2c7a4f7ffdbb1cfe0bddf8955.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ16 <br> <b>Dates: </b>2014/12/05 to 2016/08/25  <br><br><b>Depth: </b> -3558 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_369f12879fc0fb4f0ea165182f1fb801 = L.marker(
+                [-6.4173, 163.4168],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_0e79f87a6fa9f4221a8635e2acedc66f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_369f12879fc0fb4f0ea165182f1fb801.setIcon(div_icon_0e79f87a6fa9f4221a8635e2acedc66f);
+        
+    
+            var circle_marker_c8c786ddcefb50c97f452e56743b3ec0 = L.circleMarker(
+                [-0.9852, 164.0085],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_c8c786ddcefb50c97f452e56743b3ec0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ17 <br> <b>Dates: </b>Nat to Nat  <br><br><b>Depth: </b> -4435 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ccc9c8174a0b19abd2c7a85e90ba4c87 = L.marker(
+                [-0.9852, 164.0085],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_911efce2468e21525b53d178d66f30b6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ccc9c8174a0b19abd2c7a85e90ba4c87.setIcon(div_icon_911efce2468e21525b53d178d66f30b6);
+        
+    
+            var circle_marker_1f3e3e7414a6569724607e4b68ebbf7d = L.circleMarker(
+                [-3.8878, 166.7081],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_1f3e3e7414a6569724607e4b68ebbf7d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ18 <br> <b>Dates: </b>2014/11/28 to 2016/08/18  <br><br><b>Depth: </b> -3441 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8ea783e0b0f44a390ac820402472c4ca = L.marker(
+                [-3.8878, 166.7081],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_21fe79aeb02f00ea0ecf4c52aea91127 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8ea783e0b0f44a390ac820402472c4ca.setIcon(div_icon_21fe79aeb02f00ea0ecf4c52aea91127);
+        
+    
+            var circle_marker_914fa3566912e4b5ba07064fac14e5a9 = L.circleMarker(
+                [-8.0121, 170.0531],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_914fa3566912e4b5ba07064fac14e5a9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ19 <br> <b>Dates: </b>2014/11/24 to 2016/08/15  <br><br><b>Depth: </b> -4860 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_416cbf76f7e9710967585cc5fd07c88d = L.marker(
+                [-8.0121, 170.0531],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_fd01b14694be6e69b65e89708b082c59 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ19\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_416cbf76f7e9710967585cc5fd07c88d.setIcon(div_icon_fd01b14694be6e69b65e89708b082c59);
+        
+    
+            var circle_marker_68a98c0e92ad2c205407cce9e32c67e2 = L.circleMarker(
+                [-2.9457, 174.9907],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_68a98c0e92ad2c205407cce9e32c67e2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ20 <br> <b>Dates: </b>2014/11/19 to 2016/08/10  <br><br><b>Depth: </b> -5077 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6117be357699d97527ab7aeb681f4756 = L.marker(
+                [-2.9457, 174.9907],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_9a90054c831ad8e549b55786bf2205af = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ20\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6117be357699d97527ab7aeb681f4756.setIcon(div_icon_9a90054c831ad8e549b55786bf2205af);
+        
+    
+            var circle_marker_cd8a29fe3ff77dd8045fe9e02a50e7d2 = L.circleMarker(
+                [0.0258, 170.0046],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_cd8a29fe3ff77dd8045fe9e02a50e7d2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ21 <br> <b>Dates: </b>Nat to Nat  <br><br><b>Depth: </b> -4458 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7aabb6d0c8f0ca539c692cf6fbbb1eb8 = L.marker(
+                [0.0258, 170.0046],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_86cf476c7f13a523adc346ebdbd25430 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ21\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7aabb6d0c8f0ca539c692cf6fbbb1eb8.setIcon(div_icon_86cf476c7f13a523adc346ebdbd25430);
+        
+    
+            var circle_marker_d34ade238208da10448bd5fea42f5161 = L.circleMarker(
+                [2.871, 166.0263],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_d34ade238208da10448bd5fea42f5161.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ22 <br> <b>Dates: </b>2014/11/17 to 2016/08/07  <br><br><b>Depth: </b> -4309 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3283c7004f0f9226bdb6dd860714287b = L.marker(
+                [2.871, 166.0263],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_0ae32eb66cae0f9b70afda34844233c4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ22\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3283c7004f0f9226bdb6dd860714287b.setIcon(div_icon_0ae32eb66cae0f9b70afda34844233c4);
+        
+    
+            var circle_marker_a48be8998509c703f8eb5529da084a9b = L.circleMarker(
+                [6.9544, 164.4966],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e21d00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            circle_marker_a48be8998509c703f8eb5529da084a9b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> OJP <br> <b>Station:</b> OJ23 <br> <b>Dates: </b>Nat to Nat  <br><br><b>Depth: </b> -5117 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> https://doi.org/10.5918/jamstecr.26.54 <br><br> <b>Net name: </b> / <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_457820d5cbf5f0ab4037becd85cb8423 = L.marker(
+                [6.9544, 164.4966],
+                {}
+            ).addTo(map_eccfad01f66c07187be15402b8c5c25a);
+        
+    
+            var div_icon_bcafecb818ea508e669e9e9688661f4b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOJ23\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_457820d5cbf5f0ab4037becd85cb8423.setIcon(div_icon_bcafecb818ea508e669e9e9688661f4b);
+        
+    
+            map_eccfad01f66c07187be15402b8c5c25a.fitBounds(
+                [[-8.0121, 146.9911], [8.0129, 174.9907]],
+                {}
+            );
+        </script>
+
+</html>

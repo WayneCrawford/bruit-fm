@@ -31,7 +31,7 @@ For future slots: empty means unknown, '-' means no expenses expected
 | Masters students | 4 Stipends             |   8,000  |      - |  2,892 |        |        |       |     5,106 | 1 stage  |
 | Equipment | Installation rotseis in BBOBS |  20,000  |      - |      - |      - |      - |     - | **20,000** |         |
 | Other     | Antarctic OBS deployments     |  12,000  | 12,000 |      - |      - |      - |     - |         0 |          |
-|           | Transportation BBOBS/OBS expts |  8,000  |    215 |    119 |      - |      - |     - | **7,881** |          |
+|           | Transportation BBOBS/OBS expts |  8,000  |    215 |    119 |      - |      - |     - | **7,666** |          |
 |           | Publication charges           |  12,000  |      - |      - |        |        |       |    12,000 |          |
 | Travel    | Collaboration Schimmel        |   8,000  |      - |      - |        |        |       |     8,000 |          |
 |           | WP1 travel and meetings       |   9,600  |  1,153 |  2,122 |  2,000 |        |       |     4,325 |          |

@@ -1,0 +1,5 @@
+- The .mseed files are the data
+- The .xml file is the metadata
+- read_obspy.py simply reads and plots using obspy
+- tiskit.py uses tiskitpy to calculate cleaned data and compliance
+- plots/ contains images created by obspy.py and tiskit.py

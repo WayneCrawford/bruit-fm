@@ -17,6 +17,36 @@ wave signal make this a hefty challenge.  Data, our processing codes (using [tis
 and the [bruit-fm toolbox](https://gitlab.ifremer.fr/anr-bruitfm/bruit-fm-toolbox) and results are [here](RAINBOW_files).
 Here are plots of the data and our results:  can you do better?
 
+#### run_obspy.py
+
+Waveform plot
+
+Probabilistic Power Spectral Density
+
+#### run_tiskitpy.py
+
+##### Waveforms (original, rotated, and rotated + transfer function noise removal)
+
+##### Power spectral densities of the above three waveforms
+
+##### Pressure-acceleration coherence of cleaned data
+
+##### Compliance of cleaned data
+
+#### Cheating!
+
+##### Waveforms (original, rotated, and rotated + transfer function noise removal)
+
+##### Power spectral densities of the above three waveforms
+
+##### Pressure-acceleration coherence of cleaned data
+
+##### Compliance of cleaned data
+
+We get a better result if we manually identify glitches and other anomalous noise:
+
+
+
 ### Synthetic data
 
 Coming!

@@ -14,7 +14,8 @@ community paper comparing the different methods and results.
 
 8 days of data, sampled at 1 sps, from near the RAINBOW hydrothermal field.  Lots of earthquakes and a relatively weak infragravity
 wave signal make this a hefty challenge.  Data, our processing codes (using [tiskitpy](https://github.com/WayneCrawford/tiskitpy)
-and the [bruit-fm toolbox](https://gitlab.ifremer.fr/anr-bruitfm/bruit-fm-toolbox) and results are [here](RAINBOW_files).
+and the [bruit-fm toolbox](https://gitlab.ifremer.fr/anr-bruitfm/bruit-fm-toolbox) and results are [here](RAINBOW_files/README.md).
+
 Here are plots of the data and our results:  can you do better?
 
 #### run_obspy.py

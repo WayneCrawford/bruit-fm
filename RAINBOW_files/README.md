@@ -1,5 +1,4 @@
-- The .mseed files are the data
-- The .xml file is the metadata
-- read_obspy.py simply reads and plots using obspy
-- tiskit.py uses tiskitpy to calculate cleaned data and compliance
-- plots/ contains images created by obspy.py and tiskit.py
+- Download [data](XX.AS02.mseed)
+- Download [metadata](AS02_L.station.xml)
+- Download [read_obspy.py](read_obspy.py): simply reads and plots using obspy
+- Dowmload [run_tiskit.py](run_tiskit.py): uses tiskitpy to calculate cleaned data and compliance

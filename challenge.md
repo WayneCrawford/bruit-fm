@@ -19,31 +19,51 @@ Here are plots of the data and our results:  can you do better?
 
 #### run_obspy.py
 
-Waveform plot
+##### Waveform plot
 
-Probabilistic Power Spectral Density
+![Waveforms](RAINBOW_files/plots/AS02.streamplot.png)
+
+##### Probabilistic Power Spectral Density
+
+![Waveforms](RAINBOW_files/plots/AS02.Z-PPSD.png)
 
 #### run_tiskitpy.py
 
 ##### Waveforms (original, rotated, and rotated + transfer function noise removal)
 
+![Automatic Waveforms](RAINBOW_files/plots/AS02.Automatic_z_compare.png)
+
 ##### Power spectral densities of the above three waveforms
+
+![Automatic PSDs](RAINBOW_files/plots/AS02.Automatic.sd_compare.png)
 
 ##### Pressure-acceleration coherence of cleaned data
 
-##### Compliance of cleaned data
+![Automatic Coherence](RAINBOW_files/plots/AS02.Automatic.ZHcoher.png)
+
+##### Compliance of cleaned data (amplitude problem, probably using COUNTS)
+
+![Automatic Compliance](RAINBOW_files/plots/AS02.Automatic.ZHrf.png)
 
 #### Cheating!
 
-##### Waveforms (original, rotated, and rotated + transfer function noise removal)
-
-##### Power spectral densities of the above three waveforms
-
-##### Pressure-acceleration coherence of cleaned data
-
-##### Compliance of cleaned data
-
 We get a better result if we manually identify glitches and other anomalous noise:
+
+##### Waveforms
+
+![Manual Waveforms](RAINBOW_files/plots/AS02.Manual_z_compare.png)
+
+##### Power spectral densities
+
+![Manual PSDs](RAINBOW_files/plots/AS02.Manual.sd_compare.png)
+
+##### Pressure-acceleration coherence
+
+![Manual Coherence](RAINBOW_files/plots/AS02.Manual.ZHcoher.png)
+
+##### Compliance (amplitude problem, probably using COUNTS)
+
+![Manual Compliance](RAINBOW_files/plots/AS02.Manual.ZHrf.png)
 
 
 

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_406630fa8a7b1ddb733d2d31e2685130 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network 7B: PacificORCA </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Woods Hole Oceanographic Institution (WHOI)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Nov 2019 to Nov 2020</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/7B_2019">https://doi.org/10.7914/SN/7B_2019</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_406630fa8a7b1ddb733d2d31e2685130" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>7B</TD><TD>MM02</TD><TD>2019/11/17</TD><TD>2020/11/21</TD><TD>-33.70244</TD><TD>-153.33875</TD><TD>-5174</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>7B</TD><TD>MM03</TD><TD>2019/11/17</TD><TD>2020/11/22</TD><TD>-33.91045</TD><TD>-153.79235</TD><TD>-5189</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>7B</TD><TD>MM01</TD><TD>2019/11/17</TD><TD>2020/09/27</TD><TD>-33.4654</TD><TD>-152.90107</TD><TD>-5207</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>7B</TD><TD>MM10</TD><TD>2019/11/27</TD><TD>2020/11/28</TD><TD>-35.06894</TD><TD>-156.23219</TD><TD>-5425</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>7B</TD><TD>MM04</TD><TD>2019/11/18</TD><TD>2020/11/22</TD><TD>-34.0909</TD><TD>-154.12547</TD><TD>-5135</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>7B</TD><TD>MM05</TD><TD>2019/11/20</TD><TD>2020/10/14</TD><TD>-34.2402</TD><TD>-154.48355</TD><TD>-5092</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>7B</TD><TD>MM11</TD><TD>2019/11/27</TD><TD>2020/11/28</TD><TD>-35.27865</TD><TD>-156.69467</TD><TD>-5395</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>7B</TD><TD>MM07</TD><TD>2019/11/25</TD><TD>2020/11/26</TD><TD>-34.57402</TD><TD>-155.17951</TD><TD>-5357</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>7B</TD><TD>MM12</TD><TD>2019/11/27</TD><TD>2020/11/02</TD><TD>-35.50344</TD><TD>-157.16479</TD><TD>-5331</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>7B</TD><TD>MM06</TD><TD>2019/11/19</TD><TD>2020/11/26</TD><TD>-34.39699</TD><TD>-154.84026</TD><TD>-5204</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>7B</TD><TD>MM08</TD><TD>2019/11/26</TD><TD>2020/11/28</TD><TD>-34.7401</TD><TD>-155.52572</TD><TD>-5474</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>7B</TD><TD>MM09</TD><TD>2019/11/26</TD><TD>2020/11/28</TD><TD>-34.91388</TD><TD>-155.87085</TD><TD>-5313</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>7B</TD><TD>NM01</TD><TD>2019/11/16</TD><TD>2020/10/06</TD><TD>-32.71468</TD><TD>-154.00083</TD><TD>-5212</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>MM02 MM03 MM01 MM10 MM04 MM05 MM11 MM07 MM12 MM06 MM08 MM09 NM01</TD><TD>BDH</TD><TD>50.0</TD><TD>DPG OBSIP-SIO/ABALONES</TD></TR><TR><TD>MM01 MM12</TD><TD>BH1</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Sec Response sn 0-399/ABA</TD></TR><TR><TD>MM02 MM03 MM10 MM04 MM05 MM11 MM07 MM06 MM08 MM09 NM01</TD><TD>BH1</TD><TD>50.0</TD><TD>T240 Single-Sided/ABALONES</TD></TR><TR><TD>MM01 MM12</TD><TD>BH2</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Sec Response sn 0-399/ABA</TD></TR><TR><TD>MM02 MM03 MM10 MM04 MM05 MM11 MM07 MM06 MM08 MM09 NM01</TD><TD>BH2</TD><TD>50.0</TD><TD>T240 Single-Sided/ABALONES</TD></TR><TR><TD>MM01 MM12</TD><TD>BHZ</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Sec Response sn 0-399/ABA</TD></TR><TR><TD>MM02 MM03 MM10 MM04 MM05 MM11 MM07 MM06 MM08 MM09 NM01</TD><TD>BHZ</TD><TD>50.0</TD><TD>T240 Single-Sided/ABALONES</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_406630fa8a7b1ddb733d2d31e2685130 = L.map(
+                "map_406630fa8a7b1ddb733d2d31e2685130",
+                {
+                    center: [-34.35385307692308, -154.93461615384615],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_bdbd14273d0f6027bf2f735d870572a4 = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var circle_marker_36a1a7a2dbdea72dd59746cf887c5f8f = L.circleMarker(
+                [-33.70244, -153.33875],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2cd300", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            circle_marker_36a1a7a2dbdea72dd59746cf887c5f8f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 7B <br> <b>Station:</b> MM02 <br> <b>Dates: </b>2019/11/17 to 2020/11/21  <br><br><b>Depth: </b> -5174 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/7B_2019 <br><br> <b>Net name: </b> PacificORCA <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_00b3a116e9db4b0d5cca8a48f7bbbe6e = L.marker(
+                [-33.70244, -153.33875],
+                {}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var div_icon_821f9f86e599ffc511c7064c45afa720 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMM02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_00b3a116e9db4b0d5cca8a48f7bbbe6e.setIcon(div_icon_821f9f86e599ffc511c7064c45afa720);
+        
+    
+            var circle_marker_f7a0e65fdf39966cc9d89e986fb9c8e5 = L.circleMarker(
+                [-33.91045, -153.79235],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2cd300", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            circle_marker_f7a0e65fdf39966cc9d89e986fb9c8e5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 7B <br> <b>Station:</b> MM03 <br> <b>Dates: </b>2019/11/17 to 2020/11/22  <br><br><b>Depth: </b> -5189 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/7B_2019 <br><br> <b>Net name: </b> PacificORCA <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6063f737a7bc877e5dad41a71986257b = L.marker(
+                [-33.91045, -153.79235],
+                {}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var div_icon_b596b608af83965c17eb470938177be6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMM03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6063f737a7bc877e5dad41a71986257b.setIcon(div_icon_b596b608af83965c17eb470938177be6);
+        
+    
+            var circle_marker_bda0a36c49263009da811017934441ea = L.circleMarker(
+                [-33.4654, -152.90107],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2cd300", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            circle_marker_bda0a36c49263009da811017934441ea.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 7B <br> <b>Station:</b> MM01 <br> <b>Dates: </b>2019/11/17 to 2020/09/27  <br><br><b>Depth: </b> -5207 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/7B_2019 <br><br> <b>Net name: </b> PacificORCA <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_355fdfbd92a148e1381e4cf0f4ea8fc7 = L.marker(
+                [-33.4654, -152.90107],
+                {}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var div_icon_68f656f3b19acbdf7c51abf640ead238 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMM01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_355fdfbd92a148e1381e4cf0f4ea8fc7.setIcon(div_icon_68f656f3b19acbdf7c51abf640ead238);
+        
+    
+            var circle_marker_c3d2152298085ace6250f8be0eb3fc67 = L.circleMarker(
+                [-35.06894, -156.23219],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2cd300", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            circle_marker_c3d2152298085ace6250f8be0eb3fc67.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 7B <br> <b>Station:</b> MM10 <br> <b>Dates: </b>2019/11/27 to 2020/11/28  <br><br><b>Depth: </b> -5425 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/7B_2019 <br><br> <b>Net name: </b> PacificORCA <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ee57d06eab3e230106f232ac3624eafb = L.marker(
+                [-35.06894, -156.23219],
+                {}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var div_icon_f9654ab81075cb4dd558bfd0ce380984 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMM10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ee57d06eab3e230106f232ac3624eafb.setIcon(div_icon_f9654ab81075cb4dd558bfd0ce380984);
+        
+    
+            var circle_marker_36a1329f3fc98118598f7ee380c5e521 = L.circleMarker(
+                [-34.0909, -154.12547],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2cd300", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            circle_marker_36a1329f3fc98118598f7ee380c5e521.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 7B <br> <b>Station:</b> MM04 <br> <b>Dates: </b>2019/11/18 to 2020/11/22  <br><br><b>Depth: </b> -5135 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/7B_2019 <br><br> <b>Net name: </b> PacificORCA <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_97272e47c04299214df14be7d18bc80a = L.marker(
+                [-34.0909, -154.12547],
+                {}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var div_icon_0256d001f6622790f085c305599fc080 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMM04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_97272e47c04299214df14be7d18bc80a.setIcon(div_icon_0256d001f6622790f085c305599fc080);
+        
+    
+            var circle_marker_dcec2af9bce30aa234cc5c37c2e71384 = L.circleMarker(
+                [-34.2402, -154.48355],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2cd300", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            circle_marker_dcec2af9bce30aa234cc5c37c2e71384.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 7B <br> <b>Station:</b> MM05 <br> <b>Dates: </b>2019/11/20 to 2020/10/14  <br><br><b>Depth: </b> -5092 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/7B_2019 <br><br> <b>Net name: </b> PacificORCA <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7e16a44c740aef9465585713a7b44d0e = L.marker(
+                [-34.2402, -154.48355],
+                {}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var div_icon_c7a01bc6223ca78efb254b815f3b6b3f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMM05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7e16a44c740aef9465585713a7b44d0e.setIcon(div_icon_c7a01bc6223ca78efb254b815f3b6b3f);
+        
+    
+            var circle_marker_88d928e96830b57152a5f26e85d96003 = L.circleMarker(
+                [-35.27865, -156.69467],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2cd300", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            circle_marker_88d928e96830b57152a5f26e85d96003.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 7B <br> <b>Station:</b> MM11 <br> <b>Dates: </b>2019/11/27 to 2020/11/28  <br><br><b>Depth: </b> -5395 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/7B_2019 <br><br> <b>Net name: </b> PacificORCA <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8ff44392c5373ea60ecb67e966ef2418 = L.marker(
+                [-35.27865, -156.69467],
+                {}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var div_icon_b15ef764eb0106a57d1e0ddff62fc925 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMM11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8ff44392c5373ea60ecb67e966ef2418.setIcon(div_icon_b15ef764eb0106a57d1e0ddff62fc925);
+        
+    
+            var circle_marker_d92461fdbafbb8fc71b9af91b0379b18 = L.circleMarker(
+                [-34.57402, -155.17951],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2cd300", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            circle_marker_d92461fdbafbb8fc71b9af91b0379b18.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 7B <br> <b>Station:</b> MM07 <br> <b>Dates: </b>2019/11/25 to 2020/11/26  <br><br><b>Depth: </b> -5357 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/7B_2019 <br><br> <b>Net name: </b> PacificORCA <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8f058a9bae9fd11e5f07484829b7c81e = L.marker(
+                [-34.57402, -155.17951],
+                {}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var div_icon_f3b907713e42e2e587f8fea23cc9f457 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMM07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8f058a9bae9fd11e5f07484829b7c81e.setIcon(div_icon_f3b907713e42e2e587f8fea23cc9f457);
+        
+    
+            var circle_marker_6144a135d824cc58c0a135bbf662bf52 = L.circleMarker(
+                [-35.50344, -157.16479],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2cd300", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            circle_marker_6144a135d824cc58c0a135bbf662bf52.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 7B <br> <b>Station:</b> MM12 <br> <b>Dates: </b>2019/11/27 to 2020/11/02  <br><br><b>Depth: </b> -5331 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/7B_2019 <br><br> <b>Net name: </b> PacificORCA <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1fdfc3270e2a4d42158aa698d96c3555 = L.marker(
+                [-35.50344, -157.16479],
+                {}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var div_icon_3d8655e55b634c94b8f308509adec54d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMM12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1fdfc3270e2a4d42158aa698d96c3555.setIcon(div_icon_3d8655e55b634c94b8f308509adec54d);
+        
+    
+            var circle_marker_01c07c2aeb1548dada83b76f8eb56189 = L.circleMarker(
+                [-34.39699, -154.84026],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2cd300", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            circle_marker_01c07c2aeb1548dada83b76f8eb56189.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 7B <br> <b>Station:</b> MM06 <br> <b>Dates: </b>2019/11/19 to 2020/11/26  <br><br><b>Depth: </b> -5204 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/7B_2019 <br><br> <b>Net name: </b> PacificORCA <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b366ac9e87e0ade56aa8fbbfb139fdaa = L.marker(
+                [-34.39699, -154.84026],
+                {}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var div_icon_11f2f40ce0bfaef178e11b28af6f3316 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMM06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b366ac9e87e0ade56aa8fbbfb139fdaa.setIcon(div_icon_11f2f40ce0bfaef178e11b28af6f3316);
+        
+    
+            var circle_marker_3c1ae291809539df5e72baf5bd9f8911 = L.circleMarker(
+                [-34.7401, -155.52572],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2cd300", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            circle_marker_3c1ae291809539df5e72baf5bd9f8911.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 7B <br> <b>Station:</b> MM08 <br> <b>Dates: </b>2019/11/26 to 2020/11/28  <br><br><b>Depth: </b> -5474 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/7B_2019 <br><br> <b>Net name: </b> PacificORCA <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eeadb9124ac846d101519b21218443b2 = L.marker(
+                [-34.7401, -155.52572],
+                {}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var div_icon_fecfa8f85f8b86bc4f91eb73536fb89c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMM08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_eeadb9124ac846d101519b21218443b2.setIcon(div_icon_fecfa8f85f8b86bc4f91eb73536fb89c);
+        
+    
+            var circle_marker_85d00d8dec704b8498c13e74e068e3de = L.circleMarker(
+                [-34.91388, -155.87085],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2cd300", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            circle_marker_85d00d8dec704b8498c13e74e068e3de.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 7B <br> <b>Station:</b> MM09 <br> <b>Dates: </b>2019/11/26 to 2020/11/28  <br><br><b>Depth: </b> -5313 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/7B_2019 <br><br> <b>Net name: </b> PacificORCA <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_22ce80da8e6c10ab5ec6b9b58a896f1e = L.marker(
+                [-34.91388, -155.87085],
+                {}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var div_icon_cfd6cbe142fa2a4e6f7149724eeed010 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMM09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_22ce80da8e6c10ab5ec6b9b58a896f1e.setIcon(div_icon_cfd6cbe142fa2a4e6f7149724eeed010);
+        
+    
+            var circle_marker_773aed5a50ce3735dd8934183813988c = L.circleMarker(
+                [-32.71468, -154.00083],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2cd300", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            circle_marker_773aed5a50ce3735dd8934183813988c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 7B <br> <b>Station:</b> NM01 <br> <b>Dates: </b>2019/11/16 to 2020/10/06  <br><br><b>Depth: </b> -5212 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/7B_2019 <br><br> <b>Net name: </b> PacificORCA <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_42fb5059a57007e3401b3d68a2d3a42e = L.marker(
+                [-32.71468, -154.00083],
+                {}
+            ).addTo(map_406630fa8a7b1ddb733d2d31e2685130);
+        
+    
+            var div_icon_7cb866e2b2afd70c1a33b67243501504 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eNM01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_42fb5059a57007e3401b3d68a2d3a42e.setIcon(div_icon_7cb866e2b2afd70c1a33b67243501504);
+        
+    
+            map_406630fa8a7b1ddb733d2d31e2685130.fitBounds(
+                [[-35.50344, -157.16479], [-32.71468, -152.90107]],
+                {}
+            );
+        </script>
+
+</html>

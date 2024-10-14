@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_29a61b42b5ac3e3dfa41e631354946d9 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network 2A: Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Brown University</p>
+		<p id="net_header", class="headerDates">OBS deployed from Dec 2001 to Nov 2002</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="/">/</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_29a61b42b5ac3e3dfa41e631354946d9" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>2A</TD><TD>36</TD><TD>2001/12/06</TD><TD>2002/11/14</TD><TD>-12.4828</TD><TD>-116.633598</TD><TD>-3556</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>34</TD><TD>2001/12/05</TD><TD>2002/11/14</TD><TD>-11.7336</TD><TD>-117.275101</TD><TD>-3578</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>30</TD><TD>2001/12/03</TD><TD>2002/11/21</TD><TD>-14.3692</TD><TD>-116.1567</TD><TD>-2633</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>32</TD><TD>2001/12/04</TD><TD>2002/11/13</TD><TD>-12.9996</TD><TD>-115.8554</TD><TD>-3119</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>41</TD><TD>2001/12/16</TD><TD>2002/02/28</TD><TD>-14.4508</TD><TD>-114.949699</TD><TD>-2294</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>43</TD><TD>2001/12/17</TD><TD>2002/11/18</TD><TD>-15.5517</TD><TD>-114.799797</TD><TD>-3202</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>42</TD><TD>2001/12/16</TD><TD>2002/11/25</TD><TD>-15.41</TD><TD>-115.203499</TD><TD>-3382</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>46</TD><TD>2002/03/14</TD><TD>2002/11/16</TD><TD>-14.85</TD><TD>-118.3703</TD><TD>-3666</TD><TD>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>52</TD><TD>2001/12/21</TD><TD>2002/11/22</TD><TD>-14.9995</TD><TD>-115.8004</TD><TD>-3414</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>47</TD><TD>2001/12/19</TD><TD>2002/11/20</TD><TD>-15.2121</TD><TD>-117.600601</TD><TD>-3605</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>44</TD><TD>2001/12/17</TD><TD>2002/11/25</TD><TD>-16.002001</TD><TD>-115.2491</TD><TD>-3297</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>50</TD><TD>2001/12/20</TD><TD>2002/11/17</TD><TD>-13.7495</TD><TD>-117.901604</TD><TD>-3540</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>49</TD><TD>2001/12/19</TD><TD>2002/11/14</TD><TD>-12.7201</TD><TD>-117.991798</TD><TD>-3714</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>48</TD><TD>2002/02/01</TD><TD>2002/11/17</TD><TD>-13.1701</TD><TD>-117.201202</TD><TD>-3318</TD><TD>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>29</TD><TD>2001/12/01</TD><TD>2002/11/23</TD><TD>-15.2803</TD><TD>-116.370003</TD><TD>-3352</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>28</TD><TD>2001/12/01</TD><TD>2001/12/16</TD><TD>-15.6994</TD><TD>-117.000801</TD><TD>-3390</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>38</TD><TD>2001/12/09</TD><TD>2002/11/24</TD><TD>-13.8003</TD><TD>-115.120399</TD><TD>-3413</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR><TR><TD>2A</TD><TD>39</TD><TD>2001/12/13</TD><TD>2002/06/20</TD><TD>-12.37</TD><TD>-114.524902</TD><TD>-3397</TD><TD>HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>36 34 30 32 41 43 42 46 52 47 44 50 49 48 29 28 38 39</TD><TD>BDH</TD><TD>32.0</TD><TD>LDEO DPG/LDEO_old dummy at 32/128</TD></TR><TR><TD>36 34 30 32 41 43 42 46 52 47 44 50 49 48 29 28 38 39</TD><TD>BH1</TD><TD>32.0</TD><TD>LDEO OBS Sensor Mk1/LDEO_old dummy at 32/128</TD></TR><TR><TD>36 34 30 32 41 43 42 46 52 47 44 50 49 48 29 28 38 39</TD><TD>BH2</TD><TD>32.0</TD><TD>LDEO OBS Sensor Mk1/LDEO_old dummy at 32/128</TD></TR><TR><TD>36 34 30 32 41 43 42 46 52 47 44 50 49 48 29 28 38 39</TD><TD>BHZ</TD><TD>32.0</TD><TD>LDEO OBS Sensor Mk1/LDEO_old dummy at 32/128</TD></TR><TR><TD>36 34 30 32 41 43 42 52 47 44 50 49 29 28 38 39</TD><TD>HDH</TD><TD>128.0</TD><TD>LDEO DPG/LDEO_old dummy at 32/128</TD></TR><TR><TD>36 34 30 32 41 43 42 52 47 44 50 49 29 28 38 39</TD><TD>HH1</TD><TD>128.0</TD><TD>LDEO OBS Sensor Mk1/LDEO_old dummy at 32/128</TD></TR><TR><TD>36 34 30 32 41 43 42 52 47 44 50 49 29 28 38 39</TD><TD>HH2</TD><TD>128.0</TD><TD>LDEO OBS Sensor Mk1/LDEO_old dummy at 32/128</TD></TR><TR><TD>36 34 30 32 41 43 42 52 47 44 50 49 29 28 38 39</TD><TD>HHZ</TD><TD>128.0</TD><TD>LDEO OBS Sensor Mk1/LDEO_old dummy at 32/128</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_29a61b42b5ac3e3dfa41e631354946d9 = L.map(
+                "map_29a61b42b5ac3e3dfa41e631354946d9",
+                {
+                    center: [-14.167114764705882, -116.24818547058824],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_afb3e91bc5d469533889fe37abb134cf = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var circle_marker_30cf2125690f9e86e334903809492f10 = L.circleMarker(
+                [-12.4828, -116.633598],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_30cf2125690f9e86e334903809492f10.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 36 <br> <b>Dates: </b>2001/12/06 to 2002/11/14  <br><br><b>Depth: </b> -3556 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8358c9539f33d47d41818ff6d0396884 = L.marker(
+                [-12.4828, -116.633598],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_aabc56bc1deb97a2f4a60063ba8d3a08 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e36\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8358c9539f33d47d41818ff6d0396884.setIcon(div_icon_aabc56bc1deb97a2f4a60063ba8d3a08);
+        
+    
+            var circle_marker_2e5d97727f7242b42258f5bfd19e44f5 = L.circleMarker(
+                [-11.7336, -117.275101],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_2e5d97727f7242b42258f5bfd19e44f5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 34 <br> <b>Dates: </b>2001/12/05 to 2002/11/14  <br><br><b>Depth: </b> -3578 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8007668b8104c6653137add9390a067e = L.marker(
+                [-11.7336, -117.275101],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_5705e83542dca79f27400bd90b10b6f4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e34\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8007668b8104c6653137add9390a067e.setIcon(div_icon_5705e83542dca79f27400bd90b10b6f4);
+        
+    
+            var circle_marker_1956d6b15b70fa199198331bea42f8eb = L.circleMarker(
+                [-14.3692, -116.1567],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_1956d6b15b70fa199198331bea42f8eb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 30 <br> <b>Dates: </b>2001/12/03 to 2002/11/21  <br><br><b>Depth: </b> -2633 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ab2940a3beb793883f6d8807afece7a3 = L.marker(
+                [-14.3692, -116.1567],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_866b9b46606976d0e4307ef6ebb13f9c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e30\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ab2940a3beb793883f6d8807afece7a3.setIcon(div_icon_866b9b46606976d0e4307ef6ebb13f9c);
+        
+    
+            var circle_marker_9da0292d5f910e31cb4913def4085531 = L.circleMarker(
+                [-12.9996, -115.8554],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_9da0292d5f910e31cb4913def4085531.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 32 <br> <b>Dates: </b>2001/12/04 to 2002/11/13  <br><br><b>Depth: </b> -3119 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c257d981d4ad8f7d753b7c4b05f68cf1 = L.marker(
+                [-12.9996, -115.8554],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_419d7a3a55e922c76c56062008071a77 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e32\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c257d981d4ad8f7d753b7c4b05f68cf1.setIcon(div_icon_419d7a3a55e922c76c56062008071a77);
+        
+    
+            var circle_marker_d8faeaac5fa43935bd7d778700d1fbc1 = L.circleMarker(
+                [-14.4508, -114.949699],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_d8faeaac5fa43935bd7d778700d1fbc1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 41 <br> <b>Dates: </b>2001/12/16 to 2002/02/28  <br><br><b>Depth: </b> -2294 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8c8e59dfa2672752f8e829c640043236 = L.marker(
+                [-14.4508, -114.949699],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_75dc24de472853401c953700cbd8aeab = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e41\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8c8e59dfa2672752f8e829c640043236.setIcon(div_icon_75dc24de472853401c953700cbd8aeab);
+        
+    
+            var circle_marker_ca3c4e8c2a311b481253e8576e9f79ac = L.circleMarker(
+                [-15.5517, -114.799797],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_ca3c4e8c2a311b481253e8576e9f79ac.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 43 <br> <b>Dates: </b>2001/12/17 to 2002/11/18  <br><br><b>Depth: </b> -3202 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bc892985176776e99971f81a4230620a = L.marker(
+                [-15.5517, -114.799797],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_dfe7c18f706c91fe33bf67fa250f03df = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e43\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_bc892985176776e99971f81a4230620a.setIcon(div_icon_dfe7c18f706c91fe33bf67fa250f03df);
+        
+    
+            var circle_marker_e84c20dd72e51a759863677b5fd96b12 = L.circleMarker(
+                [-15.41, -115.203499],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_e84c20dd72e51a759863677b5fd96b12.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 42 <br> <b>Dates: </b>2001/12/16 to 2002/11/25  <br><br><b>Depth: </b> -3382 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_53ff0aeef3ba332280a263c2e24076e1 = L.marker(
+                [-15.41, -115.203499],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_30fba527fe17925f8960cefec154a703 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e42\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_53ff0aeef3ba332280a263c2e24076e1.setIcon(div_icon_30fba527fe17925f8960cefec154a703);
+        
+    
+            var circle_marker_f164bad8d76ed0b0f9e9d072940c22eb = L.circleMarker(
+                [-14.85, -118.3703],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_f164bad8d76ed0b0f9e9d072940c22eb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 46 <br> <b>Dates: </b>2002/03/14 to 2002/11/16  <br><br><b>Depth: </b> -3666 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c8141d8c295f0766e828fa6fba1b4155 = L.marker(
+                [-14.85, -118.3703],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_4d4bab2916f675041d69a4b91b0c78e1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e46\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c8141d8c295f0766e828fa6fba1b4155.setIcon(div_icon_4d4bab2916f675041d69a4b91b0c78e1);
+        
+    
+            var circle_marker_186ad4d8ddc4cf15a5f8cfaed3ef7caa = L.circleMarker(
+                [-14.9995, -115.8004],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_186ad4d8ddc4cf15a5f8cfaed3ef7caa.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 52 <br> <b>Dates: </b>2001/12/21 to 2002/11/22  <br><br><b>Depth: </b> -3414 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_79557db12e401dd54f3867b0ee54ff35 = L.marker(
+                [-14.9995, -115.8004],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_07f6587e6f13b1486cd2858cde95fb14 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e52\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_79557db12e401dd54f3867b0ee54ff35.setIcon(div_icon_07f6587e6f13b1486cd2858cde95fb14);
+        
+    
+            var circle_marker_677e9bfd978ef33e9ec4605e04e3d7d2 = L.circleMarker(
+                [-15.2121, -117.600601],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_677e9bfd978ef33e9ec4605e04e3d7d2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 47 <br> <b>Dates: </b>2001/12/19 to 2002/11/20  <br><br><b>Depth: </b> -3605 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1f4c7601cc9f60dcc0f4b5814dbd70b1 = L.marker(
+                [-15.2121, -117.600601],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_f21dbd51e24dd293e03f688e355b6fbe = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e47\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1f4c7601cc9f60dcc0f4b5814dbd70b1.setIcon(div_icon_f21dbd51e24dd293e03f688e355b6fbe);
+        
+    
+            var circle_marker_9a122f7b2ca0a59f719c889fbfc2f386 = L.circleMarker(
+                [-16.002001, -115.2491],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_9a122f7b2ca0a59f719c889fbfc2f386.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 44 <br> <b>Dates: </b>2001/12/17 to 2002/11/25  <br><br><b>Depth: </b> -3297 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_18d658c191648b04560c809e709e5969 = L.marker(
+                [-16.002001, -115.2491],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_beb3bcd18fc3928a43d64e667e884c60 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e44\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_18d658c191648b04560c809e709e5969.setIcon(div_icon_beb3bcd18fc3928a43d64e667e884c60);
+        
+    
+            var circle_marker_3ee0fc7f9c836646a87b5619f8645e1c = L.circleMarker(
+                [-13.7495, -117.901604],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_3ee0fc7f9c836646a87b5619f8645e1c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 50 <br> <b>Dates: </b>2001/12/20 to 2002/11/17  <br><br><b>Depth: </b> -3540 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9104f6a5583069639b4d3cbc54eda572 = L.marker(
+                [-13.7495, -117.901604],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_2e53fd47da2bc9f893ae7996f3b0df34 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e50\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9104f6a5583069639b4d3cbc54eda572.setIcon(div_icon_2e53fd47da2bc9f893ae7996f3b0df34);
+        
+    
+            var circle_marker_48229ad9f944ceaa764c7a2c890f10ad = L.circleMarker(
+                [-12.7201, -117.991798],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_48229ad9f944ceaa764c7a2c890f10ad.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 49 <br> <b>Dates: </b>2001/12/19 to 2002/11/14  <br><br><b>Depth: </b> -3714 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fa6d1ba1462c80792a8abe70726dbb0a = L.marker(
+                [-12.7201, -117.991798],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_296b4c3985fa776d0c9c31ffc566e27e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e49\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fa6d1ba1462c80792a8abe70726dbb0a.setIcon(div_icon_296b4c3985fa776d0c9c31ffc566e27e);
+        
+    
+            var circle_marker_52113b7fb3bace2ebe252293b2323b51 = L.circleMarker(
+                [-13.1701, -117.201202],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_52113b7fb3bace2ebe252293b2323b51.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 48 <br> <b>Dates: </b>2002/02/01 to 2002/11/17  <br><br><b>Depth: </b> -3318 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e47eafc83cf55cb7b150425824421f5a = L.marker(
+                [-13.1701, -117.201202],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_d3e56561eef1b122d5211f0e1aeb3460 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e48\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e47eafc83cf55cb7b150425824421f5a.setIcon(div_icon_d3e56561eef1b122d5211f0e1aeb3460);
+        
+    
+            var circle_marker_516258b5a8680ad1cf5b1bc0063ffe3c = L.circleMarker(
+                [-15.2803, -116.370003],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_516258b5a8680ad1cf5b1bc0063ffe3c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 29 <br> <b>Dates: </b>2001/12/01 to 2002/11/23  <br><br><b>Depth: </b> -3352 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f13aa3e3995ab8c717aeef4c22fe397f = L.marker(
+                [-15.2803, -116.370003],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_664150fef3a6ce8d4c27cbb78c307e69 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e29\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f13aa3e3995ab8c717aeef4c22fe397f.setIcon(div_icon_664150fef3a6ce8d4c27cbb78c307e69);
+        
+    
+            var circle_marker_4a6b048808196c7eea22c9fcaeb9c975 = L.circleMarker(
+                [-15.6994, -117.000801],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_4a6b048808196c7eea22c9fcaeb9c975.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 28 <br> <b>Dates: </b>2001/12/01 to 2001/12/16  <br><br><b>Depth: </b> -3390 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7fe05ad7464db8e7a849481352a7ef1e = L.marker(
+                [-15.6994, -117.000801],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_3a65d6b458c846ba0530d73345ba692c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e28\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7fe05ad7464db8e7a849481352a7ef1e.setIcon(div_icon_3a65d6b458c846ba0530d73345ba692c);
+        
+    
+            var circle_marker_fcc5e5594792eee9e08c70ba1244e612 = L.circleMarker(
+                [-13.8003, -115.120399],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_fcc5e5594792eee9e08c70ba1244e612.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 38 <br> <b>Dates: </b>2001/12/09 to 2002/11/24  <br><br><b>Depth: </b> -3413 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_75cef37fe3f2669d79ee02cc94c28ff6 = L.marker(
+                [-13.8003, -115.120399],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_958afaaecb6896f9761ccccffd0f0af3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e38\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_75cef37fe3f2669d79ee02cc94c28ff6.setIcon(div_icon_958afaaecb6896f9761ccccffd0f0af3);
+        
+    
+            var circle_marker_f9ba069c388dcf9e1caf0f25c0184b0a = L.circleMarker(
+                [-12.37, -114.524902],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#da0025", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            circle_marker_f9ba069c388dcf9e1caf0f25c0184b0a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 2A <br> <b>Station:</b> 39 <br> <b>Dates: </b>2001/12/13 to 2002/06/20  <br><br><b>Depth: </b> -3397 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (128.0 Hz) <br>BDH-BH1-BH2-BHZ (32.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Gravity Lineations, Intraplate Melting, Petrologic and Seismic Expedition <br><br> <b>Operator: </b>  Brown University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ae260620b88ad6f0d2942c49f896814f = L.marker(
+                [-12.37, -114.524902],
+                {}
+            ).addTo(map_29a61b42b5ac3e3dfa41e631354946d9);
+        
+    
+            var div_icon_9588966912b5d3751feaf90c4506a6d6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e39\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ae260620b88ad6f0d2942c49f896814f.setIcon(div_icon_9588966912b5d3751feaf90c4506a6d6);
+        
+    
+            map_29a61b42b5ac3e3dfa41e631354946d9.fitBounds(
+                [[-16.002001, -118.3703], [-11.7336, -114.524902]],
+                {}
+            );
+        </script>
+
+</html>

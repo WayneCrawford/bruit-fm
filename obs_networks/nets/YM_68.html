@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_b8fe584777d3d83c1cbd2f9f67dc5734 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network YM: Taiwan Supplement #2 to TAIGER project </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by  IRIS/PASSCAL</p>
+		<p id="net_header", class="headerDates">OBS deployed from Nov 2007 to Jun 2009</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/YM_2006">https://doi.org/10.7914/SN/YM_2006</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_b8fe584777d3d83c1cbd2f9f67dc5734" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>YM</TD><TD>02</TD><TD>2008/05/08</TD><TD>2009/06/23</TD><TD>24.1646</TD><TD>122.239601</TD><TD>-2312</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>01</TD><TD>2008/05/08</TD><TD>2009/06/21</TD><TD>24.3216</TD><TD>122.017799</TD><TD>-2878</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>28</TD><TD>2008/05/10</TD><TD>2009/05/29</TD><TD>22.3466</TD><TD>122.482597</TD><TD>-4876</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>10</TD><TD>2007/11/13</TD><TD>2009/06/17</TD><TD>23.617701</TD><TD>122.104103</TD><TD>-3175</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>04</TD><TD>2008/05/08</TD><TD>2009/06/11</TD><TD>23.884399</TD><TD>122.706596</TD><TD>-3659</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>38</TD><TD>2008/05/12</TD><TD>2009/05/31</TD><TD>21.609501</TD><TD>120.128799</TD><TD>-2738</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>39</TD><TD>2008/05/11</TD><TD>2009/05/30</TD><TD>21.599701</TD><TD>121.364098</TD><TD>-2508</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>11</TD><TD>2008/05/08</TD><TD>2009/06/30</TD><TD>23.5065</TD><TD>122.412903</TD><TD>-3352</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>12</TD><TD>2008/05/08</TD><TD>2009/06/30</TD><TD>23.405899</TD><TD>122.687202</TD><TD>-4139</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>06</TD><TD>2007/11/13</TD><TD>2008/05/07</TD><TD>23.7897</TD><TD>122.210297</TD><TD>-2219</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>37</TD><TD>2008/05/12</TD><TD>2009/05/30</TD><TD>21.6698</TD><TD>119.495399</TD><TD>-2785</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>22</TD><TD>2007/11/14</TD><TD>2008/05/07</TD><TD>22.961599</TD><TD>121.973198</TD><TD>-4677</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>35</TD><TD>2008/05/11</TD><TD>2009/05/30</TD><TD>21.923</TD><TD>122.107201</TD><TD>-4794</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>09</TD><TD>2008/05/09</TD><TD>2009/05/28</TD><TD>23.6369</TD><TD>121.802002</TD><TD>-3710</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>25</TD><TD>2008/05/11</TD><TD>2009/06/29</TD><TD>22.835199</TD><TD>121.543198</TD><TD>-1755</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>19</TD><TD>2008/05/09</TD><TD>2009/05/29</TD><TD>23.0914</TD><TD>122.150803</TD><TD>-4966</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>18</TD><TD>2007/11/14</TD><TD>2009/06/30</TD><TD>23.1696</TD><TD>122.0159</TD><TD>-4277</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>30</TD><TD>2007/11/15</TD><TD>2009/05/29</TD><TD>22.242901</TD><TD>121.755402</TD><TD>-3834</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>26</TD><TD>2007/11/14</TD><TD>2008/05/24</TD><TD>22.7103</TD><TD>121.854897</TD><TD>-4376</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>33</TD><TD>2008/01/25</TD><TD>2009/05/29</TD><TD>21.969801</TD><TD>120.105499</TD><TD>-1243</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>YM</TD><TD>27</TD><TD>2008/05/10</TD><TD>2009/05/29</TD><TD>22.472601</TD><TD>122.264099</TD><TD>-4714</TD><TD>BDH-BH1-BH2-BHZ (40.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>02 01 28 10 04 38 39 11 12 06 37 22 35 09 25 19 18 30 26 33 27</TD><TD>BDH</TD><TD>40.0</TD><TD>LDEO DPG/LDEO_new dummy at 40/125</TD></TR><TR><TD>02 01 28 10 04 38 39 11 12 06 37 22 35 09 25 19 18 30 26 33 27</TD><TD>BH1</TD><TD>40.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125</TD></TR><TR><TD>02 01 28 10 04 38 39 11 12 06 37 22 35 09 25 19 18 30 26 33 27</TD><TD>BH2</TD><TD>40.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125</TD></TR><TR><TD>02 01 28 10 04 38 39 11 12 06 37 22 35 09 25 19 18 30 26 33 27</TD><TD>BHZ</TD><TD>40.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_b8fe584777d3d83c1cbd2f9f67dc5734 = L.map(
+                "map_b8fe584777d3d83c1cbd2f9f67dc5734",
+                {
+                    center: [22.94420013043478, 121.80615634782609],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_b0740d1316c2560cd01a9fc755e62c9f = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var circle_marker_605d8ca9509e9502448a8eb6afa1720e = L.circleMarker(
+                [24.1646, 122.239601],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_605d8ca9509e9502448a8eb6afa1720e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 02 <br> <b>Dates: </b>2008/05/08 to 2009/06/23  <br><br><b>Depth: </b> -2312 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_74c38c1836615dfaf59a25401fe06a24 = L.marker(
+                [24.1646, 122.239601],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_9af56b0add6a8cbe4d300c5eb6ccdc36 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_74c38c1836615dfaf59a25401fe06a24.setIcon(div_icon_9af56b0add6a8cbe4d300c5eb6ccdc36);
+        
+    
+            var circle_marker_e1ef684462dc676cd891bceb3f9dc269 = L.circleMarker(
+                [24.3216, 122.017799],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_e1ef684462dc676cd891bceb3f9dc269.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 01 <br> <b>Dates: </b>2008/05/08 to 2009/06/21  <br><br><b>Depth: </b> -2878 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b78d0328a7d4604d30dfca4fcebbbd5d = L.marker(
+                [24.3216, 122.017799],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_6977d67936553ed0aa77ed86c3447ac2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b78d0328a7d4604d30dfca4fcebbbd5d.setIcon(div_icon_6977d67936553ed0aa77ed86c3447ac2);
+        
+    
+            var circle_marker_5d061129c15f77882edc56641d250bc1 = L.circleMarker(
+                [22.3466, 122.482597],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_5d061129c15f77882edc56641d250bc1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 28 <br> <b>Dates: </b>2008/05/10 to 2009/05/29  <br><br><b>Depth: </b> -4876 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7abc62b38203a848365b705ce1452e43 = L.marker(
+                [22.3466, 122.482597],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_ac01a3272260b40cc4557f9bedc54ab2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e28\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7abc62b38203a848365b705ce1452e43.setIcon(div_icon_ac01a3272260b40cc4557f9bedc54ab2);
+        
+    
+            var circle_marker_b5ee347acc56d6bc8120309218936d88 = L.circleMarker(
+                [23.617701, 122.104103],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_b5ee347acc56d6bc8120309218936d88.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 10 <br> <b>Dates: </b>2007/11/13 to 2009/06/17  <br><br><b>Depth: </b> -3175 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d674ed67b415795371bf9a1c6568c04f = L.marker(
+                [23.617701, 122.104103],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_84c017ec4d2161f1545894f6550ce9d8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d674ed67b415795371bf9a1c6568c04f.setIcon(div_icon_84c017ec4d2161f1545894f6550ce9d8);
+        
+    
+            var circle_marker_c3798b4a5cedd2559343cb9e3e19d2ba = L.circleMarker(
+                [23.884399, 122.706596],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_c3798b4a5cedd2559343cb9e3e19d2ba.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 04 <br> <b>Dates: </b>2008/05/08 to 2009/06/11  <br><br><b>Depth: </b> -3659 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_06f0249768fb9e6b30021fa827748c3b = L.marker(
+                [23.884399, 122.706596],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_384ea434a35e4e8fcb68d5c3116d197a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_06f0249768fb9e6b30021fa827748c3b.setIcon(div_icon_384ea434a35e4e8fcb68d5c3116d197a);
+        
+    
+            var circle_marker_b17d085588aa9d29368f0b1d3dae15c6 = L.circleMarker(
+                [21.609501, 120.128799],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_b17d085588aa9d29368f0b1d3dae15c6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 38 <br> <b>Dates: </b>2008/05/12 to 2009/05/31  <br><br><b>Depth: </b> -2738 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_188885d70c8f9e6f869b9f7655e4cf63 = L.marker(
+                [21.609501, 120.128799],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_cebc47f4ed1a4252123c1df6ee7a6ebe = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e38\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_188885d70c8f9e6f869b9f7655e4cf63.setIcon(div_icon_cebc47f4ed1a4252123c1df6ee7a6ebe);
+        
+    
+            var circle_marker_d00b2b65640255aa09b16bee590081b1 = L.circleMarker(
+                [21.599701, 121.364098],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_d00b2b65640255aa09b16bee590081b1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 39 <br> <b>Dates: </b>2008/05/11 to 2009/05/30  <br><br><b>Depth: </b> -2508 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ebd3e2b15a7f8edc5da598fd7c53bc4c = L.marker(
+                [21.599701, 121.364098],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_9e04b56987c0ab74fe8c05e8544789bb = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e39\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ebd3e2b15a7f8edc5da598fd7c53bc4c.setIcon(div_icon_9e04b56987c0ab74fe8c05e8544789bb);
+        
+    
+            var circle_marker_26b1a7544c7e6aa10e336ddafb9a7fb3 = L.circleMarker(
+                [23.5065, 122.412903],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_26b1a7544c7e6aa10e336ddafb9a7fb3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 11 <br> <b>Dates: </b>2008/05/08 to 2009/06/30  <br><br><b>Depth: </b> -3352 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_21be0a5be89586db1630bf60eb3333a5 = L.marker(
+                [23.5065, 122.412903],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_f604b5e6c50db59099a56416c818b28b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_21be0a5be89586db1630bf60eb3333a5.setIcon(div_icon_f604b5e6c50db59099a56416c818b28b);
+        
+    
+            var circle_marker_33ed46ec1e93af01cc454df16843deb6 = L.circleMarker(
+                [23.405899, 122.687202],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_33ed46ec1e93af01cc454df16843deb6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 12 <br> <b>Dates: </b>2008/05/08 to 2009/06/30  <br><br><b>Depth: </b> -4139 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5cbbc0aa1d9c68a1e37910b233dbaa90 = L.marker(
+                [23.405899, 122.687202],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_c6becb0b14f6df31ccd80a49a27fb434 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5cbbc0aa1d9c68a1e37910b233dbaa90.setIcon(div_icon_c6becb0b14f6df31ccd80a49a27fb434);
+        
+    
+            var circle_marker_f3db0e67912de7a5da0b4e84df5a7c5e = L.circleMarker(
+                [23.7897, 122.210297],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_f3db0e67912de7a5da0b4e84df5a7c5e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 06 <br> <b>Dates: </b>2007/11/13 to 2008/05/07  <br><br><b>Depth: </b> -2219 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_683b054c9d067cbabf18d78a64f37637 = L.marker(
+                [23.7897, 122.210297],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_e2ca4e4518493aedabeff1dfdff25332 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_683b054c9d067cbabf18d78a64f37637.setIcon(div_icon_e2ca4e4518493aedabeff1dfdff25332);
+        
+    
+            var circle_marker_6153d5945ab514b616637af797e09fa2 = L.circleMarker(
+                [21.6698, 119.495399],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_6153d5945ab514b616637af797e09fa2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 37 <br> <b>Dates: </b>2008/05/12 to 2009/05/30  <br><br><b>Depth: </b> -2785 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ef3c4812e73eea422ff70c0cc5027339 = L.marker(
+                [21.6698, 119.495399],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_3961f1e9bd2d6284f52fc98c2fc3b0a4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e37\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ef3c4812e73eea422ff70c0cc5027339.setIcon(div_icon_3961f1e9bd2d6284f52fc98c2fc3b0a4);
+        
+    
+            var circle_marker_b8ebb821b414542be08e65619cb843b4 = L.circleMarker(
+                [22.961599, 121.973198],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_b8ebb821b414542be08e65619cb843b4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 22 <br> <b>Dates: </b>2007/11/14 to 2008/05/07  <br><br><b>Depth: </b> -4677 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bd7beaa5407dd37607f7f1a39e119118 = L.marker(
+                [22.961599, 121.973198],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_03aca0cd4ef942fe68733891b684a408 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e22\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_bd7beaa5407dd37607f7f1a39e119118.setIcon(div_icon_03aca0cd4ef942fe68733891b684a408);
+        
+    
+            var circle_marker_0ba4ceaa3feebd99b9208f2a4b711309 = L.circleMarker(
+                [21.923, 122.107201],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_0ba4ceaa3feebd99b9208f2a4b711309.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 35 <br> <b>Dates: </b>2008/05/11 to 2009/05/30  <br><br><b>Depth: </b> -4794 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a379bd96365afdcad627708c6ebb33da = L.marker(
+                [21.923, 122.107201],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_9bab61d65a16f040769aa7a140f92348 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e35\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a379bd96365afdcad627708c6ebb33da.setIcon(div_icon_9bab61d65a16f040769aa7a140f92348);
+        
+    
+            var circle_marker_0128afb7bedc8430d1e05faaee7d6478 = L.circleMarker(
+                [23.6369, 121.802002],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_0128afb7bedc8430d1e05faaee7d6478.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 09 <br> <b>Dates: </b>2008/05/09 to 2009/05/28  <br><br><b>Depth: </b> -3710 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_31a2f513a3628888ab71687164e331f8 = L.marker(
+                [23.6369, 121.802002],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_f8750ea525e94f6afb254b6ef2a4f86f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_31a2f513a3628888ab71687164e331f8.setIcon(div_icon_f8750ea525e94f6afb254b6ef2a4f86f);
+        
+    
+            var circle_marker_dd2801f07aedc89a2067f24b12130d55 = L.circleMarker(
+                [22.835199, 121.543198],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_dd2801f07aedc89a2067f24b12130d55.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 25 <br> <b>Dates: </b>2008/05/11 to 2009/06/29  <br><br><b>Depth: </b> -1755 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_11abfe95283dc306d155bdc6f8b1b3e9 = L.marker(
+                [22.835199, 121.543198],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_886f8714dd074e970bd619e53697643b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e25\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_11abfe95283dc306d155bdc6f8b1b3e9.setIcon(div_icon_886f8714dd074e970bd619e53697643b);
+        
+    
+            var circle_marker_d193dc0ec2aa467c7a9ca9ce47d9e0ac = L.circleMarker(
+                [23.0914, 122.150803],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_d193dc0ec2aa467c7a9ca9ce47d9e0ac.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 19 <br> <b>Dates: </b>2008/05/09 to 2009/05/29  <br><br><b>Depth: </b> -4966 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e363b7967dfb4d587f8dd89a6dc91f3d = L.marker(
+                [23.0914, 122.150803],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_84c9390c1a64186fedcc43f987ace68c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e19\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e363b7967dfb4d587f8dd89a6dc91f3d.setIcon(div_icon_84c9390c1a64186fedcc43f987ace68c);
+        
+    
+            var circle_marker_24252bbdb3ef34d721c87af53d8feba6 = L.circleMarker(
+                [23.1696, 122.0159],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_24252bbdb3ef34d721c87af53d8feba6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 18 <br> <b>Dates: </b>2007/11/14 to 2009/06/30  <br><br><b>Depth: </b> -4277 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f63d224dfe8e2defdd8b7255bb15a74a = L.marker(
+                [23.1696, 122.0159],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_94349ce4fe78a43e9cdf708f448163ed = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f63d224dfe8e2defdd8b7255bb15a74a.setIcon(div_icon_94349ce4fe78a43e9cdf708f448163ed);
+        
+    
+            var circle_marker_8f25edca3a2bdf4b1719c259c5ff673e = L.circleMarker(
+                [22.242901, 121.755402],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_8f25edca3a2bdf4b1719c259c5ff673e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 30 <br> <b>Dates: </b>2007/11/15 to 2009/05/29  <br><br><b>Depth: </b> -3834 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_de988fd266957c67c055b82ff21db101 = L.marker(
+                [22.242901, 121.755402],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_feab06693a22d428de4511f6b38e6bfe = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e30\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_de988fd266957c67c055b82ff21db101.setIcon(div_icon_feab06693a22d428de4511f6b38e6bfe);
+        
+    
+            var circle_marker_0d465cc72d33cef8bcaf0e0bf79e57ae = L.circleMarker(
+                [22.7103, 121.854897],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_0d465cc72d33cef8bcaf0e0bf79e57ae.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 26 <br> <b>Dates: </b>2007/11/14 to 2008/05/24  <br><br><b>Depth: </b> -4376 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_87bce4552e647abb313de45f017fedfc = L.marker(
+                [22.7103, 121.854897],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_14195d160eac5bdecb87015586703503 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e26\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_87bce4552e647abb313de45f017fedfc.setIcon(div_icon_14195d160eac5bdecb87015586703503);
+        
+    
+            var circle_marker_4a59e2bcaa1639fcf34e3914b2b18f14 = L.circleMarker(
+                [21.969801, 120.105499],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_4a59e2bcaa1639fcf34e3914b2b18f14.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 33 <br> <b>Dates: </b>2008/01/25 to 2009/05/29  <br><br><b>Depth: </b> -1243 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ebda785ab7cd8d39ac9ff35042768b3a = L.marker(
+                [21.969801, 120.105499],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_e091a52408b502ec574d0c31ed6aa185 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e33\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ebda785ab7cd8d39ac9ff35042768b3a.setIcon(div_icon_e091a52408b502ec574d0c31ed6aa185);
+        
+    
+            var circle_marker_10115d384e1263d48b758a9cc8e8d8a9 = L.circleMarker(
+                [22.472601, 122.264099],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#72008d", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            circle_marker_10115d384e1263d48b758a9cc8e8d8a9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YM <br> <b>Station:</b> 27 <br> <b>Dates: </b>2008/05/10 to 2009/05/29  <br><br><b>Depth: </b> -4714 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YM_2006 <br><br> <b>Net name: </b> Taiwan Supplement #2 to TAIGER project <br><br> <b>Operator: </b> IRIS/PASSCAL</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c46fae871d3474b1b7264887b8e7a710 = L.marker(
+                [22.472601, 122.264099],
+                {}
+            ).addTo(map_b8fe584777d3d83c1cbd2f9f67dc5734);
+        
+    
+            var div_icon_d9e9262bbee3da926bfff54f31a15538 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003e27\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c46fae871d3474b1b7264887b8e7a710.setIcon(div_icon_d9e9262bbee3da926bfff54f31a15538);
+        
+    
+            map_b8fe584777d3d83c1cbd2f9f67dc5734.fitBounds(
+                [[21.599701, 119.495399], [24.3216, 122.706596]],
+                {}
+            );
+        </script>
+
+</html>

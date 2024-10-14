@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_1473f8b299232c1169855710e6063c2d {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network 4G: EMSO-MOMAR </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Institut de Physique du Globe de Paris</p>
+		<p id="net_header", class="headerDates">OBS deployed from Jul 2007 to Oct 2010</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="/">/</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_1473f8b299232c1169855710e6063c2d" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>4G</TD><TD>AZBBA</TD><TD>2007/07/26</TD><TD>2008/08/15</TD><TD>37.4827</TD><TD>-29.0074</TD><TD>-1743</TD><TD>BDH-BH1-BH2-BHZ (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVSA</TD><TD>2007/07/25</TD><TD>2008/08/11</TD><TD>37.2563</TD><TD>-32.3014</TD><TD>-1949</TD><TD>BDH-BH1-BH2-BHZ (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVSC</TD><TD>2009/09/03</TD><TD>2010/10/12</TD><TD>37.2602</TD><TD>-32.2981</TD><TD>-1924</TD><TD>BDH-BH1-BH2-BHZ (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVSB</TD><TD>2008/08/12</TD><TD>2009/09/02</TD><TD>37.2606</TD><TD>-32.2975</TD><TD>-1939</TD><TD>BDH-BH1-BH2-BHZ (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSV6A</TD><TD>2007/07/21</TD><TD>2007/07/24</TD><TD>37.2851</TD><TD>-32.2902</TD><TD>-1624</TD><TD>BDH-BH1-BH2-BHZ (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVCA</TD><TD>2007/07/22</TD><TD>2008/08/10</TD><TD>37.2909</TD><TD>-32.2891</TD><TD>-1657</TD><TD>BDH-SH1-SH2-SH3 (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVCB</TD><TD>2008/08/10</TD><TD>2009/09/02</TD><TD>37.2918</TD><TD>-32.288</TD><TD>-1776</TD><TD>BDH-SH1-SH2-SH3 (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVCC</TD><TD>2009/09/03</TD><TD>2010/10/09</TD><TD>37.2913</TD><TD>-32.2893</TD><TD>-1775</TD><TD>BDH-SH1-SH2-SH3 (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVWB</TD><TD>2008/08/13</TD><TD>2009/09/02</TD><TD>37.2985</TD><TD>-32.3237</TD><TD>-2099</TD><TD>BDH-SH1-SH2-SH3 (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVWC</TD><TD>2009/09/03</TD><TD>2010/05/17</TD><TD>37.2975</TD><TD>-32.3249</TD><TD>-2045</TD><TD>BDH-SH1-SH2-SH3 (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVNA</TD><TD>2007/07/22</TD><TD>2008/08/11</TD><TD>37.3284</TD><TD>-32.2651</TD><TD>-2043</TD><TD>BDH-SH1-SH2-SH3 (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSV5A</TD><TD>2007/07/20</TD><TD>2007/07/23</TD><TD>37.2673</TD><TD>-32.2959</TD><TD>-1833</TD><TD>BDH-BH1-BH2-BHZ (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVNC</TD><TD>2009/09/03</TD><TD>2010/10/09</TD><TD>37.3202</TD><TD>-32.2783</TD><TD>-1817</TD><TD>BDH-SH1-SH2-SH3 (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVWA</TD><TD>2007/07/22</TD><TD>2008/08/12</TD><TD>37.3048</TD><TD>-32.3337</TD><TD>-2074</TD><TD>BDH-SH1-SH2-SH3 (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVNB</TD><TD>2008/08/11</TD><TD>2009/09/02</TD><TD>37.3217</TD><TD>-32.2777</TD><TD>-1859</TD><TD>BDH-SH1-SH2-SH3 (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVEB</TD><TD>2008/08/10</TD><TD>2009/09/02</TD><TD>37.2827</TD><TD>-32.241</TD><TD>-2097</TD><TD>BDH-SH1-SH2-SH3 (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVEC</TD><TD>2009/09/03</TD><TD>2010/10/12</TD><TD>37.2807</TD><TD>-32.2417</TD><TD>-1985</TD><TD>BDH-SH1-SH2-SH3 (62.5 Hz) <br></TD></TR><TR><TD>4G</TD><TD>LSVEA</TD><TD>2007/07/22</TD><TD>2008/08/10</TD><TD>37.277</TD><TD>-32.2323</TD><TD>-2033</TD><TD>BDH-SH1-SH2-SH3 (62.5 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>AZBBA LSVSA LSVSC LSVSB LSV6A LSV5A</TD><TD>BDH</TD><TD>62.5</TD><TD>Differential Pressure Gauge [config: generic]</TD></TR><TR><TD>LSVCA LSVCB LSVCC LSVWB LSVWC LSVNA LSVNC LSVWA LSVNB LSVEB LSVEC LSVEA</TD><TD>BDH</TD><TD>62.5</TD><TD>HiTech HTI-90-U hydrophone with integrated preamp, serial number 220xxx, 0.05-2500 Hz</TD></TR><TR><TD>AZBBA LSVSA LSVSC LSVSB LSV6A LSV5A</TD><TD>BH1</TD><TD>62.5</TD><TD>Trillium T240 seismometer, negative shorted to ground [config: serial numbers 1-399]</TD></TR><TR><TD>AZBBA LSVSA LSVSC LSVSB LSV6A LSV5A</TD><TD>BH2</TD><TD>62.5</TD><TD>Trillium T240 seismometer, negative shorted to ground [config: serial numbers 1-399]</TD></TR><TR><TD>AZBBA LSVSA LSVSC LSVSB LSV6A LSV5A</TD><TD>BHZ</TD><TD>62.5</TD><TD>Trillium T240 seismometer, negative shorted to ground [config: serial numbers 1-399]</TD></TR><TR><TD>LSVCA LSVCB LSVCC LSVWB LSVWC LSVNA LSVNC LSVWA LSVNB LSVEB LSVEC LSVEA</TD><TD>SH1</TD><TD>62.5</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone, 395 ohm coil and 2490 ohm shunt</TD></TR><TR><TD>LSVCA LSVCB LSVCC LSVWB LSVWC LSVNA LSVNC LSVWA LSVNB LSVEB LSVEC LSVEA</TD><TD>SH2</TD><TD>62.5</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone, 395 ohm coil and 2490 ohm shunt</TD></TR><TR><TD>LSVCA LSVCB LSVCC LSVWB LSVWC LSVNA LSVNC LSVWA LSVNB LSVEB LSVEC LSVEA</TD><TD>SH3</TD><TD>62.5</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone, 395 ohm coil and 2490 ohm shunt</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_1473f8b299232c1169855710e6063c2d = L.map(
+                "map_1473f8b299232c1169855710e6063c2d",
+                {
+                    center: [37.29987222222222, -32.10418333333334],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_2923d5985ba286eb18d156627ae48c26 = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var circle_marker_ee81ec90473b6f1616ee713fb3f35733 = L.circleMarker(
+                [37.4827, -29.0074],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_ee81ec90473b6f1616ee713fb3f35733.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> AZBBA <br> <b>Dates: </b>2007/07/26 to 2008/08/15  <br><br><b>Depth: </b> -1743 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5bea1735b925b3d4a941bbfd1fa9b1bb = L.marker(
+                [37.4827, -29.0074],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_25e6fc79485505fba83cfd0ad0046ee1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eAZBBA\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5bea1735b925b3d4a941bbfd1fa9b1bb.setIcon(div_icon_25e6fc79485505fba83cfd0ad0046ee1);
+        
+    
+            var circle_marker_d7848a3cd9e90e58d54eb639058eb9df = L.circleMarker(
+                [37.2563, -32.3014],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_d7848a3cd9e90e58d54eb639058eb9df.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVSA <br> <b>Dates: </b>2007/07/25 to 2008/08/11  <br><br><b>Depth: </b> -1949 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9887685ef8bc9eb213eede0f5120faed = L.marker(
+                [37.2563, -32.3014],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_783009851d7ec2c9108e9d1391b7554a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVSA\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9887685ef8bc9eb213eede0f5120faed.setIcon(div_icon_783009851d7ec2c9108e9d1391b7554a);
+        
+    
+            var circle_marker_ddad19b1373b2bc67222f653a2f7356b = L.circleMarker(
+                [37.2602, -32.2981],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_ddad19b1373b2bc67222f653a2f7356b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVSC <br> <b>Dates: </b>2009/09/03 to 2010/10/12  <br><br><b>Depth: </b> -1924 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fbff65b489b4a30fcbe9fa4239e90169 = L.marker(
+                [37.2602, -32.2981],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_94f2600db72d2a41d79576d88de88d4c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVSC\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fbff65b489b4a30fcbe9fa4239e90169.setIcon(div_icon_94f2600db72d2a41d79576d88de88d4c);
+        
+    
+            var circle_marker_50c3ec4132c16326837468326166f66d = L.circleMarker(
+                [37.2606, -32.2975],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_50c3ec4132c16326837468326166f66d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVSB <br> <b>Dates: </b>2008/08/12 to 2009/09/02  <br><br><b>Depth: </b> -1939 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8283f6b1fc845f0579a124afc6fb161b = L.marker(
+                [37.2606, -32.2975],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_8be7192f974db24eb1fa852f1028822c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVSB\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8283f6b1fc845f0579a124afc6fb161b.setIcon(div_icon_8be7192f974db24eb1fa852f1028822c);
+        
+    
+            var circle_marker_96a09ef609e72964b0bc90cc4c0e0464 = L.circleMarker(
+                [37.2851, -32.2902],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_96a09ef609e72964b0bc90cc4c0e0464.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSV6A <br> <b>Dates: </b>2007/07/21 to 2007/07/24  <br><br><b>Depth: </b> -1624 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_56733c88d83b7e028c3396c88c5f5511 = L.marker(
+                [37.2851, -32.2902],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_2e83d3c2d252053251667176a60dcb52 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSV6A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_56733c88d83b7e028c3396c88c5f5511.setIcon(div_icon_2e83d3c2d252053251667176a60dcb52);
+        
+    
+            var circle_marker_a6d8e316da40fcf34b636d68a2316155 = L.circleMarker(
+                [37.2909, -32.2891],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_a6d8e316da40fcf34b636d68a2316155.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVCA <br> <b>Dates: </b>2007/07/22 to 2008/08/10  <br><br><b>Depth: </b> -1657 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4f45ae1082db1095e1f72501c01c35cd = L.marker(
+                [37.2909, -32.2891],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_f435cfa4ff30b7a6cf88fa66b47290d1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVCA\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4f45ae1082db1095e1f72501c01c35cd.setIcon(div_icon_f435cfa4ff30b7a6cf88fa66b47290d1);
+        
+    
+            var circle_marker_6ba00dd2f2d82af6202e8b4879b3c230 = L.circleMarker(
+                [37.2918, -32.288],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_6ba00dd2f2d82af6202e8b4879b3c230.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVCB <br> <b>Dates: </b>2008/08/10 to 2009/09/02  <br><br><b>Depth: </b> -1776 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fb26f4f4f58d7888520bb7a3cb3ec0ca = L.marker(
+                [37.2918, -32.288],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_6a22bce167a52aa1f38934ae42bc516e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVCB\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fb26f4f4f58d7888520bb7a3cb3ec0ca.setIcon(div_icon_6a22bce167a52aa1f38934ae42bc516e);
+        
+    
+            var circle_marker_afbac13e57bf71241e94d9ac2b9705ab = L.circleMarker(
+                [37.2913, -32.2893],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_afbac13e57bf71241e94d9ac2b9705ab.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVCC <br> <b>Dates: </b>2009/09/03 to 2010/10/09  <br><br><b>Depth: </b> -1775 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4965fca80842256aa0b6c80488aca75f = L.marker(
+                [37.2913, -32.2893],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_42379375174fa4ff4a1d7b92a8d153db = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVCC\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4965fca80842256aa0b6c80488aca75f.setIcon(div_icon_42379375174fa4ff4a1d7b92a8d153db);
+        
+    
+            var circle_marker_eeafd1c2b7be541c44b140f67aa6f064 = L.circleMarker(
+                [37.2985, -32.3237],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_eeafd1c2b7be541c44b140f67aa6f064.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVWB <br> <b>Dates: </b>2008/08/13 to 2009/09/02  <br><br><b>Depth: </b> -2099 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a44af4464651087d353a4be34b6a5da7 = L.marker(
+                [37.2985, -32.3237],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_ac3dcd5ba11d6b304a4811402dfb3103 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVWB\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a44af4464651087d353a4be34b6a5da7.setIcon(div_icon_ac3dcd5ba11d6b304a4811402dfb3103);
+        
+    
+            var circle_marker_cb419ef1a9223321e29f1cf92a38d080 = L.circleMarker(
+                [37.2975, -32.3249],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_cb419ef1a9223321e29f1cf92a38d080.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVWC <br> <b>Dates: </b>2009/09/03 to 2010/05/17  <br><br><b>Depth: </b> -2045 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4a316f93c5c3102c4ace3e48ae8542e6 = L.marker(
+                [37.2975, -32.3249],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_322b9ccf4f34ce5295866421ae9bfa17 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVWC\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4a316f93c5c3102c4ace3e48ae8542e6.setIcon(div_icon_322b9ccf4f34ce5295866421ae9bfa17);
+        
+    
+            var circle_marker_768ac0394dea84a68178c3ab124a0502 = L.circleMarker(
+                [37.3284, -32.2651],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_768ac0394dea84a68178c3ab124a0502.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVNA <br> <b>Dates: </b>2007/07/22 to 2008/08/11  <br><br><b>Depth: </b> -2043 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ef19b54465190e7e3e1aeaf5fbe58806 = L.marker(
+                [37.3284, -32.2651],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_f392028b6d475db46d4fc21968e3e0d1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVNA\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ef19b54465190e7e3e1aeaf5fbe58806.setIcon(div_icon_f392028b6d475db46d4fc21968e3e0d1);
+        
+    
+            var circle_marker_b30e2401d8e22c10878da64d8e8e686e = L.circleMarker(
+                [37.2673, -32.2959],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_b30e2401d8e22c10878da64d8e8e686e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSV5A <br> <b>Dates: </b>2007/07/20 to 2007/07/23  <br><br><b>Depth: </b> -1833 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2d1ea939eced8471771a799fdabf9595 = L.marker(
+                [37.2673, -32.2959],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_197b7f4b68377419650ffa0c2a17cf70 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSV5A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2d1ea939eced8471771a799fdabf9595.setIcon(div_icon_197b7f4b68377419650ffa0c2a17cf70);
+        
+    
+            var circle_marker_3931d174253dea2bced13720b8c87704 = L.circleMarker(
+                [37.3202, -32.2783],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_3931d174253dea2bced13720b8c87704.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVNC <br> <b>Dates: </b>2009/09/03 to 2010/10/09  <br><br><b>Depth: </b> -1817 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9ccd74710c286e08b13fa91034cb6c34 = L.marker(
+                [37.3202, -32.2783],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_207b4d8cb1534a5b749cb35fda065f59 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVNC\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9ccd74710c286e08b13fa91034cb6c34.setIcon(div_icon_207b4d8cb1534a5b749cb35fda065f59);
+        
+    
+            var circle_marker_d7307e363dcd090cdad6ab3c2d9e6c39 = L.circleMarker(
+                [37.3048, -32.3337],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_d7307e363dcd090cdad6ab3c2d9e6c39.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVWA <br> <b>Dates: </b>2007/07/22 to 2008/08/12  <br><br><b>Depth: </b> -2074 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_423a8df08d46b4d050a6ebb528f4b9d6 = L.marker(
+                [37.3048, -32.3337],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_7f625f028ce75a3f124fc450da164f7d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVWA\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_423a8df08d46b4d050a6ebb528f4b9d6.setIcon(div_icon_7f625f028ce75a3f124fc450da164f7d);
+        
+    
+            var circle_marker_586245a621cff8f2959887b48e98590d = L.circleMarker(
+                [37.3217, -32.2777],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_586245a621cff8f2959887b48e98590d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVNB <br> <b>Dates: </b>2008/08/11 to 2009/09/02  <br><br><b>Depth: </b> -1859 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e5f3027d5867bc4367d419b474e77574 = L.marker(
+                [37.3217, -32.2777],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_26a099ca2c5cf18b7898dcf1e495dcc1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVNB\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e5f3027d5867bc4367d419b474e77574.setIcon(div_icon_26a099ca2c5cf18b7898dcf1e495dcc1);
+        
+    
+            var circle_marker_24530ceac55ea55141efd18087396605 = L.circleMarker(
+                [37.2827, -32.241],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_24530ceac55ea55141efd18087396605.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVEB <br> <b>Dates: </b>2008/08/10 to 2009/09/02  <br><br><b>Depth: </b> -2097 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cc84b0e191288f94bf17e3491bcb2753 = L.marker(
+                [37.2827, -32.241],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_f7780821ddf8b26ff4c3932423b73652 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVEB\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cc84b0e191288f94bf17e3491bcb2753.setIcon(div_icon_f7780821ddf8b26ff4c3932423b73652);
+        
+    
+            var circle_marker_8db5ac7c153f386ec4020471518e5842 = L.circleMarker(
+                [37.2807, -32.2417],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_8db5ac7c153f386ec4020471518e5842.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVEC <br> <b>Dates: </b>2009/09/03 to 2010/10/12  <br><br><b>Depth: </b> -1985 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3466eaeb4a4ffb683cac2f4b505048ef = L.marker(
+                [37.2807, -32.2417],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_d5a8f4462a6803ce36a845db9d5ddbd5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVEC\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3466eaeb4a4ffb683cac2f4b505048ef.setIcon(div_icon_d5a8f4462a6803ce36a845db9d5ddbd5);
+        
+    
+            var circle_marker_3ab85a349209968cd77539f92b29e6c1 = L.circleMarker(
+                [37.277, -32.2323],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20df00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            circle_marker_3ab85a349209968cd77539f92b29e6c1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 4G <br> <b>Station:</b> LSVEA <br> <b>Dates: </b>2007/07/22 to 2008/08/10  <br><br><b>Depth: </b> -2033 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.5 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> EMSO-MOMAR <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e9aecdce576eb958284e5841969a793f = L.marker(
+                [37.277, -32.2323],
+                {}
+            ).addTo(map_1473f8b299232c1169855710e6063c2d);
+        
+    
+            var div_icon_f0b670bbe4c8c97e75ca2ed87fc257fd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLSVEA\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e9aecdce576eb958284e5841969a793f.setIcon(div_icon_f0b670bbe4c8c97e75ca2ed87fc257fd);
+        
+    
+            map_1473f8b299232c1169855710e6063c2d.fitBounds(
+                [[37.2563, -32.3337], [37.4827, -29.0074]],
+                {}
+            );
+        </script>
+
+</html>

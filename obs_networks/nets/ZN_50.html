@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_7493168c00ab97b2995d1dc81e743f5a {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network ZN: Papua Peninsula-Woodlark Rift Imaging Experiment </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Lamont Doherty Earth Observatory (LDEO), Columbia University</p>
+		<p id="net_header", class="headerDates">OBS deployed from Mar 2010 to Jan 2011</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/ZN_2010">https://doi.org/10.7914/SN/ZN_2010</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_7493168c00ab97b2995d1dc81e743f5a" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>ZN</TD><TD>I</TD><TD>2010/03/03</TD><TD>2011/01/27</TD><TD>-9.4667</TD><TD>149.929504</TD><TD>-959</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZN</TD><TD>H</TD><TD>2010/03/03</TD><TD>2011/01/27</TD><TD>-8.9998</TD><TD>149.667694</TD><TD>-557</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZN</TD><TD>J</TD><TD>2010/03/03</TD><TD>2011/01/28</TD><TD>-8.8702</TD><TD>149.933502</TD><TD>-508</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZN</TD><TD>F</TD><TD>2010/03/02</TD><TD>2011/01/26</TD><TD>-9.9505</TD><TD>150.200394</TD><TD>-1358</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZN</TD><TD>G</TD><TD>2010/03/03</TD><TD>2011/01/27</TD><TD>-9.3332</TD><TD>149.666794</TD><TD>-555</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZN</TD><TD>E</TD><TD>2010/03/02</TD><TD>2011/01/26</TD><TD>-10.0805</TD><TD>150.621307</TD><TD>-1400</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZN</TD><TD>D</TD><TD>2010/03/02</TD><TD>2011/01/26</TD><TD>-9.9434</TD><TD>150.707001</TD><TD>-1040</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>ZN</TD><TD>B</TD><TD>2010/03/02</TD><TD>2011/01/27</TD><TD>-9.7494</TD><TD>150.350494</TD><TD>-1205</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>I H J F G E D B</TD><TD>BDH</TD><TD>50.0</TD><TD>Differential Pressure Gauge OBSIP-SIO/ABALONES-4x4</TD></TR><TR><TD>I H J F G E D B</TD><TD>BH1</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Single-Sided/ABALONES-4x4</TD></TR><TR><TD>I H J F G E D B</TD><TD>BH2</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Single-Sided/ABALONES-4x4</TD></TR><TR><TD>I H J F G E D B</TD><TD>BHZ</TD><TD>50.0</TD><TD>Nanometrics Trillium 240 Single-Sided/ABALONES-4x4</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_7493168c00ab97b2995d1dc81e743f5a = L.map(
+                "map_7493168c00ab97b2995d1dc81e743f5a",
+                {
+                    center: [-9.5492125, 150.13458624999998],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_9feb1e171e538a32e4258d672686d1bd = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            var circle_marker_bc5ece79f6d359a9d00e457c97482c3e = L.circleMarker(
+                [-9.4667, 149.929504],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1c00e3", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            circle_marker_bc5ece79f6d359a9d00e457c97482c3e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZN <br> <b>Station:</b> I <br> <b>Dates: </b>2010/03/03 to 2011/01/27  <br><br><b>Depth: </b> -959 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZN_2010 <br><br> <b>Net name: </b> Papua Peninsula-Woodlark Rift Imaging Experiment <br><br> <b>Operator: </b>  Lamont Doherty Earth Observatory (LDEO), Columbia University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9aa386f847aeca43d7de238c00559b7c = L.marker(
+                [-9.4667, 149.929504],
+                {}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            var div_icon_53e5db2cb01f85ddf1b71d644f8c5056 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eI\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9aa386f847aeca43d7de238c00559b7c.setIcon(div_icon_53e5db2cb01f85ddf1b71d644f8c5056);
+        
+    
+            var circle_marker_55d29dd805f59b7a2e185a4ccb4c04d9 = L.circleMarker(
+                [-8.9998, 149.667694],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1c00e3", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            circle_marker_55d29dd805f59b7a2e185a4ccb4c04d9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZN <br> <b>Station:</b> H <br> <b>Dates: </b>2010/03/03 to 2011/01/27  <br><br><b>Depth: </b> -557 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZN_2010 <br><br> <b>Net name: </b> Papua Peninsula-Woodlark Rift Imaging Experiment <br><br> <b>Operator: </b>  Lamont Doherty Earth Observatory (LDEO), Columbia University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_51b0051afd67601c6d0c1ab8ba25cef9 = L.marker(
+                [-8.9998, 149.667694],
+                {}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            var div_icon_07da60d146d7ebb3d590aab6de39208a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eH\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_51b0051afd67601c6d0c1ab8ba25cef9.setIcon(div_icon_07da60d146d7ebb3d590aab6de39208a);
+        
+    
+            var circle_marker_2e845b170aaca42869981d16babac6ee = L.circleMarker(
+                [-8.8702, 149.933502],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1c00e3", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            circle_marker_2e845b170aaca42869981d16babac6ee.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZN <br> <b>Station:</b> J <br> <b>Dates: </b>2010/03/03 to 2011/01/28  <br><br><b>Depth: </b> -508 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZN_2010 <br><br> <b>Net name: </b> Papua Peninsula-Woodlark Rift Imaging Experiment <br><br> <b>Operator: </b>  Lamont Doherty Earth Observatory (LDEO), Columbia University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9b95ddec125b1fc96aabd9c2cbabcd03 = L.marker(
+                [-8.8702, 149.933502],
+                {}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            var div_icon_0a889bc0d61f6fece951bf554f7b99f7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eJ\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9b95ddec125b1fc96aabd9c2cbabcd03.setIcon(div_icon_0a889bc0d61f6fece951bf554f7b99f7);
+        
+    
+            var circle_marker_a39d39976afb07f83796f388d5f37eec = L.circleMarker(
+                [-9.9505, 150.200394],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1c00e3", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            circle_marker_a39d39976afb07f83796f388d5f37eec.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZN <br> <b>Station:</b> F <br> <b>Dates: </b>2010/03/02 to 2011/01/26  <br><br><b>Depth: </b> -1358 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZN_2010 <br><br> <b>Net name: </b> Papua Peninsula-Woodlark Rift Imaging Experiment <br><br> <b>Operator: </b>  Lamont Doherty Earth Observatory (LDEO), Columbia University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_99f57b0721f085a4c456221f9d7054ff = L.marker(
+                [-9.9505, 150.200394],
+                {}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            var div_icon_2595660db580d83aa71811e83ae0b1f9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eF\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_99f57b0721f085a4c456221f9d7054ff.setIcon(div_icon_2595660db580d83aa71811e83ae0b1f9);
+        
+    
+            var circle_marker_256ccc4b0ccc1cce48f9592f8b50ef07 = L.circleMarker(
+                [-9.3332, 149.666794],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1c00e3", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            circle_marker_256ccc4b0ccc1cce48f9592f8b50ef07.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZN <br> <b>Station:</b> G <br> <b>Dates: </b>2010/03/03 to 2011/01/27  <br><br><b>Depth: </b> -555 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZN_2010 <br><br> <b>Net name: </b> Papua Peninsula-Woodlark Rift Imaging Experiment <br><br> <b>Operator: </b>  Lamont Doherty Earth Observatory (LDEO), Columbia University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4c1de8b1485a93a193a9eac130a2be40 = L.marker(
+                [-9.3332, 149.666794],
+                {}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            var div_icon_a4b43eed65221c26684274a239644e87 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eG\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4c1de8b1485a93a193a9eac130a2be40.setIcon(div_icon_a4b43eed65221c26684274a239644e87);
+        
+    
+            var circle_marker_f70d7cf76db97e8060f2f2fb90899dd0 = L.circleMarker(
+                [-10.0805, 150.621307],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1c00e3", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            circle_marker_f70d7cf76db97e8060f2f2fb90899dd0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZN <br> <b>Station:</b> E <br> <b>Dates: </b>2010/03/02 to 2011/01/26  <br><br><b>Depth: </b> -1400 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZN_2010 <br><br> <b>Net name: </b> Papua Peninsula-Woodlark Rift Imaging Experiment <br><br> <b>Operator: </b>  Lamont Doherty Earth Observatory (LDEO), Columbia University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2c0e195ace7c3d88fc62e2cfe7593bbf = L.marker(
+                [-10.0805, 150.621307],
+                {}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            var div_icon_1646ca8b1dc8b381b950115e862878c9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eE\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2c0e195ace7c3d88fc62e2cfe7593bbf.setIcon(div_icon_1646ca8b1dc8b381b950115e862878c9);
+        
+    
+            var circle_marker_3b56cbc66c890bfccf686945a9a43a14 = L.circleMarker(
+                [-9.9434, 150.707001],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1c00e3", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            circle_marker_3b56cbc66c890bfccf686945a9a43a14.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZN <br> <b>Station:</b> D <br> <b>Dates: </b>2010/03/02 to 2011/01/26  <br><br><b>Depth: </b> -1040 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZN_2010 <br><br> <b>Net name: </b> Papua Peninsula-Woodlark Rift Imaging Experiment <br><br> <b>Operator: </b>  Lamont Doherty Earth Observatory (LDEO), Columbia University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0ab2bb75134fa2e6b5fb43b83ec1b09c = L.marker(
+                [-9.9434, 150.707001],
+                {}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            var div_icon_0ede614449f35b2cb90b1ad9020be70b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0ab2bb75134fa2e6b5fb43b83ec1b09c.setIcon(div_icon_0ede614449f35b2cb90b1ad9020be70b);
+        
+    
+            var circle_marker_62fe946bfdb1f73fd07ef5b1b63af171 = L.circleMarker(
+                [-9.7494, 150.350494],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1c00e3", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            circle_marker_62fe946bfdb1f73fd07ef5b1b63af171.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> ZN <br> <b>Station:</b> B <br> <b>Dates: </b>2010/03/02 to 2011/01/27  <br><br><b>Depth: </b> -1205 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/ZN_2010 <br><br> <b>Net name: </b> Papua Peninsula-Woodlark Rift Imaging Experiment <br><br> <b>Operator: </b>  Lamont Doherty Earth Observatory (LDEO), Columbia University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c512735f4312713282d6c556375eb6f6 = L.marker(
+                [-9.7494, 150.350494],
+                {}
+            ).addTo(map_7493168c00ab97b2995d1dc81e743f5a);
+        
+    
+            var div_icon_a9cc2e2ad2cbd36b0655b3e83ade1268 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eB\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c512735f4312713282d6c556375eb6f6.setIcon(div_icon_a9cc2e2ad2cbd36b0655b3e83ade1268);
+        
+    
+            map_7493168c00ab97b2995d1dc81e743f5a.fitBounds(
+                [[-10.0805, 149.666794], [-8.8702, 150.707001]],
+                {}
+            );
+        </script>
+
+</html>

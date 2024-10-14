@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_c2c24412f2efe31436b5e28d852df6f5 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network Z6: Meramex </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   GEOFON Program (GFZ-Potsdam, Germany)</p>
+		<p id="net_header", class="headerDates">OBS deployed from May 2004 to Oct 2004</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="/">/</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_c2c24412f2efe31436b5e28d852df6f5" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>Z6</TD><TD>OH03</TD><TD>2004/05/02</TD><TD>2004/10/02</TD><TD>-9.8368</TD><TD>110.0433</TD><TD>-1853</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>OS02</TD><TD>2004/05/02</TD><TD>2004/10/02</TD><TD>-9.1901</TD><TD>109.5366</TD><TD>-3135</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>OH14</TD><TD>2004/05/03</TD><TD>2004/10/03</TD><TD>-8.6346</TD><TD>110.3765</TD><TD>-1093</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>OH01</TD><TD>2004/05/02</TD><TD>2004/10/02</TD><TD>-8.4935</TD><TD>109.4506</TD><TD>-2213</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>OH05</TD><TD>2004/05/02</TD><TD>2004/10/03</TD><TD>-9.7629</TD><TD>111.1027</TD><TD>-2824</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>OH11</TD><TD>2004/05/03</TD><TD>2004/10/03</TD><TD>-9.0587</TD><TD>110.7899</TD><TD>-3224</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>OH10</TD><TD>2004/05/03</TD><TD>2004/10/03</TD><TD>-8.9728</TD><TD>110.3593</TD><TD>-1696</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>OH04</TD><TD>2004/05/02</TD><TD>2004/10/03</TD><TD>-9.8535</TD><TD>110.7715</TD><TD>-2908</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>OS06</TD><TD>2004/05/02</TD><TD>2004/10/02</TD><TD>-9.4519</TD><TD>111.2433</TD><TD>-2913</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>OH12</TD><TD>2004/05/03</TD><TD>2004/10/03</TD><TD>-9.0556</TD><TD>111.3758</TD><TD>-2474</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>OH13</TD><TD>2004/05/03</TD><TD>2004/10/03</TD><TD>-8.7687</TD><TD>111.0262</TD><TD>-1133</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>OS07</TD><TD>2004/05/02</TD><TD>2004/10/02</TD><TD>-9.5096</TD><TD>110.722</TD><TD>-987</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>OS09</TD><TD>2004/05/02</TD><TD>2004/10/02</TD><TD>-9.1522</TD><TD>110.0287</TD><TD>-3302</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z6</TD><TD>OS08</TD><TD>2004/05/02</TD><TD>2004/10/02</TD><TD>-9.4403</TD><TD>110.1685</TD><TD>-1224</TD><TD>BHE-BHN-BHZ (50.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>OH03 OH14 OH01 OH05 OH11 OH10 OH04 OH12 OH13</TD><TD>BHE</TD><TD>50.0</TD><TD>GFZ:Z62004:OBH/Kiel/g=2000</TD></TR><TR><TD>OS02 OS06 OS07 OS09 OS08</TD><TD>BHE</TD><TD>50.0</TD><TD>GFZ:Z62004:OBS/Kiel/g=2000</TD></TR><TR><TD>OH03 OH14 OH01 OH05 OH11 OH10 OH04 OH12 OH13</TD><TD>BHN</TD><TD>50.0</TD><TD>GFZ:Z62004:OBH/Kiel/g=2000</TD></TR><TR><TD>OS02 OS06 OS07 OS09 OS08</TD><TD>BHN</TD><TD>50.0</TD><TD>GFZ:Z62004:OBS/Kiel/g=2000</TD></TR><TR><TD>OH03 OH14 OH01 OH05 OH11 OH10 OH04 OH12 OH13</TD><TD>BHZ</TD><TD>50.0</TD><TD>GFZ:Z62004:OBH/Kiel/g=2000</TD></TR><TR><TD>OS02 OS06 OS07 OS09 OS08</TD><TD>BHZ</TD><TD>50.0</TD><TD>GFZ:Z62004:OBS/Kiel/g=2000</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_c2c24412f2efe31436b5e28d852df6f5 = L.map(
+                "map_c2c24412f2efe31436b5e28d852df6f5",
+                {
+                    center: [-9.22722857142857, 110.49963571428572],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_b46f1215d0bcc6e127d9c64ceca18030 = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var circle_marker_7970cf869b7d95b11db31ed1e321bd8c = L.circleMarker(
+                [-9.8368, 110.0433],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_7970cf869b7d95b11db31ed1e321bd8c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OH03 <br> <b>Dates: </b>2004/05/02 to 2004/10/02  <br><br><b>Depth: </b> -1853 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7c8ea60a2a98aa2ca744c6849b3f00c9 = L.marker(
+                [-9.8368, 110.0433],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_c456256bd6ac350fa500b1da7fc4dc33 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOH03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7c8ea60a2a98aa2ca744c6849b3f00c9.setIcon(div_icon_c456256bd6ac350fa500b1da7fc4dc33);
+        
+    
+            var circle_marker_b9c9f4fed20bf9062154b90ae8230f89 = L.circleMarker(
+                [-9.1901, 109.5366],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_b9c9f4fed20bf9062154b90ae8230f89.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OS02 <br> <b>Dates: </b>2004/05/02 to 2004/10/02  <br><br><b>Depth: </b> -3135 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_50ce02eb0b337154bcdc6ed137d632bb = L.marker(
+                [-9.1901, 109.5366],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_71c272aa872042dc92e6f95a9c0ca3be = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOS02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_50ce02eb0b337154bcdc6ed137d632bb.setIcon(div_icon_71c272aa872042dc92e6f95a9c0ca3be);
+        
+    
+            var circle_marker_2613c5e2a8600662aad3797187c82f9e = L.circleMarker(
+                [-8.6346, 110.3765],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_2613c5e2a8600662aad3797187c82f9e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OH14 <br> <b>Dates: </b>2004/05/03 to 2004/10/03  <br><br><b>Depth: </b> -1093 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_79b5ee1c46a33349cccd73d77da00564 = L.marker(
+                [-8.6346, 110.3765],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_44c754d993c404b885503db29b4f03ee = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOH14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_79b5ee1c46a33349cccd73d77da00564.setIcon(div_icon_44c754d993c404b885503db29b4f03ee);
+        
+    
+            var circle_marker_12adc3fb87855e3a254b9448a6296e9c = L.circleMarker(
+                [-8.4935, 109.4506],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_12adc3fb87855e3a254b9448a6296e9c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OH01 <br> <b>Dates: </b>2004/05/02 to 2004/10/02  <br><br><b>Depth: </b> -2213 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_29fbf2dc68e47321250399ca08da90b3 = L.marker(
+                [-8.4935, 109.4506],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_0d614bb7be99625120859c88584524e2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOH01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_29fbf2dc68e47321250399ca08da90b3.setIcon(div_icon_0d614bb7be99625120859c88584524e2);
+        
+    
+            var circle_marker_2ee6806521b55e5a8c1d878199a48c05 = L.circleMarker(
+                [-9.7629, 111.1027],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_2ee6806521b55e5a8c1d878199a48c05.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OH05 <br> <b>Dates: </b>2004/05/02 to 2004/10/03  <br><br><b>Depth: </b> -2824 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0c2efa82832d08be6b7c56ed7f34daa5 = L.marker(
+                [-9.7629, 111.1027],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_a77d7bbeea1df29a85c4c6797c4d0470 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOH05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0c2efa82832d08be6b7c56ed7f34daa5.setIcon(div_icon_a77d7bbeea1df29a85c4c6797c4d0470);
+        
+    
+            var circle_marker_4b22abe3ff3139fb53b66f49b9d7d386 = L.circleMarker(
+                [-9.0587, 110.7899],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_4b22abe3ff3139fb53b66f49b9d7d386.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OH11 <br> <b>Dates: </b>2004/05/03 to 2004/10/03  <br><br><b>Depth: </b> -3224 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e8d07d6d24ba347d5095ead94c42033e = L.marker(
+                [-9.0587, 110.7899],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_a3d4d06fdebb81cdfc4e7b397b6e5ab9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOH11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e8d07d6d24ba347d5095ead94c42033e.setIcon(div_icon_a3d4d06fdebb81cdfc4e7b397b6e5ab9);
+        
+    
+            var circle_marker_4a945c438938dd4ca0b2a585264c335a = L.circleMarker(
+                [-8.9728, 110.3593],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_4a945c438938dd4ca0b2a585264c335a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OH10 <br> <b>Dates: </b>2004/05/03 to 2004/10/03  <br><br><b>Depth: </b> -1696 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1f41307352c6adb02e3a22587375d959 = L.marker(
+                [-8.9728, 110.3593],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_363390f103b6a6a421ecfeb5a9daa4ae = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOH10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1f41307352c6adb02e3a22587375d959.setIcon(div_icon_363390f103b6a6a421ecfeb5a9daa4ae);
+        
+    
+            var circle_marker_189d659f53c6b8d15fc6edc0c0193559 = L.circleMarker(
+                [-9.8535, 110.7715],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_189d659f53c6b8d15fc6edc0c0193559.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OH04 <br> <b>Dates: </b>2004/05/02 to 2004/10/03  <br><br><b>Depth: </b> -2908 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_405290ae56ecde8f76fd2d2a8782403d = L.marker(
+                [-9.8535, 110.7715],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_73fcf967a8aad17d4a6351ad61790cef = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOH04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_405290ae56ecde8f76fd2d2a8782403d.setIcon(div_icon_73fcf967a8aad17d4a6351ad61790cef);
+        
+    
+            var circle_marker_101ae0b0d0d5189f965734614a37f4a0 = L.circleMarker(
+                [-9.4519, 111.2433],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_101ae0b0d0d5189f965734614a37f4a0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OS06 <br> <b>Dates: </b>2004/05/02 to 2004/10/02  <br><br><b>Depth: </b> -2913 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_66966656127b3c994d11859c78c59332 = L.marker(
+                [-9.4519, 111.2433],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_0c1393710a54f9caac7ac63792ff5dfb = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOS06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_66966656127b3c994d11859c78c59332.setIcon(div_icon_0c1393710a54f9caac7ac63792ff5dfb);
+        
+    
+            var circle_marker_70ee4ab30135479119e725b9c5697a3a = L.circleMarker(
+                [-9.0556, 111.3758],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_70ee4ab30135479119e725b9c5697a3a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OH12 <br> <b>Dates: </b>2004/05/03 to 2004/10/03  <br><br><b>Depth: </b> -2474 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2377c96791ced8710cdd5535aee15c4b = L.marker(
+                [-9.0556, 111.3758],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_aae8d11ef4ac284b32c441690e4e6e6b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOH12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2377c96791ced8710cdd5535aee15c4b.setIcon(div_icon_aae8d11ef4ac284b32c441690e4e6e6b);
+        
+    
+            var circle_marker_b9a3c5fce5a49fe615bb840d4edfa8c7 = L.circleMarker(
+                [-8.7687, 111.0262],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_b9a3c5fce5a49fe615bb840d4edfa8c7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OH13 <br> <b>Dates: </b>2004/05/03 to 2004/10/03  <br><br><b>Depth: </b> -1133 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_58999c9ba46a49bfcd9a089babf2f632 = L.marker(
+                [-8.7687, 111.0262],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_06fbb9be877c785e0dddda2e99e6ae08 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOH13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_58999c9ba46a49bfcd9a089babf2f632.setIcon(div_icon_06fbb9be877c785e0dddda2e99e6ae08);
+        
+    
+            var circle_marker_16337ae1dfa9d689ce4d51ee306fa905 = L.circleMarker(
+                [-9.5096, 110.722],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_16337ae1dfa9d689ce4d51ee306fa905.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OS07 <br> <b>Dates: </b>2004/05/02 to 2004/10/02  <br><br><b>Depth: </b> -987 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c5dd8d93ebf91318cbbec91f7b0205d8 = L.marker(
+                [-9.5096, 110.722],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_961f05580365c0c6deae46f1bdea83c2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOS07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c5dd8d93ebf91318cbbec91f7b0205d8.setIcon(div_icon_961f05580365c0c6deae46f1bdea83c2);
+        
+    
+            var circle_marker_4a89592ab112d94812e1f41ed2711837 = L.circleMarker(
+                [-9.1522, 110.0287],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_4a89592ab112d94812e1f41ed2711837.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OS09 <br> <b>Dates: </b>2004/05/02 to 2004/10/02  <br><br><b>Depth: </b> -3302 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_60707271ab7ccc46aa36486a353bb755 = L.marker(
+                [-9.1522, 110.0287],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_9abf94e7986922cc3f9f50fab728b9ca = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOS09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_60707271ab7ccc46aa36486a353bb755.setIcon(div_icon_9abf94e7986922cc3f9f50fab728b9ca);
+        
+    
+            var circle_marker_fda25e77ccce0c2ca4649961dc682e91 = L.circleMarker(
+                [-9.4403, 110.1685],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4eb100", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            circle_marker_fda25e77ccce0c2ca4649961dc682e91.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z6 <br> <b>Station:</b> OS08 <br> <b>Dates: </b>2004/05/02 to 2004/10/02  <br><br><b>Depth: </b> -1224 m <br> <br> <b>Channels:</b><br> BHE-BHN-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> Meramex <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d1453a2d7cb7bb4974b94c638a6e0cbd = L.marker(
+                [-9.4403, 110.1685],
+                {}
+            ).addTo(map_c2c24412f2efe31436b5e28d852df6f5);
+        
+    
+            var div_icon_0b36121a324b77daf7911f9299d5213b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOS08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d1453a2d7cb7bb4974b94c638a6e0cbd.setIcon(div_icon_0b36121a324b77daf7911f9299d5213b);
+        
+    
+            map_c2c24412f2efe31436b5e28d852df6f5.fitBounds(
+                [[-9.8535, 109.4506], [-8.4935, 111.3758]],
+                {}
+            );
+        </script>
+
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_5093988ffb8e14e34c3c4834429eeda8 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network TIARES: Unknown </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by  Unknown</p>
+		<p id="net_header", class="headerDates">OBS deployed from Feb 2009 to Jul 2010</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="Unknown">Unknown</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_5093988ffb8e14e34c3c4834429eeda8" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>TIARES</TD><TD>SOC1</TD><TD>2009/02/07</TD><TD>2010/07/01</TD><TD>-19.47</TD><TD>-148.0487</TD><TD>-4398</TD><TD></TD></TR><TR><TD>TIARES</TD><TD>SOC2</TD><TD>2009/02/08</TD><TD>2010/06/29</TD><TD>-20.9551</TD><TD>-146.4397</TD><TD>-4766</TD><TD></TD></TR><TR><TD>TIARES</TD><TD>SOC3</TD><TD>2009/02/09</TD><TD>2010/06/30</TD><TD>-19.9274</TD><TD>-146.0246</TD><TD>-4632</TD><TD></TD></TR><TR><TD>TIARES</TD><TD>SOC4</TD><TD>2009/02/09</TD><TD>2010/07/01</TD><TD>-18.425</TD><TD>-145.9866</TD><TD>-4457</TD><TD></TD></TR><TR><TD>TIARES</TD><TD>SOC5</TD><TD>2009/02/10</TD><TD>2010/06/30</TD><TD>-17.4999</TD><TD>-144.506</TD><TD>-4030</TD><TD></TD></TR><TR><TD>TIARES</TD><TD>SOC6</TD><TD>2009/02/12</TD><TD>2010/07/01</TD><TD>-18.8052</TD><TD>-142.2938</TD><TD>-4483</TD><TD></TD></TR><TR><TD>TIARES</TD><TD>SOC7</TD><TD>2009/02/11</TD><TD>2010/07/01</TD><TD>-19.9411</TD><TD>-142.6884</TD><TD>-4467</TD><TD></TD></TR><TR><TD>TIARES</TD><TD>SOC8</TD><TD>2009/02/12</TD><TD>2010/07/01</TD><TD>-20.9534</TD><TD>-143.7563</TD><TD>-4779</TD><TD></TD></TR><TR><TD>TIARES</TD><TD>SOC9</TD><TD>2009/02/13</TD><TD>2010/07/01</TD><TD>-22.1694</TD><TD>-144.6965</TD><TD>-4513</TD><TD></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_5093988ffb8e14e34c3c4834429eeda8 = L.map(
+                "map_5093988ffb8e14e34c3c4834429eeda8",
+                {
+                    center: [-19.794055555555556, -144.93784444444444],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_bc5c6482a227c0122b19a2e4b1f415be = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            var circle_marker_d0730eb1cefff8f5ef7716548b47b16f = L.circleMarker(
+                [-19.47, -148.0487],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#08f700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            circle_marker_d0730eb1cefff8f5ef7716548b47b16f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> TIARES <br> <b>Station:</b> SOC1 <br> <b>Dates: </b>2009/02/07 to 2010/07/01  <br><br><b>Depth: </b> -4398 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> Unknown <br><br> <b>Net name: </b> Unknown <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_232320f4979aad9c14b09fb422fe4cc3 = L.marker(
+                [-19.47, -148.0487],
+                {}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            var div_icon_6f34f35dbef385e061c15fe5b888a20a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSOC1\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_232320f4979aad9c14b09fb422fe4cc3.setIcon(div_icon_6f34f35dbef385e061c15fe5b888a20a);
+        
+    
+            var circle_marker_c148c57d2a84d68095be0ecce426afa7 = L.circleMarker(
+                [-20.9551, -146.4397],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#08f700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            circle_marker_c148c57d2a84d68095be0ecce426afa7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> TIARES <br> <b>Station:</b> SOC2 <br> <b>Dates: </b>2009/02/08 to 2010/06/29  <br><br><b>Depth: </b> -4766 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> Unknown <br><br> <b>Net name: </b> Unknown <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_727b58b4ee1b70927a6006ca871a9c24 = L.marker(
+                [-20.9551, -146.4397],
+                {}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            var div_icon_f59f5af738e63679fd91c75d9e953c73 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSOC2\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_727b58b4ee1b70927a6006ca871a9c24.setIcon(div_icon_f59f5af738e63679fd91c75d9e953c73);
+        
+    
+            var circle_marker_5256b96918e655769f723b42c5db133a = L.circleMarker(
+                [-19.9274, -146.0246],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#08f700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            circle_marker_5256b96918e655769f723b42c5db133a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> TIARES <br> <b>Station:</b> SOC3 <br> <b>Dates: </b>2009/02/09 to 2010/06/30  <br><br><b>Depth: </b> -4632 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> Unknown <br><br> <b>Net name: </b> Unknown <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a3746f978730f5839791999a0f78bfdb = L.marker(
+                [-19.9274, -146.0246],
+                {}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            var div_icon_cfeb9dd1f0a2f8632ba4b9d618823378 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSOC3\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a3746f978730f5839791999a0f78bfdb.setIcon(div_icon_cfeb9dd1f0a2f8632ba4b9d618823378);
+        
+    
+            var circle_marker_4863718a3d76a5b33b00f2a7507259d9 = L.circleMarker(
+                [-18.425, -145.9866],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#08f700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            circle_marker_4863718a3d76a5b33b00f2a7507259d9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> TIARES <br> <b>Station:</b> SOC4 <br> <b>Dates: </b>2009/02/09 to 2010/07/01  <br><br><b>Depth: </b> -4457 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> Unknown <br><br> <b>Net name: </b> Unknown <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6739036f70942a29b09452159e287a61 = L.marker(
+                [-18.425, -145.9866],
+                {}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            var div_icon_76e137f177cd908e3aea2c2244a5df73 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSOC4\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6739036f70942a29b09452159e287a61.setIcon(div_icon_76e137f177cd908e3aea2c2244a5df73);
+        
+    
+            var circle_marker_54833f89a84d429acfcdd614e5d58fb3 = L.circleMarker(
+                [-17.4999, -144.506],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#08f700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            circle_marker_54833f89a84d429acfcdd614e5d58fb3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> TIARES <br> <b>Station:</b> SOC5 <br> <b>Dates: </b>2009/02/10 to 2010/06/30  <br><br><b>Depth: </b> -4030 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> Unknown <br><br> <b>Net name: </b> Unknown <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6bd35284703f1e62cd587e10ac03c691 = L.marker(
+                [-17.4999, -144.506],
+                {}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            var div_icon_7ae6b2c185e45e090573fc3109796a29 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSOC5\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6bd35284703f1e62cd587e10ac03c691.setIcon(div_icon_7ae6b2c185e45e090573fc3109796a29);
+        
+    
+            var circle_marker_f7edb822deba4c98c9cf97151dd17807 = L.circleMarker(
+                [-18.8052, -142.2938],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#08f700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            circle_marker_f7edb822deba4c98c9cf97151dd17807.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> TIARES <br> <b>Station:</b> SOC6 <br> <b>Dates: </b>2009/02/12 to 2010/07/01  <br><br><b>Depth: </b> -4483 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> Unknown <br><br> <b>Net name: </b> Unknown <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b0a912aeafb8c50421d49f7e0a00ee9c = L.marker(
+                [-18.8052, -142.2938],
+                {}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            var div_icon_fcc0531c17d24943b932405051f80c76 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSOC6\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b0a912aeafb8c50421d49f7e0a00ee9c.setIcon(div_icon_fcc0531c17d24943b932405051f80c76);
+        
+    
+            var circle_marker_bd9501c8ccc2a2f8081155ed7e8573a4 = L.circleMarker(
+                [-19.9411, -142.6884],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#08f700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            circle_marker_bd9501c8ccc2a2f8081155ed7e8573a4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> TIARES <br> <b>Station:</b> SOC7 <br> <b>Dates: </b>2009/02/11 to 2010/07/01  <br><br><b>Depth: </b> -4467 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> Unknown <br><br> <b>Net name: </b> Unknown <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_886858f53ba947bda177b7a07881f436 = L.marker(
+                [-19.9411, -142.6884],
+                {}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            var div_icon_fde6299d56d31d01e53c2214d8286145 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSOC7\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_886858f53ba947bda177b7a07881f436.setIcon(div_icon_fde6299d56d31d01e53c2214d8286145);
+        
+    
+            var circle_marker_ef3f9a757642463d7ebfe80beb297c58 = L.circleMarker(
+                [-20.9534, -143.7563],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#08f700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            circle_marker_ef3f9a757642463d7ebfe80beb297c58.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> TIARES <br> <b>Station:</b> SOC8 <br> <b>Dates: </b>2009/02/12 to 2010/07/01  <br><br><b>Depth: </b> -4779 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> Unknown <br><br> <b>Net name: </b> Unknown <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4ccb824e916986bb1bc36684da96fdda = L.marker(
+                [-20.9534, -143.7563],
+                {}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            var div_icon_71702eb601115d8076218b95a8faab09 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSOC8\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4ccb824e916986bb1bc36684da96fdda.setIcon(div_icon_71702eb601115d8076218b95a8faab09);
+        
+    
+            var circle_marker_101ae6d5c47e270c630ef2c92c681eab = L.circleMarker(
+                [-22.1694, -144.6965],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#08f700", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            circle_marker_101ae6d5c47e270c630ef2c92c681eab.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> TIARES <br> <b>Station:</b> SOC9 <br> <b>Dates: </b>2009/02/13 to 2010/07/01  <br><br><b>Depth: </b> -4513 m <br> <br> <b>Channels:</b><br>  <br><br> <b>DOI: </b> Unknown <br><br> <b>Net name: </b> Unknown <br><br> <b>Operator: </b> Unknown</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f794d1a457e94f57d7e283350301a52a = L.marker(
+                [-22.1694, -144.6965],
+                {}
+            ).addTo(map_5093988ffb8e14e34c3c4834429eeda8);
+        
+    
+            var div_icon_227cce24a1a601db4f8fba0cc1a40c34 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eSOC9\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f794d1a457e94f57d7e283350301a52a.setIcon(div_icon_227cce24a1a601db4f8fba0cc1a40c34);
+        
+    
+            map_5093988ffb8e14e34c3c4834429eeda8.fitBounds(
+                [[-22.1694, -148.0487], [-17.4999, -142.2938]],
+                {}
+            );
+        </script>
+
+</html>

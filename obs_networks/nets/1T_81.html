@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_7c5eceb5211a1f62f00e80280cf81ba6 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network 1T: Temporal seismological network Mayotte </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </p>
+		<p id="net_header", class="headerDates">OBS deployed from Feb 2019 to Apr 2021</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.15778/resif.1t2018">https://doi.org/10.15778/resif.1t2018</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_7c5eceb5211a1f62f00e80280cf81ba6" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>1T</TD><TD>MOSG</TD><TD>2020/05/12</TD><TD>2020/10/07</TD><TD>-13.02525</TD><TD>45.517</TD><TD>-2533</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOBH</TD><TD>2020/10/14</TD><TD>2021/01/25</TD><TD>-12.8415</TD><TD>45.62295</TD><TD>-3085</TD><TD>EH1-EH2-EH3-HDH (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF4B</TD><TD>2019/06/15</TD><TD>2019/07/15</TD><TD>-12.781667</TD><TD>45.596667</TD><TD>-2978</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF2D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.71178</TD><TD>45.38139</TD><TD>-1196</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF11D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.77868</TD><TD>45.50055</TD><TD>-2473</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF9C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.92225</TD><TD>45.76637</TD><TD>-3376</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF13C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.78512</TD><TD>45.68285</TD><TD>-3406</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF19D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.87354</TD><TD>45.56669</TD><TD>-2709</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF7A</TD><TD>2019/05/14</TD><TD>2019/06/09</TD><TD>-12.870061</TD><TD>45.680978</TD><TD>-3376</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF1B</TD><TD>2019/06/15</TD><TD>2019/07/15</TD><TD>-12.7724</TD><TD>45.4081</TD><TD>-1693</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOCH</TD><TD>2020/10/12</TD><TD>2021/01/25</TD><TD>-12.7842</TD><TD>45.411</TD><TD>-1722</TD><TD>EH1-EH2-EH3-HDH (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF10C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.79452</TD><TD>45.56457</TD><TD>-2710</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF2A</TD><TD>2019/05/14</TD><TD>2019/06/09</TD><TD>-12.711134</TD><TD>45.383862</TD><TD>-1222</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF7B</TD><TD>2019/06/13</TD><TD>2019/07/15</TD><TD>-12.872333</TD><TD>45.687333</TD><TD>-3364</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF17C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.7015</TD><TD>45.56785</TD><TD>-3100</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF5A</TD><TD>2019/05/14</TD><TD>2019/06/09</TD><TD>-12.879123</TD><TD>45.477667</TD><TD>-2302</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF1C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.77219</TD><TD>45.40935</TD><TD>-1693</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF1D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.77157</TD><TD>45.4078</TD><TD>-1690</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF2C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.71142</TD><TD>45.38428</TD><TD>-1218</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOSH</TD><TD>2020/10/16</TD><TD>2021/01/26</TD><TD>-13.02482</TD><TD>45.45595</TD><TD>-2519</TD><TD>EH1-EH2-EH3-HDH (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOOH</TD><TD>2020/10/07</TD><TD>2020/10/20</TD><TD>-12.907085</TD><TD>45.2981</TD><TD>-1260</TD><TD>HDH-HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOCA</TD><TD>2019/05/11</TD><TD>2019/10/12</TD><TD>-12.783667</TD><TD>45.411333</TD><TD>-1681</TD><TD>EDH-EH1-EH2-EH3 (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOFA</TD><TD>2019/05/12</TD><TD>2019/09/30</TD><TD>-12.872912</TD><TD>45.567048</TD><TD>-2670</TD><TD>EDH-EH1-EH2-EH3 (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF10D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.79435</TD><TD>45.56367</TD><TD>-2701</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF5D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.87924</TD><TD>45.47746</TD><TD>-2287</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF3A</TD><TD>2019/05/14</TD><TD>2019/06/09</TD><TD>-12.702116</TD><TD>45.449747</TD><TD>-1928</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MODG</TD><TD>2020/05/12</TD><TD>2020/10/07</TD><TD>-12.67089</TD><TD>45.59301</TD><TD>-3258</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF14C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.81822</TD><TD>45.76</TD><TD>-3529</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MODI</TD><TD>2021/02/05</TD><TD>2021/04/11</TD><TD>-12.6709</TD><TD>45.59175</TD><TD>-3255</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF5C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.879</TD><TD>45.47808</TD><TD>-2288</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MODF</TD><TD>2019/12/15</TD><TD>2020/05/10</TD><TD>-12.67105</TD><TD>45.59289</TD><TD>-3270</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF13D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.78462</TD><TD>45.68401</TD><TD>-3423</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOBG</TD><TD>2020/05/12</TD><TD>2020/10/06</TD><TD>-12.8425</TD><TD>45.62167</TD><TD>-3114</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF3D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.70299</TD><TD>45.44838</TD><TD>-1932</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF18D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.97428</TD><TD>45.6412</TD><TD>-3298</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF1A</TD><TD>2019/05/14</TD><TD>2019/06/09</TD><TD>-12.772443</TD><TD>45.408091</TD><TD>-1688</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOVA</TD><TD>2019/05/12</TD><TD>2019/06/15</TD><TD>-12.922038</TD><TD>45.76537</TD><TD>-3353</TD><TD>EDH-EH1-EH2-EH3 (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF3B</TD><TD>2019/05/14</TD><TD>2019/09/01</TD><TD>-12.781784</TD><TD>45.59749</TD><TD>-2980</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF9D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.92316</TD><TD>45.76581</TD><TD>-3394</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOSF</TD><TD>2019/12/15</TD><TD>2020/05/11</TD><TD>-13.0179</TD><TD>45.4585</TD><TD>-2670</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOSE</TD><TD>2019/02/24</TD><TD>2019/05/10</TD><TD>-12.9625</TD><TD>45.8199</TD><TD>-3520</TD><TD>EDH-EH1-EH2-EH3 (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF16C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.66097</TD><TD>45.53612</TD><TD>-2757</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF6C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.89088</TD><TD>45.35193</TD><TD>-1731</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOBI</TD><TD>2021/02/06</TD><TD>2021/04/07</TD><TD>-12.83334</TD><TD>45.61667</TD><TD>-3012</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MODA</TD><TD>2019/05/13</TD><TD>2019/09/29</TD><TD>-12.671048</TD><TD>45.592888</TD><TD>-3270</TD><TD>EDH-EH1-EH2-EH3 (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF2B</TD><TD>2019/06/15</TD><TD>2019/07/15</TD><TD>-12.711333</TD><TD>45.384167</TD><TD>-1224</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF14E</TD><TD>2019/11/25</TD><TD>2020/02/10</TD><TD>-12.81854</TD><TD>45.76006</TD><TD>-3530</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOAG</TD><TD>2020/05/12</TD><TD>2020/10/06</TD><TD>-12.95745</TD><TD>45.81827</TD><TD>-3516</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOSO</TD><TD>2019/02/25</TD><TD>2019/05/10</TD><TD>-13.0179</TD><TD>45.4585</TD><TD>-2530</TD><TD>EDH-EH1-EH2-EH3 (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF16D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.66074</TD><TD>45.53518</TD><TD>-2753</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF12C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.694</TD><TD>45.60967</TD><TD>-3243</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF6A</TD><TD>2019/05/14</TD><TD>2019/06/09</TD><TD>-12.891416</TD><TD>45.352222</TD><TD>-1731</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOAI</TD><TD>2021/02/05</TD><TD>2021/04/08</TD><TD>-12.96217</TD><TD>45.81955</TD><TD>-3524</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF7D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.87198</TD><TD>45.68192</TD><TD>-3371</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF10E</TD><TD>2019/11/25</TD><TD>2020/02/28</TD><TD>-12.79435</TD><TD>45.56367</TD><TD>-2701</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOCF</TD><TD>2019/12/15</TD><TD>2020/05/09</TD><TD>-12.7837</TD><TD>45.4113</TD><TD>-1720</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF5B</TD><TD>2019/06/13</TD><TD>2019/07/15</TD><TD>-12.879</TD><TD>45.477833</TD><TD>-2289</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOCI</TD><TD>2021/02/05</TD><TD>2021/04/09</TD><TD>-12.7844</TD><TD>45.41142</TD><TD>-1720</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MONN</TD><TD>2019/02/24</TD><TD>2019/05/10</TD><TD>-12.4932</TD><TD>45.5576</TD><TD>-3180</TD><TD>EDH-EH1-EH2-EH3 (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF6B</TD><TD>2019/06/13</TD><TD>2019/07/15</TD><TD>-12.890167</TD><TD>45.352667</TD><TD>-1732</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF15D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.81181</TD><TD>45.43043</TD><TD>-1821</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF6D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.89075</TD><TD>45.35248</TD><TD>-1734</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOSA</TD><TD>2019/05/13</TD><TD>2019/09/30</TD><TD>-12.99512</TD><TD>45.413807</TD><TD>-2194</TD><TD>EDH-EH1-EH2-EH3 (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MONG</TD><TD>2020/05/12</TD><TD>2020/10/07</TD><TD>-12.59565</TD><TD>45.40927</TD><TD>-2012</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF4A</TD><TD>2019/05/14</TD><TD>2019/06/09</TD><TD>-12.781784</TD><TD>45.59749</TD><TD>-2980</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MODH</TD><TD>2020/10/14</TD><TD>2021/01/25</TD><TD>-12.6707</TD><TD>45.5928</TD><TD>-3250</TD><TD>EH1-EH2-EH3-HDH (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF11C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.77933</TD><TD>45.50202</TD><TD>-2475</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOCG</TD><TD>2020/05/13</TD><TD>2020/10/07</TD><TD>-12.783611</TD><TD>45.41127</TD><TD>-1721</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF14D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.81854</TD><TD>45.76006</TD><TD>-3530</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MONE</TD><TD>2019/02/24</TD><TD>2019/05/10</TD><TD>-12.6652</TD><TD>45.8037</TD><TD>-3510</TD><TD>EDH-EH1-EH2-EH3 (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF8B</TD><TD>2019/06/14</TD><TD>2019/07/15</TD><TD>-12.980667</TD><TD>45.686833</TD><TD>-3431</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF18C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.97443</TD><TD>45.64153</TD><TD>-3298</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOAH</TD><TD>2020/10/15</TD><TD>2021/01/26</TD><TD>-12.9567</TD><TD>45.8192</TD><TD>-3514</TD><TD>EH1-EH2-EH3-HDH (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MONI</TD><TD>2021/02/05</TD><TD>2021/04/11</TD><TD>-12.5957</TD><TD>45.40913</TD><TD>-2019</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF8A</TD><TD>2019/05/14</TD><TD>2019/06/09</TD><TD>-12.980224</TD><TD>45.686671</TD><TD>-3428</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF15C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.81303</TD><TD>45.43117</TD><TD>-1822</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF12D</TD><TD>2019/10/26</TD><TD>2019/11/25</TD><TD>-12.6946</TD><TD>45.61</TD><TD>-3244</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MONA</TD><TD>2019/05/13</TD><TD>2019/09/29</TD><TD>-12.59566</TD><TD>45.409123</TD><TD>-2015</TD><TD>EDH-EH1-EH2-EH3 (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF3C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.70217</TD><TD>45.45017</TD><TD>-1935</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MONO</TD><TD>2019/02/23</TD><TD>2019/05/10</TD><TD>-12.6513</TD><TD>45.3919</TD><TD>-1600</TD><TD>EDH-EH1-EH2-EH3 (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MONH</TD><TD>2020/10/14</TD><TD>2021/01/25</TD><TD>-12.5958</TD><TD>45.409</TD><TD>-2017</TD><TD>EH1-EH2-EH3-HDH (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOCE</TD><TD>2019/02/24</TD><TD>2019/05/10</TD><TD>-12.8074</TD><TD>45.6343</TD><TD>-3120</TD><TD>EDH-EH1-EH2-EH3 (125.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF7C</TD><TD>2019/10/01</TD><TD>2019/10/29</TD><TD>-12.87243</TD><TD>45.68403</TD><TD>-3350</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOAF</TD><TD>2019/12/15</TD><TD>2020/05/10</TD><TD>-12.9625</TD><TD>45.8199</TD><TD>-3520</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>IF2E</TD><TD>2019/11/25</TD><TD>2020/02/28</TD><TD>-12.71178</TD><TD>45.38139</TD><TD>-1196</TD><TD>DDH-DH1-DH2-DHZ (250.0 Hz) <br></TD></TR><TR><TD>1T</TD><TD>MOSI</TD><TD>2021/02/05</TD><TD>2021/04/10</TD><TD>-13.02035</TD><TD>45.45827</TD><TD>-2531</TD><TD>BDH-SH1-SH2-SH3 (62.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>MOSG MODG MODI MODF MOBG MOSF MOBI MOAG MOAI MOCF MOCI MONG MOCG MONI MOAF MOSI</TD><TD>BDH</TD><TD>62.0</TD><TD>HiTech HTI-90-U hydrophone with integrated preamp, serial number 220xxx, 0.05-2500 Hz</TD></TR><TR><TD>IF4B IF2D IF11D IF9C IF13C IF19D IF7A IF1B IF10C IF2A IF7B IF17C IF5A IF1C IF1D IF2C IF10D IF5D IF3A IF14C IF5C IF13D IF3D IF18D IF1A IF3B IF9D IF16C IF6C IF2B IF14E IF16D IF12C IF6A IF7D IF10E IF5B IF6B IF15D IF6D IF4A IF11C IF14D IF8B IF18C IF8A IF15C IF12D IF3C IF7C IF2E</TD><TD>DDH</TD><TD>250.0</TD><TD>HiTech HTI-90-U hydrophone with integrated preamp, 0.05-2500 Hz</TD></TR><TR><TD>IF4B IF2D IF11D IF9C IF13C IF19D IF7A IF1B IF10C IF2A IF7B IF17C IF5A IF1C IF1D IF2C IF10D IF5D IF3A IF14C IF5C IF13D IF3D IF18D IF1A IF3B IF9D IF16C IF6C IF2B IF14E IF16D IF12C IF6A IF7D IF10E IF5B IF6B IF15D IF6D IF4A IF11C IF14D IF8B IF18C IF8A IF15C IF12D IF3C IF7C IF2E</TD><TD>DH1</TD><TD>250.0</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone</TD></TR><TR><TD>IF4B IF2D IF11D IF9C IF13C IF19D IF7A IF1B IF10C IF2A IF7B IF17C IF5A IF1C IF1D IF2C IF10D IF5D IF3A IF14C IF5C IF13D IF3D IF18D IF1A IF3B IF9D IF16C IF6C IF2B IF14E IF16D IF12C IF6A IF7D IF10E IF5B IF6B IF15D IF6D IF4A IF11C IF14D IF8B IF18C IF8A IF15C IF12D IF3C IF7C IF2E</TD><TD>DH2</TD><TD>250.0</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone</TD></TR><TR><TD>IF4B IF2D IF11D IF9C IF13C IF19D IF7A IF1B IF10C IF2A IF7B IF17C IF5A IF1C IF1D IF2C IF10D IF5D IF3A IF14C IF5C IF13D IF3D IF18D IF1A IF3B IF9D IF16C IF6C IF2B IF14E IF16D IF12C IF6A IF7D IF10E IF5B IF6B IF15D IF6D IF4A IF11C IF14D IF8B IF18C IF8A IF15C IF12D IF3C IF7C IF2E</TD><TD>DHZ</TD><TD>250.0</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone</TD></TR><TR><TD>MOCA MOFA MOVA MOSE MODA MOSO MONN MOSA MONE MONA MONO MOCE</TD><TD>EDH</TD><TD>125.0</TD><TD>HiTech HTI-90-U hydrophone with integrated preamp, 0.05-2500 Hz</TD></TR><TR><TD>MOBH MOCH MOSH MOCA MOFA MOVA MOSE MODA MOSO MONN MOSA MODH MONE MOAH MONA MONO MONH MOCE</TD><TD>EH1</TD><TD>125.0</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone</TD></TR><TR><TD>MOBH MOCH MOSH MOCA MOFA MOVA MOSE MODA MOSO MONN MOSA MODH MONE MOAH MONA MONO MONH MOCE</TD><TD>EH2</TD><TD>125.0</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone</TD></TR><TR><TD>MOBH MOCH MOSH MOCA MOFA MOVA MOSE MODA MOSO MONN MOSA MODH MONE MOAH MONA MONO MONH MOCE</TD><TD>EH3</TD><TD>125.0</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone</TD></TR><TR><TD>MOOH</TD><TD>HDH</TD><TD>125.0</TD><TD>DPG,Differential Pressure Gauge,Differential Press</TD></TR><TR><TD>MOBH MOCH MOSH MODH MOAH MONH</TD><TD>HDH</TD><TD>125.0</TD><TD>HiTech HTI-90-U hydrophone with integrated preamp, serial number 220xxx, 0.05-2500 Hz</TD></TR><TR><TD>MOOH</TD><TD>HH1</TD><TD>125.0</TD><TD>Trillium T240 (single-sided),Trillium T240 single-</TD></TR><TR><TD>MOOH</TD><TD>HH2</TD><TD>125.0</TD><TD>Trillium T240 (single-sided),Trillium T240 single-</TD></TR><TR><TD>MOOH</TD><TD>HHZ</TD><TD>125.0</TD><TD>Trillium T240 (single-sided),Trillium T240 single-</TD></TR><TR><TD>MOSG MODG MODI MODF MOBG MOSF MOBI MOAG MOAI MOCF MOCI MONG MOCG MONI MOAF MOSI</TD><TD>SH1</TD><TD>62.0</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone</TD></TR><TR><TD>MOSG MODG MODI MODF MOBG MOSF MOBI MOAG MOAI MOCF MOCI MONG MOCG MONI MOAF MOSI</TD><TD>SH2</TD><TD>62.0</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone</TD></TR><TR><TD>MOSG MODG MODI MODF MOBG MOSF MOBI MOAG MOAI MOCF MOCI MONG MOCG MONI MOAF MOSI</TD><TD>SH3</TD><TD>62.0</TD><TD>Sercel L-28LB 4.5 Hz 3C geophone</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_7c5eceb5211a1f62f00e80280cf81ba6 = L.map(
+                "map_7c5eceb5211a1f62f00e80280cf81ba6",
+                {
+                    center: [-12.810378174418606, 45.545980197674425],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_675909241679e49d6a7edcdccf5a9fec = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var circle_marker_ad170c8c25d433619459d8da0bc1ac5b = L.circleMarker(
+                [-13.02525, 45.517],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_ad170c8c25d433619459d8da0bc1ac5b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOSG <br> <b>Dates: </b>2020/05/12 to 2020/10/07  <br><br><b>Depth: </b> -2533 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_462c01c79e656b69c85777b42080fb90 = L.marker(
+                [-13.02525, 45.517],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_5a290467aef94d9b55160e8d7cf4fefc = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOSG\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_462c01c79e656b69c85777b42080fb90.setIcon(div_icon_5a290467aef94d9b55160e8d7cf4fefc);
+        
+    
+            var circle_marker_19eea8cb5ff3243dc94b395b0405923b = L.circleMarker(
+                [-12.8415, 45.62295],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_19eea8cb5ff3243dc94b395b0405923b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOBH <br> <b>Dates: </b>2020/10/14 to 2021/01/25  <br><br><b>Depth: </b> -3085 m <br> <br> <b>Channels:</b><br> EH1-EH2-EH3-HDH (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3a8e8c8941a3bcf2a520392995908b54 = L.marker(
+                [-12.8415, 45.62295],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_83c9c12e1359296e0a9c897ae43a2173 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOBH\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3a8e8c8941a3bcf2a520392995908b54.setIcon(div_icon_83c9c12e1359296e0a9c897ae43a2173);
+        
+    
+            var circle_marker_ad02b3f7a19052d281bb9490138880b8 = L.circleMarker(
+                [-12.781667, 45.596667],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_ad02b3f7a19052d281bb9490138880b8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF4B <br> <b>Dates: </b>2019/06/15 to 2019/07/15  <br><br><b>Depth: </b> -2978 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_97e00086fcbeac6c68516063c44b38d3 = L.marker(
+                [-12.781667, 45.596667],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_706eb1f1cf74654aefe9d3925a539781 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF4B\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_97e00086fcbeac6c68516063c44b38d3.setIcon(div_icon_706eb1f1cf74654aefe9d3925a539781);
+        
+    
+            var circle_marker_0b0734f6255df895f6cf091ee62dcd05 = L.circleMarker(
+                [-12.71178, 45.38139],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_0b0734f6255df895f6cf091ee62dcd05.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF2D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -1196 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f3675857c9fad31a2787b7245d7cd2a9 = L.marker(
+                [-12.71178, 45.38139],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_550ec9dba5d0bd5f8174cbc8411f4646 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF2D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f3675857c9fad31a2787b7245d7cd2a9.setIcon(div_icon_550ec9dba5d0bd5f8174cbc8411f4646);
+        
+    
+            var circle_marker_48f0ae696ed776dc01f2d3e6e26757d9 = L.circleMarker(
+                [-12.77868, 45.50055],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_48f0ae696ed776dc01f2d3e6e26757d9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF11D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -2473 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e19f8e0ac96b908bed2737464f308d86 = L.marker(
+                [-12.77868, 45.50055],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_785218e4e3aea0d75f26ed636a7eebcb = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF11D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e19f8e0ac96b908bed2737464f308d86.setIcon(div_icon_785218e4e3aea0d75f26ed636a7eebcb);
+        
+    
+            var circle_marker_f292edb629402fa5a4347dfc73fe7693 = L.circleMarker(
+                [-12.92225, 45.76637],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_f292edb629402fa5a4347dfc73fe7693.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF9C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -3376 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6bd8ffca0eae31d236fc9af5f2c50188 = L.marker(
+                [-12.92225, 45.76637],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_037e53076bf3608f9455c9d33019a1fe = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF9C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6bd8ffca0eae31d236fc9af5f2c50188.setIcon(div_icon_037e53076bf3608f9455c9d33019a1fe);
+        
+    
+            var circle_marker_b84a075e3fb9e6047a0c8c779339ad0d = L.circleMarker(
+                [-12.78512, 45.68285],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_b84a075e3fb9e6047a0c8c779339ad0d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF13C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -3406 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1051141f193ff2933a7a73d37c38f74e = L.marker(
+                [-12.78512, 45.68285],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_3c6153a52251a424c873b86f9dd7abdd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF13C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1051141f193ff2933a7a73d37c38f74e.setIcon(div_icon_3c6153a52251a424c873b86f9dd7abdd);
+        
+    
+            var circle_marker_6762b40ba0f36da6f8d6d7fe3e18ebba = L.circleMarker(
+                [-12.87354, 45.56669],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_6762b40ba0f36da6f8d6d7fe3e18ebba.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF19D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -2709 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_419b37430d74925155410f79bdbc0c68 = L.marker(
+                [-12.87354, 45.56669],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_70ae9a383a58fc0b6116841a839905e1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF19D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_419b37430d74925155410f79bdbc0c68.setIcon(div_icon_70ae9a383a58fc0b6116841a839905e1);
+        
+    
+            var circle_marker_d10c99fd774bbfcb341253e6f75959be = L.circleMarker(
+                [-12.870061, 45.680978],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_d10c99fd774bbfcb341253e6f75959be.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF7A <br> <b>Dates: </b>2019/05/14 to 2019/06/09  <br><br><b>Depth: </b> -3376 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_57bd9ade160f59d622ca1c136fbde754 = L.marker(
+                [-12.870061, 45.680978],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_5c40656a71d41c0f406873541d2efd1c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF7A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_57bd9ade160f59d622ca1c136fbde754.setIcon(div_icon_5c40656a71d41c0f406873541d2efd1c);
+        
+    
+            var circle_marker_9e63703f0e6c51adb12f83b268568fb7 = L.circleMarker(
+                [-12.7724, 45.4081],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_9e63703f0e6c51adb12f83b268568fb7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF1B <br> <b>Dates: </b>2019/06/15 to 2019/07/15  <br><br><b>Depth: </b> -1693 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a95d3f46b4c082d1041d42ecb66f2eb7 = L.marker(
+                [-12.7724, 45.4081],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_d0a33e14fd165c42594a29bc67836f62 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF1B\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a95d3f46b4c082d1041d42ecb66f2eb7.setIcon(div_icon_d0a33e14fd165c42594a29bc67836f62);
+        
+    
+            var circle_marker_efd5e10be7b41ad9035cb1f617c2200d = L.circleMarker(
+                [-12.7842, 45.411],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_efd5e10be7b41ad9035cb1f617c2200d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOCH <br> <b>Dates: </b>2020/10/12 to 2021/01/25  <br><br><b>Depth: </b> -1722 m <br> <br> <b>Channels:</b><br> EH1-EH2-EH3-HDH (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_366349237243715314d6dea5972ef5ab = L.marker(
+                [-12.7842, 45.411],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_dc88c83796a65910aeb9dfd02e32a21c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOCH\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_366349237243715314d6dea5972ef5ab.setIcon(div_icon_dc88c83796a65910aeb9dfd02e32a21c);
+        
+    
+            var circle_marker_5c223180de5189661f0859884552172d = L.circleMarker(
+                [-12.79452, 45.56457],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_5c223180de5189661f0859884552172d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF10C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -2710 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_05ae2df918a55b4fbf650ecc83b9c5e0 = L.marker(
+                [-12.79452, 45.56457],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_1d7f298dc2f0758aeba1d505e55d8387 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF10C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_05ae2df918a55b4fbf650ecc83b9c5e0.setIcon(div_icon_1d7f298dc2f0758aeba1d505e55d8387);
+        
+    
+            var circle_marker_638002e0109dd49097f99a38726ea6dc = L.circleMarker(
+                [-12.711134, 45.383862],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_638002e0109dd49097f99a38726ea6dc.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF2A <br> <b>Dates: </b>2019/05/14 to 2019/06/09  <br><br><b>Depth: </b> -1222 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9b92d9474d0a92d0da1cf8813eadf505 = L.marker(
+                [-12.711134, 45.383862],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_8d9f2d5694a4e5befd1bacf6cde8bf4e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF2A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9b92d9474d0a92d0da1cf8813eadf505.setIcon(div_icon_8d9f2d5694a4e5befd1bacf6cde8bf4e);
+        
+    
+            var circle_marker_ab9414bf89a0aeed6b3326b54f802fe3 = L.circleMarker(
+                [-12.872333, 45.687333],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_ab9414bf89a0aeed6b3326b54f802fe3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF7B <br> <b>Dates: </b>2019/06/13 to 2019/07/15  <br><br><b>Depth: </b> -3364 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_28a0fe36bad6d36c8feea3a90314c2b4 = L.marker(
+                [-12.872333, 45.687333],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_5ec854873b465a47a755599fdf39e359 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF7B\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_28a0fe36bad6d36c8feea3a90314c2b4.setIcon(div_icon_5ec854873b465a47a755599fdf39e359);
+        
+    
+            var circle_marker_2ace4b1a5f628fb5927bd684d59fcfdb = L.circleMarker(
+                [-12.7015, 45.56785],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_2ace4b1a5f628fb5927bd684d59fcfdb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF17C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -3100 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_536eb305e7fcb7aedc15989f9388743a = L.marker(
+                [-12.7015, 45.56785],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_d1e91ab691b75763ed164ba61b9881d5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF17C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_536eb305e7fcb7aedc15989f9388743a.setIcon(div_icon_d1e91ab691b75763ed164ba61b9881d5);
+        
+    
+            var circle_marker_b928e609b2ebc4b0dbfcee8b31d9b0a8 = L.circleMarker(
+                [-12.879123, 45.477667],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_b928e609b2ebc4b0dbfcee8b31d9b0a8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF5A <br> <b>Dates: </b>2019/05/14 to 2019/06/09  <br><br><b>Depth: </b> -2302 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cba026c989572f70caf8d52ff2169840 = L.marker(
+                [-12.879123, 45.477667],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_4b7a4bd163c45d02785cb55a4f52f114 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF5A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cba026c989572f70caf8d52ff2169840.setIcon(div_icon_4b7a4bd163c45d02785cb55a4f52f114);
+        
+    
+            var circle_marker_a2d528ea8eba42c8744ba9effdc836a5 = L.circleMarker(
+                [-12.77219, 45.40935],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_a2d528ea8eba42c8744ba9effdc836a5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF1C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -1693 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6366ccf9395609dec51228e258c71171 = L.marker(
+                [-12.77219, 45.40935],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_9cbd6e34ce1e4eb449117838419e5361 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF1C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6366ccf9395609dec51228e258c71171.setIcon(div_icon_9cbd6e34ce1e4eb449117838419e5361);
+        
+    
+            var circle_marker_84bd260db25eb30dff5c97b6410468e2 = L.circleMarker(
+                [-12.77157, 45.4078],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_84bd260db25eb30dff5c97b6410468e2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF1D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -1690 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5c16b2669852b5d067a889baf42d97f8 = L.marker(
+                [-12.77157, 45.4078],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_23c9aa85c351b832e1e09debff74ede9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF1D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5c16b2669852b5d067a889baf42d97f8.setIcon(div_icon_23c9aa85c351b832e1e09debff74ede9);
+        
+    
+            var circle_marker_9a8b879d61a2457ab5a38ceba085882c = L.circleMarker(
+                [-12.71142, 45.38428],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_9a8b879d61a2457ab5a38ceba085882c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF2C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -1218 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c08b03c41bcc08be0cb85da6aeaefb9c = L.marker(
+                [-12.71142, 45.38428],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_eecb19692de5f0d576557c66500fd0b0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF2C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c08b03c41bcc08be0cb85da6aeaefb9c.setIcon(div_icon_eecb19692de5f0d576557c66500fd0b0);
+        
+    
+            var circle_marker_8e55df58810a168f63d1a0cf12a7be18 = L.circleMarker(
+                [-13.02482, 45.45595],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_8e55df58810a168f63d1a0cf12a7be18.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOSH <br> <b>Dates: </b>2020/10/16 to 2021/01/26  <br><br><b>Depth: </b> -2519 m <br> <br> <b>Channels:</b><br> EH1-EH2-EH3-HDH (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f789d59c5d89f7c3dd5242c4adcb47d4 = L.marker(
+                [-13.02482, 45.45595],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_deebdbfabc754f53d98ac99d81508ec9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOSH\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f789d59c5d89f7c3dd5242c4adcb47d4.setIcon(div_icon_deebdbfabc754f53d98ac99d81508ec9);
+        
+    
+            var circle_marker_f6fddfd950c7e426736461d4ee5bb996 = L.circleMarker(
+                [-12.907085, 45.2981],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_f6fddfd950c7e426736461d4ee5bb996.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOOH <br> <b>Dates: </b>2020/10/07 to 2020/10/20  <br><br><b>Depth: </b> -1260 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_96b41cf6e106e78656b69f150dc0fe5c = L.marker(
+                [-12.907085, 45.2981],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_530c96025fa1fa53a5b0e56cc55222c3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOOH\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_96b41cf6e106e78656b69f150dc0fe5c.setIcon(div_icon_530c96025fa1fa53a5b0e56cc55222c3);
+        
+    
+            var circle_marker_70522d932a6a4035365b9404dbf7515e = L.circleMarker(
+                [-12.783667, 45.411333],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_70522d932a6a4035365b9404dbf7515e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOCA <br> <b>Dates: </b>2019/05/11 to 2019/10/12  <br><br><b>Depth: </b> -1681 m <br> <br> <b>Channels:</b><br> EDH-EH1-EH2-EH3 (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f36d45d04556fc0757e7c40a2c8accb8 = L.marker(
+                [-12.783667, 45.411333],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_e25f20ff2e76b5f5ebe282b46b48961d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOCA\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f36d45d04556fc0757e7c40a2c8accb8.setIcon(div_icon_e25f20ff2e76b5f5ebe282b46b48961d);
+        
+    
+            var circle_marker_cf6fbee1682e4708f16802638b0fdc9e = L.circleMarker(
+                [-12.872912, 45.567048],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_cf6fbee1682e4708f16802638b0fdc9e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOFA <br> <b>Dates: </b>2019/05/12 to 2019/09/30  <br><br><b>Depth: </b> -2670 m <br> <br> <b>Channels:</b><br> EDH-EH1-EH2-EH3 (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_72981d299022217aa525d91483f9a739 = L.marker(
+                [-12.872912, 45.567048],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_841aa288a50aefa3eadbae02888c7d83 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOFA\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_72981d299022217aa525d91483f9a739.setIcon(div_icon_841aa288a50aefa3eadbae02888c7d83);
+        
+    
+            var circle_marker_15b617807a107f28533d08fcc2b5857d = L.circleMarker(
+                [-12.79435, 45.56367],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_15b617807a107f28533d08fcc2b5857d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF10D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -2701 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4bf0b1dae1e827399ffee8f8e4cbf47c = L.marker(
+                [-12.79435, 45.56367],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_78065a95f2d6739fbdfb7c29a20e3b68 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF10D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4bf0b1dae1e827399ffee8f8e4cbf47c.setIcon(div_icon_78065a95f2d6739fbdfb7c29a20e3b68);
+        
+    
+            var circle_marker_b0f68c7ffdd8474395c69bcf62d6226b = L.circleMarker(
+                [-12.87924, 45.47746],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_b0f68c7ffdd8474395c69bcf62d6226b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF5D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -2287 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_680aa3c910d76ccfccab20312596d809 = L.marker(
+                [-12.87924, 45.47746],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_932c0bbf1006ce6a155e3b52f4fef559 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF5D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_680aa3c910d76ccfccab20312596d809.setIcon(div_icon_932c0bbf1006ce6a155e3b52f4fef559);
+        
+    
+            var circle_marker_7ca945efc2eceafe10bb1bfc9f03c2f9 = L.circleMarker(
+                [-12.702116, 45.449747],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_7ca945efc2eceafe10bb1bfc9f03c2f9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF3A <br> <b>Dates: </b>2019/05/14 to 2019/06/09  <br><br><b>Depth: </b> -1928 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1e824299842c53819f58d3d1e6642961 = L.marker(
+                [-12.702116, 45.449747],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_ba73c478b54b523744f3692d822a2126 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF3A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1e824299842c53819f58d3d1e6642961.setIcon(div_icon_ba73c478b54b523744f3692d822a2126);
+        
+    
+            var circle_marker_e2fd77aa7674b4a4cea5da0126a9c308 = L.circleMarker(
+                [-12.67089, 45.59301],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_e2fd77aa7674b4a4cea5da0126a9c308.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MODG <br> <b>Dates: </b>2020/05/12 to 2020/10/07  <br><br><b>Depth: </b> -3258 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d40dc6c3197e25fcda2934b0746c99f0 = L.marker(
+                [-12.67089, 45.59301],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_04c7f0630c3932f190149197e1f739b8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMODG\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d40dc6c3197e25fcda2934b0746c99f0.setIcon(div_icon_04c7f0630c3932f190149197e1f739b8);
+        
+    
+            var circle_marker_5771651389153a22703306fe19ab85a6 = L.circleMarker(
+                [-12.81822, 45.76],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_5771651389153a22703306fe19ab85a6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF14C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -3529 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ae410f3b9324d0fc06e7f41f919047f7 = L.marker(
+                [-12.81822, 45.76],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_2fe760dd1346757075813725a20e7b58 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF14C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ae410f3b9324d0fc06e7f41f919047f7.setIcon(div_icon_2fe760dd1346757075813725a20e7b58);
+        
+    
+            var circle_marker_5bcbb3fd5c0194831ed3895847f7af0c = L.circleMarker(
+                [-12.6709, 45.59175],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_5bcbb3fd5c0194831ed3895847f7af0c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MODI <br> <b>Dates: </b>2021/02/05 to 2021/04/11  <br><br><b>Depth: </b> -3255 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a2a9b296dccc10031716f8603d4785a9 = L.marker(
+                [-12.6709, 45.59175],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_d764699a1d5fe6adedc4cfe6d7e68589 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMODI\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a2a9b296dccc10031716f8603d4785a9.setIcon(div_icon_d764699a1d5fe6adedc4cfe6d7e68589);
+        
+    
+            var circle_marker_c8a80708b9e93692bba372ddbbbbe9fb = L.circleMarker(
+                [-12.879, 45.47808],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_c8a80708b9e93692bba372ddbbbbe9fb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF5C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -2288 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_87489f29e85ad6e3c8c0d46e7fcfb3cd = L.marker(
+                [-12.879, 45.47808],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_b77fd0ad98535930ed343bf43c76d372 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF5C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_87489f29e85ad6e3c8c0d46e7fcfb3cd.setIcon(div_icon_b77fd0ad98535930ed343bf43c76d372);
+        
+    
+            var circle_marker_7f25bd05a98a31f8529a5ff8b8e9943d = L.circleMarker(
+                [-12.67105, 45.59289],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_7f25bd05a98a31f8529a5ff8b8e9943d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MODF <br> <b>Dates: </b>2019/12/15 to 2020/05/10  <br><br><b>Depth: </b> -3270 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_49f6947e6b5136ccc66bbed13011c470 = L.marker(
+                [-12.67105, 45.59289],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_f63a78de0fbcfb671f5e1fe8630e9d54 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMODF\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_49f6947e6b5136ccc66bbed13011c470.setIcon(div_icon_f63a78de0fbcfb671f5e1fe8630e9d54);
+        
+    
+            var circle_marker_f7df65da5f18aebcc58db3381c376e0a = L.circleMarker(
+                [-12.78462, 45.68401],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_f7df65da5f18aebcc58db3381c376e0a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF13D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -3423 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0784699662dadad4447d2837388881a4 = L.marker(
+                [-12.78462, 45.68401],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_56cdc663e468b9e653b8b0e1a01f48ea = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF13D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0784699662dadad4447d2837388881a4.setIcon(div_icon_56cdc663e468b9e653b8b0e1a01f48ea);
+        
+    
+            var circle_marker_a3a4dc79c1376d2acb765e02d55f77f1 = L.circleMarker(
+                [-12.8425, 45.62167],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_a3a4dc79c1376d2acb765e02d55f77f1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOBG <br> <b>Dates: </b>2020/05/12 to 2020/10/06  <br><br><b>Depth: </b> -3114 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_40023f295f4b5390d43d46848a400d7c = L.marker(
+                [-12.8425, 45.62167],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_76011d805d3bfab32490ebf80b7e78cc = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOBG\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_40023f295f4b5390d43d46848a400d7c.setIcon(div_icon_76011d805d3bfab32490ebf80b7e78cc);
+        
+    
+            var circle_marker_c628b5bfb4b50f8638040ff3650307e6 = L.circleMarker(
+                [-12.70299, 45.44838],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_c628b5bfb4b50f8638040ff3650307e6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF3D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -1932 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_11eb0d61a68c88b987da55402e129a5a = L.marker(
+                [-12.70299, 45.44838],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_4cf1acc8475d4dbc2e6100f14a5e5173 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF3D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_11eb0d61a68c88b987da55402e129a5a.setIcon(div_icon_4cf1acc8475d4dbc2e6100f14a5e5173);
+        
+    
+            var circle_marker_9b7bbbd7714ee6b00d3ec162b285f47d = L.circleMarker(
+                [-12.97428, 45.6412],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_9b7bbbd7714ee6b00d3ec162b285f47d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF18D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -3298 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_49c020bb0137120dd825ebded90dd27b = L.marker(
+                [-12.97428, 45.6412],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_f98941283a9fd708dae2d43c6d24ce89 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF18D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_49c020bb0137120dd825ebded90dd27b.setIcon(div_icon_f98941283a9fd708dae2d43c6d24ce89);
+        
+    
+            var circle_marker_6b41f6942f7c47131300ba7b52985da4 = L.circleMarker(
+                [-12.772443, 45.408091],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_6b41f6942f7c47131300ba7b52985da4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF1A <br> <b>Dates: </b>2019/05/14 to 2019/06/09  <br><br><b>Depth: </b> -1688 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ea4333d49e4f2275d2cf3b7884e2740d = L.marker(
+                [-12.772443, 45.408091],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_f920d852900e7a3f42869b4c5a983d03 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF1A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ea4333d49e4f2275d2cf3b7884e2740d.setIcon(div_icon_f920d852900e7a3f42869b4c5a983d03);
+        
+    
+            var circle_marker_02c66101e841aac4080005d4a67a6b28 = L.circleMarker(
+                [-12.922038, 45.76537],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_02c66101e841aac4080005d4a67a6b28.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOVA <br> <b>Dates: </b>2019/05/12 to 2019/06/15  <br><br><b>Depth: </b> -3353 m <br> <br> <b>Channels:</b><br> EDH-EH1-EH2-EH3 (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_aef19a62f3ed9032b7463faf9a04e631 = L.marker(
+                [-12.922038, 45.76537],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_16b671e6491c71e85e50553b499af57a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOVA\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_aef19a62f3ed9032b7463faf9a04e631.setIcon(div_icon_16b671e6491c71e85e50553b499af57a);
+        
+    
+            var circle_marker_0bf340ca5d4dff0af3dce3995138fee0 = L.circleMarker(
+                [-12.781784, 45.59749],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_0bf340ca5d4dff0af3dce3995138fee0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF3B <br> <b>Dates: </b>2019/05/14 to 2019/09/01  <br><br><b>Depth: </b> -2980 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1f6aa986612e71b5d4b56e6f757db7cf = L.marker(
+                [-12.781784, 45.59749],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_314383561b7b362f75d035c84a6e7abc = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF3B\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1f6aa986612e71b5d4b56e6f757db7cf.setIcon(div_icon_314383561b7b362f75d035c84a6e7abc);
+        
+    
+            var circle_marker_a973be56e8aca74af058fb1ce7b0917d = L.circleMarker(
+                [-12.92316, 45.76581],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_a973be56e8aca74af058fb1ce7b0917d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF9D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -3394 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2d7bffba3ef2ca514504b97148e862c5 = L.marker(
+                [-12.92316, 45.76581],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_a0fafd6a7c05d925b7a7503132620443 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF9D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2d7bffba3ef2ca514504b97148e862c5.setIcon(div_icon_a0fafd6a7c05d925b7a7503132620443);
+        
+    
+            var circle_marker_f69d4ebfbd3a2df511bdfd3e758bc3df = L.circleMarker(
+                [-13.0179, 45.4585],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_f69d4ebfbd3a2df511bdfd3e758bc3df.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOSF <br> <b>Dates: </b>2019/12/15 to 2020/05/11  <br><br><b>Depth: </b> -2670 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a3d59c08b7e63d04af6a19c913f13c90 = L.marker(
+                [-13.0179, 45.4585],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_6fc1e04b0e43cfbc8e694bc8bb371746 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOSF\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a3d59c08b7e63d04af6a19c913f13c90.setIcon(div_icon_6fc1e04b0e43cfbc8e694bc8bb371746);
+        
+    
+            var circle_marker_488c5177ce5da7f661ce07ff7e6f6225 = L.circleMarker(
+                [-12.9625, 45.8199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_488c5177ce5da7f661ce07ff7e6f6225.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOSE <br> <b>Dates: </b>2019/02/24 to 2019/05/10  <br><br><b>Depth: </b> -3520 m <br> <br> <b>Channels:</b><br> EDH-EH1-EH2-EH3 (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6fd7737b7203ab7d6d4557e0534dac13 = L.marker(
+                [-12.9625, 45.8199],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_0573b0b6ccc27005fd90077cf5558aef = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOSE\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6fd7737b7203ab7d6d4557e0534dac13.setIcon(div_icon_0573b0b6ccc27005fd90077cf5558aef);
+        
+    
+            var circle_marker_aaec1e132ce9fee5f2da9db19ba304ce = L.circleMarker(
+                [-12.66097, 45.53612],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_aaec1e132ce9fee5f2da9db19ba304ce.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF16C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -2757 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_265fd4331c9f99e00c68b24b7aeb0537 = L.marker(
+                [-12.66097, 45.53612],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_f2a4a8240dd3e073c07ba900d85db496 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF16C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_265fd4331c9f99e00c68b24b7aeb0537.setIcon(div_icon_f2a4a8240dd3e073c07ba900d85db496);
+        
+    
+            var circle_marker_17647251927f61d258c6dc860e8f8475 = L.circleMarker(
+                [-12.89088, 45.35193],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_17647251927f61d258c6dc860e8f8475.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF6C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -1731 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eb025fd6d766716a7989682f76ca958b = L.marker(
+                [-12.89088, 45.35193],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_ec51c31e83704e1878789649416d0762 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF6C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_eb025fd6d766716a7989682f76ca958b.setIcon(div_icon_ec51c31e83704e1878789649416d0762);
+        
+    
+            var circle_marker_17a5cc44de4decc92f0d479d226c8447 = L.circleMarker(
+                [-12.83334, 45.61667],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_17a5cc44de4decc92f0d479d226c8447.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOBI <br> <b>Dates: </b>2021/02/06 to 2021/04/07  <br><br><b>Depth: </b> -3012 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fa5895b4eefe9cd471f7cf816579d9f3 = L.marker(
+                [-12.83334, 45.61667],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_36427957b55e1e128c77132bdaa1dada = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOBI\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fa5895b4eefe9cd471f7cf816579d9f3.setIcon(div_icon_36427957b55e1e128c77132bdaa1dada);
+        
+    
+            var circle_marker_8680ba3bf8e295ef725a941f084418ba = L.circleMarker(
+                [-12.671048, 45.592888],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_8680ba3bf8e295ef725a941f084418ba.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MODA <br> <b>Dates: </b>2019/05/13 to 2019/09/29  <br><br><b>Depth: </b> -3270 m <br> <br> <b>Channels:</b><br> EDH-EH1-EH2-EH3 (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_94dbd5448a367b10572b941c2b470208 = L.marker(
+                [-12.671048, 45.592888],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_78697f39cb61aab07430baacabcddd7a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMODA\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_94dbd5448a367b10572b941c2b470208.setIcon(div_icon_78697f39cb61aab07430baacabcddd7a);
+        
+    
+            var circle_marker_53a719d3223a7aa7f0869a86a8a38482 = L.circleMarker(
+                [-12.711333, 45.384167],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_53a719d3223a7aa7f0869a86a8a38482.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF2B <br> <b>Dates: </b>2019/06/15 to 2019/07/15  <br><br><b>Depth: </b> -1224 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_053b85c8a63e90f81f934b7b1c5d980e = L.marker(
+                [-12.711333, 45.384167],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_095f671d6e891a787ddffb7665aeef60 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF2B\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_053b85c8a63e90f81f934b7b1c5d980e.setIcon(div_icon_095f671d6e891a787ddffb7665aeef60);
+        
+    
+            var circle_marker_844fbfe64b04dad46e258f69ea06c11e = L.circleMarker(
+                [-12.81854, 45.76006],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_844fbfe64b04dad46e258f69ea06c11e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF14E <br> <b>Dates: </b>2019/11/25 to 2020/02/10  <br><br><b>Depth: </b> -3530 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a76ece8280935588eabcab22b2c8764b = L.marker(
+                [-12.81854, 45.76006],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_8cf070d92acc7405efc49fd220de92bf = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF14E\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a76ece8280935588eabcab22b2c8764b.setIcon(div_icon_8cf070d92acc7405efc49fd220de92bf);
+        
+    
+            var circle_marker_e2ed7558a0206cea3528159dce2b8498 = L.circleMarker(
+                [-12.95745, 45.81827],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_e2ed7558a0206cea3528159dce2b8498.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOAG <br> <b>Dates: </b>2020/05/12 to 2020/10/06  <br><br><b>Depth: </b> -3516 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bfc2460a6954dc20dde78e40161c0aca = L.marker(
+                [-12.95745, 45.81827],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_7f44a57a788d4ea77801abd4f73deb03 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOAG\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_bfc2460a6954dc20dde78e40161c0aca.setIcon(div_icon_7f44a57a788d4ea77801abd4f73deb03);
+        
+    
+            var circle_marker_98c6ffb1a95dd5b1054a7bc7b17b7175 = L.circleMarker(
+                [-13.0179, 45.4585],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_98c6ffb1a95dd5b1054a7bc7b17b7175.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOSO <br> <b>Dates: </b>2019/02/25 to 2019/05/10  <br><br><b>Depth: </b> -2530 m <br> <br> <b>Channels:</b><br> EDH-EH1-EH2-EH3 (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cad5f7da9dd4811c63bb91c6618ce879 = L.marker(
+                [-13.0179, 45.4585],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_1e3d646772e5fea08b658f7728f6fb5d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOSO\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cad5f7da9dd4811c63bb91c6618ce879.setIcon(div_icon_1e3d646772e5fea08b658f7728f6fb5d);
+        
+    
+            var circle_marker_707fb5fc8e36a1e0defaecca86467ccb = L.circleMarker(
+                [-12.66074, 45.53518],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_707fb5fc8e36a1e0defaecca86467ccb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF16D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -2753 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d3513c5c3a6c953bfde3623ada698742 = L.marker(
+                [-12.66074, 45.53518],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_c6c7045bea696277727cef5907bb2659 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF16D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d3513c5c3a6c953bfde3623ada698742.setIcon(div_icon_c6c7045bea696277727cef5907bb2659);
+        
+    
+            var circle_marker_81cbb4b4aa5077c5610909400361ef06 = L.circleMarker(
+                [-12.694, 45.60967],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_81cbb4b4aa5077c5610909400361ef06.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF12C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -3243 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3c312eed6628786cd80521ccc94c89b5 = L.marker(
+                [-12.694, 45.60967],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_c92dc129f3848ed7e0afa05234050d34 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF12C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3c312eed6628786cd80521ccc94c89b5.setIcon(div_icon_c92dc129f3848ed7e0afa05234050d34);
+        
+    
+            var circle_marker_5f269819b1cd3b85c1415689a4c7a634 = L.circleMarker(
+                [-12.891416, 45.352222],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_5f269819b1cd3b85c1415689a4c7a634.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF6A <br> <b>Dates: </b>2019/05/14 to 2019/06/09  <br><br><b>Depth: </b> -1731 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f27c355749b25542660d46178b7bf0ff = L.marker(
+                [-12.891416, 45.352222],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_c65d5cbbb197669c6adb4907a65a1256 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF6A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f27c355749b25542660d46178b7bf0ff.setIcon(div_icon_c65d5cbbb197669c6adb4907a65a1256);
+        
+    
+            var circle_marker_1adf438673e21bb1447796fa6bc99ce3 = L.circleMarker(
+                [-12.96217, 45.81955],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_1adf438673e21bb1447796fa6bc99ce3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOAI <br> <b>Dates: </b>2021/02/05 to 2021/04/08  <br><br><b>Depth: </b> -3524 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e2017255d36c9aec00fc7d410a7084de = L.marker(
+                [-12.96217, 45.81955],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_e94ffc22e03d6fa0772b338e95d5f733 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOAI\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e2017255d36c9aec00fc7d410a7084de.setIcon(div_icon_e94ffc22e03d6fa0772b338e95d5f733);
+        
+    
+            var circle_marker_938ff186bca3b2dd1c9a3d0379d08438 = L.circleMarker(
+                [-12.87198, 45.68192],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_938ff186bca3b2dd1c9a3d0379d08438.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF7D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -3371 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a8a4ca162f8e522282a0141970658de7 = L.marker(
+                [-12.87198, 45.68192],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_0a5c3f232a4231b4730c2d5b48adbead = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF7D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a8a4ca162f8e522282a0141970658de7.setIcon(div_icon_0a5c3f232a4231b4730c2d5b48adbead);
+        
+    
+            var circle_marker_f3072d785bfdd4e973e9c2ab62f50641 = L.circleMarker(
+                [-12.79435, 45.56367],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_f3072d785bfdd4e973e9c2ab62f50641.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF10E <br> <b>Dates: </b>2019/11/25 to 2020/02/28  <br><br><b>Depth: </b> -2701 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0e7545f5375813e48c6332aa52271350 = L.marker(
+                [-12.79435, 45.56367],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_71f8abed25499edca21cde5ae2155fbd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF10E\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0e7545f5375813e48c6332aa52271350.setIcon(div_icon_71f8abed25499edca21cde5ae2155fbd);
+        
+    
+            var circle_marker_f16fd659ac850dffe0dd10ed6f480b9b = L.circleMarker(
+                [-12.7837, 45.4113],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_f16fd659ac850dffe0dd10ed6f480b9b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOCF <br> <b>Dates: </b>2019/12/15 to 2020/05/09  <br><br><b>Depth: </b> -1720 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6f45b2c164fbf1c877a276607f3a24ac = L.marker(
+                [-12.7837, 45.4113],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_82d05928de811cebdf215f3635d18024 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOCF\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6f45b2c164fbf1c877a276607f3a24ac.setIcon(div_icon_82d05928de811cebdf215f3635d18024);
+        
+    
+            var circle_marker_0773b97635c25eb6449d9eef3ce7bb70 = L.circleMarker(
+                [-12.879, 45.477833],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_0773b97635c25eb6449d9eef3ce7bb70.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF5B <br> <b>Dates: </b>2019/06/13 to 2019/07/15  <br><br><b>Depth: </b> -2289 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1b55f7bbe690dff6ade2c6321f11d226 = L.marker(
+                [-12.879, 45.477833],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_e9be9ff3e589d8153f364f5fb76c1ea1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF5B\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1b55f7bbe690dff6ade2c6321f11d226.setIcon(div_icon_e9be9ff3e589d8153f364f5fb76c1ea1);
+        
+    
+            var circle_marker_7ba9b548f62b9bea6ea9fdbec1c9647b = L.circleMarker(
+                [-12.7844, 45.41142],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_7ba9b548f62b9bea6ea9fdbec1c9647b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOCI <br> <b>Dates: </b>2021/02/05 to 2021/04/09  <br><br><b>Depth: </b> -1720 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6fa22f642adfc2105e693b7b55aeabfc = L.marker(
+                [-12.7844, 45.41142],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_ccab11e21ab4165ee2e2c3cb2a091943 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOCI\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6fa22f642adfc2105e693b7b55aeabfc.setIcon(div_icon_ccab11e21ab4165ee2e2c3cb2a091943);
+        
+    
+            var circle_marker_e18de3636c742177ddc8b0952720767d = L.circleMarker(
+                [-12.4932, 45.5576],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_e18de3636c742177ddc8b0952720767d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MONN <br> <b>Dates: </b>2019/02/24 to 2019/05/10  <br><br><b>Depth: </b> -3180 m <br> <br> <b>Channels:</b><br> EDH-EH1-EH2-EH3 (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e80322ede5e3c183fc6408d6e622cd0e = L.marker(
+                [-12.4932, 45.5576],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_d126b0b703373707f076da3e71c3f667 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMONN\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e80322ede5e3c183fc6408d6e622cd0e.setIcon(div_icon_d126b0b703373707f076da3e71c3f667);
+        
+    
+            var circle_marker_c86e1ff98666aba04d8ec8fbd4e82358 = L.circleMarker(
+                [-12.890167, 45.352667],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_c86e1ff98666aba04d8ec8fbd4e82358.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF6B <br> <b>Dates: </b>2019/06/13 to 2019/07/15  <br><br><b>Depth: </b> -1732 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cdc22a53ae6e0ee76fda4ac6810b8e1f = L.marker(
+                [-12.890167, 45.352667],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_c5c2412c2bb8253bbca8ee5e7d6a49a2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF6B\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cdc22a53ae6e0ee76fda4ac6810b8e1f.setIcon(div_icon_c5c2412c2bb8253bbca8ee5e7d6a49a2);
+        
+    
+            var circle_marker_33391f0ba4fc9174b27d0947ae7d49a5 = L.circleMarker(
+                [-12.81181, 45.43043],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_33391f0ba4fc9174b27d0947ae7d49a5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF15D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -1821 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8d24d79093569aa5d89461f8b242758e = L.marker(
+                [-12.81181, 45.43043],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_3aaf24369f2d06e4e2d759d674ba3bdd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF15D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8d24d79093569aa5d89461f8b242758e.setIcon(div_icon_3aaf24369f2d06e4e2d759d674ba3bdd);
+        
+    
+            var circle_marker_0651c5a12347e7de4f89db961dc12fa1 = L.circleMarker(
+                [-12.89075, 45.35248],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_0651c5a12347e7de4f89db961dc12fa1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF6D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -1734 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c86dfbbee1229f693fb6fa6c1dd6392b = L.marker(
+                [-12.89075, 45.35248],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_4a733d06956f6d34d452b927165d8bf8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF6D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c86dfbbee1229f693fb6fa6c1dd6392b.setIcon(div_icon_4a733d06956f6d34d452b927165d8bf8);
+        
+    
+            var circle_marker_3ef2e15cae2455c02ee03caa8a1f5bcc = L.circleMarker(
+                [-12.99512, 45.413807],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_3ef2e15cae2455c02ee03caa8a1f5bcc.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOSA <br> <b>Dates: </b>2019/05/13 to 2019/09/30  <br><br><b>Depth: </b> -2194 m <br> <br> <b>Channels:</b><br> EDH-EH1-EH2-EH3 (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_26a17170a9c73a91df5fcbad6e8dc3b7 = L.marker(
+                [-12.99512, 45.413807],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_d3f8a63f0393d04297a42b3f703c1c90 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOSA\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_26a17170a9c73a91df5fcbad6e8dc3b7.setIcon(div_icon_d3f8a63f0393d04297a42b3f703c1c90);
+        
+    
+            var circle_marker_38ded7d29f947fcc6cd557b60c689def = L.circleMarker(
+                [-12.59565, 45.40927],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_38ded7d29f947fcc6cd557b60c689def.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MONG <br> <b>Dates: </b>2020/05/12 to 2020/10/07  <br><br><b>Depth: </b> -2012 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ca60a010d9eb74a07bcd6ad2a2a50575 = L.marker(
+                [-12.59565, 45.40927],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_a0bf8d2789b359e7183be0d8b30f23fe = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMONG\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ca60a010d9eb74a07bcd6ad2a2a50575.setIcon(div_icon_a0bf8d2789b359e7183be0d8b30f23fe);
+        
+    
+            var circle_marker_e67f87022f7915c12abaede04b366329 = L.circleMarker(
+                [-12.781784, 45.59749],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_e67f87022f7915c12abaede04b366329.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF4A <br> <b>Dates: </b>2019/05/14 to 2019/06/09  <br><br><b>Depth: </b> -2980 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c07e62552b6642214f19a1262b6d80c9 = L.marker(
+                [-12.781784, 45.59749],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_791399cea5e7378644070fbe6d47534a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF4A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c07e62552b6642214f19a1262b6d80c9.setIcon(div_icon_791399cea5e7378644070fbe6d47534a);
+        
+    
+            var circle_marker_e263487a306b7609e34e75c04df566ea = L.circleMarker(
+                [-12.6707, 45.5928],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_e263487a306b7609e34e75c04df566ea.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MODH <br> <b>Dates: </b>2020/10/14 to 2021/01/25  <br><br><b>Depth: </b> -3250 m <br> <br> <b>Channels:</b><br> EH1-EH2-EH3-HDH (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_34abf0a1b72c958167d0b71d3bafd84b = L.marker(
+                [-12.6707, 45.5928],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_04049a3466eb73fb5f74de513a149870 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMODH\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_34abf0a1b72c958167d0b71d3bafd84b.setIcon(div_icon_04049a3466eb73fb5f74de513a149870);
+        
+    
+            var circle_marker_1227410551feab508298cb9fa05117c3 = L.circleMarker(
+                [-12.77933, 45.50202],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_1227410551feab508298cb9fa05117c3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF11C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -2475 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_73e43e2afb2375e6a228ae687582d184 = L.marker(
+                [-12.77933, 45.50202],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_85428c8edb14a6c8e8dcf28d040caaf8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF11C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_73e43e2afb2375e6a228ae687582d184.setIcon(div_icon_85428c8edb14a6c8e8dcf28d040caaf8);
+        
+    
+            var circle_marker_70de6028ce100d983d621f41b1c57f7d = L.circleMarker(
+                [-12.783611, 45.41127],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_70de6028ce100d983d621f41b1c57f7d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOCG <br> <b>Dates: </b>2020/05/13 to 2020/10/07  <br><br><b>Depth: </b> -1721 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2d235543d3934f56fc2313eb419354ba = L.marker(
+                [-12.783611, 45.41127],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_6dcc1a430cf35c561c4a2aafd74f4557 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOCG\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2d235543d3934f56fc2313eb419354ba.setIcon(div_icon_6dcc1a430cf35c561c4a2aafd74f4557);
+        
+    
+            var circle_marker_c3aa1dd091f8523e73485291537ea465 = L.circleMarker(
+                [-12.81854, 45.76006],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_c3aa1dd091f8523e73485291537ea465.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF14D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -3530 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3d14c2ba3ee9dbd4149e1c6b0d4b7ae1 = L.marker(
+                [-12.81854, 45.76006],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_aa8ddeb9a9587792508f437072975060 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF14D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3d14c2ba3ee9dbd4149e1c6b0d4b7ae1.setIcon(div_icon_aa8ddeb9a9587792508f437072975060);
+        
+    
+            var circle_marker_ece4704ce4437e829e3874e3522ba4c4 = L.circleMarker(
+                [-12.6652, 45.8037],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_ece4704ce4437e829e3874e3522ba4c4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MONE <br> <b>Dates: </b>2019/02/24 to 2019/05/10  <br><br><b>Depth: </b> -3510 m <br> <br> <b>Channels:</b><br> EDH-EH1-EH2-EH3 (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5252cc2b946a1c3297a39117912ddb63 = L.marker(
+                [-12.6652, 45.8037],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_68b0349f681d254f4b0f6f9bfbc45288 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMONE\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5252cc2b946a1c3297a39117912ddb63.setIcon(div_icon_68b0349f681d254f4b0f6f9bfbc45288);
+        
+    
+            var circle_marker_f72797a20fcabecf4d6dab9edb39d397 = L.circleMarker(
+                [-12.980667, 45.686833],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_f72797a20fcabecf4d6dab9edb39d397.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF8B <br> <b>Dates: </b>2019/06/14 to 2019/07/15  <br><br><b>Depth: </b> -3431 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a6f490ec7575473870284850eeedd474 = L.marker(
+                [-12.980667, 45.686833],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_5456f602ec8fdb1325e0e5fad3bd7a11 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF8B\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a6f490ec7575473870284850eeedd474.setIcon(div_icon_5456f602ec8fdb1325e0e5fad3bd7a11);
+        
+    
+            var circle_marker_37fbae88755ad6805bc7c7ed22974d9d = L.circleMarker(
+                [-12.97443, 45.64153],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_37fbae88755ad6805bc7c7ed22974d9d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF18C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -3298 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_63422f96f1ab4805cbc1dfd40be92b81 = L.marker(
+                [-12.97443, 45.64153],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_34d81109f5b9c2de2e31421b26213d1a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF18C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_63422f96f1ab4805cbc1dfd40be92b81.setIcon(div_icon_34d81109f5b9c2de2e31421b26213d1a);
+        
+    
+            var circle_marker_2a646b1fd5d39771114456e538757cc3 = L.circleMarker(
+                [-12.9567, 45.8192],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_2a646b1fd5d39771114456e538757cc3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOAH <br> <b>Dates: </b>2020/10/15 to 2021/01/26  <br><br><b>Depth: </b> -3514 m <br> <br> <b>Channels:</b><br> EH1-EH2-EH3-HDH (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f0d700d4d63df5a65b3a60dc58a9be8e = L.marker(
+                [-12.9567, 45.8192],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_dc2bdbb17314e734d5ea49df1a16307a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOAH\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f0d700d4d63df5a65b3a60dc58a9be8e.setIcon(div_icon_dc2bdbb17314e734d5ea49df1a16307a);
+        
+    
+            var circle_marker_4bcd9746eb41d47b68dc2acea1c7d41f = L.circleMarker(
+                [-12.5957, 45.40913],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_4bcd9746eb41d47b68dc2acea1c7d41f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MONI <br> <b>Dates: </b>2021/02/05 to 2021/04/11  <br><br><b>Depth: </b> -2019 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8a3cc89b8845e6cbd491dbf0122590b2 = L.marker(
+                [-12.5957, 45.40913],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_b545f78c3e4759fefec27ea13642a272 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMONI\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8a3cc89b8845e6cbd491dbf0122590b2.setIcon(div_icon_b545f78c3e4759fefec27ea13642a272);
+        
+    
+            var circle_marker_701a0c7f1dda983c7dd6a8c4e7321736 = L.circleMarker(
+                [-12.980224, 45.686671],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_701a0c7f1dda983c7dd6a8c4e7321736.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF8A <br> <b>Dates: </b>2019/05/14 to 2019/06/09  <br><br><b>Depth: </b> -3428 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_225355f4fa38ee4f10ed9f52e2da2730 = L.marker(
+                [-12.980224, 45.686671],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_53d6d84a3aff8bc40ccd0e1a0e0e3f66 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF8A\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_225355f4fa38ee4f10ed9f52e2da2730.setIcon(div_icon_53d6d84a3aff8bc40ccd0e1a0e0e3f66);
+        
+    
+            var circle_marker_ee341818c2141ff1a23ec4956bc0f045 = L.circleMarker(
+                [-12.81303, 45.43117],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_ee341818c2141ff1a23ec4956bc0f045.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF15C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -1822 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_09b965430a63fb7334e7156e445e5b24 = L.marker(
+                [-12.81303, 45.43117],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_8c9a8e4f913431db07acdc3520cca3fd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF15C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_09b965430a63fb7334e7156e445e5b24.setIcon(div_icon_8c9a8e4f913431db07acdc3520cca3fd);
+        
+    
+            var circle_marker_83f8bfec7c29741f9eb94d609fbe1c3c = L.circleMarker(
+                [-12.6946, 45.61],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_83f8bfec7c29741f9eb94d609fbe1c3c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF12D <br> <b>Dates: </b>2019/10/26 to 2019/11/25  <br><br><b>Depth: </b> -3244 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_99a4efd01024696336bde1202b0a2bf9 = L.marker(
+                [-12.6946, 45.61],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_c6f0ec271088bb50fe0800874a24b092 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF12D\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_99a4efd01024696336bde1202b0a2bf9.setIcon(div_icon_c6f0ec271088bb50fe0800874a24b092);
+        
+    
+            var circle_marker_ee832a7b3ae67251e88f179e661415ae = L.circleMarker(
+                [-12.59566, 45.409123],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_ee832a7b3ae67251e88f179e661415ae.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MONA <br> <b>Dates: </b>2019/05/13 to 2019/09/29  <br><br><b>Depth: </b> -2015 m <br> <br> <b>Channels:</b><br> EDH-EH1-EH2-EH3 (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9dc74a9a71416712433f934659b0b705 = L.marker(
+                [-12.59566, 45.409123],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_a71cb26c6b562df6733923858110c574 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMONA\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9dc74a9a71416712433f934659b0b705.setIcon(div_icon_a71cb26c6b562df6733923858110c574);
+        
+    
+            var circle_marker_73cde484addf167acddbc1b0c7c5a488 = L.circleMarker(
+                [-12.70217, 45.45017],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_73cde484addf167acddbc1b0c7c5a488.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF3C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -1935 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_875a528d25e4a71ec082f53bd766933a = L.marker(
+                [-12.70217, 45.45017],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_2e20645cba28389d819d8065ef531ff4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF3C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_875a528d25e4a71ec082f53bd766933a.setIcon(div_icon_2e20645cba28389d819d8065ef531ff4);
+        
+    
+            var circle_marker_58c798223fc16c3dfc8c50e7d4cab2c1 = L.circleMarker(
+                [-12.6513, 45.3919],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_58c798223fc16c3dfc8c50e7d4cab2c1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MONO <br> <b>Dates: </b>2019/02/23 to 2019/05/10  <br><br><b>Depth: </b> -1600 m <br> <br> <b>Channels:</b><br> EDH-EH1-EH2-EH3 (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d5cff5e56783a0e8e9d457934cb64718 = L.marker(
+                [-12.6513, 45.3919],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_c8a703176606b7747ce212be661a771e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMONO\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d5cff5e56783a0e8e9d457934cb64718.setIcon(div_icon_c8a703176606b7747ce212be661a771e);
+        
+    
+            var circle_marker_782d3b0fbae1fa8c772d44fadfc7d0f3 = L.circleMarker(
+                [-12.5958, 45.409],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_782d3b0fbae1fa8c772d44fadfc7d0f3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MONH <br> <b>Dates: </b>2020/10/14 to 2021/01/25  <br><br><b>Depth: </b> -2017 m <br> <br> <b>Channels:</b><br> EH1-EH2-EH3-HDH (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_00df0f346306f801350f34150178e414 = L.marker(
+                [-12.5958, 45.409],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_f5df539492c2644b991e8b71e014c3f9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMONH\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_00df0f346306f801350f34150178e414.setIcon(div_icon_f5df539492c2644b991e8b71e014c3f9);
+        
+    
+            var circle_marker_27b9df5992b6eab1372e580b78f4f851 = L.circleMarker(
+                [-12.8074, 45.6343],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_27b9df5992b6eab1372e580b78f4f851.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOCE <br> <b>Dates: </b>2019/02/24 to 2019/05/10  <br><br><b>Depth: </b> -3120 m <br> <br> <b>Channels:</b><br> EDH-EH1-EH2-EH3 (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_936443f45d33cbf39493a1bc8819e3c2 = L.marker(
+                [-12.8074, 45.6343],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_a6df52991e545cb2c4a7e268f7a003c6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOCE\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_936443f45d33cbf39493a1bc8819e3c2.setIcon(div_icon_a6df52991e545cb2c4a7e268f7a003c6);
+        
+    
+            var circle_marker_ba9551ab2b1d77ff13a011816b7a8e8e = L.circleMarker(
+                [-12.87243, 45.68403],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_ba9551ab2b1d77ff13a011816b7a8e8e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF7C <br> <b>Dates: </b>2019/10/01 to 2019/10/29  <br><br><b>Depth: </b> -3350 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_df9ab1dacd187cc72300dd94c1d3975e = L.marker(
+                [-12.87243, 45.68403],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_23ad98d2c760bb77aebc661c538aed02 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF7C\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_df9ab1dacd187cc72300dd94c1d3975e.setIcon(div_icon_23ad98d2c760bb77aebc661c538aed02);
+        
+    
+            var circle_marker_44a9cc82631df6b8bafa21f207844cab = L.circleMarker(
+                [-12.9625, 45.8199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_44a9cc82631df6b8bafa21f207844cab.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOAF <br> <b>Dates: </b>2019/12/15 to 2020/05/10  <br><br><b>Depth: </b> -3520 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a8fed633204e67f86fd3b6a22df31928 = L.marker(
+                [-12.9625, 45.8199],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_39225f3417a5129fb36e52fb177999f9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOAF\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a8fed633204e67f86fd3b6a22df31928.setIcon(div_icon_39225f3417a5129fb36e52fb177999f9);
+        
+    
+            var circle_marker_4f15c93a3855033872e0e73012957bfa = L.circleMarker(
+                [-12.71178, 45.38139],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_4f15c93a3855033872e0e73012957bfa.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> IF2E <br> <b>Dates: </b>2019/11/25 to 2020/02/28  <br><br><b>Depth: </b> -1196 m <br> <br> <b>Channels:</b><br> DDH-DH1-DH2-DHZ (250.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cc5c94554583e77571682cb3def555d1 = L.marker(
+                [-12.71178, 45.38139],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_40eaf6799ad11b94cfeb5475cfc7b265 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eIF2E\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cc5c94554583e77571682cb3def555d1.setIcon(div_icon_40eaf6799ad11b94cfeb5475cfc7b265);
+        
+    
+            var circle_marker_5be88aaff91c89df664a104b36442424 = L.circleMarker(
+                [-13.02035, 45.45827],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0400fb", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            circle_marker_5be88aaff91c89df664a104b36442424.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 1T <br> <b>Station:</b> MOSI <br> <b>Dates: </b>2021/02/05 to 2021/04/10  <br><br><b>Depth: </b> -2531 m <br> <br> <b>Channels:</b><br> BDH-SH1-SH2-SH3 (62.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.15778/resif.1t2018 <br><br> <b>Net name: </b> Temporal seismological network Mayotte <br><br> <b>Operator: </b>  Institut de Physique du Globe de Paris
+ IPGS (Institut de Physique du Globe de Strasbourg) </h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3f80c79ac05e02041bab7c0581a1a723 = L.marker(
+                [-13.02035, 45.45827],
+                {}
+            ).addTo(map_7c5eceb5211a1f62f00e80280cf81ba6);
+        
+    
+            var div_icon_d63892ff42eb48c040c1c4186e50d50b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eMOSI\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3f80c79ac05e02041bab7c0581a1a723.setIcon(div_icon_d63892ff42eb48c040c1c4186e50d50b);
+        
+    
+            map_7c5eceb5211a1f62f00e80280cf81ba6.fitBounds(
+                [[-13.02525, 45.2981], [-12.4932, 45.8199]],
+                {}
+            );
+        </script>
+
+</html>

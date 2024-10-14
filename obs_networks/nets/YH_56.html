@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_4c6a9b0c4f5332555838033fa9516d0a {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network YH: Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   University of Texas at Austin</p>
+		<p id="net_header", class="headerDates">OBS deployed from May 2014 to Jun 2015</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/YH_2014">https://doi.org/10.7914/SN/YH_2014</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_4c6a9b0c4f5332555838033fa9516d0a" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>YH</TD><TD>LOBS8</TD><TD>2014/05/13</TD><TD>2015/06/26</TD><TD>-38.843201</TD><TD>178.459396</TD><TD>-651</TD><TD>EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>LOBS9</TD><TD>2014/05/11</TD><TD>2015/06/23</TD><TD>-39.071602</TD><TD>178.521393</TD><TD>-1457</TD><TD>EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>LOBS4</TD><TD>2014/05/15</TD><TD>2015/06/22</TD><TD>-39.120098</TD><TD>178.981506</TD><TD>-3440</TD><TD>EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>EBS2</TD><TD>2014/05/11</TD><TD>2015/06/20</TD><TD>-38.7771</TD><TD>178.583496</TD><TD>-930</TD><TD>EH1-EH2-EHZ (200.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>EBS3</TD><TD>2014/05/11</TD><TD>2015/06/21</TD><TD>-38.694599</TD><TD>178.650604</TD><TD>-1023</TD><TD>EH1-EH2-EHZ (200.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>LOBS5</TD><TD>2014/05/15</TD><TD>2015/06/23</TD><TD>-39.119301</TD><TD>178.698395</TD><TD>-2361</TD><TD>EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>LOBS7</TD><TD>2014/05/15</TD><TD>2015/06/25</TD><TD>-38.711498</TD><TD>178.5681</TD><TD>-784</TD><TD>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>EBS1</TD><TD>2014/05/13</TD><TD>2015/06/20</TD><TD>-38.745899</TD><TD>178.678894</TD><TD>-995</TD><TD>EH1-EH2-EHZ (200.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>LOBS6</TD><TD>2014/05/14</TD><TD>2015/06/26</TD><TD>-38.977798</TD><TD>178.796005</TD><TD>-1873</TD><TD>EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>LOBS2</TD><TD>2014/05/15</TD><TD>2015/06/22</TD><TD>-38.620998</TD><TD>179.046097</TD><TD>-3562</TD><TD>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>LOB10</TD><TD>2014/05/11</TD><TD>2015/06/22</TD><TD>-39.133301</TD><TD>178.313202</TD><TD>-1444</TD><TD>EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>EBS4</TD><TD>2014/05/13</TD><TD>2015/06/21</TD><TD>-38.688801</TD><TD>178.819901</TD><TD>-1712</TD><TD>EH1-EH2-EHZ (200.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>EBS5</TD><TD>2014/05/11</TD><TD>2015/06/25</TD><TD>-38.9944</TD><TD>178.325699</TD><TD>-1348</TD><TD>EH1-EH2-EHZ (200.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>LOBS3</TD><TD>2014/05/15</TD><TD>2015/06/23</TD><TD>-38.792198</TD><TD>179.147293</TD><TD>-3540</TD><TD>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>YH</TD><TD>LOBS1</TD><TD>2014/05/14</TD><TD>2015/06/22</TD><TD>-38.592098</TD><TD>178.818695</TD><TD>-993</TD><TD>EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>LOBS8 LOBS9 LOBS4 LOBS5 LOBS7 LOBS6 LOBS2 LOB10 LOBS3 LOBS1</TD><TD>EDH</TD><TD>100.0</TD><TD>HTI-90-U Hydrophone;/LDEO OBS 2011 logger</TD></TR><TR><TD>EBS2 EBS3 EBS1 EBS4 EBS5</TD><TD>EH1</TD><TD>200.0</TD><TD>LE-3D Lite/Dummy Datalogger used in ignorance</TD></TR><TR><TD>EBS2 EBS3 EBS1 EBS4 EBS5</TD><TD>EH2</TD><TD>200.0</TD><TD>LE-3D Lite/Dummy Datalogger used in ignorance</TD></TR><TR><TD>EBS2 EBS3 EBS1 EBS4 EBS5</TD><TD>EHZ</TD><TD>200.0</TD><TD>LE-3D Lite/Dummy Datalogger used in ignorance</TD></TR><TR><TD>LOBS8 LOBS9 LOBS4 LOBS5 LOBS6 LOB10 LOBS1</TD><TD>HDH</TD><TD>100.0</TD><TD>Parosci APG Pressure/LDEO_APG_logger</TD></TR><TR><TD>LOBS8 LOBS9 LOBS4 LOBS5 LOBS7 LOBS6 LOBS2 LOB10 LOBS3 LOBS1</TD><TD>HH1</TD><TD>100.0</TD><TD>Nanometrics Trillium Compact Response/LDEO OBS 201</TD></TR><TR><TD>LOBS8 LOBS9 LOBS4 LOBS5 LOBS7 LOBS6 LOBS2 LOB10 LOBS3 LOBS1</TD><TD>HH2</TD><TD>100.0</TD><TD>Nanometrics Trillium Compact Response/LDEO OBS 201</TD></TR><TR><TD>LOBS8 LOBS9 LOBS4 LOBS5 LOBS7 LOBS6 LOBS2 LOB10 LOBS3 LOBS1</TD><TD>HHZ</TD><TD>100.0</TD><TD>Nanometrics Trillium Compact Response/LDEO OBS 201</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_4c6a9b0c4f5332555838033fa9516d0a = L.map(
+                "map_4c6a9b0c4f5332555838033fa9516d0a",
+                {
+                    center: [-38.87884141935485, 178.69620487096773],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_777c63aa944ca136d8bdc67b148b6612 = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var circle_marker_32054ce31208ea8fc0a085ee8acdbdd8 = L.circleMarker(
+                [-38.843201, 178.459396],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_32054ce31208ea8fc0a085ee8acdbdd8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> LOBS8 <br> <b>Dates: </b>2014/05/13 to 2015/06/26  <br><br><b>Depth: </b> -651 m <br> <br> <b>Channels:</b><br> EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_91a082c14adeece2ddfc832a3ae29296 = L.marker(
+                [-38.843201, 178.459396],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_e93fbb8ec8cdd41c256725f4164b6ee3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLOBS8\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_91a082c14adeece2ddfc832a3ae29296.setIcon(div_icon_e93fbb8ec8cdd41c256725f4164b6ee3);
+        
+    
+            var circle_marker_de3b45a888d83c0e29298c3f9e3ebc86 = L.circleMarker(
+                [-39.071602, 178.521393],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_de3b45a888d83c0e29298c3f9e3ebc86.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> LOBS9 <br> <b>Dates: </b>2014/05/11 to 2015/06/23  <br><br><b>Depth: </b> -1457 m <br> <br> <b>Channels:</b><br> EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ae6bbe2218702db5690020bc1adb9d62 = L.marker(
+                [-39.071602, 178.521393],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_4256c7861ea28334f519af6702d685ed = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLOBS9\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ae6bbe2218702db5690020bc1adb9d62.setIcon(div_icon_4256c7861ea28334f519af6702d685ed);
+        
+    
+            var circle_marker_91b00b8f7bc376148b6597f76edb3b0b = L.circleMarker(
+                [-39.120098, 178.981506],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_91b00b8f7bc376148b6597f76edb3b0b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> LOBS4 <br> <b>Dates: </b>2014/05/15 to 2015/06/22  <br><br><b>Depth: </b> -3440 m <br> <br> <b>Channels:</b><br> EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_621e57ddfb8edf53e54e3291c289ff1b = L.marker(
+                [-39.120098, 178.981506],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_eab82ec9b983b402d01597b4534431cb = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLOBS4\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_621e57ddfb8edf53e54e3291c289ff1b.setIcon(div_icon_eab82ec9b983b402d01597b4534431cb);
+        
+    
+            var circle_marker_92783e24e858825b56eb85dac01a865b = L.circleMarker(
+                [-38.7771, 178.583496],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_92783e24e858825b56eb85dac01a865b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> EBS2 <br> <b>Dates: </b>2014/05/11 to 2015/06/20  <br><br><b>Depth: </b> -930 m <br> <br> <b>Channels:</b><br> EH1-EH2-EHZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0ddb9c77c8e77893b6a1dfe6c36a6da6 = L.marker(
+                [-38.7771, 178.583496],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_3a005bd1ea9b09360cfd3a9cacf62c2f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEBS2\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0ddb9c77c8e77893b6a1dfe6c36a6da6.setIcon(div_icon_3a005bd1ea9b09360cfd3a9cacf62c2f);
+        
+    
+            var circle_marker_79e9353b93503f1281e5ff570767a5e3 = L.circleMarker(
+                [-38.694599, 178.650604],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_79e9353b93503f1281e5ff570767a5e3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> EBS3 <br> <b>Dates: </b>2014/05/11 to 2015/06/21  <br><br><b>Depth: </b> -1023 m <br> <br> <b>Channels:</b><br> EH1-EH2-EHZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_90967e642f548e9709f3221791c05fdb = L.marker(
+                [-38.694599, 178.650604],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_d5606990e0df8afbb0960c7bb18e3053 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEBS3\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_90967e642f548e9709f3221791c05fdb.setIcon(div_icon_d5606990e0df8afbb0960c7bb18e3053);
+        
+    
+            var circle_marker_acd32fb281dbef6aa8cc9ab90e667747 = L.circleMarker(
+                [-39.119301, 178.698395],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_acd32fb281dbef6aa8cc9ab90e667747.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> LOBS5 <br> <b>Dates: </b>2014/05/15 to 2015/06/23  <br><br><b>Depth: </b> -2361 m <br> <br> <b>Channels:</b><br> EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1ae594a8531bb3e76d91721950a699d2 = L.marker(
+                [-39.119301, 178.698395],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_bedbbad25ee19efc0a25d1f449e6bd57 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLOBS5\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1ae594a8531bb3e76d91721950a699d2.setIcon(div_icon_bedbbad25ee19efc0a25d1f449e6bd57);
+        
+    
+            var circle_marker_abd60e25abc22dd7f3a0d50041cdfcad = L.circleMarker(
+                [-38.711498, 178.5681],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_abd60e25abc22dd7f3a0d50041cdfcad.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> LOBS7 <br> <b>Dates: </b>2014/05/15 to 2015/06/25  <br><br><b>Depth: </b> -784 m <br> <br> <b>Channels:</b><br> EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_70631cefb7f9d10a69b413ebe7eaf95d = L.marker(
+                [-38.711498, 178.5681],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_9f9921e0ba041abd92ad08b07321a8c1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLOBS7\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_70631cefb7f9d10a69b413ebe7eaf95d.setIcon(div_icon_9f9921e0ba041abd92ad08b07321a8c1);
+        
+    
+            var circle_marker_cb43c99d73bc41c673946e01660eb766 = L.circleMarker(
+                [-38.745899, 178.678894],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_cb43c99d73bc41c673946e01660eb766.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> EBS1 <br> <b>Dates: </b>2014/05/13 to 2015/06/20  <br><br><b>Depth: </b> -995 m <br> <br> <b>Channels:</b><br> EH1-EH2-EHZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c8bd0ede351339ef971fefb2584abb69 = L.marker(
+                [-38.745899, 178.678894],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_c3279f8d363f905352c1e401ef6a9bc6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEBS1\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c8bd0ede351339ef971fefb2584abb69.setIcon(div_icon_c3279f8d363f905352c1e401ef6a9bc6);
+        
+    
+            var circle_marker_b080c216e9fb1b38b6ed5bc3f56536d1 = L.circleMarker(
+                [-38.977798, 178.796005],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_b080c216e9fb1b38b6ed5bc3f56536d1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> LOBS6 <br> <b>Dates: </b>2014/05/14 to 2015/06/26  <br><br><b>Depth: </b> -1873 m <br> <br> <b>Channels:</b><br> EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_27ccc99123bb5284c0664c345479d7d9 = L.marker(
+                [-38.977798, 178.796005],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_2fbb5a4801c3e31fb5ebf025d63351e6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLOBS6\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_27ccc99123bb5284c0664c345479d7d9.setIcon(div_icon_2fbb5a4801c3e31fb5ebf025d63351e6);
+        
+    
+            var circle_marker_b0df3d45aad460eb05901e9997e50a86 = L.circleMarker(
+                [-38.620998, 179.046097],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_b0df3d45aad460eb05901e9997e50a86.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> LOBS2 <br> <b>Dates: </b>2014/05/15 to 2015/06/22  <br><br><b>Depth: </b> -3562 m <br> <br> <b>Channels:</b><br> EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_014b2bac776d5ded501fb5d737f8bebc = L.marker(
+                [-38.620998, 179.046097],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_90920e4f60a673606e886151db7f0cd7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLOBS2\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_014b2bac776d5ded501fb5d737f8bebc.setIcon(div_icon_90920e4f60a673606e886151db7f0cd7);
+        
+    
+            var circle_marker_84dcc34c4f644dacebbb2a4523da47da = L.circleMarker(
+                [-39.133301, 178.313202],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_84dcc34c4f644dacebbb2a4523da47da.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> LOB10 <br> <b>Dates: </b>2014/05/11 to 2015/06/22  <br><br><b>Depth: </b> -1444 m <br> <br> <b>Channels:</b><br> EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fac1003ef261fd6760ff00bf4ee1dbbb = L.marker(
+                [-39.133301, 178.313202],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_bcf1705faaebc096659877962661676e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLOB10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fac1003ef261fd6760ff00bf4ee1dbbb.setIcon(div_icon_bcf1705faaebc096659877962661676e);
+        
+    
+            var circle_marker_c3efa76921c8174066c4e3fa6162c214 = L.circleMarker(
+                [-38.688801, 178.819901],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_c3efa76921c8174066c4e3fa6162c214.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> EBS4 <br> <b>Dates: </b>2014/05/13 to 2015/06/21  <br><br><b>Depth: </b> -1712 m <br> <br> <b>Channels:</b><br> EH1-EH2-EHZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6d7f50cb9e990dc6642c3ea467ad2c2b = L.marker(
+                [-38.688801, 178.819901],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_fc2bc60e129014c7279e027e573e3f94 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEBS4\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6d7f50cb9e990dc6642c3ea467ad2c2b.setIcon(div_icon_fc2bc60e129014c7279e027e573e3f94);
+        
+    
+            var circle_marker_9bd2d124463424c4e41e085e683935a9 = L.circleMarker(
+                [-38.9944, 178.325699],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_9bd2d124463424c4e41e085e683935a9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> EBS5 <br> <b>Dates: </b>2014/05/11 to 2015/06/25  <br><br><b>Depth: </b> -1348 m <br> <br> <b>Channels:</b><br> EH1-EH2-EHZ (200.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_994c21888d31d96b39b62d7355b6280d = L.marker(
+                [-38.9944, 178.325699],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_2a9943478c42c3c1763ea7e0b65fe913 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eEBS5\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_994c21888d31d96b39b62d7355b6280d.setIcon(div_icon_2a9943478c42c3c1763ea7e0b65fe913);
+        
+    
+            var circle_marker_daca613b04c90d87b89af0095683fb97 = L.circleMarker(
+                [-38.792198, 179.147293],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_daca613b04c90d87b89af0095683fb97.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> LOBS3 <br> <b>Dates: </b>2014/05/15 to 2015/06/23  <br><br><b>Depth: </b> -3540 m <br> <br> <b>Channels:</b><br> EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_29232639c94ac15a260cf755a35d6980 = L.marker(
+                [-38.792198, 179.147293],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_8d832fa62829d378cf94aaab170406c1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLOBS3\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_29232639c94ac15a260cf755a35d6980.setIcon(div_icon_8d832fa62829d378cf94aaab170406c1);
+        
+    
+            var circle_marker_e1429d6f519a21d16aea27cb72e3ce57 = L.circleMarker(
+                [-38.592098, 178.818695],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            circle_marker_e1429d6f519a21d16aea27cb72e3ce57.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> YH <br> <b>Station:</b> LOBS1 <br> <b>Dates: </b>2014/05/14 to 2015/06/22  <br><br><b>Depth: </b> -993 m <br> <br> <b>Channels:</b><br> EDH-HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/YH_2014 <br><br> <b>Net name: </b> Hikurangi Ocean Bottom Investigation of Tremor and Slow Slip <br><br> <b>Operator: </b>  University of Texas at Austin</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5cb0f3a9cc7034728e232eaaf7c0f100 = L.marker(
+                [-38.592098, 178.818695],
+                {}
+            ).addTo(map_4c6a9b0c4f5332555838033fa9516d0a);
+        
+    
+            var div_icon_016393bf45f8b21905f827f9e095037b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLOBS1\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5cb0f3a9cc7034728e232eaaf7c0f100.setIcon(div_icon_016393bf45f8b21905f827f9e095037b);
+        
+    
+            map_4c6a9b0c4f5332555838033fa9516d0a.fitBounds(
+                [[-39.133301, 178.313202], [-38.592098, 179.147293]],
+                {}
+            );
+        </script>
+
+</html>

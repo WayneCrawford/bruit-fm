@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_61831b8d9b2e0d7a599886faeedb5a0c {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network XI: TAG Hydrothermal Mound Passive Seismic Experiment </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Woods Hole Oceanographic Institution (WHOI)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Jun 2003 to Mar 2004</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="/">/</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_61831b8d9b2e0d7a599886faeedb5a0c" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>XI</TD><TD>OBS07</TD><TD>2003/10/30</TD><TD>2003/11/02</TD><TD>26.281799</TD><TD>-44.755878</TD><TD>-4228</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS06</TD><TD>2003/10/30</TD><TD>2003/11/02</TD><TD>26.243441</TD><TD>-44.773338</TD><TD>-2360</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS12</TD><TD>2003/10/31</TD><TD>2003/11/04</TD><TD>26.03269</TD><TD>-44.911949</TD><TD>-4232</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS04</TD><TD>2003/10/30</TD><TD>2003/11/02</TD><TD>26.067591</TD><TD>-44.8601</TD><TD>-4145</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS10</TD><TD>2003/10/31</TD><TD>2003/11/04</TD><TD>26.177971</TD><TD>-44.930389</TD><TD>-2929</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS05</TD><TD>2003/10/30</TD><TD>2003/11/02</TD><TD>26.20422</TD><TD>-44.792542</TD><TD>-3937</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS01</TD><TD>2003/10/30</TD><TD>2003/11/02</TD><TD>25.953369</TD><TD>-44.91341</TD><TD>-4238</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS15</TD><TD>2003/10/31</TD><TD>2003/11/04</TD><TD>26.188551</TD><TD>-44.837669</TD><TD>-3712</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>D17</TD><TD>2003/06/25</TD><TD>2004/03/31</TD><TD>26.1441</TD><TD>-44.822498</TD><TD>-3601</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br></TD></TR><TR><TD>XI</TD><TD>D16</TD><TD>2003/06/25</TD><TD>2004/03/31</TD><TD>26.127399</TD><TD>-44.830299</TD><TD>-3684</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br></TD></TR><TR><TD>XI</TD><TD>CMP01</TD><TD>2003/10/30</TD><TD>2003/11/04</TD><TD>26.142799</TD><TD>-44.8405</TD><TD>-3694</TD><TD>BH1-BH2-BHZ (40.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS14</TD><TD>2003/10/31</TD><TD>2003/11/04</TD><TD>26.10928</TD><TD>-44.876808</TD><TD>-4199</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS16</TD><TD>2003/10/31</TD><TD>2003/11/04</TD><TD>26.225889</TD><TD>-44.819969</TD><TD>-3693</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS02</TD><TD>2003/10/30</TD><TD>2003/11/02</TD><TD>25.9891</TD><TD>-44.894772</TD><TD>-4231</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>D29</TD><TD>2003/06/25</TD><TD>2004/03/31</TD><TD>26.1378</TD><TD>-44.826099</TD><TD>-3650</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS03</TD><TD>2003/10/30</TD><TD>2003/11/02</TD><TD>26.02791</TD><TD>-44.877689</TD><TD>-4334</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS17</TD><TD>2003/10/31</TD><TD>2003/11/04</TD><TD>26.264151</TD><TD>-44.800228</TD><TD>-3870</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>D58</TD><TD>2003/06/25</TD><TD>2004/03/31</TD><TD>26.136499</TD><TD>-44.826698</TD><TD>-3644</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br></TD></TR><TR><TD>XI</TD><TD>D48</TD><TD>2003/06/25</TD><TD>2004/03/31</TD><TD>26.1486</TD><TD>-44.858601</TD><TD>-3678</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br></TD></TR><TR><TD>XI</TD><TD>D62</TD><TD>2003/06/25</TD><TD>2004/03/31</TD><TD>26.1401</TD><TD>-44.8354</TD><TD>-3675</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br></TD></TR><TR><TD>XI</TD><TD>D41</TD><TD>2003/06/25</TD><TD>2004/03/31</TD><TD>26.137501</TD><TD>-44.825199</TD><TD>-3650</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br></TD></TR><TR><TD>XI</TD><TD>D55</TD><TD>2003/06/25</TD><TD>2004/03/31</TD><TD>26.105801</TD><TD>-44.840599</TD><TD>-3956</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br></TD></TR><TR><TD>XI</TD><TD>D18</TD><TD>2003/06/25</TD><TD>2004/03/31</TD><TD>26.1374</TD><TD>-44.827</TD><TD>-3661</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br></TD></TR><TR><TD>XI</TD><TD>D32</TD><TD>2003/06/25</TD><TD>2004/03/31</TD><TD>26.1665</TD><TD>-44.811901</TD><TD>-3404</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS08</TD><TD>2003/10/30</TD><TD>2003/11/02</TD><TD>26.31929</TD><TD>-44.737492</TD><TD>-4068</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>D36</TD><TD>2003/06/25</TD><TD>2004/03/31</TD><TD>26.120001</TD><TD>-44.786301</TD><TD>-2893</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br></TD></TR><TR><TD>XI</TD><TD>OBS09</TD><TD>2003/10/31</TD><TD>2003/11/04</TD><TD>26.163509</TD><TD>-44.894451</TD><TD>-3771</TD><TD>HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>XI</TD><TD>D35</TD><TD>2003/06/25</TD><TD>2004/03/31</TD><TD>26.1364</TD><TD>-44.825298</TD><TD>-3646</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br></TD></TR><TR><TD>XI</TD><TD>D21</TD><TD>2003/06/25</TD><TD>2004/03/31</TD><TD>26.132401</TD><TD>-44.817101</TD><TD>-3651</TD><TD>EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>CMP01</TD><TD>BH1</TD><TD>40.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125</TD></TR><TR><TD>CMP01</TD><TD>BH2</TD><TD>40.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125</TD></TR><TR><TD>CMP01</TD><TD>BHZ</TD><TD>40.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125</TD></TR><TR><TD>D17 D16 D29 D58 D48 D62 D41 D55 D18 D32 D36 D35 D21</TD><TD>EDH</TD><TD>100.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase B</TD></TR><TR><TD>D17 D16 D29 D58 D48 D62 D41 D55 D18 D32 D36 D35 D21</TD><TD>EL1</TD><TD>100.0</TD><TD>Geospace Technologies GS-11D/Quanterra Q330 Linear</TD></TR><TR><TD>D17 D16 D29 D58 D48 D62 D41 D55 D18 D32 D36 D35 D21</TD><TD>EL2</TD><TD>100.0</TD><TD>Geospace Technologies GS-11D/Quanterra Q330 Linear</TD></TR><TR><TD>D17 D16 D29 D58 D48 D62 D41 D55 D18 D32 D36 D35 D21</TD><TD>ELZ</TD><TD>100.0</TD><TD>Geospace Technologies GS-11D/Quanterra Q330 Linear</TD></TR><TR><TD>OBS07 OBS06 OBS12 OBS04 OBS10 OBS05 OBS01 OBS15 OBS14 OBS16 OBS02 OBS03 OBS17 OBS08 OBS09</TD><TD>HH1</TD><TD>125.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125</TD></TR><TR><TD>OBS07 OBS06 OBS12 OBS04 OBS10 OBS05 OBS01 OBS15 OBS14 OBS16 OBS02 OBS03 OBS17 OBS08 OBS09</TD><TD>HH2</TD><TD>125.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125</TD></TR><TR><TD>OBS07 OBS06 OBS12 OBS04 OBS10 OBS05 OBS01 OBS15 OBS14 OBS16 OBS02 OBS03 OBS17 OBS08 OBS09</TD><TD>HHZ</TD><TD>125.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125</TD></TR><TR><TD>D17 D16 D29 D58 D48 D62 D41 D55 D18 D32 D36 D35 D21</TD><TD>LDH</TD><TD>1.0</TD><TD>HTI-90-U Hydrophone;/Quanterra Q330 Linear Phase B</TD></TR><TR><TD>D17 D16 D29 D58 D48 D62 D41 D55 D18 D32 D36 D35 D21</TD><TD>LL1</TD><TD>1.0</TD><TD>Geospace Technologies GS-11D/Quanterra Q330 Linear</TD></TR><TR><TD>D17 D16 D29 D58 D48 D62 D41 D55 D18 D32 D36 D35 D21</TD><TD>LL2</TD><TD>1.0</TD><TD>Geospace Technologies GS-11D/Quanterra Q330 Linear</TD></TR><TR><TD>D17 D16 D29 D58 D48 D62 D41 D55 D18 D32 D36 D35 D21</TD><TD>LLZ</TD><TD>1.0</TD><TD>Geospace Technologies GS-11D/Quanterra Q330 Linear</TD></TR><TR><TD>D17 D16 D29 D58 D48 D62 D41 D55 D18 D32 D36 D35 D21</TD><TD>VM1</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Below 100 Composite</TD></TR><TR><TD>D17 D16 D29 D58 D48 D62 D41 D55 D18 D32 D36 D35 D21</TD><TD>VM2</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Below 100 Composite</TD></TR><TR><TD>D17 D16 D29 D58 D48 D62 D41 D55 D18 D32 D36 D35 D21</TD><TD>VMZ</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Below 100 Composite</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_61831b8d9b2e0d7a599886faeedb5a0c = L.map(
+                "map_61831b8d9b2e0d7a599886faeedb5a0c",
+                {
+                    center: [26.139529853403136, -44.830442335078516],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_955493e45ca0f963b968fc2cc927da36 = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var circle_marker_5f8eabb21f872256f9632be08189ca3c = L.circleMarker(
+                [26.281799, -44.755878],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_5f8eabb21f872256f9632be08189ca3c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS07 <br> <b>Dates: </b>2003/10/30 to 2003/11/02  <br><br><b>Depth: </b> -4228 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6fd794378935fd00ea38e3538c99f27c = L.marker(
+                [26.281799, -44.755878],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_b42dd11e077d73c60a2d1b084caae444 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6fd794378935fd00ea38e3538c99f27c.setIcon(div_icon_b42dd11e077d73c60a2d1b084caae444);
+        
+    
+            var circle_marker_49ed1a54eb2e48434c8587e8e8f22395 = L.circleMarker(
+                [26.243441, -44.773338],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_49ed1a54eb2e48434c8587e8e8f22395.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS06 <br> <b>Dates: </b>2003/10/30 to 2003/11/02  <br><br><b>Depth: </b> -2360 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d21826eb481888fbc3d7d7b0f622475e = L.marker(
+                [26.243441, -44.773338],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_1bfa5b4773613ea8c87eb756ceb3a944 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d21826eb481888fbc3d7d7b0f622475e.setIcon(div_icon_1bfa5b4773613ea8c87eb756ceb3a944);
+        
+    
+            var circle_marker_f7c35306a4f69579e0018090328a10c8 = L.circleMarker(
+                [26.03269, -44.911949],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_f7c35306a4f69579e0018090328a10c8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS12 <br> <b>Dates: </b>2003/10/31 to 2003/11/04  <br><br><b>Depth: </b> -4232 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_72b76666bb566e2f4f25e3d0b5adb727 = L.marker(
+                [26.03269, -44.911949],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_6b57764369a1c27bf19bb5f7c8bde30e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_72b76666bb566e2f4f25e3d0b5adb727.setIcon(div_icon_6b57764369a1c27bf19bb5f7c8bde30e);
+        
+    
+            var circle_marker_3485e7dedb0cd79523fbbb90c099516a = L.circleMarker(
+                [26.067591, -44.8601],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_3485e7dedb0cd79523fbbb90c099516a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS04 <br> <b>Dates: </b>2003/10/30 to 2003/11/02  <br><br><b>Depth: </b> -4145 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cfc0e7341f2a7d01df5e8e93e25b6cea = L.marker(
+                [26.067591, -44.8601],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_393ba5c8c46629f6ce7c60f48862995d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cfc0e7341f2a7d01df5e8e93e25b6cea.setIcon(div_icon_393ba5c8c46629f6ce7c60f48862995d);
+        
+    
+            var circle_marker_0c3019afef7c1ae5a84a8e9215a9bbbe = L.circleMarker(
+                [26.177971, -44.930389],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_0c3019afef7c1ae5a84a8e9215a9bbbe.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS10 <br> <b>Dates: </b>2003/10/31 to 2003/11/04  <br><br><b>Depth: </b> -2929 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1faf021c2fb5b91ed8709b0633ea356f = L.marker(
+                [26.177971, -44.930389],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_1d44b892bb35e36624366af654762522 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1faf021c2fb5b91ed8709b0633ea356f.setIcon(div_icon_1d44b892bb35e36624366af654762522);
+        
+    
+            var circle_marker_4517498e2aabf055df15ee884796b52d = L.circleMarker(
+                [26.20422, -44.792542],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_4517498e2aabf055df15ee884796b52d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS05 <br> <b>Dates: </b>2003/10/30 to 2003/11/02  <br><br><b>Depth: </b> -3937 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a642f99bc1b6b071028960e9565bdb95 = L.marker(
+                [26.20422, -44.792542],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_5a44ff4341b3e8447ec32d53e1074ff5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a642f99bc1b6b071028960e9565bdb95.setIcon(div_icon_5a44ff4341b3e8447ec32d53e1074ff5);
+        
+    
+            var circle_marker_9ad1c792cd6e3e17cf18a416e8b7873a = L.circleMarker(
+                [25.953369, -44.91341],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_9ad1c792cd6e3e17cf18a416e8b7873a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS01 <br> <b>Dates: </b>2003/10/30 to 2003/11/02  <br><br><b>Depth: </b> -4238 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_255882feb2f72d2579bfd3358f6b8ddb = L.marker(
+                [25.953369, -44.91341],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_9e8ad6ade6321f390f55623d2298ceb0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_255882feb2f72d2579bfd3358f6b8ddb.setIcon(div_icon_9e8ad6ade6321f390f55623d2298ceb0);
+        
+    
+            var circle_marker_f03e71d1a408cc26c41906a0e6eae36e = L.circleMarker(
+                [26.188551, -44.837669],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_f03e71d1a408cc26c41906a0e6eae36e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS15 <br> <b>Dates: </b>2003/10/31 to 2003/11/04  <br><br><b>Depth: </b> -3712 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3d944bd21535e26a7b04660098b1b933 = L.marker(
+                [26.188551, -44.837669],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_d360e29806949a8d315533ad88d1eeba = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3d944bd21535e26a7b04660098b1b933.setIcon(div_icon_d360e29806949a8d315533ad88d1eeba);
+        
+    
+            var circle_marker_e0ce9c0106d4e58ed02af836d6f0ff23 = L.circleMarker(
+                [26.1441, -44.822498],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_e0ce9c0106d4e58ed02af836d6f0ff23.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> D17 <br> <b>Dates: </b>2003/06/25 to 2004/03/31  <br><br><b>Depth: </b> -3601 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4541b22227b5783d91d4a0d5986f405a = L.marker(
+                [26.1441, -44.822498],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_7d4e1ea5ff4cf80c72855af5f3d73557 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4541b22227b5783d91d4a0d5986f405a.setIcon(div_icon_7d4e1ea5ff4cf80c72855af5f3d73557);
+        
+    
+            var circle_marker_49505bfe2698bbaa750a5093029eab7a = L.circleMarker(
+                [26.127399, -44.830299],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_49505bfe2698bbaa750a5093029eab7a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> D16 <br> <b>Dates: </b>2003/06/25 to 2004/03/31  <br><br><b>Depth: </b> -3684 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2d7b17d79dc9b231ef7c421ae9682189 = L.marker(
+                [26.127399, -44.830299],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_918d140b24b29cfe991d9cf58b3208d6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2d7b17d79dc9b231ef7c421ae9682189.setIcon(div_icon_918d140b24b29cfe991d9cf58b3208d6);
+        
+    
+            var circle_marker_9d6649432c8ec5e596582ec540f16ac0 = L.circleMarker(
+                [26.142799, -44.8405],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_9d6649432c8ec5e596582ec540f16ac0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> CMP01 <br> <b>Dates: </b>2003/10/30 to 2003/11/04  <br><br><b>Depth: </b> -3694 m <br> <br> <b>Channels:</b><br> BH1-BH2-BHZ (40.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fb4ea6eba2c2b8ad8be4729724f670e4 = L.marker(
+                [26.142799, -44.8405],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_74ce9229c7ff2159356f4060c86931d8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eCMP01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fb4ea6eba2c2b8ad8be4729724f670e4.setIcon(div_icon_74ce9229c7ff2159356f4060c86931d8);
+        
+    
+            var circle_marker_82e502019602d14f5e515b4ac1d6149f = L.circleMarker(
+                [26.10928, -44.876808],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_82e502019602d14f5e515b4ac1d6149f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS14 <br> <b>Dates: </b>2003/10/31 to 2003/11/04  <br><br><b>Depth: </b> -4199 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a5f42f0f5f6bd9d2a10293d1bef10009 = L.marker(
+                [26.10928, -44.876808],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_e862840a489f63422132cd747e25c439 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a5f42f0f5f6bd9d2a10293d1bef10009.setIcon(div_icon_e862840a489f63422132cd747e25c439);
+        
+    
+            var circle_marker_77fa787a18c8f5681fe57d88973a9830 = L.circleMarker(
+                [26.225889, -44.819969],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_77fa787a18c8f5681fe57d88973a9830.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS16 <br> <b>Dates: </b>2003/10/31 to 2003/11/04  <br><br><b>Depth: </b> -3693 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_524f69689c8f031fb56aa2682c8033a8 = L.marker(
+                [26.225889, -44.819969],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_278969d6525f97dc7ce682b272285423 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_524f69689c8f031fb56aa2682c8033a8.setIcon(div_icon_278969d6525f97dc7ce682b272285423);
+        
+    
+            var circle_marker_ecfb77817fa1995edc0b3d3ce48596ff = L.circleMarker(
+                [25.9891, -44.894772],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_ecfb77817fa1995edc0b3d3ce48596ff.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS02 <br> <b>Dates: </b>2003/10/30 to 2003/11/02  <br><br><b>Depth: </b> -4231 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_913db0ffb029420023f7dc436dc23f37 = L.marker(
+                [25.9891, -44.894772],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_bd2f64ace32d7c9fba9cebe50dbf7073 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_913db0ffb029420023f7dc436dc23f37.setIcon(div_icon_bd2f64ace32d7c9fba9cebe50dbf7073);
+        
+    
+            var circle_marker_3392a6273c83cc291aef8be54711ed4c = L.circleMarker(
+                [26.1378, -44.826099],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_3392a6273c83cc291aef8be54711ed4c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> D29 <br> <b>Dates: </b>2003/06/25 to 2004/03/31  <br><br><b>Depth: </b> -3650 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8758103a62fad853361a2cd314ef3245 = L.marker(
+                [26.1378, -44.826099],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_4dc461adec5a10e5b56ebb27ee4c0447 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD29\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8758103a62fad853361a2cd314ef3245.setIcon(div_icon_4dc461adec5a10e5b56ebb27ee4c0447);
+        
+    
+            var circle_marker_daa8cde7570b9552ad8cf70f2800b4a7 = L.circleMarker(
+                [26.02791, -44.877689],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_daa8cde7570b9552ad8cf70f2800b4a7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS03 <br> <b>Dates: </b>2003/10/30 to 2003/11/02  <br><br><b>Depth: </b> -4334 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9e015b237da20da06a18c8e70e6007b2 = L.marker(
+                [26.02791, -44.877689],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_5c10a23ac99d1c6050a4cb0df22e21e0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9e015b237da20da06a18c8e70e6007b2.setIcon(div_icon_5c10a23ac99d1c6050a4cb0df22e21e0);
+        
+    
+            var circle_marker_36b34d945bd485b53d0700dc59e2c10b = L.circleMarker(
+                [26.264151, -44.800228],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_36b34d945bd485b53d0700dc59e2c10b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS17 <br> <b>Dates: </b>2003/10/31 to 2003/11/04  <br><br><b>Depth: </b> -3870 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b7ecc4726a7788407eac24db457ab8f4 = L.marker(
+                [26.264151, -44.800228],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_4ce11931c07206692a3b615f9e8eea0e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b7ecc4726a7788407eac24db457ab8f4.setIcon(div_icon_4ce11931c07206692a3b615f9e8eea0e);
+        
+    
+            var circle_marker_06abf5bc0e232523526e6accb66d9872 = L.circleMarker(
+                [26.136499, -44.826698],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_06abf5bc0e232523526e6accb66d9872.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> D58 <br> <b>Dates: </b>2003/06/25 to 2004/03/31  <br><br><b>Depth: </b> -3644 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_71a36d90d3bf151f51d2adc6e6b4012b = L.marker(
+                [26.136499, -44.826698],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_d82fd1c9c9c23955d64c7681580eea49 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD58\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_71a36d90d3bf151f51d2adc6e6b4012b.setIcon(div_icon_d82fd1c9c9c23955d64c7681580eea49);
+        
+    
+            var circle_marker_5c35cef3fb336c0f48fbf7ec2d7e061c = L.circleMarker(
+                [26.1486, -44.858601],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_5c35cef3fb336c0f48fbf7ec2d7e061c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> D48 <br> <b>Dates: </b>2003/06/25 to 2004/03/31  <br><br><b>Depth: </b> -3678 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5af719d9fe217f74ecbea44b03b8660e = L.marker(
+                [26.1486, -44.858601],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_be6906c83a7b320883ff87095529699d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD48\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5af719d9fe217f74ecbea44b03b8660e.setIcon(div_icon_be6906c83a7b320883ff87095529699d);
+        
+    
+            var circle_marker_190adf4299b3f40a9b2eccb2dc427484 = L.circleMarker(
+                [26.1401, -44.8354],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_190adf4299b3f40a9b2eccb2dc427484.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> D62 <br> <b>Dates: </b>2003/06/25 to 2004/03/31  <br><br><b>Depth: </b> -3675 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7c33857e7a07e73d60d67b4c84d019ef = L.marker(
+                [26.1401, -44.8354],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_8dd3cf2ab5dc3731ecba1087a49299a0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD62\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7c33857e7a07e73d60d67b4c84d019ef.setIcon(div_icon_8dd3cf2ab5dc3731ecba1087a49299a0);
+        
+    
+            var circle_marker_4f94569d43d94e41e9c03bc00645381f = L.circleMarker(
+                [26.137501, -44.825199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_4f94569d43d94e41e9c03bc00645381f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> D41 <br> <b>Dates: </b>2003/06/25 to 2004/03/31  <br><br><b>Depth: </b> -3650 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b9d3e0830497586ebc158b2069780261 = L.marker(
+                [26.137501, -44.825199],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_abf1701d5e596d408078b3e75fefa1f2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD41\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b9d3e0830497586ebc158b2069780261.setIcon(div_icon_abf1701d5e596d408078b3e75fefa1f2);
+        
+    
+            var circle_marker_3c90c48c9b0268b8719fc3f1f133ac10 = L.circleMarker(
+                [26.105801, -44.840599],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_3c90c48c9b0268b8719fc3f1f133ac10.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> D55 <br> <b>Dates: </b>2003/06/25 to 2004/03/31  <br><br><b>Depth: </b> -3956 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2efc2422022cb6e87d288969b7745416 = L.marker(
+                [26.105801, -44.840599],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_fa7795558eb85e0ef897c454d2197d44 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD55\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2efc2422022cb6e87d288969b7745416.setIcon(div_icon_fa7795558eb85e0ef897c454d2197d44);
+        
+    
+            var circle_marker_fc9129944e1cb95ab6fb90437fdc02d5 = L.circleMarker(
+                [26.1374, -44.827],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_fc9129944e1cb95ab6fb90437fdc02d5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> D18 <br> <b>Dates: </b>2003/06/25 to 2004/03/31  <br><br><b>Depth: </b> -3661 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bcfe6c097c7a610576de49cdebdaea32 = L.marker(
+                [26.1374, -44.827],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_f224dde6cd65196603a3b431778f6864 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_bcfe6c097c7a610576de49cdebdaea32.setIcon(div_icon_f224dde6cd65196603a3b431778f6864);
+        
+    
+            var circle_marker_b60ed2ba9cbb3d8dd1284abb54e9b980 = L.circleMarker(
+                [26.1665, -44.811901],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_b60ed2ba9cbb3d8dd1284abb54e9b980.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> D32 <br> <b>Dates: </b>2003/06/25 to 2004/03/31  <br><br><b>Depth: </b> -3404 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2bcf8c712c7bd95d1def1b5b6579120a = L.marker(
+                [26.1665, -44.811901],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_4f8f85e1e003dd3f1b358553630a15b8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD32\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2bcf8c712c7bd95d1def1b5b6579120a.setIcon(div_icon_4f8f85e1e003dd3f1b358553630a15b8);
+        
+    
+            var circle_marker_09c4f71f7f592e9dea6dc21b88331797 = L.circleMarker(
+                [26.31929, -44.737492],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_09c4f71f7f592e9dea6dc21b88331797.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS08 <br> <b>Dates: </b>2003/10/30 to 2003/11/02  <br><br><b>Depth: </b> -4068 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_240ce4c6999db84c271d4c1b1540df5a = L.marker(
+                [26.31929, -44.737492],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_95c8db4e0c7c00159a1fe802e5b264f1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_240ce4c6999db84c271d4c1b1540df5a.setIcon(div_icon_95c8db4e0c7c00159a1fe802e5b264f1);
+        
+    
+            var circle_marker_5f815c864edc8293521e89e5ba0afedc = L.circleMarker(
+                [26.120001, -44.786301],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_5f815c864edc8293521e89e5ba0afedc.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> D36 <br> <b>Dates: </b>2003/06/25 to 2004/03/31  <br><br><b>Depth: </b> -2893 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0d6967b073a0fbee951f0215e418609a = L.marker(
+                [26.120001, -44.786301],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_a790205363f8231708e0ac440e67f757 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD36\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0d6967b073a0fbee951f0215e418609a.setIcon(div_icon_a790205363f8231708e0ac440e67f757);
+        
+    
+            var circle_marker_5a540a7a788d2f4b13439538bdb952ba = L.circleMarker(
+                [26.163509, -44.894451],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_5a540a7a788d2f4b13439538bdb952ba.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> OBS09 <br> <b>Dates: </b>2003/10/31 to 2003/11/04  <br><br><b>Depth: </b> -3771 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fcb4be5b94f98c397c37d649cfb773cc = L.marker(
+                [26.163509, -44.894451],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_902cbc2af4b7693e010b9281ea217a4c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eOBS09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fcb4be5b94f98c397c37d649cfb773cc.setIcon(div_icon_902cbc2af4b7693e010b9281ea217a4c);
+        
+    
+            var circle_marker_7650a7833d369004f7f08be84f5a375c = L.circleMarker(
+                [26.1364, -44.825298],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_7650a7833d369004f7f08be84f5a375c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> D35 <br> <b>Dates: </b>2003/06/25 to 2004/03/31  <br><br><b>Depth: </b> -3646 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c0e9bc592c4432365cf846a1d49e21d0 = L.marker(
+                [26.1364, -44.825298],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_887e1e4f84037a98a82fcb9088f092c9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD35\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c0e9bc592c4432365cf846a1d49e21d0.setIcon(div_icon_887e1e4f84037a98a82fcb9088f092c9);
+        
+    
+            var circle_marker_41e07894c276fb4ba25853e15cabfa4b = L.circleMarker(
+                [26.132401, -44.817101],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5e00a1", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            circle_marker_41e07894c276fb4ba25853e15cabfa4b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XI <br> <b>Station:</b> D21 <br> <b>Dates: </b>2003/06/25 to 2004/03/31  <br><br><b>Depth: </b> -3651 m <br> <br> <b>Channels:</b><br> EDH-EL1-EL2-ELZ (100.0 Hz) <br>LDH-LL1-LL2-LLZ (1.0 Hz) <br>VM1-VM2-VMZ (0.1 Hz) <br> <br><br> <b>DOI: </b> / <br><br> <b>Net name: </b> TAG Hydrothermal Mound Passive Seismic Experiment <br><br> <b>Operator: </b>  Woods Hole Oceanographic Institution (WHOI)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_de6b147edabd14b39e17a2ee6f822cb2 = L.marker(
+                [26.132401, -44.817101],
+                {}
+            ).addTo(map_61831b8d9b2e0d7a599886faeedb5a0c);
+        
+    
+            var div_icon_32cd3c04e0b5d5b24e2f449783ef87d6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eD21\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_de6b147edabd14b39e17a2ee6f822cb2.setIcon(div_icon_32cd3c04e0b5d5b24e2f449783ef87d6);
+        
+    
+            map_61831b8d9b2e0d7a599886faeedb5a0c.fitBounds(
+                [[25.953369, -44.930389], [26.31929, -44.737492]],
+                {}
+            );
+        </script>
+
+</html>

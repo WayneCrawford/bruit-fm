@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_b3957f435aa1eac67b6ecbc985386b6e {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network Z5: Seismicity, Structure and Dynamics of the Gorda Deformation Zone </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Oregon State University (OSU USA)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Sep 2013 to Oct 2015</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/Z5_2013">https://doi.org/10.7914/SN/Z5_2013</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_b3957f435aa1eac67b6ecbc985386b6e" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>Z5</TD><TD>GB170</TD><TD>2013/11/02</TD><TD>2014/09/18</TD><TD>41.5956</TD><TD>-127.424004</TD><TD>-3454</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS020</TD><TD>2013/11/03</TD><TD>2014/08/05</TD><TD>42.573502</TD><TD>-125.447998</TD><TD>-3105</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB171</TD><TD>2014/07/31</TD><TD>2015/09/13</TD><TD>41.597</TD><TD>-127.4254</TD><TD>-3469</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB750</TD><TD>2013/09/26</TD><TD>2014/07/26</TD><TD>44.589802</TD><TD>-130.6577</TD><TD>-3010</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB630</TD><TD>2013/10/04</TD><TD>2014/07/29</TD><TD>42.877399</TD><TD>-126.636902</TD><TD>-3340</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB210</TD><TD>2013/11/02</TD><TD>2014/09/18</TD><TD>41.337002</TD><TD>-126.055801</TD><TD>-3094</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB631</TD><TD>2014/09/20</TD><TD>2015/04/18</TD><TD>42.8787</TD><TD>-126.634399</TD><TD>-3320</TD><TD>HDH-HH1-HH2-HHZ (125.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB360</TD><TD>2013/10/31</TD><TD>2014/09/15</TD><TD>39.879601</TD><TD>-124.730797</TD><TD>-1312</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BS611</TD><TD>2014/08/04</TD><TD>2015/09/17</TD><TD>42.834702</TD><TD>-126.011597</TD><TD>-2720</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB740</TD><TD>2013/09/26</TD><TD>2014/07/26</TD><TD>44.062199</TD><TD>-130.503693</TD><TD>-3179</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS150</TD><TD>2013/11/01</TD><TD>2014/08/03</TD><TD>41.6964</TD><TD>-126.360703</TD><TD>-2965</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BS820</TD><TD>2014/07/29</TD><TD>2015/09/12</TD><TD>43.579899</TD><TD>-127.361801</TD><TD>-2935</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB730</TD><TD>2013/09/27</TD><TD>2014/07/27</TD><TD>44.293098</TD><TD>-129.964996</TD><TD>-3337</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB650</TD><TD>2013/10/05</TD><TD>2014/07/29</TD><TD>43.465199</TD><TD>-127.134697</TD><TD>-2947</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS240</TD><TD>2013/10/13</TD><TD>2014/07/31</TD><TD>41.428101</TD><TD>-128.055893</TD><TD>-3115</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS280</TD><TD>2013/11/01</TD><TD>2014/08/03</TD><TD>41.0336</TD><TD>-126.093399</TD><TD>-3125</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB690</TD><TD>2013/09/24</TD><TD>2014/07/28</TD><TD>43.851898</TD><TD>-128.436798</TD><TD>-2858</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS040</TD><TD>2013/10/12</TD><TD>2014/08/04</TD><TD>42.554699</TD><TD>-126.403099</TD><TD>-2851</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB111</TD><TD>2014/07/31</TD><TD>2015/09/13</TD><TD>41.9217</TD><TD>-127.1716</TD><TD>-3403</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS120</TD><TD>2013/10/13</TD><TD>2014/07/30</TD><TD>42.216702</TD><TD>-127.604202</TD><TD>-2935</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB101</TD><TD>2014/08/08</TD><TD>2015/09/16</TD><TD>42.0205</TD><TD>-126.587997</TD><TD>-3585</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB680</TD><TD>2013/10/02</TD><TD>2014/07/28</TD><TD>43.252499</TD><TD>-128.803497</TD><TD>-3253</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB870</TD><TD>2014/07/27</TD><TD>2015/09/10</TD><TD>44.045399</TD><TD>-130.101807</TD><TD>-3219</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB100</TD><TD>2013/11/03</TD><TD>2014/09/19</TD><TD>42.026001</TD><TD>-126.585197</TD><TD>-3571</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB721</TD><TD>2014/07/27</TD><TD>2015/09/11</TD><TD>43.749901</TD><TD>-129.413696</TD><TD>-3170</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS090</TD><TD>2013/11/02</TD><TD>2014/08/04</TD><TD>42.001999</TD><TD>-125.981499</TD><TD>-2942</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB260</TD><TD>2013/11/01</TD><TD>2014/09/13</TD><TD>40.975498</TD><TD>-125.221298</TD><TD>-3067</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB640</TD><TD>2013/10/04</TD><TD>2014/07/30</TD><TD>42.993</TD><TD>-127.302002</TD><TD>-2854</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB720</TD><TD>2013/10/01</TD><TD>2014/07/27</TD><TD>43.749401</TD><TD>-129.413193</TD><TD>-3177</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB330</TD><TD>2013/10/16</TD><TD>2014/09/17</TD><TD>40.511101</TD><TD>-126.5849</TD><TD>-3156</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB711</TD><TD>2014/07/27</TD><TD>2015/09/11</TD><TD>44.1684</TD><TD>-129.1427</TD><TD>-2441</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS261</TD><TD>2014/08/10</TD><TD>2015/09/16</TD><TD>40.9785</TD><TD>-125.213501</TD><TD>-3077</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BS641</TD><TD>2014/07/30</TD><TD>2015/09/12</TD><TD>42.9939</TD><TD>-127.302002</TD><TD>-2840</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB670</TD><TD>2013/10/02</TD><TD>2014/07/28</TD><TD>43.4669</TD><TD>-128.400299</TD><TD>-3269</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB710</TD><TD>2013/09/25</TD><TD>2014/07/27</TD><TD>44.171299</TD><TD>-129.142593</TD><TD>-2422</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS300</TD><TD>2013/10/15</TD><TD>2014/08/03</TD><TD>40.7864</TD><TD>-126.468201</TD><TD>-3151</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB331</TD><TD>2014/08/11</TD><TD>2015/09/14</TD><TD>40.513</TD><TD>-126.584</TD><TD>-3137</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS060</TD><TD>2013/10/13</TD><TD>2014/07/30</TD><TD>42.628799</TD><TD>-127.301598</TD><TD>-2821</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB050</TD><TD>2013/10/13</TD><TD>2014/09/20</TD><TD>42.474998</TD><TD>-126.902702</TD><TD>-3948</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB840</TD><TD>2014/07/28</TD><TD>2015/09/11</TD><TD>43.425301</TD><TD>-128.033401</TD><TD>-3278</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB130</TD><TD>2013/10/31</TD><TD>2014/09/12</TD><TD>41.409698</TD><TD>-124.689903</TD><TD>-1088</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB850</TD><TD>2014/07/25</TD><TD>2015/10/28</TD><TD>44.533199</TD><TD>-128.046005</TD><TD>-2875</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB281</TD><TD>2014/08/11</TD><TD>2015/09/16</TD><TD>41.0284</TD><TD>-126.089897</TD><TD>-3124</TD><TD>BDH-BH1-BH2-BHZ (50.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS070</TD><TD>2013/10/31</TD><TD>2014/08/12</TD><TD>41.981098</TD><TD>-124.726898</TD><TD>-699</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS110</TD><TD>2013/11/02</TD><TD>2014/07/31</TD><TD>41.9226</TD><TD>-127.171204</TD><TD>-3601</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB321</TD><TD>2014/08/02</TD><TD>2015/09/14</TD><TD>40.3922</TD><TD>-125.911697</TD><TD>-2283</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB700</TD><TD>2013/09/24</TD><TD>2014/07/26</TD><TD>44.672401</TD><TD>-128.817307</TD><TD>-2800</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB080</TD><TD>2013/11/01</TD><TD>2014/09/19</TD><TD>41.9828</TD><TD>-125.307701</TD><TD>-3103</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS270</TD><TD>2013/11/01</TD><TD>2014/08/11</TD><TD>40.785599</TD><TD>-125.556801</TD><TD>-3041</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB660</TD><TD>2013/10/03</TD><TD>2014/07/29</TD><TD>43.426201</TD><TD>-127.792702</TD><TD>-2182</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS311</TD><TD>2014/08/02</TD><TD>2015/09/15</TD><TD>40.455399</TD><TD>-125.132004</TD><TD>-2498</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB320</TD><TD>2013/10/17</TD><TD>2014/09/16</TD><TD>40.396599</TD><TD>-125.912102</TD><TD>-2332</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BS810</TD><TD>2014/07/29</TD><TD>2015/09/12</TD><TD>43.217602</TD><TD>-126.709297</TD><TD>-2940</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB030</TD><TD>2013/11/03</TD><TD>2014/09/11</TD><TD>42.356499</TD><TD>-125.857101</TD><TD>-2621</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB350</TD><TD>2013/10/15</TD><TD>2014/09/17</TD><TD>40.861801</TD><TD>-128.111603</TD><TD>-3299</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB230</TD><TD>2013/10/15</TD><TD>2014/09/17</TD><TD>41.127201</TD><TD>-127.430702</TD><TD>-3310</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BS620</TD><TD>2013/10/12</TD><TD>2014/07/29</TD><TD>43.2645</TD><TD>-126.488098</TD><TD>-2975</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB341</TD><TD>2014/08/01</TD><TD>2015/09/14</TD><TD>40.372101</TD><TD>-127.442299</TD><TD>-1791</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB180</TD><TD>2013/10/13</TD><TD>2014/07/31</TD><TD>41.951401</TD><TD>-128.296295</TD><TD>-3185</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB220</TD><TD>2013/10/16</TD><TD>2014/09/18</TD><TD>41.073299</TD><TD>-126.914497</TD><TD>-2998</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB340</TD><TD>2013/10/16</TD><TD>2014/09/17</TD><TD>40.3713</TD><TD>-127.442299</TD><TD>-1793</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>BB830</TD><TD>2014/07/25</TD><TD>2015/09/09</TD><TD>44.024399</TD><TD>-127.631104</TD><TD>-2939</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GS400</TD><TD>2013/10/14</TD><TD>2014/08/01</TD><TD>40.141602</TD><TD>-127.822998</TD><TD>-4510</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>Z5</TD><TD>GB380</TD><TD>2013/10/16</TD><TD>2014/08/02</TD><TD>40.059399</TD><TD>-126.162498</TD><TD>-4068</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>GB101 BB870 GB331 BB840 BB850 GB281</TD><TD>BDH</TD><TD>50.0</TD><TD>DPG OBSIP-SIO/ABALONES</TD></TR><TR><TD>GB101 BB870 GB331 BB840 BB850 GB281</TD><TD>BH1</TD><TD>50.0</TD><TD>T-compact OBS-SIO/ABALONES</TD></TR><TR><TD>GB101 BB870 GB331 BB840 BB850 GB281</TD><TD>BH2</TD><TD>50.0</TD><TD>T-compact OBS-SIO/ABALONES</TD></TR><TR><TD>GB101 BB870 GB331 BB840 BB850 GB281</TD><TD>BHZ</TD><TD>50.0</TD><TD>T-compact OBS-SIO/ABALONES</TD></TR><TR><TD>BS611 BS820 GS261 BS641 GS311 BS810</TD><TD>EL1</TD><TD>100.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES</TD></TR><TR><TD>GS020 GS150 GS240 GS280 GS040 GS120 GS090 GS300 GS060 GS070 GS110 GS270 BS620 GS400</TD><TD>EL1</TD><TD>100.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR><TR><TD>BS611 BS820 GS261 BS641 GS311 BS810</TD><TD>EL2</TD><TD>100.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES</TD></TR><TR><TD>GS020 GS150 GS240 GS280 GS040 GS120 GS090 GS300 GS060 GS070 GS110 GS270 BS620 GS400</TD><TD>EL2</TD><TD>100.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR><TR><TD>BS611 BS820 GS261 BS641 GS311 BS810</TD><TD>ELZ</TD><TD>100.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES</TD></TR><TR><TD>GS020 GS150 GS240 GS280 GS040 GS120 GS090 GS300 GS060 GS070 GS110 GS270 BS620 GS400</TD><TD>ELZ</TD><TD>100.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR><TR><TD>GB171 BS611 BS820 GB111 BB721 BB711 GS261 BS641 GB321 GS311 BS810 GB341 BB830</TD><TD>HDH</TD><TD>100.0</TD><TD>DPG OBSIP-SIO/ABALONES</TD></TR><TR><TD>GS020 BB750 BB630 BB740 GS150 BB730 BB650 GS240 GS280 BB690 GS040 GS120 BB680 GS090 BB640 BB720 BB670 BB710 GS300 GS060 GS070 GS110 BB700 GS270 BB660 BS620 GB180 GS400 GB380</TD><TD>HDH</TD><TD>100.0</TD><TD>Differential Pressure Gauge OBSIP-SIO/ABALONES-4x4</TD></TR><TR><TD>GB210 GB360 GB100 GB260 GB330 GB050 GB080 GB320 GB350 GB230 GB220 GB340</TD><TD>HDH</TD><TD>100.0</TD><TD>LDEO DPG 30 s corner/LDEO_new dummy at 40/125/100</TD></TR><TR><TD>GB170 GB130 GB030</TD><TD>HDH</TD><TD>100.0</TD><TD>LDEO DPG 60 s corner/LDEO_new dummy at 40/125/100</TD></TR><TR><TD>BB631</TD><TD>HDH</TD><TD>125.0</TD><TD>Parosci APG Pressure/LDEO_APG_logger</TD></TR><TR><TD>GB170 GB210 GB360 GB100 GB260 GB330 GB050 GB130 GB080 GB320 GB030 GB350 GB230 GB220 GB340</TD><TD>HH1</TD><TD>100.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125/100</TD></TR><TR><TD>BB750 BB740 BB730 BB650 BB690 BB680 BB640 BB720 BB700 BB660 GB180 GB380</TD><TD>HH1</TD><TD>100.0</TD><TD>Nanometrics Trillium 240 Single-Sided/ABALONES-4x4</TD></TR><TR><TD>BB630 BB670 BB710</TD><TD>HH1</TD><TD>100.0</TD><TD>Nanometrics Trillium 40 Single Sided/ABALONES-4x4</TD></TR><TR><TD>GB171 GB111 BB721 BB711 GB321 GB341 BB830</TD><TD>HH1</TD><TD>100.0</TD><TD>T240 Single-Sided/ABALONES</TD></TR><TR><TD>BB631</TD><TD>HH1</TD><TD>125.0</TD><TD>Nanometrics Trillium Compact Response/LDEO OBS 201</TD></TR><TR><TD>GB170 GB210 GB360 GB100 GB260 GB330 GB050 GB130 GB080 GB320 GB030 GB350 GB230 GB220 GB340</TD><TD>HH2</TD><TD>100.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125/100</TD></TR><TR><TD>BB750 BB740 BB730 BB650 BB690 BB680 BB640 BB720 BB700 BB660 GB180 GB380</TD><TD>HH2</TD><TD>100.0</TD><TD>Nanometrics Trillium 240 Single-Sided/ABALONES-4x4</TD></TR><TR><TD>BB630 BB670 BB710</TD><TD>HH2</TD><TD>100.0</TD><TD>Nanometrics Trillium 40 Single Sided/ABALONES-4x4</TD></TR><TR><TD>GB171 GB111 BB721 BB711 GB321 GB341 BB830</TD><TD>HH2</TD><TD>100.0</TD><TD>T240 Single-Sided/ABALONES</TD></TR><TR><TD>BB631</TD><TD>HH2</TD><TD>125.0</TD><TD>Nanometrics Trillium Compact Response/LDEO OBS 201</TD></TR><TR><TD>GB170 GB210 GB360 GB100 GB260 GB330 GB050 GB130 GB080 GB320 GB030 GB350 GB230 GB220 GB340</TD><TD>HHZ</TD><TD>100.0</TD><TD>LDEO OBS Sensor Mk2/LDEO_new dummy at 40/125/100</TD></TR><TR><TD>BB750 BB740 BB730 BB650 BB690 BB680 BB640 BB720 BB700 BB660 GB180 GB380</TD><TD>HHZ</TD><TD>100.0</TD><TD>Nanometrics Trillium 240 Single-Sided/ABALONES-4x4</TD></TR><TR><TD>BB630 BB670 BB710</TD><TD>HHZ</TD><TD>100.0</TD><TD>Nanometrics Trillium 40 Single Sided/ABALONES-4x4</TD></TR><TR><TD>GB171 GB111 BB721 BB711 GB321 GB341 BB830</TD><TD>HHZ</TD><TD>100.0</TD><TD>T240 Single-Sided/ABALONES</TD></TR><TR><TD>BB631</TD><TD>HHZ</TD><TD>125.0</TD><TD>Nanometrics Trillium Compact Response/LDEO OBS 201</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_b3957f435aa1eac67b6ecbc985386b6e = L.map(
+                "map_b3957f435aa1eac67b6ecbc985386b6e",
+                {
+                    center: [42.234482765624996, -127.15725896875],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_7256e1c77c7aeb89f10b3e90022a692e = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var circle_marker_4662c2b7d33eb9900a31755b7fd76f8a = L.circleMarker(
+                [41.5956, -127.424004],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_4662c2b7d33eb9900a31755b7fd76f8a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB170 <br> <b>Dates: </b>2013/11/02 to 2014/09/18  <br><br><b>Depth: </b> -3454 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4dc23930a699699b5bc83a16d3fa451c = L.marker(
+                [41.5956, -127.424004],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_01459e2ed5c6e4f685cefae80d1352d2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB170\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4dc23930a699699b5bc83a16d3fa451c.setIcon(div_icon_01459e2ed5c6e4f685cefae80d1352d2);
+        
+    
+            var circle_marker_c4248dd8f8e37d9c0894748624260c08 = L.circleMarker(
+                [42.573502, -125.447998],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_c4248dd8f8e37d9c0894748624260c08.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS020 <br> <b>Dates: </b>2013/11/03 to 2014/08/05  <br><br><b>Depth: </b> -3105 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8af87d74f72b90f77bc1ab2987bab124 = L.marker(
+                [42.573502, -125.447998],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_75bbc221f8acb092ac617e7f05b39a01 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS020\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8af87d74f72b90f77bc1ab2987bab124.setIcon(div_icon_75bbc221f8acb092ac617e7f05b39a01);
+        
+    
+            var circle_marker_e921bcfb43dae6d70fc7dc40405b2d76 = L.circleMarker(
+                [41.597, -127.4254],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_e921bcfb43dae6d70fc7dc40405b2d76.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB171 <br> <b>Dates: </b>2014/07/31 to 2015/09/13  <br><br><b>Depth: </b> -3469 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ede6d4726075cd00b7e674718d350ced = L.marker(
+                [41.597, -127.4254],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_f269e7cfbceac2d443dbb98ca9cb4718 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB171\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ede6d4726075cd00b7e674718d350ced.setIcon(div_icon_f269e7cfbceac2d443dbb98ca9cb4718);
+        
+    
+            var circle_marker_f305491ba894fa158efdad08af73e7b2 = L.circleMarker(
+                [44.589802, -130.6577],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_f305491ba894fa158efdad08af73e7b2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB750 <br> <b>Dates: </b>2013/09/26 to 2014/07/26  <br><br><b>Depth: </b> -3010 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_28e72f83bda8a2715dcc01f40f619bbd = L.marker(
+                [44.589802, -130.6577],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_0dbc1b8d4c49b9efa68030f76179a5ef = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB750\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_28e72f83bda8a2715dcc01f40f619bbd.setIcon(div_icon_0dbc1b8d4c49b9efa68030f76179a5ef);
+        
+    
+            var circle_marker_086b3b5251f5deee0168682a2fea3447 = L.circleMarker(
+                [42.877399, -126.636902],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_086b3b5251f5deee0168682a2fea3447.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB630 <br> <b>Dates: </b>2013/10/04 to 2014/07/29  <br><br><b>Depth: </b> -3340 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_40c6849b79ce717b64c56f3b008b070a = L.marker(
+                [42.877399, -126.636902],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_12b88f3d5bedfc143a80fbd0376010c8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB630\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_40c6849b79ce717b64c56f3b008b070a.setIcon(div_icon_12b88f3d5bedfc143a80fbd0376010c8);
+        
+    
+            var circle_marker_09a6fb58f59c7f3375d5a1cf8315ae6c = L.circleMarker(
+                [41.337002, -126.055801],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_09a6fb58f59c7f3375d5a1cf8315ae6c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB210 <br> <b>Dates: </b>2013/11/02 to 2014/09/18  <br><br><b>Depth: </b> -3094 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_690302528d917976d2c6f9ab603bac33 = L.marker(
+                [41.337002, -126.055801],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_80928567d814297bae85fe1b1cae3f48 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB210\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_690302528d917976d2c6f9ab603bac33.setIcon(div_icon_80928567d814297bae85fe1b1cae3f48);
+        
+    
+            var circle_marker_7d339a3b0f05cf7a5a0cec361ed37e15 = L.circleMarker(
+                [42.8787, -126.634399],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_7d339a3b0f05cf7a5a0cec361ed37e15.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB631 <br> <b>Dates: </b>2014/09/20 to 2015/04/18  <br><br><b>Depth: </b> -3320 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (125.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_85de90450a52aa3103f9706779109a53 = L.marker(
+                [42.8787, -126.634399],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_ecccfff4b05f425385a0220327fc59c8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB631\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_85de90450a52aa3103f9706779109a53.setIcon(div_icon_ecccfff4b05f425385a0220327fc59c8);
+        
+    
+            var circle_marker_44b0d764cdfd407ab394ca27ce97d0c0 = L.circleMarker(
+                [39.879601, -124.730797],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_44b0d764cdfd407ab394ca27ce97d0c0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB360 <br> <b>Dates: </b>2013/10/31 to 2014/09/15  <br><br><b>Depth: </b> -1312 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8b0567735c2e63f0ba25ecfc97c47cbd = L.marker(
+                [39.879601, -124.730797],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_6f168e082c9ee10a466411273e5b5bf9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB360\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8b0567735c2e63f0ba25ecfc97c47cbd.setIcon(div_icon_6f168e082c9ee10a466411273e5b5bf9);
+        
+    
+            var circle_marker_aa09f827d32f32bdd650d9f2890075be = L.circleMarker(
+                [42.834702, -126.011597],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_aa09f827d32f32bdd650d9f2890075be.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BS611 <br> <b>Dates: </b>2014/08/04 to 2015/09/17  <br><br><b>Depth: </b> -2720 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8add83e60a851e0ed27a76a59851e53c = L.marker(
+                [42.834702, -126.011597],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_93f4a579761895700b33a001d12f7309 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS611\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8add83e60a851e0ed27a76a59851e53c.setIcon(div_icon_93f4a579761895700b33a001d12f7309);
+        
+    
+            var circle_marker_c1a64bc90a2055494303a9ded2102e07 = L.circleMarker(
+                [44.062199, -130.503693],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_c1a64bc90a2055494303a9ded2102e07.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB740 <br> <b>Dates: </b>2013/09/26 to 2014/07/26  <br><br><b>Depth: </b> -3179 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_53a3eac803684773c99f242b87242ff7 = L.marker(
+                [44.062199, -130.503693],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_a80724810ec811139a22307b63d31b96 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB740\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_53a3eac803684773c99f242b87242ff7.setIcon(div_icon_a80724810ec811139a22307b63d31b96);
+        
+    
+            var circle_marker_9bc7e5230f0971544a994b1baaea33fc = L.circleMarker(
+                [41.6964, -126.360703],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_9bc7e5230f0971544a994b1baaea33fc.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS150 <br> <b>Dates: </b>2013/11/01 to 2014/08/03  <br><br><b>Depth: </b> -2965 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8eb9dd63e84d9ecc75f7ad8387619deb = L.marker(
+                [41.6964, -126.360703],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_429342852abacdc87e387b3d4ae4a584 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS150\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8eb9dd63e84d9ecc75f7ad8387619deb.setIcon(div_icon_429342852abacdc87e387b3d4ae4a584);
+        
+    
+            var circle_marker_b57cbfe274da15f1b6b4c274b968e67c = L.circleMarker(
+                [43.579899, -127.361801],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_b57cbfe274da15f1b6b4c274b968e67c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BS820 <br> <b>Dates: </b>2014/07/29 to 2015/09/12  <br><br><b>Depth: </b> -2935 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b4bbba6dfa9d87240f926adf9440bd4c = L.marker(
+                [43.579899, -127.361801],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_9964a798c75049f478fcb01cb33b690c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS820\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b4bbba6dfa9d87240f926adf9440bd4c.setIcon(div_icon_9964a798c75049f478fcb01cb33b690c);
+        
+    
+            var circle_marker_b3f82ab13c8d2a0f387e8bcecc86350e = L.circleMarker(
+                [44.293098, -129.964996],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_b3f82ab13c8d2a0f387e8bcecc86350e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB730 <br> <b>Dates: </b>2013/09/27 to 2014/07/27  <br><br><b>Depth: </b> -3337 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_87b657e9377fba5e00831c7fd61624ae = L.marker(
+                [44.293098, -129.964996],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_a631bfdf670eeb1fe66b0ec6b1d9ee1a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB730\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_87b657e9377fba5e00831c7fd61624ae.setIcon(div_icon_a631bfdf670eeb1fe66b0ec6b1d9ee1a);
+        
+    
+            var circle_marker_d55b860930afac4a4b57a6c02e42ff3e = L.circleMarker(
+                [43.465199, -127.134697],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_d55b860930afac4a4b57a6c02e42ff3e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB650 <br> <b>Dates: </b>2013/10/05 to 2014/07/29  <br><br><b>Depth: </b> -2947 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3967976891e0b1edd63beeaefe8f93d1 = L.marker(
+                [43.465199, -127.134697],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_3680177076059af4d19ad336c17ed19c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB650\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3967976891e0b1edd63beeaefe8f93d1.setIcon(div_icon_3680177076059af4d19ad336c17ed19c);
+        
+    
+            var circle_marker_e4a6bc7d8a5ee88cba7cc1ef38cd5ee7 = L.circleMarker(
+                [41.428101, -128.055893],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_e4a6bc7d8a5ee88cba7cc1ef38cd5ee7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS240 <br> <b>Dates: </b>2013/10/13 to 2014/07/31  <br><br><b>Depth: </b> -3115 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2c5057f3f42685d01bf38d7203dd2171 = L.marker(
+                [41.428101, -128.055893],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_0f3694906d60413261b71301c5ab1a65 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS240\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2c5057f3f42685d01bf38d7203dd2171.setIcon(div_icon_0f3694906d60413261b71301c5ab1a65);
+        
+    
+            var circle_marker_689faf688f903d83534949dae9946e8b = L.circleMarker(
+                [41.0336, -126.093399],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_689faf688f903d83534949dae9946e8b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS280 <br> <b>Dates: </b>2013/11/01 to 2014/08/03  <br><br><b>Depth: </b> -3125 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1e2b2d0f2a655ceff56564b3a39e3359 = L.marker(
+                [41.0336, -126.093399],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_bbfc0939c2630cde0010db54843f62df = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS280\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1e2b2d0f2a655ceff56564b3a39e3359.setIcon(div_icon_bbfc0939c2630cde0010db54843f62df);
+        
+    
+            var circle_marker_982a3a1af8ba6b0aada06bbc836f225b = L.circleMarker(
+                [43.851898, -128.436798],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_982a3a1af8ba6b0aada06bbc836f225b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB690 <br> <b>Dates: </b>2013/09/24 to 2014/07/28  <br><br><b>Depth: </b> -2858 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d76ba351652d3567c95226dc58310cb1 = L.marker(
+                [43.851898, -128.436798],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_39dfe0b1fe0880929435e189d33696b4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB690\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d76ba351652d3567c95226dc58310cb1.setIcon(div_icon_39dfe0b1fe0880929435e189d33696b4);
+        
+    
+            var circle_marker_2dec2bd122756114b3ca1cd44adcd0be = L.circleMarker(
+                [42.554699, -126.403099],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_2dec2bd122756114b3ca1cd44adcd0be.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS040 <br> <b>Dates: </b>2013/10/12 to 2014/08/04  <br><br><b>Depth: </b> -2851 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a1f91c99257ac868e13ef6de48cfb52e = L.marker(
+                [42.554699, -126.403099],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_a1cc943b8b4ee5e1781d7c2666a299a3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS040\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a1f91c99257ac868e13ef6de48cfb52e.setIcon(div_icon_a1cc943b8b4ee5e1781d7c2666a299a3);
+        
+    
+            var circle_marker_436e6ef740117c46520d749e953e8541 = L.circleMarker(
+                [41.9217, -127.1716],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_436e6ef740117c46520d749e953e8541.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB111 <br> <b>Dates: </b>2014/07/31 to 2015/09/13  <br><br><b>Depth: </b> -3403 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2b16a96f395b488558cbea6b036c8145 = L.marker(
+                [41.9217, -127.1716],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_e513f73fd75d0c34869a0104c4f494bc = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB111\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2b16a96f395b488558cbea6b036c8145.setIcon(div_icon_e513f73fd75d0c34869a0104c4f494bc);
+        
+    
+            var circle_marker_77b84a94eb000c48874da2509865dac0 = L.circleMarker(
+                [42.216702, -127.604202],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_77b84a94eb000c48874da2509865dac0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS120 <br> <b>Dates: </b>2013/10/13 to 2014/07/30  <br><br><b>Depth: </b> -2935 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f52e40d2465bdc55d61d68e188653666 = L.marker(
+                [42.216702, -127.604202],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_7c5040cf12ae1cf4830b7f41b0022d04 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS120\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f52e40d2465bdc55d61d68e188653666.setIcon(div_icon_7c5040cf12ae1cf4830b7f41b0022d04);
+        
+    
+            var circle_marker_1fb05c3d0c591038f0f6b7e06864afd0 = L.circleMarker(
+                [42.0205, -126.587997],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_1fb05c3d0c591038f0f6b7e06864afd0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB101 <br> <b>Dates: </b>2014/08/08 to 2015/09/16  <br><br><b>Depth: </b> -3585 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2f857c60f83bf370cbc0baf44939d8f2 = L.marker(
+                [42.0205, -126.587997],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_d12c76705e84a096af65752ec90ca722 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB101\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2f857c60f83bf370cbc0baf44939d8f2.setIcon(div_icon_d12c76705e84a096af65752ec90ca722);
+        
+    
+            var circle_marker_5ff6e40e2de5e56290a816642f9892a9 = L.circleMarker(
+                [43.252499, -128.803497],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_5ff6e40e2de5e56290a816642f9892a9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB680 <br> <b>Dates: </b>2013/10/02 to 2014/07/28  <br><br><b>Depth: </b> -3253 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bdd8d29b852710f3748621286cded9eb = L.marker(
+                [43.252499, -128.803497],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_3a4dc9642d2987baab93112c93994b8b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB680\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_bdd8d29b852710f3748621286cded9eb.setIcon(div_icon_3a4dc9642d2987baab93112c93994b8b);
+        
+    
+            var circle_marker_15dcebdc1ee00c28881278b0a361206c = L.circleMarker(
+                [44.045399, -130.101807],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_15dcebdc1ee00c28881278b0a361206c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB870 <br> <b>Dates: </b>2014/07/27 to 2015/09/10  <br><br><b>Depth: </b> -3219 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5ac4affce0f14b6ea6fca8cc99fad80a = L.marker(
+                [44.045399, -130.101807],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_98865e1a3038a194f91cda194a227501 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB870\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5ac4affce0f14b6ea6fca8cc99fad80a.setIcon(div_icon_98865e1a3038a194f91cda194a227501);
+        
+    
+            var circle_marker_451ce5c28be2c0b8d4ee437b39201c7f = L.circleMarker(
+                [42.026001, -126.585197],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_451ce5c28be2c0b8d4ee437b39201c7f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB100 <br> <b>Dates: </b>2013/11/03 to 2014/09/19  <br><br><b>Depth: </b> -3571 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ed0ae46cc632fe4bb336aee48860466a = L.marker(
+                [42.026001, -126.585197],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_802bed3278e1cfa93a32027f41ac7737 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB100\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ed0ae46cc632fe4bb336aee48860466a.setIcon(div_icon_802bed3278e1cfa93a32027f41ac7737);
+        
+    
+            var circle_marker_ea63d03427d8d8a2c8d2eb5506b11569 = L.circleMarker(
+                [43.749901, -129.413696],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_ea63d03427d8d8a2c8d2eb5506b11569.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB721 <br> <b>Dates: </b>2014/07/27 to 2015/09/11  <br><br><b>Depth: </b> -3170 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_61244c6e2a9f74bd5b28f7ee5f076ff9 = L.marker(
+                [43.749901, -129.413696],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_8af08aa099d8a462670654aa7c8ae96a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB721\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_61244c6e2a9f74bd5b28f7ee5f076ff9.setIcon(div_icon_8af08aa099d8a462670654aa7c8ae96a);
+        
+    
+            var circle_marker_dd1d78596d0e154977d92bc949a6f338 = L.circleMarker(
+                [42.001999, -125.981499],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_dd1d78596d0e154977d92bc949a6f338.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS090 <br> <b>Dates: </b>2013/11/02 to 2014/08/04  <br><br><b>Depth: </b> -2942 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_36fc9f7a514951c3fe97420b6516a6f9 = L.marker(
+                [42.001999, -125.981499],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_49770db37ffd14bb8e9e6aedecdaca47 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS090\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_36fc9f7a514951c3fe97420b6516a6f9.setIcon(div_icon_49770db37ffd14bb8e9e6aedecdaca47);
+        
+    
+            var circle_marker_8aae0e4af36e27f9705f357ad8250462 = L.circleMarker(
+                [40.975498, -125.221298],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_8aae0e4af36e27f9705f357ad8250462.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB260 <br> <b>Dates: </b>2013/11/01 to 2014/09/13  <br><br><b>Depth: </b> -3067 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a4f9448d88ce2b545eb9cfd40ae5a674 = L.marker(
+                [40.975498, -125.221298],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_56250e98542499d72ab7092c13912bb4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB260\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a4f9448d88ce2b545eb9cfd40ae5a674.setIcon(div_icon_56250e98542499d72ab7092c13912bb4);
+        
+    
+            var circle_marker_33bc3e64d51979800b39a4e1e4b8f8bd = L.circleMarker(
+                [42.993, -127.302002],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_33bc3e64d51979800b39a4e1e4b8f8bd.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB640 <br> <b>Dates: </b>2013/10/04 to 2014/07/30  <br><br><b>Depth: </b> -2854 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_12312c040f69fdaf58b45e12254f6fad = L.marker(
+                [42.993, -127.302002],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_57f85e7bfd6bcfbe5e5118dde2e10518 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB640\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_12312c040f69fdaf58b45e12254f6fad.setIcon(div_icon_57f85e7bfd6bcfbe5e5118dde2e10518);
+        
+    
+            var circle_marker_92838ccb5db7b78a3450b5d17a318c15 = L.circleMarker(
+                [43.749401, -129.413193],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_92838ccb5db7b78a3450b5d17a318c15.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB720 <br> <b>Dates: </b>2013/10/01 to 2014/07/27  <br><br><b>Depth: </b> -3177 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f44e827e80a7d10b7fc07b532c4b32e7 = L.marker(
+                [43.749401, -129.413193],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_8ceb890ced05ff3cc541d0b9194c0982 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB720\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f44e827e80a7d10b7fc07b532c4b32e7.setIcon(div_icon_8ceb890ced05ff3cc541d0b9194c0982);
+        
+    
+            var circle_marker_01a8d19696d92769135f5688ce1c7830 = L.circleMarker(
+                [40.511101, -126.5849],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_01a8d19696d92769135f5688ce1c7830.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB330 <br> <b>Dates: </b>2013/10/16 to 2014/09/17  <br><br><b>Depth: </b> -3156 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8561e8db7fd3b89146ef0a8962c545d1 = L.marker(
+                [40.511101, -126.5849],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_3aa8db610fac93360ce892990e015dc4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB330\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8561e8db7fd3b89146ef0a8962c545d1.setIcon(div_icon_3aa8db610fac93360ce892990e015dc4);
+        
+    
+            var circle_marker_bedb5bee31c61caa1bd24c7e864c510a = L.circleMarker(
+                [44.1684, -129.1427],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_bedb5bee31c61caa1bd24c7e864c510a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB711 <br> <b>Dates: </b>2014/07/27 to 2015/09/11  <br><br><b>Depth: </b> -2441 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_49e15261039f836ca340bf41f20b8315 = L.marker(
+                [44.1684, -129.1427],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_66109d4dfa9a7ca37c7d0cbe9e5d26a9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB711\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_49e15261039f836ca340bf41f20b8315.setIcon(div_icon_66109d4dfa9a7ca37c7d0cbe9e5d26a9);
+        
+    
+            var circle_marker_db2321577c43756b4a6c37f553e46df1 = L.circleMarker(
+                [40.9785, -125.213501],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_db2321577c43756b4a6c37f553e46df1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS261 <br> <b>Dates: </b>2014/08/10 to 2015/09/16  <br><br><b>Depth: </b> -3077 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9b5bb764c5a9a99cee2ad48721931ff1 = L.marker(
+                [40.9785, -125.213501],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_31747350b686303630140429aa9a1fdf = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS261\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9b5bb764c5a9a99cee2ad48721931ff1.setIcon(div_icon_31747350b686303630140429aa9a1fdf);
+        
+    
+            var circle_marker_8c604e975f8976aacd44288fa2799d74 = L.circleMarker(
+                [42.9939, -127.302002],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_8c604e975f8976aacd44288fa2799d74.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BS641 <br> <b>Dates: </b>2014/07/30 to 2015/09/12  <br><br><b>Depth: </b> -2840 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fc772531976753c4e50cbeb20af3c667 = L.marker(
+                [42.9939, -127.302002],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_707320c5616ba69a72ab0be2b95bf760 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS641\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fc772531976753c4e50cbeb20af3c667.setIcon(div_icon_707320c5616ba69a72ab0be2b95bf760);
+        
+    
+            var circle_marker_56008d80acc3d68e87f9e07f51031b6d = L.circleMarker(
+                [43.4669, -128.400299],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_56008d80acc3d68e87f9e07f51031b6d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB670 <br> <b>Dates: </b>2013/10/02 to 2014/07/28  <br><br><b>Depth: </b> -3269 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2d3c7860ca67d9fc9b9b0439dda87d3a = L.marker(
+                [43.4669, -128.400299],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_3ed4658611a99ef598f5533d32d94612 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB670\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2d3c7860ca67d9fc9b9b0439dda87d3a.setIcon(div_icon_3ed4658611a99ef598f5533d32d94612);
+        
+    
+            var circle_marker_fdd567e44656924e1536947fefeefdf7 = L.circleMarker(
+                [44.171299, -129.142593],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_fdd567e44656924e1536947fefeefdf7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB710 <br> <b>Dates: </b>2013/09/25 to 2014/07/27  <br><br><b>Depth: </b> -2422 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9a2d46dc6a3379f2c74b4ea74bb87c09 = L.marker(
+                [44.171299, -129.142593],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_73fbf73c15994cd4a58ad43c54de9f27 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB710\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9a2d46dc6a3379f2c74b4ea74bb87c09.setIcon(div_icon_73fbf73c15994cd4a58ad43c54de9f27);
+        
+    
+            var circle_marker_4681f1dbae681f186e03a55053445f58 = L.circleMarker(
+                [40.7864, -126.468201],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_4681f1dbae681f186e03a55053445f58.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS300 <br> <b>Dates: </b>2013/10/15 to 2014/08/03  <br><br><b>Depth: </b> -3151 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_633794122989e43ba4c940cd3456a6c6 = L.marker(
+                [40.7864, -126.468201],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_20dcde1a8fca59b93baf4fad8a6a7046 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS300\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_633794122989e43ba4c940cd3456a6c6.setIcon(div_icon_20dcde1a8fca59b93baf4fad8a6a7046);
+        
+    
+            var circle_marker_d4130a2ba7aceca0cb31ddf212a1a014 = L.circleMarker(
+                [40.513, -126.584],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_d4130a2ba7aceca0cb31ddf212a1a014.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB331 <br> <b>Dates: </b>2014/08/11 to 2015/09/14  <br><br><b>Depth: </b> -3137 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8c73b3906004bbd2629083222c7ef0fa = L.marker(
+                [40.513, -126.584],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_3ca6f303edef102298d13287e807a759 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB331\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8c73b3906004bbd2629083222c7ef0fa.setIcon(div_icon_3ca6f303edef102298d13287e807a759);
+        
+    
+            var circle_marker_6b8ff410b7a6f106cccfed1fae170e60 = L.circleMarker(
+                [42.628799, -127.301598],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_6b8ff410b7a6f106cccfed1fae170e60.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS060 <br> <b>Dates: </b>2013/10/13 to 2014/07/30  <br><br><b>Depth: </b> -2821 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_848b10d552076d5580d489ead6ac7802 = L.marker(
+                [42.628799, -127.301598],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_adda04916dc57810e0241a06c43034d1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS060\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_848b10d552076d5580d489ead6ac7802.setIcon(div_icon_adda04916dc57810e0241a06c43034d1);
+        
+    
+            var circle_marker_9e1cbb7c20cd3d2782e0840d24debe9d = L.circleMarker(
+                [42.474998, -126.902702],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_9e1cbb7c20cd3d2782e0840d24debe9d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB050 <br> <b>Dates: </b>2013/10/13 to 2014/09/20  <br><br><b>Depth: </b> -3948 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1701c8ecd866fb024e46d91a31769379 = L.marker(
+                [42.474998, -126.902702],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_f01d0aa9dd882b78e0d0d33d8b531455 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB050\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1701c8ecd866fb024e46d91a31769379.setIcon(div_icon_f01d0aa9dd882b78e0d0d33d8b531455);
+        
+    
+            var circle_marker_fa5f2b8ad7fd57bae528eff1dd554f18 = L.circleMarker(
+                [43.425301, -128.033401],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_fa5f2b8ad7fd57bae528eff1dd554f18.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB840 <br> <b>Dates: </b>2014/07/28 to 2015/09/11  <br><br><b>Depth: </b> -3278 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a27f357331439f82cfa2e26db7de3720 = L.marker(
+                [43.425301, -128.033401],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_3be91d701ebd4271b5f0eeda935051e2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB840\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a27f357331439f82cfa2e26db7de3720.setIcon(div_icon_3be91d701ebd4271b5f0eeda935051e2);
+        
+    
+            var circle_marker_a2d3c52346d886afe24220e7b7774f20 = L.circleMarker(
+                [41.409698, -124.689903],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_a2d3c52346d886afe24220e7b7774f20.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB130 <br> <b>Dates: </b>2013/10/31 to 2014/09/12  <br><br><b>Depth: </b> -1088 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_54b9ee696334599c9bb7f746a53ac99e = L.marker(
+                [41.409698, -124.689903],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_7e90ac41e6c25957bbffb549a52f1883 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB130\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_54b9ee696334599c9bb7f746a53ac99e.setIcon(div_icon_7e90ac41e6c25957bbffb549a52f1883);
+        
+    
+            var circle_marker_585e305a2abaddcaf9ee5cf3c7d748a3 = L.circleMarker(
+                [44.533199, -128.046005],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_585e305a2abaddcaf9ee5cf3c7d748a3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB850 <br> <b>Dates: </b>2014/07/25 to 2015/10/28  <br><br><b>Depth: </b> -2875 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a3d16d7ca405f72d893eab9ca2afffdc = L.marker(
+                [44.533199, -128.046005],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_c8e7f545b7b99580cce954151dad1dc8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB850\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a3d16d7ca405f72d893eab9ca2afffdc.setIcon(div_icon_c8e7f545b7b99580cce954151dad1dc8);
+        
+    
+            var circle_marker_d81d7728f62721400efd8a206aebf0a7 = L.circleMarker(
+                [41.0284, -126.089897],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_d81d7728f62721400efd8a206aebf0a7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB281 <br> <b>Dates: </b>2014/08/11 to 2015/09/16  <br><br><b>Depth: </b> -3124 m <br> <br> <b>Channels:</b><br> BDH-BH1-BH2-BHZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_07cdc0d2a2244a9366702c38343e1ec4 = L.marker(
+                [41.0284, -126.089897],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_e21e784146e7f2205b08f2d4a6f0172b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB281\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_07cdc0d2a2244a9366702c38343e1ec4.setIcon(div_icon_e21e784146e7f2205b08f2d4a6f0172b);
+        
+    
+            var circle_marker_d5d825c1e211aa39c815d29db660568d = L.circleMarker(
+                [41.981098, -124.726898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_d5d825c1e211aa39c815d29db660568d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS070 <br> <b>Dates: </b>2013/10/31 to 2014/08/12  <br><br><b>Depth: </b> -699 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_79127b3af05b55564f5014435b7a89d0 = L.marker(
+                [41.981098, -124.726898],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_03f4112f9d9cb18e11c93a10a75a7329 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS070\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_79127b3af05b55564f5014435b7a89d0.setIcon(div_icon_03f4112f9d9cb18e11c93a10a75a7329);
+        
+    
+            var circle_marker_30fef92203130f9dbfd5373ea7b38174 = L.circleMarker(
+                [41.9226, -127.171204],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_30fef92203130f9dbfd5373ea7b38174.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS110 <br> <b>Dates: </b>2013/11/02 to 2014/07/31  <br><br><b>Depth: </b> -3601 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d1d9e5a31c838004bc85f86f6061687a = L.marker(
+                [41.9226, -127.171204],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_dfdab48fdad57be5869c3debdd30742e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS110\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d1d9e5a31c838004bc85f86f6061687a.setIcon(div_icon_dfdab48fdad57be5869c3debdd30742e);
+        
+    
+            var circle_marker_a540648f4827cc036f356672af34e732 = L.circleMarker(
+                [40.3922, -125.911697],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_a540648f4827cc036f356672af34e732.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB321 <br> <b>Dates: </b>2014/08/02 to 2015/09/14  <br><br><b>Depth: </b> -2283 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8404cf91c00ba11a8159f4994b7c4f74 = L.marker(
+                [40.3922, -125.911697],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_1bc62d879d2a5735cdc21d8400fa758e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB321\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8404cf91c00ba11a8159f4994b7c4f74.setIcon(div_icon_1bc62d879d2a5735cdc21d8400fa758e);
+        
+    
+            var circle_marker_e8329c4ef80fa9dfe7d81a767c0766b8 = L.circleMarker(
+                [44.672401, -128.817307],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_e8329c4ef80fa9dfe7d81a767c0766b8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB700 <br> <b>Dates: </b>2013/09/24 to 2014/07/26  <br><br><b>Depth: </b> -2800 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3ae8fd73a5af5e2cdec7c80d551b7127 = L.marker(
+                [44.672401, -128.817307],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_587901d80f40cfe664836878137bed46 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB700\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3ae8fd73a5af5e2cdec7c80d551b7127.setIcon(div_icon_587901d80f40cfe664836878137bed46);
+        
+    
+            var circle_marker_4dcd9f61b7759b7633535302d8a91d4e = L.circleMarker(
+                [41.9828, -125.307701],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_4dcd9f61b7759b7633535302d8a91d4e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB080 <br> <b>Dates: </b>2013/11/01 to 2014/09/19  <br><br><b>Depth: </b> -3103 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ce3b89aa97c852ab0eb102ac2c825323 = L.marker(
+                [41.9828, -125.307701],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_0514693b42c37037d20db0262a2d641f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB080\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ce3b89aa97c852ab0eb102ac2c825323.setIcon(div_icon_0514693b42c37037d20db0262a2d641f);
+        
+    
+            var circle_marker_f4cd3c6ab6870a46d63f2f225f78c2f7 = L.circleMarker(
+                [40.785599, -125.556801],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_f4cd3c6ab6870a46d63f2f225f78c2f7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS270 <br> <b>Dates: </b>2013/11/01 to 2014/08/11  <br><br><b>Depth: </b> -3041 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f520fb783e176ef18f04eaa3e54752c2 = L.marker(
+                [40.785599, -125.556801],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_6f112b872f5a8dc98d9d4d57408a15dd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS270\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f520fb783e176ef18f04eaa3e54752c2.setIcon(div_icon_6f112b872f5a8dc98d9d4d57408a15dd);
+        
+    
+            var circle_marker_ab043ba1692391bb4c2fc572fca36b4c = L.circleMarker(
+                [43.426201, -127.792702],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_ab043ba1692391bb4c2fc572fca36b4c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB660 <br> <b>Dates: </b>2013/10/03 to 2014/07/29  <br><br><b>Depth: </b> -2182 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_95752d8b4544b5ee920061b924f259f5 = L.marker(
+                [43.426201, -127.792702],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_805239c7ff74308beae0c201ffca2d2c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB660\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_95752d8b4544b5ee920061b924f259f5.setIcon(div_icon_805239c7ff74308beae0c201ffca2d2c);
+        
+    
+            var circle_marker_8bfb3e766f6152dc8fe36beb9f452049 = L.circleMarker(
+                [40.455399, -125.132004],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_8bfb3e766f6152dc8fe36beb9f452049.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS311 <br> <b>Dates: </b>2014/08/02 to 2015/09/15  <br><br><b>Depth: </b> -2498 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e2856951d3643d80d95801c99ca4b76f = L.marker(
+                [40.455399, -125.132004],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_b9a4700087946a795d93546c74242d97 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS311\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e2856951d3643d80d95801c99ca4b76f.setIcon(div_icon_b9a4700087946a795d93546c74242d97);
+        
+    
+            var circle_marker_40356ad96a73fe39b735c7be6c493789 = L.circleMarker(
+                [40.396599, -125.912102],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_40356ad96a73fe39b735c7be6c493789.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB320 <br> <b>Dates: </b>2013/10/17 to 2014/09/16  <br><br><b>Depth: </b> -2332 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_edc1ad97831bdebf4b80ef1ccae94ab9 = L.marker(
+                [40.396599, -125.912102],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_5d2bf4b27ad028ea6972f1638ed4ba58 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB320\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_edc1ad97831bdebf4b80ef1ccae94ab9.setIcon(div_icon_5d2bf4b27ad028ea6972f1638ed4ba58);
+        
+    
+            var circle_marker_cd121862bca2cc35b3f4ffd42d9dc45a = L.circleMarker(
+                [43.217602, -126.709297],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_cd121862bca2cc35b3f4ffd42d9dc45a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BS810 <br> <b>Dates: </b>2014/07/29 to 2015/09/12  <br><br><b>Depth: </b> -2940 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c20fa7d231e3decba7ee571c0c8bf621 = L.marker(
+                [43.217602, -126.709297],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_33719491c8deec5e224d0ada7075c1f3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS810\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c20fa7d231e3decba7ee571c0c8bf621.setIcon(div_icon_33719491c8deec5e224d0ada7075c1f3);
+        
+    
+            var circle_marker_8b4e6021faba68c2efb670c416f53991 = L.circleMarker(
+                [42.356499, -125.857101],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_8b4e6021faba68c2efb670c416f53991.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB030 <br> <b>Dates: </b>2013/11/03 to 2014/09/11  <br><br><b>Depth: </b> -2621 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_957f04aa8cdc4b324743fe63c3ba293c = L.marker(
+                [42.356499, -125.857101],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_00b382d66444969f43aa4c5ff5a89807 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB030\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_957f04aa8cdc4b324743fe63c3ba293c.setIcon(div_icon_00b382d66444969f43aa4c5ff5a89807);
+        
+    
+            var circle_marker_71d548af57259e6932dd957f3b42c728 = L.circleMarker(
+                [40.861801, -128.111603],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_71d548af57259e6932dd957f3b42c728.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB350 <br> <b>Dates: </b>2013/10/15 to 2014/09/17  <br><br><b>Depth: </b> -3299 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6449f4a928202fa71926bec0f12661d4 = L.marker(
+                [40.861801, -128.111603],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_00612e07b5b6c364ab595d527f3f03fc = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB350\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6449f4a928202fa71926bec0f12661d4.setIcon(div_icon_00612e07b5b6c364ab595d527f3f03fc);
+        
+    
+            var circle_marker_74a5a0a663bd810767f2ba2c5729a3c1 = L.circleMarker(
+                [41.127201, -127.430702],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_74a5a0a663bd810767f2ba2c5729a3c1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB230 <br> <b>Dates: </b>2013/10/15 to 2014/09/17  <br><br><b>Depth: </b> -3310 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c8f8bca637cc550d3a0ed853801cd036 = L.marker(
+                [41.127201, -127.430702],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_872deffb7f01979b1a8842bc64047e09 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB230\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c8f8bca637cc550d3a0ed853801cd036.setIcon(div_icon_872deffb7f01979b1a8842bc64047e09);
+        
+    
+            var circle_marker_3e50ece43cd040b5eb8919de719a2a63 = L.circleMarker(
+                [43.2645, -126.488098],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_3e50ece43cd040b5eb8919de719a2a63.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BS620 <br> <b>Dates: </b>2013/10/12 to 2014/07/29  <br><br><b>Depth: </b> -2975 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_37ec7b865171486a80ecaa8823ba36c7 = L.marker(
+                [43.2645, -126.488098],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_b141ae519e883c155c177b3ce74ebcab = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS620\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_37ec7b865171486a80ecaa8823ba36c7.setIcon(div_icon_b141ae519e883c155c177b3ce74ebcab);
+        
+    
+            var circle_marker_daf5b8fc5214b97d893b0007b241952d = L.circleMarker(
+                [40.372101, -127.442299],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_daf5b8fc5214b97d893b0007b241952d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB341 <br> <b>Dates: </b>2014/08/01 to 2015/09/14  <br><br><b>Depth: </b> -1791 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b3b84af07cb851fb24050310359ee726 = L.marker(
+                [40.372101, -127.442299],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_0c5514444702a74eb0db692368929167 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB341\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b3b84af07cb851fb24050310359ee726.setIcon(div_icon_0c5514444702a74eb0db692368929167);
+        
+    
+            var circle_marker_d3c85179c31fc665acf141dbea3358b1 = L.circleMarker(
+                [41.951401, -128.296295],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_d3c85179c31fc665acf141dbea3358b1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB180 <br> <b>Dates: </b>2013/10/13 to 2014/07/31  <br><br><b>Depth: </b> -3185 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_10333278eaa24007ef4c9788ee71faf0 = L.marker(
+                [41.951401, -128.296295],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_a6513338bffe272517e0a00ac14a1542 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB180\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_10333278eaa24007ef4c9788ee71faf0.setIcon(div_icon_a6513338bffe272517e0a00ac14a1542);
+        
+    
+            var circle_marker_e69fcc0059342b07432791230f08f5f3 = L.circleMarker(
+                [41.073299, -126.914497],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_e69fcc0059342b07432791230f08f5f3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB220 <br> <b>Dates: </b>2013/10/16 to 2014/09/18  <br><br><b>Depth: </b> -2998 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e5a4108136c8dbb1b3178f5980b660a4 = L.marker(
+                [41.073299, -126.914497],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_f395e1e1c220d6fd8c45b590b556252b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB220\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e5a4108136c8dbb1b3178f5980b660a4.setIcon(div_icon_f395e1e1c220d6fd8c45b590b556252b);
+        
+    
+            var circle_marker_315c125e1aa38f5caaceab0382c0295b = L.circleMarker(
+                [40.3713, -127.442299],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_315c125e1aa38f5caaceab0382c0295b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB340 <br> <b>Dates: </b>2013/10/16 to 2014/09/17  <br><br><b>Depth: </b> -1793 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0d31440c06781b9c2fc8bcd072798abd = L.marker(
+                [40.3713, -127.442299],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_3acbfbaea3d3d9807239b2b43d590e6d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB340\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0d31440c06781b9c2fc8bcd072798abd.setIcon(div_icon_3acbfbaea3d3d9807239b2b43d590e6d);
+        
+    
+            var circle_marker_c76cd65ec93d15a8a3bdbaefc7c4127b = L.circleMarker(
+                [44.024399, -127.631104],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_c76cd65ec93d15a8a3bdbaefc7c4127b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> BB830 <br> <b>Dates: </b>2014/07/25 to 2015/09/09  <br><br><b>Depth: </b> -2939 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_706c5bee7ee1d1e96866aaf92a449a72 = L.marker(
+                [44.024399, -127.631104],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_04aaa3c2269cf00a410051e97ee9fddc = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB830\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_706c5bee7ee1d1e96866aaf92a449a72.setIcon(div_icon_04aaa3c2269cf00a410051e97ee9fddc);
+        
+    
+            var circle_marker_fc920a9a9f0e684b115f25de9d64ce63 = L.circleMarker(
+                [40.141602, -127.822998],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_fc920a9a9f0e684b115f25de9d64ce63.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GS400 <br> <b>Dates: </b>2013/10/14 to 2014/08/01  <br><br><b>Depth: </b> -4510 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6d7064f3d29ae2810b14a7b1e2075841 = L.marker(
+                [40.141602, -127.822998],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_abb643b95bab7aea07f7892e9c8d8b05 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGS400\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6d7064f3d29ae2810b14a7b1e2075841.setIcon(div_icon_abb643b95bab7aea07f7892e9c8d8b05);
+        
+    
+            var circle_marker_22308aaec7bedeb814b13a910ad66b38 = L.circleMarker(
+                [40.059399, -126.162498],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3200cd", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            circle_marker_22308aaec7bedeb814b13a910ad66b38.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> Z5 <br> <b>Station:</b> GB380 <br> <b>Dates: </b>2013/10/16 to 2014/08/02  <br><br><b>Depth: </b> -4068 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/Z5_2013 <br><br> <b>Net name: </b> Seismicity, Structure and Dynamics of the Gorda Deformation Zone <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_43676b00ada9e2d38348977698c393be = L.marker(
+                [40.059399, -126.162498],
+                {}
+            ).addTo(map_b3957f435aa1eac67b6ecbc985386b6e);
+        
+    
+            var div_icon_c809457a2eb1258d468a10349469bd3d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eGB380\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_43676b00ada9e2d38348977698c393be.setIcon(div_icon_c809457a2eb1258d468a10349469bd3d);
+        
+    
+            map_b3957f435aa1eac67b6ecbc985386b6e.fitBounds(
+                [[39.879601, -130.6577], [44.672401, -124.689903]],
+                {}
+            );
+        </script>
+
+</html>

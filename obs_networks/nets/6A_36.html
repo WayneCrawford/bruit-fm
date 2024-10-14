@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_5ea6fd5643fdcc8243e0f04bcf8c7b0d {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network 6A: Walvis Ridge Passive Source Seismic Experiment </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   GEOFON Program (GFZ-Potsdam, Germany)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Jan 2011 to Jan 2012</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.14470/1N134371">https://doi.org/10.14470/1N134371</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_5ea6fd5643fdcc8243e0f04bcf8c7b0d" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>6A</TD><TD>WPO03</TD><TD>2011/01/03</TD><TD>2012/01/08</TD><TD>-19.8895</TD><TD>10.7935</TD><TD>-1257</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>6A</TD><TD>WPO02</TD><TD>2011/01/03</TD><TD>2011/11/29</TD><TD>-20.7347</TD><TD>11.214</TD><TD>-1789</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>6A</TD><TD>WPO01</TD><TD>2011/01/03</TD><TD>2011/12/06</TD><TD>-21.5988</TD><TD>11.6562</TD><TD>-2111</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>6A</TD><TD>WPO11</TD><TD>2011/01/07</TD><TD>2012/01/12</TD><TD>-18.78</TD><TD>9.39</TD><TD>-4549</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>6A</TD><TD>WPO05</TD><TD>2011/01/04</TD><TD>2012/01/12</TD><TD>-17.7497</TD><TD>9.899</TD><TD>-4090</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>6A</TD><TD>WPO04</TD><TD>2011/01/03</TD><TD>2011/12/26</TD><TD>-18.8785</TD><TD>10.2985</TD><TD>-3680</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>6A</TD><TD>WPO10</TD><TD>2011/01/06</TD><TD>2011/12/12</TD><TD>-21.31</TD><TD>10.2297</TD><TD>-3512</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>6A</TD><TD>WPO06</TD><TD>2011/01/04</TD><TD>2012/01/02</TD><TD>-18.0997</TD><TD>10.9997</TD><TD>-2389</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>6A</TD><TD>WPO12</TD><TD>2011/01/07</TD><TD>2011/12/26</TD><TD>-19.0</TD><TD>8.0</TD><TD>-5034</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>6A</TD><TD>WPO07</TD><TD>2011/01/06</TD><TD>2011/12/09</TD><TD>-19.922</TD><TD>9.7697</TD><TD>-2030</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>6A</TD><TD>WPO09</TD><TD>2011/01/06</TD><TD>2011/12/30</TD><TD>-21.7995</TD><TD>9.0005</TD><TD>-4117</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>6A</TD><TD>WPO08</TD><TD>2011/01/06</TD><TD>2011/12/31</TD><TD>-20.3905</TD><TD>8.5582</TD><TD>-2043</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>WPO03 WPO02 WPO01 WPO11 WPO05 WPO04 WPO10 WPO06 WPO12 WPO07 WPO09 WPO08</TD><TD>HDH</TD><TD>100.0</TD><TD>GFZ:6A2010:HTI-01/g=2000</TD></TR><TR><TD>WPO03 WPO02 WPO01 WPO11 WPO05 WPO04 WPO10 WPO06 WPO12 WPO07 WPO09 WPO08</TD><TD>HH1</TD><TD>100.0</TD><TD>GFZ:6A2010:CMG-40T/60/g=2000</TD></TR><TR><TD>WPO03 WPO02 WPO01 WPO11 WPO05 WPO04 WPO10 WPO06 WPO12 WPO07 WPO09 WPO08</TD><TD>HH2</TD><TD>100.0</TD><TD>GFZ:6A2010:CMG-40T/60/g=2000</TD></TR><TR><TD>WPO03 WPO02 WPO01 WPO11 WPO05 WPO04 WPO10 WPO06 WPO12 WPO07 WPO09 WPO08</TD><TD>HHZ</TD><TD>100.0</TD><TD>GFZ:6A2010:CMG-40T/60/g=2000</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_5ea6fd5643fdcc8243e0f04bcf8c7b0d = L.map(
+                "map_5ea6fd5643fdcc8243e0f04bcf8c7b0d",
+                {
+                    center: [-19.846075, 9.984083333333333],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_d5bc5a1e4b686c1362ee3b49486077fd = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            var circle_marker_4e56404d89607e74487408c4f1a5ffa1 = L.circleMarker(
+                [-19.8895, 10.7935],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d42b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            circle_marker_4e56404d89607e74487408c4f1a5ffa1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 6A <br> <b>Station:</b> WPO03 <br> <b>Dates: </b>2011/01/03 to 2012/01/08  <br><br><b>Depth: </b> -1257 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/1N134371 <br><br> <b>Net name: </b> Walvis Ridge Passive Source Seismic Experiment <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9c8bb1cd91ef96b6c7881494ca084152 = L.marker(
+                [-19.8895, 10.7935],
+                {}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            var div_icon_a1752a2b3187fce61a803832d8d36313 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWPO03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9c8bb1cd91ef96b6c7881494ca084152.setIcon(div_icon_a1752a2b3187fce61a803832d8d36313);
+        
+    
+            var circle_marker_ea82dc6f4f1b4e7eb64a67b86cfc2fa1 = L.circleMarker(
+                [-20.7347, 11.214],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d42b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            circle_marker_ea82dc6f4f1b4e7eb64a67b86cfc2fa1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 6A <br> <b>Station:</b> WPO02 <br> <b>Dates: </b>2011/01/03 to 2011/11/29  <br><br><b>Depth: </b> -1789 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/1N134371 <br><br> <b>Net name: </b> Walvis Ridge Passive Source Seismic Experiment <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ffdb6ef88e590987b5366318e5d45175 = L.marker(
+                [-20.7347, 11.214],
+                {}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            var div_icon_da4ac53ffacab76480b84a55ebddb9d9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWPO02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ffdb6ef88e590987b5366318e5d45175.setIcon(div_icon_da4ac53ffacab76480b84a55ebddb9d9);
+        
+    
+            var circle_marker_ba665b5e90c0900a13b3e1e3e936f1b3 = L.circleMarker(
+                [-21.5988, 11.6562],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d42b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            circle_marker_ba665b5e90c0900a13b3e1e3e936f1b3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 6A <br> <b>Station:</b> WPO01 <br> <b>Dates: </b>2011/01/03 to 2011/12/06  <br><br><b>Depth: </b> -2111 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/1N134371 <br><br> <b>Net name: </b> Walvis Ridge Passive Source Seismic Experiment <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4c50b642ff9fcfc3c615c25f0021ba2a = L.marker(
+                [-21.5988, 11.6562],
+                {}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            var div_icon_1925b3e02f25d6557f6581cca2187539 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWPO01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4c50b642ff9fcfc3c615c25f0021ba2a.setIcon(div_icon_1925b3e02f25d6557f6581cca2187539);
+        
+    
+            var circle_marker_106dff4c2673dc0cf74a82da90ba9e7c = L.circleMarker(
+                [-18.78, 9.39],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d42b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            circle_marker_106dff4c2673dc0cf74a82da90ba9e7c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 6A <br> <b>Station:</b> WPO11 <br> <b>Dates: </b>2011/01/07 to 2012/01/12  <br><br><b>Depth: </b> -4549 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/1N134371 <br><br> <b>Net name: </b> Walvis Ridge Passive Source Seismic Experiment <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_07147cb224a4b8a148c26b1ce72c1d7f = L.marker(
+                [-18.78, 9.39],
+                {}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            var div_icon_b3dc89c6b31bb477940988bc56c5c901 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWPO11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_07147cb224a4b8a148c26b1ce72c1d7f.setIcon(div_icon_b3dc89c6b31bb477940988bc56c5c901);
+        
+    
+            var circle_marker_ce2080de9fdc3f847c5b164f7bce21ae = L.circleMarker(
+                [-17.7497, 9.899],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d42b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            circle_marker_ce2080de9fdc3f847c5b164f7bce21ae.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 6A <br> <b>Station:</b> WPO05 <br> <b>Dates: </b>2011/01/04 to 2012/01/12  <br><br><b>Depth: </b> -4090 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/1N134371 <br><br> <b>Net name: </b> Walvis Ridge Passive Source Seismic Experiment <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_08a951385dbca578e091ecc4bad4229d = L.marker(
+                [-17.7497, 9.899],
+                {}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            var div_icon_22c60874a3e6faeb3e780bc2b6a403b3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWPO05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_08a951385dbca578e091ecc4bad4229d.setIcon(div_icon_22c60874a3e6faeb3e780bc2b6a403b3);
+        
+    
+            var circle_marker_a613eff749a95c40e413f204ded0f7c4 = L.circleMarker(
+                [-18.8785, 10.2985],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d42b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            circle_marker_a613eff749a95c40e413f204ded0f7c4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 6A <br> <b>Station:</b> WPO04 <br> <b>Dates: </b>2011/01/03 to 2011/12/26  <br><br><b>Depth: </b> -3680 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/1N134371 <br><br> <b>Net name: </b> Walvis Ridge Passive Source Seismic Experiment <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1701b912954e782b084b5fb2de68a1e7 = L.marker(
+                [-18.8785, 10.2985],
+                {}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            var div_icon_5a203cf7e0101519ec08b963fd487229 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWPO04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1701b912954e782b084b5fb2de68a1e7.setIcon(div_icon_5a203cf7e0101519ec08b963fd487229);
+        
+    
+            var circle_marker_b6f3e651a26ab0b8da678156f8fd56da = L.circleMarker(
+                [-21.31, 10.2297],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d42b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            circle_marker_b6f3e651a26ab0b8da678156f8fd56da.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 6A <br> <b>Station:</b> WPO10 <br> <b>Dates: </b>2011/01/06 to 2011/12/12  <br><br><b>Depth: </b> -3512 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/1N134371 <br><br> <b>Net name: </b> Walvis Ridge Passive Source Seismic Experiment <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5202ea89c1c8db02870453080d9488db = L.marker(
+                [-21.31, 10.2297],
+                {}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            var div_icon_6e6b853e114974f523f71f5a60038e14 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWPO10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5202ea89c1c8db02870453080d9488db.setIcon(div_icon_6e6b853e114974f523f71f5a60038e14);
+        
+    
+            var circle_marker_f36f81c205bc87b608afdc4d3ede409f = L.circleMarker(
+                [-18.0997, 10.9997],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d42b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            circle_marker_f36f81c205bc87b608afdc4d3ede409f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 6A <br> <b>Station:</b> WPO06 <br> <b>Dates: </b>2011/01/04 to 2012/01/02  <br><br><b>Depth: </b> -2389 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/1N134371 <br><br> <b>Net name: </b> Walvis Ridge Passive Source Seismic Experiment <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d98258b96312e250b19f7194f5e3d932 = L.marker(
+                [-18.0997, 10.9997],
+                {}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            var div_icon_f622c0273641c444933181aff2567aa2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWPO06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d98258b96312e250b19f7194f5e3d932.setIcon(div_icon_f622c0273641c444933181aff2567aa2);
+        
+    
+            var circle_marker_7f5c65ed253c88ab10dc8d1784de716f = L.circleMarker(
+                [-19.0, 8.0],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d42b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            circle_marker_7f5c65ed253c88ab10dc8d1784de716f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 6A <br> <b>Station:</b> WPO12 <br> <b>Dates: </b>2011/01/07 to 2011/12/26  <br><br><b>Depth: </b> -5034 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/1N134371 <br><br> <b>Net name: </b> Walvis Ridge Passive Source Seismic Experiment <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c22e5b28e1cc0996af4b109de982e3aa = L.marker(
+                [-19.0, 8.0],
+                {}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            var div_icon_34a522e1d1356868ccdcb2b84db9bcf5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWPO12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c22e5b28e1cc0996af4b109de982e3aa.setIcon(div_icon_34a522e1d1356868ccdcb2b84db9bcf5);
+        
+    
+            var circle_marker_aa041f638369fce4e2f13e60cd804c07 = L.circleMarker(
+                [-19.922, 9.7697],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d42b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            circle_marker_aa041f638369fce4e2f13e60cd804c07.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 6A <br> <b>Station:</b> WPO07 <br> <b>Dates: </b>2011/01/06 to 2011/12/09  <br><br><b>Depth: </b> -2030 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/1N134371 <br><br> <b>Net name: </b> Walvis Ridge Passive Source Seismic Experiment <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b74af4a0b446efae6947bb33954305ba = L.marker(
+                [-19.922, 9.7697],
+                {}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            var div_icon_c9d59c8461ce4b26af4091d33f6e9e70 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWPO07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b74af4a0b446efae6947bb33954305ba.setIcon(div_icon_c9d59c8461ce4b26af4091d33f6e9e70);
+        
+    
+            var circle_marker_d0ec6fba48e0f4957ab947acd4bbff8a = L.circleMarker(
+                [-21.7995, 9.0005],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d42b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            circle_marker_d0ec6fba48e0f4957ab947acd4bbff8a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 6A <br> <b>Station:</b> WPO09 <br> <b>Dates: </b>2011/01/06 to 2011/12/30  <br><br><b>Depth: </b> -4117 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/1N134371 <br><br> <b>Net name: </b> Walvis Ridge Passive Source Seismic Experiment <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cef49fae9deebd28827d3de2ea97595b = L.marker(
+                [-21.7995, 9.0005],
+                {}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            var div_icon_32d93ff7a6f0a11913063cf9c20acee3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWPO09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cef49fae9deebd28827d3de2ea97595b.setIcon(div_icon_32d93ff7a6f0a11913063cf9c20acee3);
+        
+    
+            var circle_marker_36e73c46dbb0bc86b041b6e85daeaa16 = L.circleMarker(
+                [-20.3905, 8.5582],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d42b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            circle_marker_36e73c46dbb0bc86b041b6e85daeaa16.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> 6A <br> <b>Station:</b> WPO08 <br> <b>Dates: </b>2011/01/06 to 2011/12/31  <br><br><b>Depth: </b> -2043 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.14470/1N134371 <br><br> <b>Net name: </b> Walvis Ridge Passive Source Seismic Experiment <br><br> <b>Operator: </b>  GEOFON Program (GFZ-Potsdam, Germany)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8c3c16e89ffdc120ce8084876a392f3c = L.marker(
+                [-20.3905, 8.5582],
+                {}
+            ).addTo(map_5ea6fd5643fdcc8243e0f04bcf8c7b0d);
+        
+    
+            var div_icon_bf89a8e8094907b095aee0c142fc9595 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWPO08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8c3c16e89ffdc120ce8084876a392f3c.setIcon(div_icon_bf89a8e8094907b095aee0c142fc9595);
+        
+    
+            map_5ea6fd5643fdcc8243e0f04bcf8c7b0d.fitBounds(
+                [[-21.7995, 8.0], [-17.7497, 11.6562]],
+                {}
+            );
+        </script>
+
+</html>

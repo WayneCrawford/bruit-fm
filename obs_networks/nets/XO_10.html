@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_8a38492b000251218223dd47358b3bf4 {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network XO: AACSE: Alaska Amphibious Community seismic Experiment </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Cornell University</p>
+		<p id="net_header", class="headerDates">OBS deployed from May 2018 to Oct 2019</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/XO_2018">https://doi.org/10.7914/SN/XO_2018</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_8a38492b000251218223dd47358b3bf4" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>XO</TD><TD>WD51</TD><TD>2018/07/20</TD><TD>2019/09/01</TD><TD>55.905087</TD><TD>-152.771768</TD><TD>-4361</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WS74</TD><TD>2018/07/18</TD><TD>2019/09/04</TD><TD>54.369193</TD><TD>-159.361628</TD><TD>-902</TD><TD>HH1-HH2-HHZ-HN1-HN2-HNZ (100.0 Hz) <br>BDH (40.0 Hz) <br>LDH-LDI-LH1-LH2-LHZ-LN1-LN2-LNZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WS75</TD><TD>2018/07/18</TD><TD>2019/09/04</TD><TD>54.17963</TD><TD>-160.256908</TD><TD>-1108</TD><TD>HH1-HH2-HHZ-HN1-HN2-HNZ (100.0 Hz) <br>BDH (40.0 Hz) <br>LDH-LDI-LH1-LH2-LHZ-LN1-LN2-LNZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD50</TD><TD>2018/07/21</TD><TD>2019/08/29</TD><TD>55.449527</TD><TD>-152.391763</TD><TD>-4986</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD46</TD><TD>2018/07/12</TD><TD>2019/09/11</TD><TD>55.521393</TD><TD>-149.703732</TD><TD>-4349</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD52</TD><TD>2018/07/18</TD><TD>2019/09/03</TD><TD>54.046622</TD><TD>-159.346215</TD><TD>-2564</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD53</TD><TD>2018/07/13</TD><TD>2019/09/10</TD><TD>53.779448</TD><TD>-153.422908</TD><TD>-4646</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD47</TD><TD>2018/07/13</TD><TD>2019/09/11</TD><TD>54.951352</TD><TD>-150.444792</TD><TD>-3999</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WS72</TD><TD>2018/07/21</TD><TD>2019/08/29</TD><TD>56.257748</TD><TD>-151.81063</TD><TD>-4141</TD><TD>HH1-HH2-HHZ-HN1-HN2-HNZ (100.0 Hz) <br>BDH (40.0 Hz) <br>LDH-LDI-LH1-LH2-LHZ-LN1-LN2-LNZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD57</TD><TD>2018/07/19</TD><TD>2019/08/31</TD><TD>54.736387</TD><TD>-154.434305</TD><TD>-5053</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD56</TD><TD>2018/07/19</TD><TD>2019/08/30</TD><TD>55.322267</TD><TD>-154.047078</TD><TD>-4060</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WS73</TD><TD>2018/07/18</TD><TD>2019/10/22</TD><TD>54.419958</TD><TD>-158.513277</TD><TD>-2132</TD><TD>HH1-HH2-HHZ-HN1-HN2-HNZ (100.0 Hz) <br>BDH (40.0 Hz) <br>LDH-LDI-LH1-LH2-LHZ-LN1-LN2-LNZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD54</TD><TD>2018/07/22</TD><TD>2019/09/11</TD><TD>56.331433</TD><TD>-149.066665</TD><TD>-4520</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LD38</TD><TD>2018/05/25</TD><TD>2019/08/28</TD><TD>55.1649</TD><TD>-151.6756</TD><TD>-4043</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WS71</TD><TD>2018/07/20</TD><TD>2019/09/03</TD><TD>56.15695</TD><TD>-153.078922</TD><TD>-1554</TD><TD>HH1-HH2-HHZ-HN1-HN2-HNZ (100.0 Hz) <br>BDH (40.0 Hz) <br>LDH-LDI-LH1-LH2-LHZ-LN1-LN2-LNZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD68</TD><TD>2018/07/17</TD><TD>2019/09/06</TD><TD>52.917603</TD><TD>-160.081145</TD><TD>-4715</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD69</TD><TD>2018/07/17</TD><TD>2019/09/03</TD><TD>53.782065</TD><TD>-160.34289</TD><TD>-3896</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD55</TD><TD>2018/07/20</TD><TD>2019/09/01</TD><TD>55.761625</TD><TD>-153.662817</TD><TD>-1284</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT09</TD><TD>2018/05/14</TD><TD>2019/08/19</TD><TD>55.1215</TD><TD>-157.1389</TD><TD>-151</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT08</TD><TD>2018/05/13</TD><TD>2019/08/28</TD><TD>55.5883</TD><TD>-156.5975</TD><TD>-246</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT20</TD><TD>2018/05/16</TD><TD>2019/08/22</TD><TD>54.8002</TD><TD>-161.3746</TD><TD>-150</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LA39</TD><TD>2018/05/27</TD><TD>2019/08/11</TD><TD>56.8827</TD><TD>-151.0011</TD><TD>-1628</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LA28</TD><TD>2018/05/14</TD><TD>2019/08/20</TD><TD>54.8983</TD><TD>-156.603</TD><TD>-1852</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LA29</TD><TD>2018/05/21</TD><TD>2019/08/26</TD><TD>54.2918</TD><TD>-157.3705</TD><TD>-4408</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT18</TD><TD>2018/05/17</TD><TD>2019/08/23</TD><TD>54.74</TD><TD>-160.5814</TD><TD>-115</TD><TD>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT14</TD><TD>2018/05/12</TD><TD>2019/08/18</TD><TD>55.6998</TD><TD>-158.0302</TD><TD>-125</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LA33</TD><TD>2018/05/21</TD><TD>2019/08/25</TD><TD>54.1528</TD><TD>-158.1143</TD><TD>-4478</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LA26</TD><TD>2018/05/22</TD><TD>2019/08/20</TD><TD>54.5129</TD><TD>-156.2561</TD><TD>-5103</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LA32</TD><TD>2018/05/15</TD><TD>2019/08/21</TD><TD>54.4982</TD><TD>-157.8522</TD><TD>-1595</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT15</TD><TD>2018/05/12</TD><TD>2019/08/21</TD><TD>55.2002</TD><TD>-158.3598</TD><TD>-167</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT01</TD><TD>2018/05/24</TD><TD>2019/08/14</TD><TD>56.7756</TD><TD>-152.5228</TD><TD>-156</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT17</TD><TD>2018/05/16</TD><TD>2019/08/23</TD><TD>54.5677</TD><TD>-160.2016</TD><TD>-114</TD><TD>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LD40</TD><TD>2018/05/25</TD><TD>2019/08/13</TD><TD>56.3037</TD><TD>-152.4102</TD><TD>-1055</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT03</TD><TD>2018/05/10</TD><TD>2019/08/15</TD><TD>57.8668</TD><TD>-154.1665</TD><TD>-202</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LA30</TD><TD>2018/05/14</TD><TD>2019/08/21</TD><TD>54.6727</TD><TD>-157.4203</TD><TD>-1564</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LA25</TD><TD>2018/05/14</TD><TD>2019/08/20</TD><TD>54.8901</TD><TD>-155.9408</TD><TD>-2622</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT02</TD><TD>2018/05/24</TD><TD>2019/08/28</TD><TD>56.6932</TD><TD>-153.2611</TD><TD>-152</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT16</TD><TD>2018/05/12</TD><TD>2019/08/22</TD><TD>55.4916</TD><TD>-158.6013</TD><TD>-125</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LD41</TD><TD>2018/05/23</TD><TD>2019/08/27</TD><TD>54.5219</TD><TD>-153.4074</TD><TD>-4284</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LD45</TD><TD>2018/05/20</TD><TD>2019/08/24</TD><TD>54.1025</TD><TD>-159.8829</TD><TD>-2019</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT12</TD><TD>2018/05/13</TD><TD>2019/08/19</TD><TD>55.207</TD><TD>-157.778</TD><TD>-83</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT06</TD><TD>2018/05/12</TD><TD>2019/08/17</TD><TD>56.2167</TD><TD>-155.9979</TD><TD>-225</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LA21</TD><TD>2018/05/22</TD><TD>2019/08/26</TD><TD>54.3691</TD><TD>-155.0735</TD><TD>-5113</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LA34</TD><TD>2018/05/20</TD><TD>2019/08/25</TD><TD>54.0449</TD><TD>-158.5881</TD><TD>-4612</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT07</TD><TD>2018/05/11</TD><TD>2019/08/15</TD><TD>56.6712</TD><TD>-156.1199</TD><TD>-262</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LD44</TD><TD>2018/05/20</TD><TD>2019/08/24</TD><TD>53.8302</TD><TD>-159.7736</TD><TD>-4675</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT13</TD><TD>2018/05/15</TD><TD>2019/08/22</TD><TD>54.8439</TD><TD>-158.3466</TD><TD>-203</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT05</TD><TD>2018/05/11</TD><TD>2019/08/15</TD><TD>56.823</TD><TD>-155.3469</TD><TD>-236</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT11</TD><TD>2018/05/12</TD><TD>2019/08/28</TD><TD>56.1202</TD><TD>-157.3355</TD><TD>-162</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LA22</TD><TD>2018/05/23</TD><TD>2019/08/27</TD><TD>55.2576</TD><TD>-155.153</TD><TD>-2130</TD><TD>HDH (125.0 Hz) <br>EDH (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LA23</TD><TD>2018/05/23</TD><TD>2019/08/26</TD><TD>54.9163</TD><TD>-155.2376</TD><TD>-3977</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT10</TD><TD>2018/05/13</TD><TD>2019/08/18</TD><TD>55.6251</TD><TD>-157.3251</TD><TD>-98</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LT04</TD><TD>2018/05/24</TD><TD>2019/08/14</TD><TD>56.1118</TD><TD>-154.4446</TD><TD>-157</TD><TD>HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD58</TD><TD>2018/07/14</TD><TD>2019/09/09</TD><TD>53.906227</TD><TD>-155.035345</TD><TD>-4493</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD70</TD><TD>2018/07/22</TD><TD>2019/08/28</TD><TD>56.541073</TD><TD>-151.234407</TD><TD>-3253</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD64</TD><TD>2018/07/16</TD><TD>2019/09/09</TD><TD>52.001077</TD><TD>-158.691562</TD><TD>-4754</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD65</TD><TD>2018/07/16</TD><TD>2019/09/08</TD><TD>52.899057</TD><TD>-158.91238</TD><TD>-4718</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD59</TD><TD>2018/07/14</TD><TD>2019/09/10</TD><TD>53.383713</TD><TD>-155.799387</TD><TD>-4550</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LD35</TD><TD>2018/05/16</TD><TD>2019/08/25</TD><TD>54.2495</TD><TD>-158.872</TD><TD>-1993</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LD37</TD><TD>2018/05/25</TD><TD>2019/08/28</TD><TD>55.6764</TD><TD>-151.1005</TD><TD>-4826</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD67</TD><TD>2018/07/16</TD><TD>2019/09/07</TD><TD>52.162563</TD><TD>-160.035832</TD><TD>-4652</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD66</TD><TD>2018/07/17</TD><TD>2019/09/06</TD><TD>53.31452</TD><TD>-159.617565</TD><TD>-4941</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>LD36</TD><TD>2018/05/14</TD><TD>2019/08/20</TD><TD>55.2524</TD><TD>-155.7525</TD><TD>-935</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD62</TD><TD>2018/07/15</TD><TD>2019/09/08</TD><TD>53.361962</TD><TD>-157.331882</TD><TD>-4626</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD63</TD><TD>2018/07/15</TD><TD>2019/09/08</TD><TD>52.590072</TD><TD>-158.093575</TD><TD>-4656</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD61</TD><TD>2018/07/19</TD><TD>2019/09/01</TD><TD>54.647613</TD><TD>-156.868282</TD><TD>-2067</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD49</TD><TD>2018/07/13</TD><TD>2019/09/11</TD><TD>54.399083</TD><TD>-151.89947</TD><TD>-4091</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD48</TD><TD>2018/07/21</TD><TD>2019/09/04</TD><TD>56.627365</TD><TD>-151.731343</TD><TD>-1324</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>XO</TD><TD>WD60</TD><TD>2018/07/14</TD><TD>2019/09/07</TD><TD>52.644867</TD><TD>-156.579823</TD><TD>-4519</TD><TD>HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>WS74 WS75 WS72 WS73 WS71</TD><TD>BDH</TD><TD>40.0</TD><TD>SIO Differential Pressure Gauge/QEP - Q330 Environ</TD></TR><TR><TD>LT09 LT08 LT20 LA39 LA28 LA29 LT18 LT14 LA33 LA26 LA32 LT15 LT01 LT17 LT03 LA30 LA25 LT02 LT16 LT12 LT06 LA21 LA34 LT07 LT13 LT05 LT11 LA22 LA23 LT10 LT04</TD><TD>EDH</TD><TD>100.0</TD><TD>LDEO HTI90U/LDEO OBS 2011 logger</TD></TR><TR><TD>LD38 LD40 LD41 LD45 LD44 LD35 LD37 LD36</TD><TD>HDH</TD><TD>100.0</TD><TD>LDEO DPG/LDEO OBS 2011 logger</TD></TR><TR><TD>WD51 WD50 WD46 WD52 WD53 WD47 WD57 WD56 WD54 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>HDH</TD><TD>100.0</TD><TD>SIO Differential Pressure Gauge/Quanterra Q330 Lin</TD></TR><TR><TD>LT09 LT08 LT20 LA39 LA28 LA29 LT14 LA33 LA26 LA32 LT15 LT01 LT03 LA30 LA25 LT02 LT16 LT12 LT06 LA21 LA34 LT07 LT13 LT05 LT11 LA22 LA23 LT10 LT04</TD><TD>HDH</TD><TD>125.0</TD><TD>Parosci APG Pressure/LDEO_APG_logger</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>HH1</TD><TD>100.0</TD><TD>Guralp CMG3T_120sec WHOI OBSIP/Quanterra Q330 Line</TD></TR><TR><TD>LD38 LT09 LT08 LT20 LA39 LA28 LA29 LT18 LT14 LA33 LA26 LA32 LT15 LT01 LT17 LD40 LT03 LA30 LA25 LT02 LT16 LD41 LD45 LT12 LT06 LA21 LA34 LT07 LD44 LT13 LT05 LT11 LA23 LT10 LT04 LD35 LD37 LD36</TD><TD>HH1</TD><TD>100.0</TD><TD>Nanometrics Trillium Compact Response/LDEO OBS 201</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>HH2</TD><TD>100.0</TD><TD>Guralp CMG3T_120sec WHOI OBSIP/Quanterra Q330 Line</TD></TR><TR><TD>LD38 LT09 LT08 LT20 LA39 LA28 LA29 LT18 LT14 LA33 LA26 LA32 LT15 LT01 LT17 LD40 LT03 LA30 LA25 LT02 LT16 LD41 LD45 LT12 LT06 LA21 LA34 LT07 LD44 LT13 LT05 LT11 LA23 LT10 LT04 LD35 LD37 LD36</TD><TD>HH2</TD><TD>100.0</TD><TD>Nanometrics Trillium Compact Response/LDEO OBS 201</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>HHZ</TD><TD>100.0</TD><TD>Guralp CMG3T_120sec WHOI OBSIP/Quanterra Q330 Line</TD></TR><TR><TD>LD38 LT09 LT08 LT20 LA39 LA28 LA29 LT18 LT14 LA33 LA26 LA32 LT15 LT01 LT17 LD40 LT03 LA30 LA25 LT02 LT16 LD41 LD45 LT12 LT06 LA21 LA34 LT07 LD44 LT13 LT05 LT11 LA23 LT10 LT04 LD35 LD37 LD36</TD><TD>HHZ</TD><TD>100.0</TD><TD>Nanometrics Trillium Compact Response/LDEO OBS 201</TD></TR><TR><TD>WS74 WS75 WS72 WS73 WS71</TD><TD>HN1</TD><TD>100.0</TD><TD>Episensor 200 Hz 5 Volt per g/Quanterra Q330 Linea</TD></TR><TR><TD>WS74 WS75 WS72 WS73 WS71</TD><TD>HN2</TD><TD>100.0</TD><TD>Episensor 200 Hz 5 Volt per g/Quanterra Q330 Linea</TD></TR><TR><TD>WS74 WS75 WS72 WS73 WS71</TD><TD>HNZ</TD><TD>100.0</TD><TD>Episensor 200 Hz 5 Volt per g/Quanterra Q330 Linea</TD></TR><TR><TD>WS74 WS75 WS72 WS73 WS71</TD><TD>LDH</TD><TD>1.0</TD><TD>SIO Differential Pressure Gauge/QEP - Q330 Environ</TD></TR><TR><TD>WD51 WD50 WD46 WD52 WD53 WD47 WD57 WD56 WD54 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>LDH</TD><TD>1.0</TD><TD>SIO Differential Pressure Gauge/Quanterra Q330 Lin</TD></TR><TR><TD>WS74 WS75 WS72 WS73 WS71</TD><TD>LDI</TD><TD>1.0</TD><TD>QEP - Q330 Environmental Processor</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>LH1</TD><TD>1.0</TD><TD>Guralp CMG3T_120sec WHOI OBSIP/Quanterra Q330 Line</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>LH2</TD><TD>1.0</TD><TD>Guralp CMG3T_120sec WHOI OBSIP/Quanterra Q330 Line</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>LHZ</TD><TD>1.0</TD><TD>Guralp CMG3T_120sec WHOI OBSIP/Quanterra Q330 Line</TD></TR><TR><TD>WS74 WS75 WS72 WS73 WS71</TD><TD>LN1</TD><TD>1.0</TD><TD>Episensor 200 Hz 5 Volt per g/Quanterra Q330 Linea</TD></TR><TR><TD>WS74 WS75 WS72 WS73 WS71</TD><TD>LN2</TD><TD>1.0</TD><TD>Episensor 200 Hz 5 Volt per g/Quanterra Q330 Linea</TD></TR><TR><TD>WS74 WS75 WS72 WS73 WS71</TD><TD>LNZ</TD><TD>1.0</TD><TD>Episensor 200 Hz 5 Volt per g/Quanterra Q330 Linea</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>VM0</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>VM1</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>VM2</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>VM3</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>VM4</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>VM5</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>VM6</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>VMU</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>VMV</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>VMW</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>VMZ</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>WD51 WS74 WS75 WD50 WD46 WD52 WD53 WD47 WS72 WD57 WD56 WS73 WD54 WS71 WD68 WD69 WD55 WD58 WD70 WD64 WD65 WD59 WD67 WD66 WD62 WD63 WD61 WD49 WD48 WD60</TD><TD>VPB</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_8a38492b000251218223dd47358b3bf4 = L.map(
+                "map_8a38492b000251218223dd47358b3bf4",
+                {
+                    center: [54.6439601627907, -155.75088834149327],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_d839f57d7d7229ca3a9ba51d44afa63a = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var circle_marker_f8fc8a41c1a0f2c49a61877c55998de5 = L.circleMarker(
+                [55.905087, -152.771768],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_f8fc8a41c1a0f2c49a61877c55998de5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD51 <br> <b>Dates: </b>2018/07/20 to 2019/09/01  <br><br><b>Depth: </b> -4361 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bf4a26951b7f44e92ad73858ead64dbe = L.marker(
+                [55.905087, -152.771768],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_b806d398749953b7f472fbf18ea6607b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD51\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_bf4a26951b7f44e92ad73858ead64dbe.setIcon(div_icon_b806d398749953b7f472fbf18ea6607b);
+        
+    
+            var circle_marker_6ccf2d818338781601851c4f08230681 = L.circleMarker(
+                [54.369193, -159.361628],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_6ccf2d818338781601851c4f08230681.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WS74 <br> <b>Dates: </b>2018/07/18 to 2019/09/04  <br><br><b>Depth: </b> -902 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ-HN1-HN2-HNZ (100.0 Hz) <br>BDH (40.0 Hz) <br>LDH-LDI-LH1-LH2-LHZ-LN1-LN2-LNZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2455383c34818d3f549f756f8061e8fc = L.marker(
+                [54.369193, -159.361628],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_fb248bb4dbb2c7aad1577a6deaee818e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWS74\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2455383c34818d3f549f756f8061e8fc.setIcon(div_icon_fb248bb4dbb2c7aad1577a6deaee818e);
+        
+    
+            var circle_marker_2bbd71836e672a7c968ebfd1e0608b44 = L.circleMarker(
+                [54.17963, -160.256908],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_2bbd71836e672a7c968ebfd1e0608b44.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WS75 <br> <b>Dates: </b>2018/07/18 to 2019/09/04  <br><br><b>Depth: </b> -1108 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ-HN1-HN2-HNZ (100.0 Hz) <br>BDH (40.0 Hz) <br>LDH-LDI-LH1-LH2-LHZ-LN1-LN2-LNZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9908c1e5551785efa6e8feb030b1064d = L.marker(
+                [54.17963, -160.256908],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_e8ccac76ab501b0583a44a3fcc0fc66e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWS75\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9908c1e5551785efa6e8feb030b1064d.setIcon(div_icon_e8ccac76ab501b0583a44a3fcc0fc66e);
+        
+    
+            var circle_marker_fbe4c32dbd8f9c9ab04996eb517a40a1 = L.circleMarker(
+                [55.449527, -152.391763],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_fbe4c32dbd8f9c9ab04996eb517a40a1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD50 <br> <b>Dates: </b>2018/07/21 to 2019/08/29  <br><br><b>Depth: </b> -4986 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ff68b0e6df635d69810b0074436df09d = L.marker(
+                [55.449527, -152.391763],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_819922861599b33041b3d4c146a9eb1f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD50\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ff68b0e6df635d69810b0074436df09d.setIcon(div_icon_819922861599b33041b3d4c146a9eb1f);
+        
+    
+            var circle_marker_7996b39ea0ce881972482810cc6f1a3b = L.circleMarker(
+                [55.521393, -149.703732],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_7996b39ea0ce881972482810cc6f1a3b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD46 <br> <b>Dates: </b>2018/07/12 to 2019/09/11  <br><br><b>Depth: </b> -4349 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_98051a05c3753c146d2815f83464d927 = L.marker(
+                [55.521393, -149.703732],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_af44cbdded2c3ad9a0e0c0c7fbd7a4f1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD46\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_98051a05c3753c146d2815f83464d927.setIcon(div_icon_af44cbdded2c3ad9a0e0c0c7fbd7a4f1);
+        
+    
+            var circle_marker_c3bc84541f43ee3ff966fc254dae6966 = L.circleMarker(
+                [54.046622, -159.346215],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_c3bc84541f43ee3ff966fc254dae6966.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD52 <br> <b>Dates: </b>2018/07/18 to 2019/09/03  <br><br><b>Depth: </b> -2564 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5e3f37e184f3b26de4b25d9f3d295acb = L.marker(
+                [54.046622, -159.346215],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_4a19796537cd5c8cc9efa09f2112445d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD52\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5e3f37e184f3b26de4b25d9f3d295acb.setIcon(div_icon_4a19796537cd5c8cc9efa09f2112445d);
+        
+    
+            var circle_marker_9c104509f3dadb41493c9fedfe34767a = L.circleMarker(
+                [53.779448, -153.422908],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_9c104509f3dadb41493c9fedfe34767a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD53 <br> <b>Dates: </b>2018/07/13 to 2019/09/10  <br><br><b>Depth: </b> -4646 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2fc42e150ddab70e13ac2cfdaaed1069 = L.marker(
+                [53.779448, -153.422908],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_fdc4c4ac3a1f93f90c089df8a53fe92f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD53\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2fc42e150ddab70e13ac2cfdaaed1069.setIcon(div_icon_fdc4c4ac3a1f93f90c089df8a53fe92f);
+        
+    
+            var circle_marker_ee9e682f2329056cab6c3737740cc4b7 = L.circleMarker(
+                [54.951352, -150.444792],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_ee9e682f2329056cab6c3737740cc4b7.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD47 <br> <b>Dates: </b>2018/07/13 to 2019/09/11  <br><br><b>Depth: </b> -3999 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3992b0d364999f20cd94b181587a293a = L.marker(
+                [54.951352, -150.444792],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_080bc1c5dbe3d9208f8389fa7cdff982 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD47\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3992b0d364999f20cd94b181587a293a.setIcon(div_icon_080bc1c5dbe3d9208f8389fa7cdff982);
+        
+    
+            var circle_marker_9ca1c5aa33a918c11797a88cfa7fbf26 = L.circleMarker(
+                [56.257748, -151.81063],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_9ca1c5aa33a918c11797a88cfa7fbf26.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WS72 <br> <b>Dates: </b>2018/07/21 to 2019/08/29  <br><br><b>Depth: </b> -4141 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ-HN1-HN2-HNZ (100.0 Hz) <br>BDH (40.0 Hz) <br>LDH-LDI-LH1-LH2-LHZ-LN1-LN2-LNZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c3b1f8a02a3d9530b8ccb7696282d2db = L.marker(
+                [56.257748, -151.81063],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_14cedab41e0daff18aa5adcdfee39302 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWS72\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c3b1f8a02a3d9530b8ccb7696282d2db.setIcon(div_icon_14cedab41e0daff18aa5adcdfee39302);
+        
+    
+            var circle_marker_ef8daa1acb8c1a98c9888a6a57c4ddf5 = L.circleMarker(
+                [54.736387, -154.434305],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_ef8daa1acb8c1a98c9888a6a57c4ddf5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD57 <br> <b>Dates: </b>2018/07/19 to 2019/08/31  <br><br><b>Depth: </b> -5053 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8b0169d18aecd9b051ddd2684d8d8027 = L.marker(
+                [54.736387, -154.434305],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_eddfd61819bb7cfdf34af9018ea05721 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD57\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8b0169d18aecd9b051ddd2684d8d8027.setIcon(div_icon_eddfd61819bb7cfdf34af9018ea05721);
+        
+    
+            var circle_marker_c17a03e887ec8c52e0f9cb9c815c9977 = L.circleMarker(
+                [55.322267, -154.047078],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_c17a03e887ec8c52e0f9cb9c815c9977.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD56 <br> <b>Dates: </b>2018/07/19 to 2019/08/30  <br><br><b>Depth: </b> -4060 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6fc200bb6ded6a0e8a3934e7b7978223 = L.marker(
+                [55.322267, -154.047078],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_d3204c690b72e37f0b3ea68d57458922 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD56\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6fc200bb6ded6a0e8a3934e7b7978223.setIcon(div_icon_d3204c690b72e37f0b3ea68d57458922);
+        
+    
+            var circle_marker_aad6e251bbd15c24d5cbd61992b3312d = L.circleMarker(
+                [54.419958, -158.513277],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_aad6e251bbd15c24d5cbd61992b3312d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WS73 <br> <b>Dates: </b>2018/07/18 to 2019/10/22  <br><br><b>Depth: </b> -2132 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ-HN1-HN2-HNZ (100.0 Hz) <br>BDH (40.0 Hz) <br>LDH-LDI-LH1-LH2-LHZ-LN1-LN2-LNZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e281e4788a3f90e8387a95f0e7d0ad48 = L.marker(
+                [54.419958, -158.513277],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_ea33c21601efa1d66aa1182c7e74f2c5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWS73\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e281e4788a3f90e8387a95f0e7d0ad48.setIcon(div_icon_ea33c21601efa1d66aa1182c7e74f2c5);
+        
+    
+            var circle_marker_0d28840fc78047f88eac58d7003c3ce9 = L.circleMarker(
+                [56.331433, -149.066665],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_0d28840fc78047f88eac58d7003c3ce9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD54 <br> <b>Dates: </b>2018/07/22 to 2019/09/11  <br><br><b>Depth: </b> -4520 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e103eee166b6803b8fceb9268cfbb0a6 = L.marker(
+                [56.331433, -149.066665],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_0a6184509d49a82c21b8f9c8d6698a96 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD54\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e103eee166b6803b8fceb9268cfbb0a6.setIcon(div_icon_0a6184509d49a82c21b8f9c8d6698a96);
+        
+    
+            var circle_marker_ed50cccc202f0b98774b2a73811d0b84 = L.circleMarker(
+                [55.1649, -151.6756],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_ed50cccc202f0b98774b2a73811d0b84.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LD38 <br> <b>Dates: </b>2018/05/25 to 2019/08/28  <br><br><b>Depth: </b> -4043 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f0beeed351c37864daed10efe722bcb1 = L.marker(
+                [55.1649, -151.6756],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_e8e1a624f40de7d1fe05e12f48daebb4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLD38\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f0beeed351c37864daed10efe722bcb1.setIcon(div_icon_e8e1a624f40de7d1fe05e12f48daebb4);
+        
+    
+            var circle_marker_3cd0a29d6d623e4c0e04da7563252f3a = L.circleMarker(
+                [56.15695, -153.078922],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_3cd0a29d6d623e4c0e04da7563252f3a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WS71 <br> <b>Dates: </b>2018/07/20 to 2019/09/03  <br><br><b>Depth: </b> -1554 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ-HN1-HN2-HNZ (100.0 Hz) <br>BDH (40.0 Hz) <br>LDH-LDI-LH1-LH2-LHZ-LN1-LN2-LNZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_68fbb9eab4cdc82c40ac0d22c3e8d4bd = L.marker(
+                [56.15695, -153.078922],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_e945eb77c8e687ed4b5ad2ac2c32f14b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWS71\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_68fbb9eab4cdc82c40ac0d22c3e8d4bd.setIcon(div_icon_e945eb77c8e687ed4b5ad2ac2c32f14b);
+        
+    
+            var circle_marker_f35a3d04e640911bb206e18fa5b026ad = L.circleMarker(
+                [52.917603, -160.081145],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_f35a3d04e640911bb206e18fa5b026ad.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD68 <br> <b>Dates: </b>2018/07/17 to 2019/09/06  <br><br><b>Depth: </b> -4715 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c6755d969763cfc6906845d323a22cfa = L.marker(
+                [52.917603, -160.081145],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_a9ad9d215f93a368762953bf7ef4c26e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD68\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_c6755d969763cfc6906845d323a22cfa.setIcon(div_icon_a9ad9d215f93a368762953bf7ef4c26e);
+        
+    
+            var circle_marker_58af861056b24ef4b62d86695bba3014 = L.circleMarker(
+                [53.782065, -160.34289],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_58af861056b24ef4b62d86695bba3014.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD69 <br> <b>Dates: </b>2018/07/17 to 2019/09/03  <br><br><b>Depth: </b> -3896 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4d988bc9c7f194b8b9193866a6235fb8 = L.marker(
+                [53.782065, -160.34289],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_baec4d830567b2b44ccdabcaaae796ba = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD69\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4d988bc9c7f194b8b9193866a6235fb8.setIcon(div_icon_baec4d830567b2b44ccdabcaaae796ba);
+        
+    
+            var circle_marker_1686c7fc033016b89c2608734db7f977 = L.circleMarker(
+                [55.761625, -153.662817],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_1686c7fc033016b89c2608734db7f977.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD55 <br> <b>Dates: </b>2018/07/20 to 2019/09/01  <br><br><b>Depth: </b> -1284 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_78144ed319bddd0a1b99d498506bfe93 = L.marker(
+                [55.761625, -153.662817],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_2b4d24c70651a1562f9dbc538636bacc = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD55\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_78144ed319bddd0a1b99d498506bfe93.setIcon(div_icon_2b4d24c70651a1562f9dbc538636bacc);
+        
+    
+            var circle_marker_700daf0366353c9a1cde5902a5313279 = L.circleMarker(
+                [55.1215, -157.1389],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_700daf0366353c9a1cde5902a5313279.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT09 <br> <b>Dates: </b>2018/05/14 to 2019/08/19  <br><br><b>Depth: </b> -151 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_679654c40b847b3e01c971ec319b679b = L.marker(
+                [55.1215, -157.1389],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_8a6921b04f7e5e84c3fe7b675de33700 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT09\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_679654c40b847b3e01c971ec319b679b.setIcon(div_icon_8a6921b04f7e5e84c3fe7b675de33700);
+        
+    
+            var circle_marker_1c5b3ab9358ee57fa6e05e8712839825 = L.circleMarker(
+                [55.5883, -156.5975],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_1c5b3ab9358ee57fa6e05e8712839825.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT08 <br> <b>Dates: </b>2018/05/13 to 2019/08/28  <br><br><b>Depth: </b> -246 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3ff89d030ec1ac213070209eb579e7f7 = L.marker(
+                [55.5883, -156.5975],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_8e19d6a576c56e32080858346f04130c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT08\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3ff89d030ec1ac213070209eb579e7f7.setIcon(div_icon_8e19d6a576c56e32080858346f04130c);
+        
+    
+            var circle_marker_389cc6b29949fb990a3edafb6f30e65b = L.circleMarker(
+                [54.8002, -161.3746],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_389cc6b29949fb990a3edafb6f30e65b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT20 <br> <b>Dates: </b>2018/05/16 to 2019/08/22  <br><br><b>Depth: </b> -150 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0b0db88e2da9e5549350ea3300184b37 = L.marker(
+                [54.8002, -161.3746],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_d32b94d5ee83c868a4a0f474080ae3ff = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT20\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0b0db88e2da9e5549350ea3300184b37.setIcon(div_icon_d32b94d5ee83c868a4a0f474080ae3ff);
+        
+    
+            var circle_marker_600a4adbd9136b5f96b528144b86d277 = L.circleMarker(
+                [56.8827, -151.0011],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_600a4adbd9136b5f96b528144b86d277.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LA39 <br> <b>Dates: </b>2018/05/27 to 2019/08/11  <br><br><b>Depth: </b> -1628 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_42b67885cab06c5483cbd96758241474 = L.marker(
+                [56.8827, -151.0011],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_79bd787ec7ed2efa1e264725801a75f4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLA39\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_42b67885cab06c5483cbd96758241474.setIcon(div_icon_79bd787ec7ed2efa1e264725801a75f4);
+        
+    
+            var circle_marker_33a0ef60270cd8ce7d78d06bad09eab3 = L.circleMarker(
+                [54.8983, -156.603],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_33a0ef60270cd8ce7d78d06bad09eab3.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LA28 <br> <b>Dates: </b>2018/05/14 to 2019/08/20  <br><br><b>Depth: </b> -1852 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_089692428b5351898cbeda9f0a001cb8 = L.marker(
+                [54.8983, -156.603],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_f36a3d2df5c9d79aa2c612e93250de5f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLA28\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_089692428b5351898cbeda9f0a001cb8.setIcon(div_icon_f36a3d2df5c9d79aa2c612e93250de5f);
+        
+    
+            var circle_marker_c113d2b34b95ad56361283c1003d132b = L.circleMarker(
+                [54.2918, -157.3705],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_c113d2b34b95ad56361283c1003d132b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LA29 <br> <b>Dates: </b>2018/05/21 to 2019/08/26  <br><br><b>Depth: </b> -4408 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_61b9c7168e633e48aef904dae062d6ba = L.marker(
+                [54.2918, -157.3705],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_006409d2f40df6a1c9a625ee876b8b69 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLA29\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_61b9c7168e633e48aef904dae062d6ba.setIcon(div_icon_006409d2f40df6a1c9a625ee876b8b69);
+        
+    
+            var circle_marker_5832dae39d5371c6fb8ac2fb741aeabb = L.circleMarker(
+                [54.74, -160.5814],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_5832dae39d5371c6fb8ac2fb741aeabb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT18 <br> <b>Dates: </b>2018/05/17 to 2019/08/23  <br><br><b>Depth: </b> -115 m <br> <br> <b>Channels:</b><br> EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fd4865fe0ce134da6bb93ad6df239776 = L.marker(
+                [54.74, -160.5814],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_604cb130ac214107e4edeeb7ac9ed25b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT18\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fd4865fe0ce134da6bb93ad6df239776.setIcon(div_icon_604cb130ac214107e4edeeb7ac9ed25b);
+        
+    
+            var circle_marker_64a6e77683c9ad61ae8412860bfd96a4 = L.circleMarker(
+                [55.6998, -158.0302],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_64a6e77683c9ad61ae8412860bfd96a4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT14 <br> <b>Dates: </b>2018/05/12 to 2019/08/18  <br><br><b>Depth: </b> -125 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_239b5e55336ad07003cd088f2095b7db = L.marker(
+                [55.6998, -158.0302],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_97b160eef4fd9d0fb1ac7a7b2121d1ed = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT14\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_239b5e55336ad07003cd088f2095b7db.setIcon(div_icon_97b160eef4fd9d0fb1ac7a7b2121d1ed);
+        
+    
+            var circle_marker_6fbf4da1f63120282e4b93adbb372f05 = L.circleMarker(
+                [54.1528, -158.1143],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_6fbf4da1f63120282e4b93adbb372f05.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LA33 <br> <b>Dates: </b>2018/05/21 to 2019/08/25  <br><br><b>Depth: </b> -4478 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3f969bb0ad3ceabc56931cc565729363 = L.marker(
+                [54.1528, -158.1143],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_781c5000aaed77f371a61b4269d18dc1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLA33\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3f969bb0ad3ceabc56931cc565729363.setIcon(div_icon_781c5000aaed77f371a61b4269d18dc1);
+        
+    
+            var circle_marker_e4aa8b74664ef25dd9471e4cdac23cc5 = L.circleMarker(
+                [54.5129, -156.2561],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_e4aa8b74664ef25dd9471e4cdac23cc5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LA26 <br> <b>Dates: </b>2018/05/22 to 2019/08/20  <br><br><b>Depth: </b> -5103 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2e71ff3ae0f92ca2975d0d2cf3423393 = L.marker(
+                [54.5129, -156.2561],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_200f5d9bc76cbdf1f96b5d8667a9bd76 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLA26\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2e71ff3ae0f92ca2975d0d2cf3423393.setIcon(div_icon_200f5d9bc76cbdf1f96b5d8667a9bd76);
+        
+    
+            var circle_marker_6c0cbc30e6c7963ff654e94443c87c16 = L.circleMarker(
+                [54.4982, -157.8522],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_6c0cbc30e6c7963ff654e94443c87c16.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LA32 <br> <b>Dates: </b>2018/05/15 to 2019/08/21  <br><br><b>Depth: </b> -1595 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3dac814b5a05aabd83cc3f05a51d11a3 = L.marker(
+                [54.4982, -157.8522],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_73f88868bc21fe064f410c903e4138d1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLA32\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3dac814b5a05aabd83cc3f05a51d11a3.setIcon(div_icon_73f88868bc21fe064f410c903e4138d1);
+        
+    
+            var circle_marker_3980f27980808a2b5b2df14969b54e2e = L.circleMarker(
+                [55.2002, -158.3598],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_3980f27980808a2b5b2df14969b54e2e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT15 <br> <b>Dates: </b>2018/05/12 to 2019/08/21  <br><br><b>Depth: </b> -167 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fa95584edc11a3f5ef5439ad1bb8a0a6 = L.marker(
+                [55.2002, -158.3598],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_0e98644d9255226ccebf86f8de388aad = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT15\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fa95584edc11a3f5ef5439ad1bb8a0a6.setIcon(div_icon_0e98644d9255226ccebf86f8de388aad);
+        
+    
+            var circle_marker_8ab0eaf7ea532efadcad23661eaeacf2 = L.circleMarker(
+                [56.7756, -152.5228],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_8ab0eaf7ea532efadcad23661eaeacf2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT01 <br> <b>Dates: </b>2018/05/24 to 2019/08/14  <br><br><b>Depth: </b> -156 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9717ffc965059f953f48f4c06c7bfecb = L.marker(
+                [56.7756, -152.5228],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_df1a72370a7de26cb359bdc9c7a85031 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT01\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9717ffc965059f953f48f4c06c7bfecb.setIcon(div_icon_df1a72370a7de26cb359bdc9c7a85031);
+        
+    
+            var circle_marker_b9c44eccdf127fa20c3d1468e33adae4 = L.circleMarker(
+                [54.5677, -160.2016],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_b9c44eccdf127fa20c3d1468e33adae4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT17 <br> <b>Dates: </b>2018/05/16 to 2019/08/23  <br><br><b>Depth: </b> -114 m <br> <br> <b>Channels:</b><br> EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b68c246a585ac424028afecc7097392c = L.marker(
+                [54.5677, -160.2016],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_6769c26fe26aff9e1dbb3e6f80f7b194 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT17\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b68c246a585ac424028afecc7097392c.setIcon(div_icon_6769c26fe26aff9e1dbb3e6f80f7b194);
+        
+    
+            var circle_marker_90be060f45cdbef60a21e7689338ab9c = L.circleMarker(
+                [56.3037, -152.4102],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_90be060f45cdbef60a21e7689338ab9c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LD40 <br> <b>Dates: </b>2018/05/25 to 2019/08/13  <br><br><b>Depth: </b> -1055 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_036ab6d950ff6af8bf1f50f4a9dff82a = L.marker(
+                [56.3037, -152.4102],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_9eaa02cf5a733eb10871885733d4475d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLD40\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_036ab6d950ff6af8bf1f50f4a9dff82a.setIcon(div_icon_9eaa02cf5a733eb10871885733d4475d);
+        
+    
+            var circle_marker_f8fcc21a9d90f6321f376c17aa2ed0ee = L.circleMarker(
+                [57.8668, -154.1665],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_f8fcc21a9d90f6321f376c17aa2ed0ee.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT03 <br> <b>Dates: </b>2018/05/10 to 2019/08/15  <br><br><b>Depth: </b> -202 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_299d126487ba22c18baa9f5be57ad914 = L.marker(
+                [57.8668, -154.1665],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_0adffb4e5fa0dadfb01a0746ef07dc3f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT03\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_299d126487ba22c18baa9f5be57ad914.setIcon(div_icon_0adffb4e5fa0dadfb01a0746ef07dc3f);
+        
+    
+            var circle_marker_59748e4a5e204516524d87ac658b1f05 = L.circleMarker(
+                [54.6727, -157.4203],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_59748e4a5e204516524d87ac658b1f05.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LA30 <br> <b>Dates: </b>2018/05/14 to 2019/08/21  <br><br><b>Depth: </b> -1564 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_301d663c610dec1f1d1ec79584170641 = L.marker(
+                [54.6727, -157.4203],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_f4d767d106a88a8301aac73fe3face0e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLA30\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_301d663c610dec1f1d1ec79584170641.setIcon(div_icon_f4d767d106a88a8301aac73fe3face0e);
+        
+    
+            var circle_marker_48b2ed752d888ee722328ca7a082ff24 = L.circleMarker(
+                [54.8901, -155.9408],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_48b2ed752d888ee722328ca7a082ff24.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LA25 <br> <b>Dates: </b>2018/05/14 to 2019/08/20  <br><br><b>Depth: </b> -2622 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2a47bc50c0bb66519de38b824e27b372 = L.marker(
+                [54.8901, -155.9408],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_4464fc9eb89a543faf23050e3014f373 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLA25\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2a47bc50c0bb66519de38b824e27b372.setIcon(div_icon_4464fc9eb89a543faf23050e3014f373);
+        
+    
+            var circle_marker_249c06ec33b8b5901dd31375902ea6a2 = L.circleMarker(
+                [56.6932, -153.2611],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_249c06ec33b8b5901dd31375902ea6a2.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT02 <br> <b>Dates: </b>2018/05/24 to 2019/08/28  <br><br><b>Depth: </b> -152 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_08a9b208951607983fba4cbbe9684229 = L.marker(
+                [56.6932, -153.2611],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_ebec13d53a562698269ea0c095ea2638 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT02\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_08a9b208951607983fba4cbbe9684229.setIcon(div_icon_ebec13d53a562698269ea0c095ea2638);
+        
+    
+            var circle_marker_8980e9577d782a65f058a191d288c847 = L.circleMarker(
+                [55.4916, -158.6013],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_8980e9577d782a65f058a191d288c847.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT16 <br> <b>Dates: </b>2018/05/12 to 2019/08/22  <br><br><b>Depth: </b> -125 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fbca614d1c48d552ff8837c24e74e9b1 = L.marker(
+                [55.4916, -158.6013],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_8da13d8d5bc025480470f00fc0fe35d5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT16\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fbca614d1c48d552ff8837c24e74e9b1.setIcon(div_icon_8da13d8d5bc025480470f00fc0fe35d5);
+        
+    
+            var circle_marker_8f136cadfb32fd9843528efe0b27955d = L.circleMarker(
+                [54.5219, -153.4074],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_8f136cadfb32fd9843528efe0b27955d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LD41 <br> <b>Dates: </b>2018/05/23 to 2019/08/27  <br><br><b>Depth: </b> -4284 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b856a65d643eeb00fce6a546a211e2c7 = L.marker(
+                [54.5219, -153.4074],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_1b060dc36d29469254b68580e71c5529 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLD41\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b856a65d643eeb00fce6a546a211e2c7.setIcon(div_icon_1b060dc36d29469254b68580e71c5529);
+        
+    
+            var circle_marker_a4453461b91ea1b683aa0cfb9fd0233f = L.circleMarker(
+                [54.1025, -159.8829],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_a4453461b91ea1b683aa0cfb9fd0233f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LD45 <br> <b>Dates: </b>2018/05/20 to 2019/08/24  <br><br><b>Depth: </b> -2019 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_44d5df9c9b13809076d435aa0e7ba97e = L.marker(
+                [54.1025, -159.8829],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_1a1c46516145101e7344ebb06588b64f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLD45\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_44d5df9c9b13809076d435aa0e7ba97e.setIcon(div_icon_1a1c46516145101e7344ebb06588b64f);
+        
+    
+            var circle_marker_891b5b6ba291492d64457fe5b7845502 = L.circleMarker(
+                [55.207, -157.778],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_891b5b6ba291492d64457fe5b7845502.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT12 <br> <b>Dates: </b>2018/05/13 to 2019/08/19  <br><br><b>Depth: </b> -83 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bb10be5048aa8acd1b3559292d9e36eb = L.marker(
+                [55.207, -157.778],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_625ea33497499be86688fea874a8d52d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT12\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_bb10be5048aa8acd1b3559292d9e36eb.setIcon(div_icon_625ea33497499be86688fea874a8d52d);
+        
+    
+            var circle_marker_68da8ceaf1ae16d9ba77d80af4ae04f4 = L.circleMarker(
+                [56.2167, -155.9979],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_68da8ceaf1ae16d9ba77d80af4ae04f4.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT06 <br> <b>Dates: </b>2018/05/12 to 2019/08/17  <br><br><b>Depth: </b> -225 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_59f37c47b9ec64bf9f0402f50a8980d4 = L.marker(
+                [56.2167, -155.9979],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_c45fbf923c8ee327a48ff0990a23f128 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT06\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_59f37c47b9ec64bf9f0402f50a8980d4.setIcon(div_icon_c45fbf923c8ee327a48ff0990a23f128);
+        
+    
+            var circle_marker_c319641669fc883f5a870b9e5436a11b = L.circleMarker(
+                [54.3691, -155.0735],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_c319641669fc883f5a870b9e5436a11b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LA21 <br> <b>Dates: </b>2018/05/22 to 2019/08/26  <br><br><b>Depth: </b> -5113 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_356445b309c4f1434a52f8f92ef13b89 = L.marker(
+                [54.3691, -155.0735],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_912b970fcff37351523250a542b67a66 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLA21\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_356445b309c4f1434a52f8f92ef13b89.setIcon(div_icon_912b970fcff37351523250a542b67a66);
+        
+    
+            var circle_marker_d3944e6ad903bca6a2a57c476b7f9bb5 = L.circleMarker(
+                [54.0449, -158.5881],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_d3944e6ad903bca6a2a57c476b7f9bb5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LA34 <br> <b>Dates: </b>2018/05/20 to 2019/08/25  <br><br><b>Depth: </b> -4612 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a4d3470d093cb5e58f47f7ab21c8c05e = L.marker(
+                [54.0449, -158.5881],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_b7ff74b7f37521b9dbfc425d04f285a8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLA34\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a4d3470d093cb5e58f47f7ab21c8c05e.setIcon(div_icon_b7ff74b7f37521b9dbfc425d04f285a8);
+        
+    
+            var circle_marker_67de1e7fac662b439dd147bb8adec8f0 = L.circleMarker(
+                [56.6712, -156.1199],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_67de1e7fac662b439dd147bb8adec8f0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT07 <br> <b>Dates: </b>2018/05/11 to 2019/08/15  <br><br><b>Depth: </b> -262 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_020ed61f4eec826c8312c2d76955b1ed = L.marker(
+                [56.6712, -156.1199],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_746e8c2d44980924a621f84a3ceb6a54 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT07\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_020ed61f4eec826c8312c2d76955b1ed.setIcon(div_icon_746e8c2d44980924a621f84a3ceb6a54);
+        
+    
+            var circle_marker_8a487843c2b7a8db5889d7eaeb241e8d = L.circleMarker(
+                [53.8302, -159.7736],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_8a487843c2b7a8db5889d7eaeb241e8d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LD44 <br> <b>Dates: </b>2018/05/20 to 2019/08/24  <br><br><b>Depth: </b> -4675 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_979ed239278e435e9db183abcddb0b30 = L.marker(
+                [53.8302, -159.7736],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_6358788ca5eb286158c5df0f517e5c1d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLD44\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_979ed239278e435e9db183abcddb0b30.setIcon(div_icon_6358788ca5eb286158c5df0f517e5c1d);
+        
+    
+            var circle_marker_6afe114fb909e3bcc8a63a15d8740d95 = L.circleMarker(
+                [54.8439, -158.3466],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_6afe114fb909e3bcc8a63a15d8740d95.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT13 <br> <b>Dates: </b>2018/05/15 to 2019/08/22  <br><br><b>Depth: </b> -203 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_19cb434a19ca88fb4aebe495d8e7ae2b = L.marker(
+                [54.8439, -158.3466],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_d5d9e3e8d268f36cedad6bc04feee84c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT13\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_19cb434a19ca88fb4aebe495d8e7ae2b.setIcon(div_icon_d5d9e3e8d268f36cedad6bc04feee84c);
+        
+    
+            var circle_marker_b14f2ccaa4c884e8276826faacf5452b = L.circleMarker(
+                [56.823, -155.3469],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_b14f2ccaa4c884e8276826faacf5452b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT05 <br> <b>Dates: </b>2018/05/11 to 2019/08/15  <br><br><b>Depth: </b> -236 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_46da90055b4eb627c26efecff82bfbed = L.marker(
+                [56.823, -155.3469],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_33e2fef14712742a71e6c29e39e7916f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT05\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_46da90055b4eb627c26efecff82bfbed.setIcon(div_icon_33e2fef14712742a71e6c29e39e7916f);
+        
+    
+            var circle_marker_370b8aa5a01902ea9089efdd58531e7f = L.circleMarker(
+                [56.1202, -157.3355],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_370b8aa5a01902ea9089efdd58531e7f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT11 <br> <b>Dates: </b>2018/05/12 to 2019/08/28  <br><br><b>Depth: </b> -162 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_72d295068a730369536c73217af6621b = L.marker(
+                [56.1202, -157.3355],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_c86da60aed9e6ccb53b272313e5d18a1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT11\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_72d295068a730369536c73217af6621b.setIcon(div_icon_c86da60aed9e6ccb53b272313e5d18a1);
+        
+    
+            var circle_marker_9ac881ee13c57b781f77a6a2ff993c7a = L.circleMarker(
+                [55.2576, -155.153],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_9ac881ee13c57b781f77a6a2ff993c7a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LA22 <br> <b>Dates: </b>2018/05/23 to 2019/08/27  <br><br><b>Depth: </b> -2130 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dd832eafe7b3619e807d15e766e4d8a5 = L.marker(
+                [55.2576, -155.153],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_6247390425d4169686f193399e71b901 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLA22\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_dd832eafe7b3619e807d15e766e4d8a5.setIcon(div_icon_6247390425d4169686f193399e71b901);
+        
+    
+            var circle_marker_779371e5b1bcfd88ed1e0774f083a45f = L.circleMarker(
+                [54.9163, -155.2376],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_779371e5b1bcfd88ed1e0774f083a45f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LA23 <br> <b>Dates: </b>2018/05/23 to 2019/08/26  <br><br><b>Depth: </b> -3977 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f734530ac285861f1ddc71db96fd3732 = L.marker(
+                [54.9163, -155.2376],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_d6acce95df0c7d9ae144955c264df27b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLA23\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f734530ac285861f1ddc71db96fd3732.setIcon(div_icon_d6acce95df0c7d9ae144955c264df27b);
+        
+    
+            var circle_marker_792057e4849003007ba1ea2f8028ced0 = L.circleMarker(
+                [55.6251, -157.3251],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_792057e4849003007ba1ea2f8028ced0.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT10 <br> <b>Dates: </b>2018/05/13 to 2019/08/18  <br><br><b>Depth: </b> -98 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_77f15293fe7c2dd3fd2e40f0520ab4e4 = L.marker(
+                [55.6251, -157.3251],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_44596d0efcfaf415260698cad84ca128 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT10\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_77f15293fe7c2dd3fd2e40f0520ab4e4.setIcon(div_icon_44596d0efcfaf415260698cad84ca128);
+        
+    
+            var circle_marker_d6f8616cca304ea37950353a5297f162 = L.circleMarker(
+                [56.1118, -154.4446],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_d6f8616cca304ea37950353a5297f162.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LT04 <br> <b>Dates: </b>2018/05/24 to 2019/08/14  <br><br><b>Depth: </b> -157 m <br> <br> <b>Channels:</b><br> HDH (125.0 Hz) <br>EDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_31a66a31cd166a423c24dfaee4f72cea = L.marker(
+                [56.1118, -154.4446],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_5d7174d23c4b0e25b05344b7b9887fea = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLT04\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_31a66a31cd166a423c24dfaee4f72cea.setIcon(div_icon_5d7174d23c4b0e25b05344b7b9887fea);
+        
+    
+            var circle_marker_09ec4b5f7f0efe0e4c93e043c62d3bef = L.circleMarker(
+                [53.906227, -155.035345],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_09ec4b5f7f0efe0e4c93e043c62d3bef.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD58 <br> <b>Dates: </b>2018/07/14 to 2019/09/09  <br><br><b>Depth: </b> -4493 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a590ebc699fa04abb265ac3a9560a3f3 = L.marker(
+                [53.906227, -155.035345],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_d688318e03b790d1ec0ec0d65c057727 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD58\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a590ebc699fa04abb265ac3a9560a3f3.setIcon(div_icon_d688318e03b790d1ec0ec0d65c057727);
+        
+    
+            var circle_marker_b10ce58bfbf32fda2a5f032ba8e12c08 = L.circleMarker(
+                [56.541073, -151.234407],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_b10ce58bfbf32fda2a5f032ba8e12c08.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD70 <br> <b>Dates: </b>2018/07/22 to 2019/08/28  <br><br><b>Depth: </b> -3253 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2346c57e5e2e671d0a6776f2b1aea9c6 = L.marker(
+                [56.541073, -151.234407],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_c418a4e7f34c6f3a8fe84fb2c4f79acf = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD70\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_2346c57e5e2e671d0a6776f2b1aea9c6.setIcon(div_icon_c418a4e7f34c6f3a8fe84fb2c4f79acf);
+        
+    
+            var circle_marker_35c11bd67c25723668f8a0503c70e477 = L.circleMarker(
+                [52.001077, -158.691562],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_35c11bd67c25723668f8a0503c70e477.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD64 <br> <b>Dates: </b>2018/07/16 to 2019/09/09  <br><br><b>Depth: </b> -4754 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_69c07615d5629df0dbee713fb37ffadd = L.marker(
+                [52.001077, -158.691562],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_3b76d6a20cf05e070e030eea0ebc9183 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD64\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_69c07615d5629df0dbee713fb37ffadd.setIcon(div_icon_3b76d6a20cf05e070e030eea0ebc9183);
+        
+    
+            var circle_marker_5a1e3da85f905c7df6b83109aaf3db52 = L.circleMarker(
+                [52.899057, -158.91238],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_5a1e3da85f905c7df6b83109aaf3db52.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD65 <br> <b>Dates: </b>2018/07/16 to 2019/09/08  <br><br><b>Depth: </b> -4718 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_da1edead860005f0eb3528c7fcb242b2 = L.marker(
+                [52.899057, -158.91238],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_038a208fc430dd6eb1073f6685fad3bd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD65\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_da1edead860005f0eb3528c7fcb242b2.setIcon(div_icon_038a208fc430dd6eb1073f6685fad3bd);
+        
+    
+            var circle_marker_ff0ff8f21d11685f6e2228d79e236bea = L.circleMarker(
+                [53.383713, -155.799387],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_ff0ff8f21d11685f6e2228d79e236bea.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD59 <br> <b>Dates: </b>2018/07/14 to 2019/09/10  <br><br><b>Depth: </b> -4550 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9cc22e85bc7c47d266a4abb07b10b64e = L.marker(
+                [53.383713, -155.799387],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_e66628d153af21c3e252e6dd96d5a4c0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD59\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9cc22e85bc7c47d266a4abb07b10b64e.setIcon(div_icon_e66628d153af21c3e252e6dd96d5a4c0);
+        
+    
+            var circle_marker_d56c91da51e9b6b0877a66289a5f6fc9 = L.circleMarker(
+                [54.2495, -158.872],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_d56c91da51e9b6b0877a66289a5f6fc9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LD35 <br> <b>Dates: </b>2018/05/16 to 2019/08/25  <br><br><b>Depth: </b> -1993 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e1e701e4f76196f43fad2ef2762cecc7 = L.marker(
+                [54.2495, -158.872],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_75cf089e87a1fb732e58d3be51e5cba1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLD35\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e1e701e4f76196f43fad2ef2762cecc7.setIcon(div_icon_75cf089e87a1fb732e58d3be51e5cba1);
+        
+    
+            var circle_marker_2b25cda9f28a3076038efe360e3e6633 = L.circleMarker(
+                [55.6764, -151.1005],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_2b25cda9f28a3076038efe360e3e6633.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LD37 <br> <b>Dates: </b>2018/05/25 to 2019/08/28  <br><br><b>Depth: </b> -4826 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_355a4bc7fb8b9bf11572199cbc95fe6a = L.marker(
+                [55.6764, -151.1005],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_654aa570e85f1f5b5fbaf116f4693b08 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLD37\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_355a4bc7fb8b9bf11572199cbc95fe6a.setIcon(div_icon_654aa570e85f1f5b5fbaf116f4693b08);
+        
+    
+            var circle_marker_7f9d7963b76973a43aed671278ce493f = L.circleMarker(
+                [52.162563, -160.035832],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_7f9d7963b76973a43aed671278ce493f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD67 <br> <b>Dates: </b>2018/07/16 to 2019/09/07  <br><br><b>Depth: </b> -4652 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e11f5a4423f32fa6497dd55542afcf10 = L.marker(
+                [52.162563, -160.035832],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_680b9588afc44b3f6ea0122aa3728712 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD67\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e11f5a4423f32fa6497dd55542afcf10.setIcon(div_icon_680b9588afc44b3f6ea0122aa3728712);
+        
+    
+            var circle_marker_c2db6a5e35db2656f63957560befd00f = L.circleMarker(
+                [53.31452, -159.617565],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_c2db6a5e35db2656f63957560befd00f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD66 <br> <b>Dates: </b>2018/07/17 to 2019/09/06  <br><br><b>Depth: </b> -4941 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_862d26bc686a61161ea302857ca68649 = L.marker(
+                [53.31452, -159.617565],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_eaeeb1934eea1d87ca47a9fd3717d841 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD66\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_862d26bc686a61161ea302857ca68649.setIcon(div_icon_eaeeb1934eea1d87ca47a9fd3717d841);
+        
+    
+            var circle_marker_097e101e264863706af05a1cb2917c76 = L.circleMarker(
+                [55.2524, -155.7525],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_097e101e264863706af05a1cb2917c76.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> LD36 <br> <b>Dates: </b>2018/05/14 to 2019/08/20  <br><br><b>Depth: </b> -935 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e923e2e8342a0ec70d8fca75f8c669ab = L.marker(
+                [55.2524, -155.7525],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_3d602f8b9d41a931a7028545afd6c000 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eLD36\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e923e2e8342a0ec70d8fca75f8c669ab.setIcon(div_icon_3d602f8b9d41a931a7028545afd6c000);
+        
+    
+            var circle_marker_6c64ff318ef2b6a365e3f77257742192 = L.circleMarker(
+                [53.361962, -157.331882],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_6c64ff318ef2b6a365e3f77257742192.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD62 <br> <b>Dates: </b>2018/07/15 to 2019/09/08  <br><br><b>Depth: </b> -4626 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a47fe1e9f90f6b358735b3649d176942 = L.marker(
+                [53.361962, -157.331882],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_f18727533d8a2a69aea5b7502398f60b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD62\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a47fe1e9f90f6b358735b3649d176942.setIcon(div_icon_f18727533d8a2a69aea5b7502398f60b);
+        
+    
+            var circle_marker_f4705277089c9ae7f82987af9238e4bd = L.circleMarker(
+                [52.590072, -158.093575],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_f4705277089c9ae7f82987af9238e4bd.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD63 <br> <b>Dates: </b>2018/07/15 to 2019/09/08  <br><br><b>Depth: </b> -4656 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_363c8c33f57edeb3695c8e2d61bb34ff = L.marker(
+                [52.590072, -158.093575],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_5356bf559ef1fd261186f2f17e64a1a5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD63\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_363c8c33f57edeb3695c8e2d61bb34ff.setIcon(div_icon_5356bf559ef1fd261186f2f17e64a1a5);
+        
+    
+            var circle_marker_a97b05e5c2488879cd7f0a19a5f8aa83 = L.circleMarker(
+                [54.647613, -156.868282],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_a97b05e5c2488879cd7f0a19a5f8aa83.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD61 <br> <b>Dates: </b>2018/07/19 to 2019/09/01  <br><br><b>Depth: </b> -2067 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3d6d653659b1186d3ed45045f2c6d48c = L.marker(
+                [54.647613, -156.868282],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_3c3faf9b0abe8c2cc3be365447b440fe = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD61\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3d6d653659b1186d3ed45045f2c6d48c.setIcon(div_icon_3c3faf9b0abe8c2cc3be365447b440fe);
+        
+    
+            var circle_marker_e751b3981044bdade001c4caa900b295 = L.circleMarker(
+                [54.399083, -151.89947],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_e751b3981044bdade001c4caa900b295.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD49 <br> <b>Dates: </b>2018/07/13 to 2019/09/11  <br><br><b>Depth: </b> -4091 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e7021b41aba79897b4e2d0c11652eaae = L.marker(
+                [54.399083, -151.89947],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_3e2eeb46384ad0a34e3228726804d0a5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD49\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e7021b41aba79897b4e2d0c11652eaae.setIcon(div_icon_3e2eeb46384ad0a34e3228726804d0a5);
+        
+    
+            var circle_marker_9151e5d8966cd8653f4261d5a8526f3b = L.circleMarker(
+                [56.627365, -151.731343],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_9151e5d8966cd8653f4261d5a8526f3b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD48 <br> <b>Dates: </b>2018/07/21 to 2019/09/04  <br><br><b>Depth: </b> -1324 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e39db1d0ef7d8e06bee87b97a7aaaf96 = L.marker(
+                [56.627365, -151.731343],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_865d8182d274472c1203a9d52a13e256 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD48\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e39db1d0ef7d8e06bee87b97a7aaaf96.setIcon(div_icon_865d8182d274472c1203a9d52a13e256);
+        
+    
+            var circle_marker_3ffab096ee6255fd8da04427e8fac941 = L.circleMarker(
+                [52.644867, -156.579823],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5200ad", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            circle_marker_3ffab096ee6255fd8da04427e8fac941.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> XO <br> <b>Station:</b> WD60 <br> <b>Dates: </b>2018/07/14 to 2019/09/07  <br><br><b>Depth: </b> -4519 m <br> <br> <b>Channels:</b><br> HDH-HH1-HH2-HHZ (100.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/XO_2018 <br><br> <b>Net name: </b> AACSE: Alaska Amphibious Community seismic Experiment <br><br> <b>Operator: </b>  Cornell University</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d9a5aabe6fa50c6583a8eacf55f2aca1 = L.marker(
+                [52.644867, -156.579823],
+                {}
+            ).addTo(map_8a38492b000251218223dd47358b3bf4);
+        
+    
+            var div_icon_ed200b793ea48696cd3e784b4d63c69b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eWD60\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d9a5aabe6fa50c6583a8eacf55f2aca1.setIcon(div_icon_ed200b793ea48696cd3e784b4d63c69b);
+        
+    
+            map_8a38492b000251218223dd47358b3bf4.fitBounds(
+                [[52.001077, -161.3746], [57.8668, -149.066665]],
+                {}
+            );
+        </script>
+
+</html>

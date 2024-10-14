@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="sorttable.js"></script>
+<title>BRUIT-FM - Network description</title>    
+
+	<style>
+		.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(120deg, #155799, #159957);padding:3rem 4rem}
+		.container {
+			max-width: 1280px;
+			max-height=95%;
+			margin: auto;
+		}
+		
+		.subdiv {margin-top: 50px;}
+		.div_title{font-weight: bold; font-size:20px;}
+		
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+		
+		table thead th {
+		  background-color: #EEEEEE;height: 40px;padding-left:5px;
+		}
+		.headerTitle{font-weight: bold; font-size:40px;}
+		.headerFullName{font-weight: normal; font-size:25px;}
+		.headerDates{font-weight: normal; font-size:25px;}
+		.headerDoi{font-weight: normal; font-size:20px;}
+		.headerLinkStation{font-weight: normal; font-size:20px;}
+		.headerLinkChannel{font-weight: normal; font-size:20px;}
+
+
+
+		table, th, td {
+			border: 1px solid black;
+		}
+
+		table {
+			width: 1280px;
+		}
+
+		table tbody td {
+			padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;
+		}
+		/* Sortable tables */
+		table.sortable thead {
+		    /*background-color:#eee;
+		    color:#666666;
+		    font-weight: bold;*/
+		    cursor: default;
+		}
+		table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		    content: " \25B4\25BE" 
+		}
+	</style>
+    <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+     <style>
+                #map_04abe2b29d621dace8c09e97e688a74b {
+                    position: relative;
+                    width: 1280.0px;
+                    height: 800.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+
+    <header class="page-header" role="banner">
+      <p id="net_header", class="headerTitle"><b>Network X9: Plate Boundary Evolution and Physics at an Oceanic Transform Fault System </b></p>
+      
+      
+      
+    </header>
+    
+   <div class="container">   
+	<div class="subdiv">
+		
+		<p id="net_header", class="headerFullName">Operated by   Oregon State University (OSU USA)</p>
+		<p id="net_header", class="headerDates">OBS deployed from Sep 2012 to Oct 2013</p>
+		<p id="net_header", class="headerDoi">DOI: <a href="https://doi.org/10.7914/SN/X9_2012">https://doi.org/10.7914/SN/X9_2012</a></p>
+		
+		<p id="net_header", class="headerLinkStation">=> <a href="#networkStation">Network Stations</a></p>
+		<p id="net_header", class="headerLinkChannel">=> <a href="#networkStationChannel">Network Station Channels</a></p>
+	</div>
+	
+	
+    
+
+	<div class="subdiv">
+	<p  id="map", class="div_title">Network Map</p>
+	
+    
+            <div class="folium-map" id="map_04abe2b29d621dace8c09e97e688a74b" ></div>
+        
+	</div>
+
+	<div class="subdiv">
+	    <p  id="networkStation", class="div_title">Network Stations</p>
+	    <table class="sortable"><thead><TR><TH>Network</TH><TH>Station</TH><TH>Start Time</TH><TH>End Time</TH><TH>Latitude</TH><TH>Longitude</TH><TH>Depth</TH><TH>Channels</TH></TR></thead><tbody><TR><TD>X9</TD><TD>BS210</TD><TD>2012/09/23</TD><TD>2013/09/24</TD><TD>43.668201</TD><TD>-127.808197</TD><TD>-2610</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB180</TD><TD>2012/09/21</TD><TD>2013/10/03</TD><TD>42.868198</TD><TD>-128.304993</TD><TD>-3305</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB550</TD><TD>2012/09/27</TD><TD>2013/09/26</TD><TD>44.6772</TD><TD>-130.620193</TD><TD>-2995</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB140</TD><TD>2012/09/20</TD><TD>2013/10/03</TD><TD>43.423599</TD><TD>-127.6894</TD><TD>-2151</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS401</TD><TD>2012/10/01</TD><TD>2013/10/01</TD><TD>44.106098</TD><TD>-129.927094</TD><TD>-3210</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS010</TD><TD>2012/09/19</TD><TD>2013/10/04</TD><TD>43.205898</TD><TD>-127.049004</TD><TD>-4380</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB390</TD><TD>2012/09/24</TD><TD>2013/10/01</TD><TD>43.9851</TD><TD>-129.680893</TD><TD>-3198</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS160</TD><TD>2012/09/22</TD><TD>2013/10/04</TD><TD>43.209202</TD><TD>-127.499702</TD><TD>-2353</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB150</TD><TD>2012/09/21</TD><TD>2013/10/04</TD><TD>43.314701</TD><TD>-127.349998</TD><TD>-2512</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB420</TD><TD>2012/09/25</TD><TD>2013/10/01</TD><TD>43.6297</TD><TD>-130.208206</TD><TD>-3326</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB540</TD><TD>2012/09/27</TD><TD>2013/09/26</TD><TD>44.594101</TD><TD>-130.190903</TD><TD>-2536</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB030</TD><TD>2012/09/18</TD><TD>2013/10/04</TD><TD>42.9473</TD><TD>-126.933601</TD><TD>-2730</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB230</TD><TD>2012/09/22</TD><TD>2013/10/02</TD><TD>43.566002</TD><TD>-128.258408</TD><TD>-2365</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB350</TD><TD>2012/09/24</TD><TD>2013/09/25</TD><TD>43.987</TD><TD>-129.075607</TD><TD>-3297</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS360</TD><TD>2012/09/25</TD><TD>2013/09/25</TD><TD>44.036701</TD><TD>-129.332596</TD><TD>-2427</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB530</TD><TD>2012/09/27</TD><TD>2013/09/26</TD><TD>44.546101</TD><TD>-129.820007</TD><TD>-2912</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB450</TD><TD>2012/09/25</TD><TD>2013/09/27</TD><TD>44.225498</TD><TD>-130.766098</TD><TD>-3119</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB120</TD><TD>2012/09/20</TD><TD>2013/09/23</TD><TD>43.9786</TD><TD>-127.2957</TD><TD>-2882</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS460</TD><TD>2012/09/27</TD><TD>2013/09/27</TD><TD>44.439201</TD><TD>-130.833206</TD><TD>-2847</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS110</TD><TD>2012/09/21</TD><TD>2013/10/06</TD><TD>43.709499</TD><TD>-127.169502</TD><TD>-2981</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS500</TD><TD>2012/09/27</TD><TD>2013/09/25</TD><TD>44.161201</TD><TD>-129.483307</TD><TD>-3486</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS310</TD><TD>2012/09/24</TD><TD>2013/09/24</TD><TD>43.924</TD><TD>-128.586807</TD><TD>-2582</TD><TD>BDH-SL1-SL2-SLZ (50.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB320</TD><TD>2012/09/23</TD><TD>2013/09/24</TD><TD>44.170799</TD><TD>-128.707703</TD><TD>-2769</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB240</TD><TD>2012/09/22</TD><TD>2013/10/02</TD><TD>43.427502</TD><TD>-128.355698</TD><TD>-3220</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB330</TD><TD>2012/09/23</TD><TD>2013/09/24</TD><TD>44.614498</TD><TD>-128.600403</TD><TD>-2843</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB480</TD><TD>2012/09/26</TD><TD>2013/09/27</TD><TD>44.3489</TD><TD>-130.021194</TD><TD>-4787</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB090</TD><TD>2012/09/20</TD><TD>2013/10/05</TD><TD>43.3736</TD><TD>-126.660301</TD><TD>-2901</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB290</TD><TD>2012/09/23</TD><TD>2013/10/02</TD><TD>43.6264</TD><TD>-128.514404</TD><TD>-2760</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS100</TD><TD>2012/09/21</TD><TD>2013/10/05</TD><TD>43.5369</TD><TD>-126.857002</TD><TD>-2957</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS470</TD><TD>2012/09/27</TD><TD>2013/09/27</TD><TD>44.3661</TD><TD>-130.372803</TD><TD>-2379</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB130</TD><TD>2012/09/20</TD><TD>2013/09/23</TD><TD>43.638802</TD><TD>-127.471298</TD><TD>-2902</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB440</TD><TD>2012/09/25</TD><TD>2013/09/28</TD><TD>44.211102</TD><TD>-130.458099</TD><TD>-3145</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS520</TD><TD>2012/09/28</TD><TD>2013/09/26</TD><TD>44.431499</TD><TD>-129.603607</TD><TD>-2527</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS050</TD><TD>2012/09/20</TD><TD>2013/10/04</TD><TD>42.7943</TD><TD>-126.527</TD><TD>-2720</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB510</TD><TD>2012/09/26</TD><TD>2013/09/25</TD><TD>44.310699</TD><TD>-129.337006</TD><TD>-2538</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB060</TD><TD>2012/09/19</TD><TD>2013/10/05</TD><TD>42.856098</TD><TD>-126.113297</TD><TD>-2795</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB260</TD><TD>2012/09/22</TD><TD>2013/10/02</TD><TD>43.623299</TD><TD>-128.863007</TD><TD>-3132</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB300</TD><TD>2012/09/23</TD><TD>2013/09/24</TD><TD>43.838902</TD><TD>-128.317795</TD><TD>-2897</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS250</TD><TD>2012/09/23</TD><TD>2013/10/02</TD><TD>43.506901</TD><TD>-128.659103</TD><TD>-3201</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS490</TD><TD>2012/09/27</TD><TD>2013/09/26</TD><TD>44.2393</TD><TD>-129.669998</TD><TD>-3652</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS080</TD><TD>2012/09/20</TD><TD>2013/10/05</TD><TD>43.210499</TD><TD>-126.329498</TD><TD>-3005</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS280</TD><TD>2012/09/24</TD><TD>2013/10/02</TD><TD>43.735802</TD><TD>-128.696503</TD><TD>-3535</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB070</TD><TD>2012/09/19</TD><TD>2013/10/05</TD><TD>43.306801</TD><TD>-126.006798</TD><TD>-3023</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS040</TD><TD>2012/09/19</TD><TD>2013/10/05</TD><TD>43.123199</TD><TD>-126.716698</TD><TD>-3424</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB200</TD><TD>2012/09/21</TD><TD>2013/10/03</TD><TD>43.488998</TD><TD>-127.958</TD><TD>-2477</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS190</TD><TD>2012/09/22</TD><TD>2013/10/03</TD><TD>43.311699</TD><TD>-128.076996</TD><TD>-3071</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB410</TD><TD>2012/09/25</TD><TD>2013/10/01</TD><TD>43.930698</TD><TD>-129.998306</TD><TD>-3212</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS380</TD><TD>2012/09/25</TD><TD>2013/10/01</TD><TD>43.810101</TD><TD>-129.6418</TD><TD>-3215</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB170</TD><TD>2012/09/21</TD><TD>2013/10/03</TD><TD>43.142899</TD><TD>-127.777397</TD><TD>-4077</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS430</TD><TD>2012/09/26</TD><TD>2013/09/28</TD><TD>44.1003</TD><TD>-130.207703</TD><TD>-3210</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS020</TD><TD>2012/09/19</TD><TD>2013/10/04</TD><TD>43.088001</TD><TD>-127.209396</TD><TD>-3046</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS220</TD><TD>2012/09/23</TD><TD>2013/09/24</TD><TD>43.736599</TD><TD>-128.021103</TD><TD>-2977</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BS340</TD><TD>2012/09/25</TD><TD>2013/09/25</TD><TD>44.137299</TD><TD>-129.002106</TD><TD>-2500</TD><TD>EL1-EL2-ELZ-HDH (100.0 Hz) <br></TD></TR><TR><TD>X9</TD><TD>BB370</TD><TD>2012/09/24</TD><TD>2013/10/01</TD><TD>43.780201</TD><TD>-129.338898</TD><TD>-3108</TD><TD>HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br></TD></TR></tbody></table>
+	</div>
+
+	<div class="subdiv">
+	    <p id="networkStationChannel", class="div_title">Network Station Channels</p>
+	    <table class="sortable"><thead><TR><TH>Station</TH><TH>Channels</TH><TH>Sample Rate</TH><TH>Sensor Description</TH></TR></thead><tbody><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>BDH</TD><TD>10.0</TD><TD>SIO Differential Pressure Gauge/Quanterra Q330 Lin</TD></TR><TR><TD>BS310</TD><TD>BDH</TD><TD>50.0</TD><TD>Differential Pressure Gauge OBSIP-SIO/ABALONES-4x4</TD></TR><TR><TD>BS210 BS401 BS010 BS160 BS360 BS460 BS110 BS500 BS100 BS470 BS520 BS050 BS250 BS490 BS080 BS280 BS040 BS190 BS380 BS430 BS020 BS220 BS340</TD><TD>EL1</TD><TD>100.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR><TR><TD>BS210 BS401 BS010 BS160 BS360 BS460 BS110 BS500 BS100 BS470 BS520 BS050 BS250 BS490 BS080 BS280 BS040 BS190 BS380 BS430 BS020 BS220 BS340</TD><TD>EL2</TD><TD>100.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR><TR><TD>BS210 BS401 BS010 BS160 BS360 BS460 BS110 BS500 BS100 BS470 BS520 BS050 BS250 BS490 BS080 BS280 BS040 BS190 BS380 BS430 BS020 BS220 BS340</TD><TD>ELZ</TD><TD>100.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR><TR><TD>BS210 BS401 BS010 BS160 BS360 BS460 BS110 BS500 BS100 BS470 BS520 BS050 BS250 BS490 BS080 BS280 BS040 BS190 BS380 BS430 BS020 BS220 BS340</TD><TD>HDH</TD><TD>100.0</TD><TD>Differential Pressure Gauge OBSIP-SIO/ABALONES-4x4</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>HH1</TD><TD>100.0</TD><TD>Guralp CMG3T_120sec WHOI OBSIP/Quanterra Q330 Line</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>HH2</TD><TD>100.0</TD><TD>Guralp CMG3T_120sec WHOI OBSIP/Quanterra Q330 Line</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>HHZ</TD><TD>100.0</TD><TD>Guralp CMG3T_120sec WHOI OBSIP/Quanterra Q330 Line</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>LDH</TD><TD>1.0</TD><TD>SIO Differential Pressure Gauge/Quanterra Q330 Lin</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>LH1</TD><TD>1.0</TD><TD>Guralp CMG3T_120sec WHOI OBSIP/Quanterra Q330 Line</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>LH2</TD><TD>1.0</TD><TD>Guralp CMG3T_120sec WHOI OBSIP/Quanterra Q330 Line</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>LHZ</TD><TD>1.0</TD><TD>Guralp CMG3T_120sec WHOI OBSIP/Quanterra Q330 Line</TD></TR><TR><TD>BS310</TD><TD>SL1</TD><TD>50.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR><TR><TD>BS310</TD><TD>SL2</TD><TD>50.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR><TR><TD>BS310</TD><TD>SLZ</TD><TD>50.0</TD><TD>L28LB OBSIP-SIO Seismometer Differential/ABALONES-</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>VM0</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>VM1</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>VM2</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>VM3</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>VM4</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>VM5</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>VM6</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>VMU</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>VMV</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>VMW</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>VMZ</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR><TR><TD>BB180 BB550 BB140 BB390 BB150 BB420 BB540 BB030 BB230 BB350 BB530 BB450 BB120 BB320 BB240 BB330 BB480 BB090 BB290 BB130 BB440 BB510 BB060 BB260 BB300 BB070 BB200 BB410 BB170 BB370</TD><TD>VPB</TD><TD>0.1</TD><TD>Quanterra Q330 Linear Phase Composite</TD></TR></tbody></table>
+	</div>
+	
+	<div class="subdiv">
+	</div>
+   </div>
+
+</body>
+<script>
+    
+            var map_04abe2b29d621dace8c09e97e688a74b = L.map(
+                "map_04abe2b29d621dace8c09e97e688a74b",
+                {
+                    center: [43.774453965517246, -128.60200451724137],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var macro_element_39ee62d4e116fd43d23060e4eb6ee818 = L.tileLayer.wms(
+                "https://wms.gebco.net/mapserv",
+                {"attribution": "", "format": "image/png", "layers": "GEBCO_latest", "styles": "", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var circle_marker_41bd6e6b5d1ffbd4d4610ba84dd0cd90 = L.circleMarker(
+                [43.668201, -127.808197],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_41bd6e6b5d1ffbd4d4610ba84dd0cd90.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS210 <br> <b>Dates: </b>2012/09/23 to 2013/09/24  <br><br><b>Depth: </b> -2610 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_012fbe04063d77d567949071703d86ea = L.marker(
+                [43.668201, -127.808197],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_ab25bbc42bd68e397e6293203a89daa0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS210\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_012fbe04063d77d567949071703d86ea.setIcon(div_icon_ab25bbc42bd68e397e6293203a89daa0);
+        
+    
+            var circle_marker_ed700f5713fd6c98db689e051e423cc6 = L.circleMarker(
+                [42.868198, -128.304993],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_ed700f5713fd6c98db689e051e423cc6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB180 <br> <b>Dates: </b>2012/09/21 to 2013/10/03  <br><br><b>Depth: </b> -3305 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_681f4cf704b828436c16b1c711054264 = L.marker(
+                [42.868198, -128.304993],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_d4722edbeb4fb4398374f6b281b0d319 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB180\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_681f4cf704b828436c16b1c711054264.setIcon(div_icon_d4722edbeb4fb4398374f6b281b0d319);
+        
+    
+            var circle_marker_bf12cfcd5d491b56c6617dc37c42be94 = L.circleMarker(
+                [44.6772, -130.620193],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_bf12cfcd5d491b56c6617dc37c42be94.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB550 <br> <b>Dates: </b>2012/09/27 to 2013/09/26  <br><br><b>Depth: </b> -2995 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_38a7fb7bbf98c5289835632bd700389c = L.marker(
+                [44.6772, -130.620193],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_1c236195616df9d36aedffa306c01a22 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB550\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_38a7fb7bbf98c5289835632bd700389c.setIcon(div_icon_1c236195616df9d36aedffa306c01a22);
+        
+    
+            var circle_marker_94069b6d07538fb85a2226870ef9e523 = L.circleMarker(
+                [43.423599, -127.6894],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_94069b6d07538fb85a2226870ef9e523.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB140 <br> <b>Dates: </b>2012/09/20 to 2013/10/03  <br><br><b>Depth: </b> -2151 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e199a42cf13d183445b52b7e093b791a = L.marker(
+                [43.423599, -127.6894],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_7aff78ae3c32954ef4194214cf18e64d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB140\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e199a42cf13d183445b52b7e093b791a.setIcon(div_icon_7aff78ae3c32954ef4194214cf18e64d);
+        
+    
+            var circle_marker_dc967157d3e0deb6868e9b82a74b07b5 = L.circleMarker(
+                [44.106098, -129.927094],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_dc967157d3e0deb6868e9b82a74b07b5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS401 <br> <b>Dates: </b>2012/10/01 to 2013/10/01  <br><br><b>Depth: </b> -3210 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6cd8b0bdab08523631730020f9d09a7a = L.marker(
+                [44.106098, -129.927094],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_c28c2bdca26813173085524b07b393a2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS401\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6cd8b0bdab08523631730020f9d09a7a.setIcon(div_icon_c28c2bdca26813173085524b07b393a2);
+        
+    
+            var circle_marker_55c909f1e9b2b878e696aa6748876a1a = L.circleMarker(
+                [43.205898, -127.049004],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_55c909f1e9b2b878e696aa6748876a1a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS010 <br> <b>Dates: </b>2012/09/19 to 2013/10/04  <br><br><b>Depth: </b> -4380 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_14e79f13b6f589f198e6db00abb36546 = L.marker(
+                [43.205898, -127.049004],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_3ff4ce615b7c4027b8d9e826dc745d23 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS010\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_14e79f13b6f589f198e6db00abb36546.setIcon(div_icon_3ff4ce615b7c4027b8d9e826dc745d23);
+        
+    
+            var circle_marker_d730cd82b5ac2c4a0df03c1f80430cc9 = L.circleMarker(
+                [43.9851, -129.680893],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_d730cd82b5ac2c4a0df03c1f80430cc9.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB390 <br> <b>Dates: </b>2012/09/24 to 2013/10/01  <br><br><b>Depth: </b> -3198 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ae531d79da765122d07d61aa1e093b44 = L.marker(
+                [43.9851, -129.680893],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_4e5e9b3eb9b95e033b49cfff7398692c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB390\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ae531d79da765122d07d61aa1e093b44.setIcon(div_icon_4e5e9b3eb9b95e033b49cfff7398692c);
+        
+    
+            var circle_marker_53f75bd86a354bdd93d254701e13393e = L.circleMarker(
+                [43.209202, -127.499702],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_53f75bd86a354bdd93d254701e13393e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS160 <br> <b>Dates: </b>2012/09/22 to 2013/10/04  <br><br><b>Depth: </b> -2353 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_232a6fed47077fa137082fb1e73c8a02 = L.marker(
+                [43.209202, -127.499702],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_4ddeb44385a83b3798469fa277907de6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS160\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_232a6fed47077fa137082fb1e73c8a02.setIcon(div_icon_4ddeb44385a83b3798469fa277907de6);
+        
+    
+            var circle_marker_f2683f34190802656093b388755bdc45 = L.circleMarker(
+                [43.314701, -127.349998],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_f2683f34190802656093b388755bdc45.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB150 <br> <b>Dates: </b>2012/09/21 to 2013/10/04  <br><br><b>Depth: </b> -2512 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_058c4a5bcb72cec4423f3df4fe6068ca = L.marker(
+                [43.314701, -127.349998],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_3ec94296095c10035d560638fb78b3c8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB150\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_058c4a5bcb72cec4423f3df4fe6068ca.setIcon(div_icon_3ec94296095c10035d560638fb78b3c8);
+        
+    
+            var circle_marker_677d516cd94da467ecbaf4f9d60fcd8a = L.circleMarker(
+                [43.6297, -130.208206],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_677d516cd94da467ecbaf4f9d60fcd8a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB420 <br> <b>Dates: </b>2012/09/25 to 2013/10/01  <br><br><b>Depth: </b> -3326 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a454e1691b2db8e4ed9061a351260471 = L.marker(
+                [43.6297, -130.208206],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_1ea638311684e33af064caaebabc1594 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB420\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a454e1691b2db8e4ed9061a351260471.setIcon(div_icon_1ea638311684e33af064caaebabc1594);
+        
+    
+            var circle_marker_0766d8f06f9a02971becfdc9a5daa545 = L.circleMarker(
+                [44.594101, -130.190903],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_0766d8f06f9a02971becfdc9a5daa545.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB540 <br> <b>Dates: </b>2012/09/27 to 2013/09/26  <br><br><b>Depth: </b> -2536 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7804d1edb152cd0e6ee12779110ad7da = L.marker(
+                [44.594101, -130.190903],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_20c443986836d8e2d082cc6400f73865 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB540\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7804d1edb152cd0e6ee12779110ad7da.setIcon(div_icon_20c443986836d8e2d082cc6400f73865);
+        
+    
+            var circle_marker_40d3ce72b58b30d43c2c368d1f5928b1 = L.circleMarker(
+                [42.9473, -126.933601],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_40d3ce72b58b30d43c2c368d1f5928b1.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB030 <br> <b>Dates: </b>2012/09/18 to 2013/10/04  <br><br><b>Depth: </b> -2730 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_12e57d3bd40fc5ed400ca484f2bb40ef = L.marker(
+                [42.9473, -126.933601],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_7e6fb9ddc2755d49da85a719e4103e21 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB030\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_12e57d3bd40fc5ed400ca484f2bb40ef.setIcon(div_icon_7e6fb9ddc2755d49da85a719e4103e21);
+        
+    
+            var circle_marker_c87f90e6f16f2c743b701ec82660869a = L.circleMarker(
+                [43.566002, -128.258408],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_c87f90e6f16f2c743b701ec82660869a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB230 <br> <b>Dates: </b>2012/09/22 to 2013/10/02  <br><br><b>Depth: </b> -2365 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_44376a641fa4853ad6a64646ffc1191a = L.marker(
+                [43.566002, -128.258408],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_92aa66fda6b04bd14532a81e93819e06 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB230\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_44376a641fa4853ad6a64646ffc1191a.setIcon(div_icon_92aa66fda6b04bd14532a81e93819e06);
+        
+    
+            var circle_marker_7c0319c64c78740456f3af88034a8063 = L.circleMarker(
+                [43.987, -129.075607],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_7c0319c64c78740456f3af88034a8063.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB350 <br> <b>Dates: </b>2012/09/24 to 2013/09/25  <br><br><b>Depth: </b> -3297 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9f555fd1a6d76d3bab3c0951305f194e = L.marker(
+                [43.987, -129.075607],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_034ae911cfc1829877e268015d799313 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB350\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9f555fd1a6d76d3bab3c0951305f194e.setIcon(div_icon_034ae911cfc1829877e268015d799313);
+        
+    
+            var circle_marker_3b7c888d9940afc329f7963a2a6012da = L.circleMarker(
+                [44.036701, -129.332596],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_3b7c888d9940afc329f7963a2a6012da.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS360 <br> <b>Dates: </b>2012/09/25 to 2013/09/25  <br><br><b>Depth: </b> -2427 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_72f3aade9bdb08398f11fae9b41ea448 = L.marker(
+                [44.036701, -129.332596],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_0b642c1f4e0ec41a5f683a9b3bfe0be7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS360\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_72f3aade9bdb08398f11fae9b41ea448.setIcon(div_icon_0b642c1f4e0ec41a5f683a9b3bfe0be7);
+        
+    
+            var circle_marker_c2a1e84a0d1b6352a99c917abdab2fb6 = L.circleMarker(
+                [44.546101, -129.820007],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_c2a1e84a0d1b6352a99c917abdab2fb6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB530 <br> <b>Dates: </b>2012/09/27 to 2013/09/26  <br><br><b>Depth: </b> -2912 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3654dd1d05bb394ab53f0eeb5018ac45 = L.marker(
+                [44.546101, -129.820007],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_e98e65d7c7b80f964d230787f2e315f6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB530\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3654dd1d05bb394ab53f0eeb5018ac45.setIcon(div_icon_e98e65d7c7b80f964d230787f2e315f6);
+        
+    
+            var circle_marker_8e33902f5445d28557313652fb13f5ae = L.circleMarker(
+                [44.225498, -130.766098],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_8e33902f5445d28557313652fb13f5ae.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB450 <br> <b>Dates: </b>2012/09/25 to 2013/09/27  <br><br><b>Depth: </b> -3119 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7ea0df2142a41dca2e9aea66eb3d2834 = L.marker(
+                [44.225498, -130.766098],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_81e0c8646a0e426233bc0da8011b1bbe = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB450\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7ea0df2142a41dca2e9aea66eb3d2834.setIcon(div_icon_81e0c8646a0e426233bc0da8011b1bbe);
+        
+    
+            var circle_marker_4aa43655dc46d6b14cfac33dc3f024cd = L.circleMarker(
+                [43.9786, -127.2957],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_4aa43655dc46d6b14cfac33dc3f024cd.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB120 <br> <b>Dates: </b>2012/09/20 to 2013/09/23  <br><br><b>Depth: </b> -2882 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3fc6caa9558baf91fce23a676eab56e2 = L.marker(
+                [43.9786, -127.2957],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_618244cbfb9145163d3ab5c51cb9b231 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB120\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3fc6caa9558baf91fce23a676eab56e2.setIcon(div_icon_618244cbfb9145163d3ab5c51cb9b231);
+        
+    
+            var circle_marker_09423db55c984576eec7f54700713c6f = L.circleMarker(
+                [44.439201, -130.833206],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_09423db55c984576eec7f54700713c6f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS460 <br> <b>Dates: </b>2012/09/27 to 2013/09/27  <br><br><b>Depth: </b> -2847 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7a00779877067a1584628e5baf425077 = L.marker(
+                [44.439201, -130.833206],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_5fcde02fb2da748c9f3bd6f314593ed9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS460\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7a00779877067a1584628e5baf425077.setIcon(div_icon_5fcde02fb2da748c9f3bd6f314593ed9);
+        
+    
+            var circle_marker_c24fd72bdbf18ab6bb9a35c2ef667467 = L.circleMarker(
+                [43.709499, -127.169502],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_c24fd72bdbf18ab6bb9a35c2ef667467.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS110 <br> <b>Dates: </b>2012/09/21 to 2013/10/06  <br><br><b>Depth: </b> -2981 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_71790594782cc0fab9a66a2ca3d17b96 = L.marker(
+                [43.709499, -127.169502],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_aa9e0d7f451c978619db91ea91acbedd = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS110\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_71790594782cc0fab9a66a2ca3d17b96.setIcon(div_icon_aa9e0d7f451c978619db91ea91acbedd);
+        
+    
+            var circle_marker_b525715b75205a99b3d1ec3d42aaaf60 = L.circleMarker(
+                [44.161201, -129.483307],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_b525715b75205a99b3d1ec3d42aaaf60.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS500 <br> <b>Dates: </b>2012/09/27 to 2013/09/25  <br><br><b>Depth: </b> -3486 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7339f673b737dabc849ffdae09adb779 = L.marker(
+                [44.161201, -129.483307],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_af6f0dbcf5784c4ce0497f314b144fd8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS500\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_7339f673b737dabc849ffdae09adb779.setIcon(div_icon_af6f0dbcf5784c4ce0497f314b144fd8);
+        
+    
+            var circle_marker_2feb9dd194ff9e205135b082329faf9e = L.circleMarker(
+                [43.924, -128.586807],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_2feb9dd194ff9e205135b082329faf9e.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS310 <br> <b>Dates: </b>2012/09/24 to 2013/09/24  <br><br><b>Depth: </b> -2582 m <br> <br> <b>Channels:</b><br> BDH-SL1-SL2-SLZ (50.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_97afb7116319ac484722bc62ccd3f1b5 = L.marker(
+                [43.924, -128.586807],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_952362b2937a4d888208a06d8aab2396 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS310\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_97afb7116319ac484722bc62ccd3f1b5.setIcon(div_icon_952362b2937a4d888208a06d8aab2396);
+        
+    
+            var circle_marker_437202870647477f25c0a8293967475f = L.circleMarker(
+                [44.170799, -128.707703],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_437202870647477f25c0a8293967475f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB320 <br> <b>Dates: </b>2012/09/23 to 2013/09/24  <br><br><b>Depth: </b> -2769 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f6870ecee0af41b207c6e1b83ef947cd = L.marker(
+                [44.170799, -128.707703],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_d95deea42b21f2f738751e70f04aba6c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB320\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f6870ecee0af41b207c6e1b83ef947cd.setIcon(div_icon_d95deea42b21f2f738751e70f04aba6c);
+        
+    
+            var circle_marker_fbdbc43bce92ea187375ae7c527c6e66 = L.circleMarker(
+                [43.427502, -128.355698],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_fbdbc43bce92ea187375ae7c527c6e66.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB240 <br> <b>Dates: </b>2012/09/22 to 2013/10/02  <br><br><b>Depth: </b> -3220 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_23ee0aeeb0fa4b9b1aa07f31bfef6d99 = L.marker(
+                [43.427502, -128.355698],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_7cf678a7fff904eed94117a93dcdccea = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB240\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_23ee0aeeb0fa4b9b1aa07f31bfef6d99.setIcon(div_icon_7cf678a7fff904eed94117a93dcdccea);
+        
+    
+            var circle_marker_ecc9e39bff07789094562e23abef7713 = L.circleMarker(
+                [44.614498, -128.600403],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_ecc9e39bff07789094562e23abef7713.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB330 <br> <b>Dates: </b>2012/09/23 to 2013/09/24  <br><br><b>Depth: </b> -2843 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3ae3b1bf78b18e3914514311b1aa830d = L.marker(
+                [44.614498, -128.600403],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_60efa31e94ecf7458b1273d72f057358 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB330\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3ae3b1bf78b18e3914514311b1aa830d.setIcon(div_icon_60efa31e94ecf7458b1273d72f057358);
+        
+    
+            var circle_marker_f21fb55391b273705f1d56fd6192c74b = L.circleMarker(
+                [44.3489, -130.021194],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_f21fb55391b273705f1d56fd6192c74b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB480 <br> <b>Dates: </b>2012/09/26 to 2013/09/27  <br><br><b>Depth: </b> -4787 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5477de66e5a689c0bdef9221c6b6df58 = L.marker(
+                [44.3489, -130.021194],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_415c4e4391bc05abdbd812fa2ccda057 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB480\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5477de66e5a689c0bdef9221c6b6df58.setIcon(div_icon_415c4e4391bc05abdbd812fa2ccda057);
+        
+    
+            var circle_marker_5c9e978d46921f36cdd3daca975131bc = L.circleMarker(
+                [43.3736, -126.660301],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_5c9e978d46921f36cdd3daca975131bc.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB090 <br> <b>Dates: </b>2012/09/20 to 2013/10/05  <br><br><b>Depth: </b> -2901 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d482973ef7da8e7f8275c2425f80335a = L.marker(
+                [43.3736, -126.660301],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_102332dca9ca84fb36d71090945b7b41 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB090\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d482973ef7da8e7f8275c2425f80335a.setIcon(div_icon_102332dca9ca84fb36d71090945b7b41);
+        
+    
+            var circle_marker_0818ea7d2c88dcbf60ce74224e79d419 = L.circleMarker(
+                [43.6264, -128.514404],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_0818ea7d2c88dcbf60ce74224e79d419.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB290 <br> <b>Dates: </b>2012/09/23 to 2013/10/02  <br><br><b>Depth: </b> -2760 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1cae41447e5c0a0c602569473f4493e1 = L.marker(
+                [43.6264, -128.514404],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_5158f2f8ff6f516b17454a7fcae7f9b6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB290\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1cae41447e5c0a0c602569473f4493e1.setIcon(div_icon_5158f2f8ff6f516b17454a7fcae7f9b6);
+        
+    
+            var circle_marker_c61e05111667420639982bcd9334ea87 = L.circleMarker(
+                [43.5369, -126.857002],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_c61e05111667420639982bcd9334ea87.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS100 <br> <b>Dates: </b>2012/09/21 to 2013/10/05  <br><br><b>Depth: </b> -2957 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f2b8440ab05426ae66f6b436c4ecaa53 = L.marker(
+                [43.5369, -126.857002],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_5db506af7b6ede0b400c6f0ed3a01ec7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS100\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f2b8440ab05426ae66f6b436c4ecaa53.setIcon(div_icon_5db506af7b6ede0b400c6f0ed3a01ec7);
+        
+    
+            var circle_marker_a0f4348031f90d84dfed2ad56983e896 = L.circleMarker(
+                [44.3661, -130.372803],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_a0f4348031f90d84dfed2ad56983e896.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS470 <br> <b>Dates: </b>2012/09/27 to 2013/09/27  <br><br><b>Depth: </b> -2379 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f99b47d0678b6e8cd29af983586ffc22 = L.marker(
+                [44.3661, -130.372803],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_d465ec9fc8769a63771f513672727b25 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS470\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_f99b47d0678b6e8cd29af983586ffc22.setIcon(div_icon_d465ec9fc8769a63771f513672727b25);
+        
+    
+            var circle_marker_7f67fc0ba3b15c506406e316e11b7748 = L.circleMarker(
+                [43.638802, -127.471298],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_7f67fc0ba3b15c506406e316e11b7748.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB130 <br> <b>Dates: </b>2012/09/20 to 2013/09/23  <br><br><b>Depth: </b> -2902 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_20f613267fcfe959d0f66bc7751f9a34 = L.marker(
+                [43.638802, -127.471298],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_a034287ed258c6a1c46f1ddde90888a9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB130\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_20f613267fcfe959d0f66bc7751f9a34.setIcon(div_icon_a034287ed258c6a1c46f1ddde90888a9);
+        
+    
+            var circle_marker_9e4412db8c6a99c192e4a32c0fa4f916 = L.circleMarker(
+                [44.211102, -130.458099],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_9e4412db8c6a99c192e4a32c0fa4f916.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB440 <br> <b>Dates: </b>2012/09/25 to 2013/09/28  <br><br><b>Depth: </b> -3145 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ec29e5ba2eb93a995b0bc886a3d3b3eb = L.marker(
+                [44.211102, -130.458099],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_321ee874f51283a2527eb103b3f067af = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB440\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ec29e5ba2eb93a995b0bc886a3d3b3eb.setIcon(div_icon_321ee874f51283a2527eb103b3f067af);
+        
+    
+            var circle_marker_2666f112dc5de9fa555999d91a018a18 = L.circleMarker(
+                [44.431499, -129.603607],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_2666f112dc5de9fa555999d91a018a18.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS520 <br> <b>Dates: </b>2012/09/28 to 2013/09/26  <br><br><b>Depth: </b> -2527 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_91b816401b85f1d5de4e63697c2489d7 = L.marker(
+                [44.431499, -129.603607],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_9af0bbf76c18721234f5d6df6991ca97 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS520\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_91b816401b85f1d5de4e63697c2489d7.setIcon(div_icon_9af0bbf76c18721234f5d6df6991ca97);
+        
+    
+            var circle_marker_17b0ec83723853721e6fbe3b40be287c = L.circleMarker(
+                [42.7943, -126.527],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_17b0ec83723853721e6fbe3b40be287c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS050 <br> <b>Dates: </b>2012/09/20 to 2013/10/04  <br><br><b>Depth: </b> -2720 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0d08ebdfc8d504e059852ea30e86bb87 = L.marker(
+                [42.7943, -126.527],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_4266705bea969c9d8922b52b80f8053a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS050\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0d08ebdfc8d504e059852ea30e86bb87.setIcon(div_icon_4266705bea969c9d8922b52b80f8053a);
+        
+    
+            var circle_marker_048441510302ccdab4a53701bbe9fa75 = L.circleMarker(
+                [44.310699, -129.337006],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_048441510302ccdab4a53701bbe9fa75.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB510 <br> <b>Dates: </b>2012/09/26 to 2013/09/25  <br><br><b>Depth: </b> -2538 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1f285863828c383dfe5fd3f9bb51f87f = L.marker(
+                [44.310699, -129.337006],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_86ae15292e4c30bce4edc84b88b95048 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB510\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1f285863828c383dfe5fd3f9bb51f87f.setIcon(div_icon_86ae15292e4c30bce4edc84b88b95048);
+        
+    
+            var circle_marker_3819bbc1ce8f9c58e6126a0f0ccea5aa = L.circleMarker(
+                [42.856098, -126.113297],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_3819bbc1ce8f9c58e6126a0f0ccea5aa.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB060 <br> <b>Dates: </b>2012/09/19 to 2013/10/05  <br><br><b>Depth: </b> -2795 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_95a35796fc2b9bce71b4a07178d3dc6d = L.marker(
+                [42.856098, -126.113297],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_df96509046271c70f17cd772b7b6be57 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB060\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_95a35796fc2b9bce71b4a07178d3dc6d.setIcon(div_icon_df96509046271c70f17cd772b7b6be57);
+        
+    
+            var circle_marker_03697e67bd69650141ead613cd7b28bf = L.circleMarker(
+                [43.623299, -128.863007],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_03697e67bd69650141ead613cd7b28bf.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB260 <br> <b>Dates: </b>2012/09/22 to 2013/10/02  <br><br><b>Depth: </b> -3132 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ad33824d52bb35d0b9b6add42d27d810 = L.marker(
+                [43.623299, -128.863007],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_f78ba5aef5aa884611c74d22b2196da3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB260\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ad33824d52bb35d0b9b6add42d27d810.setIcon(div_icon_f78ba5aef5aa884611c74d22b2196da3);
+        
+    
+            var circle_marker_2299f9e67e5da87d619c3ef3d78a15bf = L.circleMarker(
+                [43.838902, -128.317795],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_2299f9e67e5da87d619c3ef3d78a15bf.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB300 <br> <b>Dates: </b>2012/09/23 to 2013/09/24  <br><br><b>Depth: </b> -2897 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b0ad527dbde924956306262737b4838d = L.marker(
+                [43.838902, -128.317795],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_5c9e194345ecf2e7a12912953a146000 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB300\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_b0ad527dbde924956306262737b4838d.setIcon(div_icon_5c9e194345ecf2e7a12912953a146000);
+        
+    
+            var circle_marker_00b8a13598eeb981c13654ae1bcd528f = L.circleMarker(
+                [43.506901, -128.659103],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_00b8a13598eeb981c13654ae1bcd528f.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS250 <br> <b>Dates: </b>2012/09/23 to 2013/10/02  <br><br><b>Depth: </b> -3201 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8da70aa8a1eb855da480440e06d522c8 = L.marker(
+                [43.506901, -128.659103],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_9c7d996f3a41e06ded9db68d32aa4a7e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS250\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_8da70aa8a1eb855da480440e06d522c8.setIcon(div_icon_9c7d996f3a41e06ded9db68d32aa4a7e);
+        
+    
+            var circle_marker_688409bc7cf523bcb6d4d3643b4d147b = L.circleMarker(
+                [44.2393, -129.669998],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_688409bc7cf523bcb6d4d3643b4d147b.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS490 <br> <b>Dates: </b>2012/09/27 to 2013/09/26  <br><br><b>Depth: </b> -3652 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_878d3b40d67526919e94474966dd3e01 = L.marker(
+                [44.2393, -129.669998],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_d84fcee55cdf8cc43d2acdd2f87ffefe = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS490\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_878d3b40d67526919e94474966dd3e01.setIcon(div_icon_d84fcee55cdf8cc43d2acdd2f87ffefe);
+        
+    
+            var circle_marker_5fd37e2d61bc564ec314c2d9c550b04d = L.circleMarker(
+                [43.210499, -126.329498],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_5fd37e2d61bc564ec314c2d9c550b04d.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS080 <br> <b>Dates: </b>2012/09/20 to 2013/10/05  <br><br><b>Depth: </b> -3005 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a2b93cda03068b1809ceebdc983fd4fd = L.marker(
+                [43.210499, -126.329498],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_d95b02e997d1cbd880770f5f633b8b4a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS080\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a2b93cda03068b1809ceebdc983fd4fd.setIcon(div_icon_d95b02e997d1cbd880770f5f633b8b4a);
+        
+    
+            var circle_marker_83f52d9bd21794bb26e5ac3e84c0b7a8 = L.circleMarker(
+                [43.735802, -128.696503],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_83f52d9bd21794bb26e5ac3e84c0b7a8.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS280 <br> <b>Dates: </b>2012/09/24 to 2013/10/02  <br><br><b>Depth: </b> -3535 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a226988fe1a5881d784e4c25f9bb7bbd = L.marker(
+                [43.735802, -128.696503],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_5b0aab83ab8896f722709ff4930b8e10 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS280\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a226988fe1a5881d784e4c25f9bb7bbd.setIcon(div_icon_5b0aab83ab8896f722709ff4930b8e10);
+        
+    
+            var circle_marker_0b6c6d271936cd5951ab91ac151eaea6 = L.circleMarker(
+                [43.306801, -126.006798],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_0b6c6d271936cd5951ab91ac151eaea6.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB070 <br> <b>Dates: </b>2012/09/19 to 2013/10/05  <br><br><b>Depth: </b> -3023 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_709a4b7ce57823f485ef8d2d661d2bcc = L.marker(
+                [43.306801, -126.006798],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_a91529831d42c4329a21edfdc17e8282 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB070\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_709a4b7ce57823f485ef8d2d661d2bcc.setIcon(div_icon_a91529831d42c4329a21edfdc17e8282);
+        
+    
+            var circle_marker_fbf3ef167a40807b192a5d6c1677a7eb = L.circleMarker(
+                [43.123199, -126.716698],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_fbf3ef167a40807b192a5d6c1677a7eb.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS040 <br> <b>Dates: </b>2012/09/19 to 2013/10/05  <br><br><b>Depth: </b> -3424 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0dac1eb270dd4dc79e1cf077b952daca = L.marker(
+                [43.123199, -126.716698],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_b011e280f2519b59b83cac56dbf5f647 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS040\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0dac1eb270dd4dc79e1cf077b952daca.setIcon(div_icon_b011e280f2519b59b83cac56dbf5f647);
+        
+    
+            var circle_marker_864a12e0261aa8f112bd52795e28e1db = L.circleMarker(
+                [43.488998, -127.958],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_864a12e0261aa8f112bd52795e28e1db.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB200 <br> <b>Dates: </b>2012/09/21 to 2013/10/03  <br><br><b>Depth: </b> -2477 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_67354b6b890ecdac907a6bf051f10849 = L.marker(
+                [43.488998, -127.958],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_b5a7b1e23698030efaca35f0419d8fd6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB200\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_67354b6b890ecdac907a6bf051f10849.setIcon(div_icon_b5a7b1e23698030efaca35f0419d8fd6);
+        
+    
+            var circle_marker_c0091fb49c1e686d259f4958759dbd3a = L.circleMarker(
+                [43.311699, -128.076996],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_c0091fb49c1e686d259f4958759dbd3a.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS190 <br> <b>Dates: </b>2012/09/22 to 2013/10/03  <br><br><b>Depth: </b> -3071 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fe07fe821c78571a6eb4c10c95adcb2e = L.marker(
+                [43.311699, -128.076996],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_e406dc95d34806851608580432b7f8d8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS190\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_fe07fe821c78571a6eb4c10c95adcb2e.setIcon(div_icon_e406dc95d34806851608580432b7f8d8);
+        
+    
+            var circle_marker_09966243dd3ab3d3cdcea77f01b24c02 = L.circleMarker(
+                [43.930698, -129.998306],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_09966243dd3ab3d3cdcea77f01b24c02.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB410 <br> <b>Dates: </b>2012/09/25 to 2013/10/01  <br><br><b>Depth: </b> -3212 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_97fe5abdbccfd7397106f8351ea1cd9b = L.marker(
+                [43.930698, -129.998306],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_99e7cb47da35921a125802f26683cfe2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB410\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_97fe5abdbccfd7397106f8351ea1cd9b.setIcon(div_icon_99e7cb47da35921a125802f26683cfe2);
+        
+    
+            var circle_marker_fe0e391a3257bca8173b5d1cbc2a86a5 = L.circleMarker(
+                [43.810101, -129.6418],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_fe0e391a3257bca8173b5d1cbc2a86a5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS380 <br> <b>Dates: </b>2012/09/25 to 2013/10/01  <br><br><b>Depth: </b> -3215 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1dcef609a5e7ee5cbe8d2e2cf6bcf63b = L.marker(
+                [43.810101, -129.6418],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_9b2284667cdcfff66fde0c88a4161c40 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS380\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1dcef609a5e7ee5cbe8d2e2cf6bcf63b.setIcon(div_icon_9b2284667cdcfff66fde0c88a4161c40);
+        
+    
+            var circle_marker_92524f49fc658613d39b9e82741912ca = L.circleMarker(
+                [43.142899, -127.777397],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_92524f49fc658613d39b9e82741912ca.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB170 <br> <b>Dates: </b>2012/09/21 to 2013/10/03  <br><br><b>Depth: </b> -4077 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ea092df671144679b917c8d2e52e2307 = L.marker(
+                [43.142899, -127.777397],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_66da61751df95c090f8941a9860ba399 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB170\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_ea092df671144679b917c8d2e52e2307.setIcon(div_icon_66da61751df95c090f8941a9860ba399);
+        
+    
+            var circle_marker_884b63660c4077a199f77dc6fd2e3504 = L.circleMarker(
+                [44.1003, -130.207703],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_884b63660c4077a199f77dc6fd2e3504.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS430 <br> <b>Dates: </b>2012/09/26 to 2013/09/28  <br><br><b>Depth: </b> -3210 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_24d7564e036a31b490a425eb00ce3478 = L.marker(
+                [44.1003, -130.207703],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_7bc1d12b0f277f1eec6338c5540d3b3a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS430\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_24d7564e036a31b490a425eb00ce3478.setIcon(div_icon_7bc1d12b0f277f1eec6338c5540d3b3a);
+        
+    
+            var circle_marker_f047185b6d02d39132504747bb773263 = L.circleMarker(
+                [43.088001, -127.209396],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_f047185b6d02d39132504747bb773263.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS020 <br> <b>Dates: </b>2012/09/19 to 2013/10/04  <br><br><b>Depth: </b> -3046 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a5384484ea6b39eebdb30222a163e0a6 = L.marker(
+                [43.088001, -127.209396],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_b6b5fa3611055b6cf8a9d3c4b57c1762 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS020\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a5384484ea6b39eebdb30222a163e0a6.setIcon(div_icon_b6b5fa3611055b6cf8a9d3c4b57c1762);
+        
+    
+            var circle_marker_b1ed77f1d3aed227ab04160c54ae1caa = L.circleMarker(
+                [43.736599, -128.021103],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_b1ed77f1d3aed227ab04160c54ae1caa.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS220 <br> <b>Dates: </b>2012/09/23 to 2013/09/24  <br><br><b>Depth: </b> -2977 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6b613ed48857a094ce6256ad14010dde = L.marker(
+                [43.736599, -128.021103],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_bd9484596b44dfb5f80cbbdabffcd19a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS220\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_6b613ed48857a094ce6256ad14010dde.setIcon(div_icon_bd9484596b44dfb5f80cbbdabffcd19a);
+        
+    
+            var circle_marker_9ce5fc6e60b6f179760ddee4810bc33c = L.circleMarker(
+                [44.137299, -129.002106],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_9ce5fc6e60b6f179760ddee4810bc33c.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BS340 <br> <b>Dates: </b>2012/09/25 to 2013/09/25  <br><br><b>Depth: </b> -2500 m <br> <br> <b>Channels:</b><br> EL1-EL2-ELZ-HDH (100.0 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1f2fe8556a891e3d49368d9bdcd8d55b = L.marker(
+                [44.137299, -129.002106],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_81c0eb109b114a70d74eb1b0e51c2f46 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBS340\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_1f2fe8556a891e3d49368d9bdcd8d55b.setIcon(div_icon_81c0eb109b114a70d74eb1b0e51c2f46);
+        
+    
+            var circle_marker_06c3b449c82e22af1d74ad0d0a95cfd5 = L.circleMarker(
+                [43.780201, -129.338898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#847b00", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            circle_marker_06c3b449c82e22af1d74ad0d0a95cfd5.bindTooltip(
+                `<div>
+                     <h1 style="font-size: 15px;"><b>Network:</b> X9 <br> <b>Station:</b> BB370 <br> <b>Dates: </b>2012/09/24 to 2013/10/01  <br><br><b>Depth: </b> -3108 m <br> <br> <b>Channels:</b><br> HH1-HH2-HHZ (100.0 Hz) <br>BDH (10.0 Hz) <br>LDH-LH1-LH2-LHZ (1.0 Hz) <br>VM0-VM1-VM2-VM3-VM4-VM5-VM6-VMU-VMV-VMW-VMZ-VPB (0.1 Hz) <br> <br><br> <b>DOI: </b> https://doi.org/10.7914/SN/X9_2012 <br><br> <b>Net name: </b> Plate Boundary Evolution and Physics at an Oceanic Transform Fault System <br><br> <b>Operator: </b>  Oregon State University (OSU USA)</h1>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_32f1a0c209260cf6ef836c4ac5b8070d = L.marker(
+                [43.780201, -129.338898],
+                {}
+            ).addTo(map_04abe2b29d621dace8c09e97e688a74b);
+        
+    
+            var div_icon_ea4de75d7a15d84bff44d56a9b0dd96f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-color=#000000\"\u003e\u003ch1 style=\"font-size:25px\"\u003e\u003cb\u003eBB370\u003c/b\u003e\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_32f1a0c209260cf6ef836c4ac5b8070d.setIcon(div_icon_ea4de75d7a15d84bff44d56a9b0dd96f);
+        
+    
+            map_04abe2b29d621dace8c09e97e688a74b.fitBounds(
+                [[42.7943, -130.833206], [44.6772, -126.006798]],
+                {}
+            );
+        </script>
+
+</html>

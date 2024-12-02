@@ -1,50 +1,48 @@
 # The Noise Reduction Challenge
 
-We will propose two datasets as a challenge to all researchers to 1) minimize non-seismological noise and
-2) calculate the seafloor compliance (seafloor motion divided by pressure as a function of frequency).  The first dataset consists
-of true seafloor data recorded on the Mid-Atlantic Ridge, the second of synthetic data.  For the first dataset, we will show our
-processing and calculated results.  The second is a blind test.
+We propose two datasets as a challenge to all researchers to
+
+1) minimize non-seismological noise;
+2) calculate the seafloor compliance (seafloor motion divided by pressure as a function of frequency).
+
+The first dataset is seafloor data recorded on the Mid-Atlantic Ridge, the second is synthetic.  For the first dataset, we include our
+processing and results.  The second is a blind test.
 
 All researchers are invited to process these data and send us their results.  All participants will be invited to be co-authors of a
 community paper comparing the different methods and results.
 
-## The datasets
+# Datasets
 
-### ARC-EN-SUB station 8
+## ARC-EN-SUB station 8
 
 8 days of data, sampled at 1 sps, from near the RAINBOW hydrothermal field.  Lots of earthquakes and a relatively weak infragravity
-wave signal make this a hefty challenge.  Data, our processing codes (using [tiskitpy](https://github.com/WayneCrawford/tiskitpy)
-and the [bruit-fm toolbox](https://gitlab.ifremer.fr/anr-bruitfm/bruit-fm-toolbox) and results are [here](RAINBOW_files/README.md).
+wave signal.  Data, our processing codes (using [tiskitpy](https://github.com/WayneCrawford/tiskitpy) and results are [here](CHALLENGE/RAINBOW_files/README.md).
 
 Here are plots of the data and our results:  can you do better?
 
-#### run_obspy.py
+### Original data
 
-##### Waveform plot
+[run_obspy.py](CHALLENGE/RAINBOW_files/run_obspy.py)
 
-![Waveforms](RAINBOW_files/plots/AS02.streamplot.png)
+#### Waveforms
 
-##### Probabilistic Power Spectral Density
+![Waveforms](CHALLENGE/RAINBOW_files/plots/AS02.streamplot.png)
 
-![Waveforms](RAINBOW_files/plots/AS02.Z-PPSD.png)
+#### Compliance
 
-#### run_tiskitpy.py
+![Waveforms](CHALLENGE/RAINBOW_files/plots/AS02.compliance.png)
 
-##### Waveforms (original, rotated, and rotated + transfer function noise removal)
+### After rotation and transfer function noise removal
 
-![Automatic Waveforms](RAINBOW_files/plots/AS02.Automatic_z_compare.png)
+[run_tiskitpy.py](CHALLENGE/RAINBOW_files/run_tiskitpy.py)
 
-##### Power spectral densities of the above three waveforms
+#### Waveforms
 
-![Automatic PSDs](RAINBOW_files/plots/AS02.Automatic.sd_compare.png)
-
-##### Pressure-acceleration coherence of cleaned data
-
-![Automatic Coherence](RAINBOW_files/plots/AS02.Automatic.ZHcoher.png)
+![Automatic Waveforms](CHALLENGE/RAINBOW_files/plots/AS02.Automatic_z_compare.png)
 
 ##### Compliance of cleaned data (amplitude problem, probably using COUNTS)
 
-![Automatic Compliance](RAINBOW_files/plots/AS02.Automatic.ZHrf.png)
+![Automatic Compliance](CHALLENGE/RAINBOW_files/plots/AS02.Automatic.ZHrf.png)
 
 #### Cheating!
 
@@ -52,22 +50,41 @@ We get a better result if we manually identify glitches and other anomalous nois
 
 ##### Waveforms
 
-![Manual Waveforms](RAINBOW_files/plots/AS02.Manual_z_compare.png)
-
-##### Power spectral densities
-
-![Manual PSDs](RAINBOW_files/plots/AS02.Manual.sd_compare.png)
-
-##### Pressure-acceleration coherence
-
-![Manual Coherence](RAINBOW_files/plots/AS02.Manual.ZHcoher.png)
+![Manual Waveforms](CHALLENGE/RAINBOW_files/plots/AS02.Manual_z_compare.png)
 
 ##### Compliance (amplitude problem, probably using COUNTS)
 
-![Manual Compliance](RAINBOW_files/plots/AS02.Manual.ZHrf.png)
+![Manual Compliance](CHALLENGE/RAINBOW_files/plots/AS02.Manual.ZHrf.png)
 
+### More details
 
+[Here][CHALLENGE/RAINBOW_details/README.md]
 
 ### Synthetic data
 
 Coming!
+
+# Data and submission formats
+
+Data on this site are in compressed miniSEED format.  If you don't use this format, you can extract to another format using obspy's [stream.read()](https://docs.obspy.org/packages/autogen/obspy.core.stream.read.html#obspy.core.stream.read) and [stream.write()](https://docs.obspy.org/packages/autogen/obspy.core.stream.Stream.write.html#obspy.core.stream.Stream.write) functions,  or write to
+[bruit-fm-challenge@services.cnrs.fr](mailto:bruit-fm-challenge@services.cnrs.fr?subject=Noise%20Challenge%20Request) and we'll send you the data in ASCII format.
+
+Metadata are in StationXML format.  You don't have to use them if you don't want to.
+
+Results should be sent to [bruit-fm-challenge@services.cnrs.fr](mailto:bruit-fm-challenge@services.cnrs.fr?subject=Noise%20Challenge%20Submission) with the following files (``{name}`` is some identifying name, such as your last name or the software package you used):
+
+- ``{name}_TS.mseed`` or ``{name}_TS.csv``: Cleaned time series in miniSEED or ASCII format
+
+    - should have the same channel names as the original data files
+    - if CSV, use the same time range as the input file, ';' as the separator, '.' as the decimal point, and the following header line:
+      ```
+      LDH;LH1;LH2;LHZ
+      ```
+- ``{name}_compliance_{units}.csv``: Calculated compliance: CSV file with the units in the filename: {name}_{units}.csv
+
+    - Where ``{units}`` are "Pa-1", "MperPa", "MperS_Pa", "MperS2_P", "COUNTSperCOUNT" (use this last if you did not use the metadata file)
+
+- ``{name}_codes.zip``: Zipped file with all of the codes you used
+- ``{name}_explanation.txt``: Text file with any explanation you want to give, plus your name and email address.
+  If your code uses packages that need to be downloaded, explain how to download them.
+  If it uses code that you do not wish to make available, state so.

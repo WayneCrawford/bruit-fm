@@ -6,7 +6,7 @@ Data, our processing codes (using [tiskitpy](https://github.com/WayneCrawford/ti
 
 ## Original data
 
-[run_obspy.py](../RAINBOW_files/run_obspy.py)
+Code used: [run_obspy.py](../RAINBOW_files/run_obspy.py)
 
 ### Waveforms
 
@@ -22,7 +22,7 @@ Data, our processing codes (using [tiskitpy](https://github.com/WayneCrawford/ti
 
 ## After rotation and transfer function noise removal
 
-[run_tiskitpy.py](../RAINBOW_files/run_tiskitpy.py)
+Code used: [run_tiskitpy.py](../RAINBOW_files/run_tiskitpy.py)
 
 ### Waveforms
 
@@ -44,7 +44,7 @@ Data, our processing codes (using [tiskitpy](https://github.com/WayneCrawford/ti
 
 We get a better result if we manually identify glitches and other anomalous noise:
 
-[run_tiskitpy.py](../RAINBOW_files/run_tiskitpy.py)
+Code used: [run_tiskitpy.py](../RAINBOW_files/run_tiskitpy.py)
 
 ### Waveforms
 

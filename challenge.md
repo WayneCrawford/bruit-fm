@@ -28,7 +28,7 @@ Here are plots of the data and our results:  can you do better?
 
 #### Waveforms
 
-![Waveforms](CHALLENGE/RAINBOW_files/plots/AS02.streamplot.png)
+![Original waveforms](CHALLENGE/RAINBOW_files/plots/original.waveforms.png)
 
 #### Compliance
 
@@ -38,15 +38,15 @@ Here are plots of the data and our results:  can you do better?
 
 ### After rotation and transfer function noise removal
 
-[run_clean.py](CHALLENGE/RAINBOW_files/run_clean.py)
+[run_tiskit.py](CHALLENGE/RAINBOW_files/run_tiskit.py)
 
 #### Z Waveform
 
-![Automatic Waveforms](CHALLENGE/RAINBOW_files/plots/AS02.cleaned.z_waveform.png)
+![Cleaned Z Waveform](CHALLENGE/RAINBOW_files/plots/tiskit.z_waveform.png)
 
 #### Compliance
 
-![Automatic Compliance](CHALLENGE/RAINBOW_files/plots/AS02.cleaned.compliance_Pa-1.png)
+![Cleaned Z Compliance](CHALLENGE/RAINBOW_files/plots/tiskit_compliance_Pa-1.png)
 
 
 
@@ -54,21 +54,23 @@ Here are plots of the data and our results:  can you do better?
 
 We get a better result if we manually identify glitches and other anomalous noise to avoid:
 
-[run_clean_avoid.py](CHALLENGE/RAINBOW_files/run_clean_avoid.py)
+[run_tiskit_avoid.py](CHALLENGE/RAINBOW_files/run_tiskit_avoid.py)
 
-##### Waveforms
+##### Z Waveform
 
-![Manual Waveforms](CHALLENGE/RAINBOW_files/plots/AS02.Manual_z_compare.png)
+![Manual Waveforms](CHALLENGE/RAINBOW_files/plots/tiskit-avoid.z_waveform.png)
 
-##### Compliance (amplitude problem, probably using COUNTS)
+##### Compliance
 
-![Manual Compliance](CHALLENGE/RAINBOW_files/plots/AS02.Manual.ZHrf.png)
+Compliance gets to higher frequencies, but is probably too low at the highest frequencies (not accounting for noise on pressure channel)
 
-### More details
+![Manual Compliance](CHALLENGE/RAINBOW_files/plots/tiskit-avoid_compliance_Pa-1.png)
 
-[Here](CHALLENGE/RAINBOW_details/README.md)
 
-### Synthetic data
+
+### More details available [here](CHALLENGE/RAINBOW_details/README.md)
+
+## Synthetic data
 
 Coming!
 

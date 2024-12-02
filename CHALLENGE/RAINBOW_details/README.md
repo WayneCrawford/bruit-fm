@@ -4,60 +4,69 @@
 Lots of earthquakes and a relatively weak infragravity wave signal.
 Data, our processing codes (using [tiskitpy](https://github.com/WayneCrawford/tiskitpy)) and results are [here](CHALLENGE/RAINBOW_files/README.md).
 
+
 ## Original data
 
-Code used: [run_obspy.py](../RAINBOW_files/run_obspy.py)
+Code used: [run_original.py](../RAINBOW_files/run_original.py)
 
 ### Waveforms
 
-![Waveforms](../RAINBOW_files/plots/AS02.streamplot.png)
+![Original waveforms](../RAINBOW_files/plots/original.waveforms.png)
 
-### Probabilistic Power Spectral Densities
+### Z Channel Probabilistic Power Spectral Density
 
-![Waveforms](../RAINBOW_files/plots/AS02.Z-PPSD.png)
+![Original Z-channel PPSD](../RAINBOW_files/plots/original.Z-PPSD.png)
 
-### Compliance
+### Z-H Coherence
 
-![Waveforms](../RAINBOW_files/plots/AS02.compliance.png)
+![Waveforms](../RAINBOW_files/plots/original.ZHcoher.png)
+
+### Z-H Transfer function
+
+![Waveforms](../RAINBOW_files/plots/original.ZHrf.png)
+
+
 
 ## After rotation and transfer function noise removal
 
-Code used: [run_tiskitpy.py](../RAINBOW_files/run_tiskitpy.py)
+Code used: [run_clean.py](../RAINBOW_files/run_clean.py)
 
-### Waveforms
+### Z waveform comparison
 
-![Automatic Waveforms](../RAINBOW_files/plots/AS02.Automatic_z_compare.png)
+![Z waveforms](../RAINBOW_files/plots/tiskit.z_compare.png)
 
-### Z-channel Power Spectral Densities compared
+### Z Power Spectral Density comparison
 
-![Automatic PSDs](../RAINBOW_files/plots/AS02.Automatic.sd_compare.png)
+![Cleaned PSDs](../RAINBOW_files/plots/tiskit.sd_compare.png)
 
-### Pressure-acceleration coherence of cleaned data
+### Best Z-H Coherence
 
-![Automatic Coherence](../RAINBOW_files/plots/AS02.Automatic.ZHcoher.png)
+![Cleaned Coherence](../RAINBOW_files/plots/tiskit.ZHcoher.png)
 
-### Compliance of cleaned data (amplitude problem, probably using COUNTS)
+### Best Compliance
 
-![Automatic Compliance](../RAINBOW_files/plots/AS02.Automatic.ZHrf.png)
+![Cleaned Compliance](../RAINBOW_files/plots/tiskit_compliance_Pa-1.png)
 
-## The above, plus manually identifying and removing glitches and other anomalies
 
-We get a better result if we manually identify glitches and other anomalous noise:
 
-Code used: [run_tiskitpy.py](../RAINBOW_files/run_tiskitpy.py)
+## Cleaned, plus removal of manually identified glitches and other anomalies
 
-### Waveforms
+Code used: [run_tiskit_avoid.py](../RAINBOW_files/run_tiskit_avoid.py)
 
-![Manual Waveforms](../RAINBOW_files/plots/AS02.Manual_z_compare.png)
+### Z waveform comparison
 
-## Z-channel Power spectral densities
+![Z waveform comparison](../RAINBOW_files/plots/tiskit-avoid.z_compare.png)
 
-![Manual PSDs](../RAINBOW_files/plots/AS02.Manual.sd_compare.png)
+### Z Power Spectral Density comparison
 
-## Pressure-acceleration coherence
+![PSD comparison](../RAINBOW_files/plots/tiskit-avoid.sd_compare.png)
 
-![Manual Coherence](../RAINBOW_files/plots/AS02.Manual.ZHcoher.png)
+### Best Z-H Coherence
 
-## Compliance (amplitude problem, probably using COUNTS)
+![Coherence](../RAINBOW_files/plots/tiskit-avoid.ZHcoher.png)
 
-![Manual Compliance](../RAINBOW_files/plots/AS02.Manual.ZHrf.png)
+### Best Compliance
+
+![Compliance](../RAINBOW_files/plots/tiskit-avoid_compliance_Pa-1.png)
+
+

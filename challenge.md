@@ -5,15 +5,17 @@ We propose two datasets as a challenge to all researchers to
 1) minimize non-seismological noise;
 2) calculate the seafloor compliance (seafloor motion divided by pressure as a function of frequency).
 
-The first dataset is seafloor data recorded on the Mid-Atlantic Ridge, the second is synthetic.  For the first dataset, we include our
-processing and results.  The second is a blind test.
+- The first dataset is seafloor data recorded on the Mid-Atlantic Ridge: [download](CHALLENGE/REAL.zip).
+- The second is synthetic: [download](CHALLENGE/SYNTHETIC.zip).
 
-All researchers are invited to process these data and send us their results.  All participants will be invited to be co-authors of a
-community paper comparing the different methods and results.
+All researchers are invited to process these data and send us their results.
+All participants will be invited to be co-authors of a community paper comparing the different methods and results.
+
+Here are examples of processing the first dataset, using the tiskitpy package: [download](CHALLENGE/REAL.zip) 
 
 # Datasets
 
-## ARC-EN-SUB station 8
+## ARC-EN-SUB station
 
 8 days of data, sampled at 1 sps, from near the RAINBOW hydrothermal field.  Lots of earthquakes and a relatively weak infragravity
 wave signal.  Data, our processing codes (using [tiskitpy](https://github.com/WayneCrawford/tiskitpy) and results are [here](CHALLENGE/RAINBOW_files/README.md).

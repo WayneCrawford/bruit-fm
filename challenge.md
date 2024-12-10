@@ -5,15 +5,17 @@ We propose two datasets as a challenge to all researchers to
 1) minimize non-seismological noise;
 2) calculate the seafloor compliance (seafloor motion divided by pressure as a function of frequency).
 
-- The first dataset is seafloor data recorded on the Mid-Atlantic Ridge: [download](CHALLENGE/REAL.zip).
-- The second is synthetic: [download](CHALLENGE/SYNTHETIC.zip).
+The first dataset is seafloor data recorded on the Mid-Atlantic Ridge.  The second is synthetic, based on models of infragravity wave energy, instrument noise and seafloor tilt. We also provide examples of processing the first dataset, using the [tiskitpy](https://tiskitpy.readthedocs.io) package.
 
 All researchers are invited to process these data and send us their results.
 All participants will be invited to be co-authors of a community paper comparing the different methods and results.
 
-Here are [examples of processing the first dataset](CHALLENGE/EXAMPLE.zip), using the [tiskitpy](https://tiskitpy.readthedocs.io) package.
+## Downloads
 
-Here is the [2024 AGU Poster](Crawford_BRUIT-FM_challenge_v5.pdf) describing the Challenge.
+- [The first dataset](CHALLENGE/REAL.zip)
+- [The synthetic dataset](CHALLENGE/SYNTHETIC.zip)
+- [Examples of processing the first dataset](CHALLENGE/EXAMPLE.zip).
+- [2024 AGU Poster](CHALLENGE/Crawford_BRUIT-FM_challenge_v5.pdf)
 
 # Datasets
 

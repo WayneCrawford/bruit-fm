@@ -11,7 +11,9 @@ We propose two datasets as a challenge to all researchers to
 All researchers are invited to process these data and send us their results.
 All participants will be invited to be co-authors of a community paper comparing the different methods and results.
 
-Here are examples of processing the first dataset, using the [tiskitpy](https://tiskitpy.readthedocs.io) package: [download](CHALLENGE/EXAMPLE.zip) 
+Here are [examples of processing the first dataset](CHALLENGE/EXAMPLE.zip), using the [tiskitpy](https://tiskitpy.readthedocs.io) package.
+
+Here is the [2024 AGU Poster](Crawford_BRUIT-FM_challenge_v5.pdf) describing the Challenge.
 
 # Datasets
 

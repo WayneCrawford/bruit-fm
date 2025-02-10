@@ -15,10 +15,10 @@
 | 28 May 2021 | WP Presentations     | virtual        |  |
 | 21 Oct 2021 | Member Presentations | virtual        | [minutes](Documents/20211021_Minutes.pdf) |
 |  7 Apr 2022 | Kick-off             | IPGP salle 108 | [minutes](Documents/2022.04_Minutes_Kickoff.pdf) |
-| 20 Oct 2022 | WP updates           | mixed          | [zoom](https://u-paris.zoom.us/j/84585189610?pwd=NzNNdE5WeTJmNlc3YnBzR2ZOenFsUT09) |
-|  1 Mar 2023 | Project              |                |        |
-|  1 Mar 2024 | Project              |                |        |
-|  1 Mar 2025 | Project              |                |        |
+| 20 Oct 2022 | WP updates           | IPGP + video   | [zoom](https://u-paris.zoom.us/j/84585189610?pwd=NzNNdE5WeTJmNlc3YnBzR2ZOenFsUT09) |
+|  6 Jun 2023 | Yearly Project       | IPGP + video   | [minutes](Documents/Minutes_Workshop_BRUIT-FM_06_06_2023.pdf) |
+|  1 Mar 2024 | Yearly Project       | IPGP + video   | [minutes](Documents/2024-04-09-YearTwoMeetingMinutes.pdf) |
+|  4 Mar 2025 | Yearly Project       | IPGP + video   |        |
 | 15 Feb 2026 | Closing              | IPGP?          |        |
 
 

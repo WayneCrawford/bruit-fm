@@ -11,7 +11,7 @@ This is the point of entry for the BRUIT-FM project (project [ANR-21-CE01-0031](
 - [Meetings and Events](meetings-events.md)
 - [Deliverables and Milestones](deliverables-milestones.md)
 - [Datasets](datasets.md)
-- [Scientific Presentations and Articles](articles.md)
+- [Articles, Presentations and Reports](articles.md)
 - [The Noise Reduction Challenge](challenge.md)
 - [Budget](budget.md)
 - [Administration](administration.md)

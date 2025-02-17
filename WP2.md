@@ -17,16 +17,16 @@ and compile a a full-spectrum vision of the results of WPs 3-5.
 
 | Number | Title | Responsable | Status |
 | ------ | ------ | ---------- | ------ |
-| T2.1   | Dataset selection and validation | @WayneCrawford, Eleonore, Guilhem | not started |
-| T2.2 | Pressure noise bounds | @WayneCrawford |  not started |
+| T2.1   | Dataset selection and validation | @WayneCrawford, Eleonore, Guilhem | Done |
+| T2.2 | Pressure noise bounds | @WayneCrawford |  Underway |
 | T2.3  | Noise source catalog | @WayneCrawford, Kinda? | not started |
 
 ## Deliverables
 
 | Number | Title | Due Date | Status |
 | ------ | ------ | ---------- | ------ |
-| D2.1  | Catalogue of available OBS data and characteristics | M12 | not started |
-| D2.2 | Low and High noise reference levels for OBS  | M36 | not started |
+| D2.1  | Catalogue of available OBS data and characteristics | M12 | Online |
+| D2.2 | Low and High noise reference levels for OBS  | M36 | Underway |
 | D2.3 | Seismological noise source catalog | M44 | not started |
 
 ## Possible OBS datasets

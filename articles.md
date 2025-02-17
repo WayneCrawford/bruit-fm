@@ -30,13 +30,16 @@
 1. Xu Z., Stutzmann E., Farra V., WC C., 2024.
    Understanding microseismic ground-motion amplitude at the ocean bottom. AGU Fall Meeting. 
 1. Crawford W. C., Ker S., Stutzmann E., Rebeyrol S., Aminian M.-A., Barruol G., 2024.
-   The BRUIT-FM Seafloor Noise Reduction Challenge. AGU Fall Meeting.
+   The BRUIT-FM Seafloor Noise Reduction Challenge. AGU Fall Meeting. [link](Documents
+/Crawford_BRUIT-FM_challenge_v5.jpg)
 1. Aminian M.-A., al E., 2024.
    Imaging of the West Indian Ocean Subsurface using Compliance from Ocean-Bottom Stations. EGU General Assembly, EGU24-3477. 
 
 ## Reports
 
 1. Seksaf W., 2023
-   [Ocean wave climate in the Mediterranean Sea](Documents/Seksaf2023.pdf). Masters 2, La Rochelle Univ., 21. 
+   Ocean wave climate in the Mediterranean Sea.
+   Masters 2, La Rochelle Univ., 21. [link](Documents/Seksaf2023.pdf)
 1. Auger J. H., 2024.
-   [Etude de la sensibilite des mesures de mouvement et de pression au niveau du fond marin](Documents/Auger2024.pdf). Masters 2, La Rochelle Univ., 15. 
+   Etude de la sensibilite des mesures de mouvement et de pression au niveau du fond marin.
+   Masters 2, La Rochelle Univ., 15. [link](Documents/Auger2024.pdf)

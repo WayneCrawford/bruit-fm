@@ -28,4 +28,4 @@
 ## Reports
 
 1. Seksaf W., 2023
-   [Ocean wave climate in the Mediterranean Sea](). Masters 2, La Rochelle Univ., 21. 
+   [Ocean wave climate in the Mediterranean Sea](documents/Seksaf 2023.pdf). Masters 2, La Rochelle Univ., 21. 

@@ -10,16 +10,16 @@
    [Go to the toolbox!](https://gitlab.ifremer.fr/anr-bruitfm/bruit-fm-toolbox)
 1. Aminian Mohammad-Amin, et al., submitted.
    Shallow crustal structures of the Indian Ocean dereived from compliance function analysis.
-   *Geophys. J. Intl.*. submitted
+   *Geophys. J. Intl.*. under review
 1. Dreo, Richard et al.
    Singing around the volcano: detecting baleen whales in the Mozambique Channel based on their song rythms, from seismic and hydroacoustic data.
-   *J. Acoust. Soc. Am.*, submitted 
+   *J. Acoust. Soc. Am.*, under review 
 1. Le Bris, T., Barruol, G., Gimbert, F., Le Meur, E., Zigone, D., Togaibekov, A. and Lombardi, D., 2024.
    Spatial and Temporal Variability in Tide-induced Icequake Activity at the Astrolabe Glacier, East Antarctica.
-   *J. Geophys. Res.*, Under review, [https://doi.org/10.22541/essoar.173324864.46462523/v1].
-1. Xu, Zongbo, Stutzmann E., Farra V., Crawford W.
-   Theoretical modelling of secondary microseisms considering source and receiver site strcutrures, with a focus on ocean-bottom sediment effects.
-   *JGR: Solid Earth*, submitted
+   *J. Geophys. Res.*, under review, [https://doi.org/10.22541/essoar.173324864.46462523/v1].
+1. Xu, Z., Stutzmann E., Farra V., Crawford W.
+   Theoretical modelling of secondary microseisms considering source and receiver site structures, with a focus on ocean-bottom sediment effects.
+   *JGR: Solid Earth*, under review
 
 ## Reports
 
@@ -52,6 +52,9 @@
 1. Dréo Richard, Crawford Wayne, Barruol Guilhem, Bazin Sara, Royer Jean-Yves, Samaran Flore.
    Baleen whale seasonal pattern in the Northern part of the Mozambique Channel (Indian Ocean) using a seismo-acoustic survey network,
    UACE Greece 2023.
+1. Le Bris, T., Barruol, G., Le Meur, E., Gimbert, F., and Zigone, D.
+   Monitoring the cryoseismic activity of the Astrolabe glacier, Terre Adélie, Antarctica
+   EGU General Assembly 2023, Vienna, Austria, 23–28 Apr 2023, EGU23-7489, https://doi.org/10.5194/egusphereegu23-7489, 2023.
 1. Le Bris, T., G. Barruol, F. Gimbert, E. Le Meur, D. Zigone.
    Cryosismicité du glacier de l’Astrolabe : glissement basal, fracturation et modulation tidale.
    19emes journées scientifiques du CNFRAA, (Paris, 3-5 mai 2023)
@@ -65,6 +68,8 @@
    reorientation. EGU General Assembly, EGU24-14905. 
 1. Crawford W. C., Ker S., Stutzmann E., Rebeyrol S., Aminian M.-A., Barruol G., 2024.
    The BRUIT-FM Seafloor Noise Reduction Challenge. AGU Fall Meeting. [link](Documents/Crawford_BRUIT-FM_challenge_v5.jpg)
+1. Dréo, R. Crawford, W., Barruol, G., Bazin, S., Royer, J.-Y., Samaran, F.
+   Trajectory estimate of baleen whales using a single OBS in the Indian ocean, DCLDE Rotterdam 2024.
 1. Dréo, R. Crawford, W., Barruol, G., Bazin, S., Royer, J.-Y., Samaran, F.
    Détection des grandes baleines à fanons sur leur intervalle inter-cris
    Workshop SERENADE, Toulon, Juin 2024.

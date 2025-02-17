@@ -7,19 +7,19 @@
    and stacking-based approach: the BRUIT-FM toolbox. *Geophys. J. Int.*,
    **239**, 386-401, [https://doi.org/10.1093/gji/ggae265](https://doi.org/10.1093/gji/ggae265)
    
-   [Access the toolbox!](https://gitlab.ifremer.fr/anr-bruitfm/bruit-fm-toolbox)
+   [Go to the toolbox!](https://gitlab.ifremer.fr/anr-bruitfm/bruit-fm-toolbox)
 1. Aminian Mohammad-Amin, et al., submitted.
    Shallow crustal structures of the Indian Ocean dereived from compliance function analysis.
    *Geophys. J. Intl.*. submitted
 1. Dreo, Richard et al.
    Singing around the volcano: detecting baleen whales in the Mozambique Channel based on their song rythms, from seismic and hydroacoustic data.
    *J. Acoust. Soc. Am.*, submitted 
+1. Le Bris, T., Barruol, G., Gimbert, F., Le Meur, E., Zigone, D., Togaibekov, A. and Lombardi, D., 2024.
+   Spatial and Temporal Variability in Tide-induced Icequake Activity at the Astrolabe Glacier, East Antarctica.
+   *J. Geophys. Res.*, Under review, [https://doi.org/10.22541/essoar.173324864.46462523/v1].
 1. Xu, Zongbo, Stutzmann E., Farra V., Crawford W.
    Theoretical modelling of secondary microseisms considering source and receiver site strcutrures, with a focus on ocean-bottom sediment effects.
    *JGR: Solid Earth*, submitted
-1. Le Bris, T., Barruol, G., Gimbert, F., Le Meur, E., Zigone, D., Togaibekov, A. and Lombardi, D., 2024.
-   Spatial and Temporal Variability in Tide-induced Icequake Activity at the Astrolabe Glacier, East Antarctica.
-   *J. Geophys. Res.*, Under review, [https//doi.org/10.22541/essoar.173324864.46462523/v1].
 
 ## Reports
 

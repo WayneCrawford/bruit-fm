@@ -8,8 +8,8 @@ Scientific End Date: 2026-01-31
 
 | Number | Title                                        | Due Date(s)        | Status      |
 | ------ | -------------------------------------------- | ------------------ | ----------- |
-| D1.1   | Kick-off meeting                             | M1                 | finished    |
-| D1.2   | Open source guidelines                       | M6, M30, M48       | M6 finished |
+| D1.1   | Kick-off meeting   | [M1](Documents/2022.04_Minutes_Kickoff.pdf)  | completed   |
+| D1.2   | Open source guidelines | [M6](Documents/DMP_6months.pdf), M30, M48 | M6 completed |
 | D1.3   | Periodic and final reports                   | M12, M24, M36, M48 | M36 written |
 | D4.1   | Report on rotational seismometer integration in BBOBS | M12       | in progress |
 | D2.1   | Catalogue of available OBS data and characteristics | M12         | on website  |

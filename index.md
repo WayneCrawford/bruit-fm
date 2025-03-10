@@ -34,6 +34,7 @@ This is the point of entry for the BRUIT-FM project (project [ANR-21-CE01-0031](
 - [BRUIT-FM toolbox](https://gitlab.ifremer.fr/anr-bruitfm/bruit-fm-toolbox)
 - [Compy compliance calculation toolbox](https://github.com/MohammadAmin-Aminian/ComPy)
 - [Dataset world map](https://www.bruit-fm.org/obs_networks/world_map_inventory.html)
+
 [![World Map Inventory](./Images/map_thumb.png)](https://www.bruit-fm.org/obs_networks/world_map_inventory.html)
 
 ## Announcements

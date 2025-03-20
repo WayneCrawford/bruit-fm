@@ -28,6 +28,8 @@ This is the point of entry for the BRUIT-FM project (project [ANR-21-CE01-0031](
 
 [![test](Images/world_map_inventory.png)](obs_networks/world_map_inventory.html)
 
+[![World Map Inventory](./Images/map_thumb.png)](obs_networks/world_map_inventory.html)
+
 ## Work Packages
 
 | Web Page         | Project Management |

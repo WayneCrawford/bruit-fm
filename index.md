@@ -15,10 +15,8 @@ This is the point of entry for the BRUIT-FM project (project [ANR-21-CE01-0031](
 - [The Noise Reduction Challenge](challenge.md)
 - [Budget](budget.md)
 - [Administration](administration.md)
-
-## Dataset world map
-
-[![World Map Inventory](./Images/map_thumb.png)](obs_networks/world_map_inventory.html)
+- [Dataset world map](obs_networks/world_map_inventory.html)
+[<img src='Images/map_thumb.png' align='top'>](obs_networks/world_map_inventory.html)
 
 ## Work Packages
 

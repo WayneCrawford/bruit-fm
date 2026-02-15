@@ -11,7 +11,7 @@ This is the point of entry for the BRUIT-FM project (project [ANR-21-CE01-0031](
 ## Ocean bottom seismology open datasets
 - [Map of networks](obs_networks/world_map_inventory.html)
 [<img src='Images/map_thumb.png' align='top'>](obs_networks/world_map_inventory.html)
-- [List of networks](obs_networks//nets/network_list.html)
+- [List of networks](obs_networks/network_list.html)
 - [Map of networks downloaded for project members](obs_networks/world_map_downloaded.html)
 
 ## The Project

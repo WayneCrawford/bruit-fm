@@ -4,19 +4,25 @@
 
 This is the point of entry for the BRUIT-FM project (project [ANR-21-CE01-0031](https://anr.fr/Projet-ANR-21-CE01-0031)).  We will try to keep this site up-to-date with the "big-picture" items, while the project managment spaces and mailing list will let you communicate, share documents and plan. 
 
+## The BRUIT-FM open data Noise Reduction Challenge
+- [Description](challenge.md)
+- [The dataset](https://doi.org/10.5281/zenodo.17132828)
+
+## Ocean bottom seismology open datasets
+- [Datasets open or available through BRUIT-FM](datasets.md)
+- [Map of datasets](obs_networks/world_map_inventory.html)
+[<img src='Images/map_thumb.png' align='top'>](obs_networks/world_map_inventory.html)
+
+
 ## The Project
 
 - [Overview](overview.md)
 - [Members](members.md)
 - [Meetings and Events](meetings-events.md)
 - [Deliverables and Milestones](deliverables-milestones.md)
-- [Datasets](datasets.md)
 - [Articles, Presentations and Reports](articles.md)
-- [The Noise Reduction Challenge](challenge.md)
 - [Budget](budget.md)
 - [Administration](administration.md)
-- [Dataset world map](obs_networks/world_map_inventory.html)
-[<img src='Images/map_thumb.png' align='top'>](obs_networks/world_map_inventory.html)
 
 ## Work Packages
 

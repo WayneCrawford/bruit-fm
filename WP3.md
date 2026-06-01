@@ -18,7 +18,7 @@ frequency band
 
 | Number | Title | Responsable | Status |
 | ------ | ------ | ---------- | ------ |
-| T3.1   | Sources and effects of spatio-temporal variations in seafloor noise: | @Stutzmann | not started |
+| T3.1   | Sources and effects of spatio-temporal variations in seafloor noise: | @Stutzmann | completed |
 | T3.2 | Sources of seafloor/global noise | @Stutzmann |  not started |
 | T3.3  | An integrated seafloor/global noise model | @Stutzmann, FabriceArdhuin | not started |
 
@@ -57,7 +57,3 @@ frequency band
   We will model the Pacific, Atlantic and Indian ocean data sets and analyse the data fit, progressively
   mproving the model as indicated by the fit.
 - **T3.3.3: An integrated model of sea floor noise.** Based on the above models and physical mechanisms.
-
-
-## Risks
-Risks are fairly low as we developed the techniques and know in what areas they can be improved or modified to apply to the seafloor environment.

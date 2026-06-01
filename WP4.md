@@ -11,33 +11,26 @@ Increase sensitivity to low-frequency seismological signals (normal modes, teles
 
 | Number | Title | Responsable | Status |  Project Management |
 | ------ | ------ | ---------- | ------ | ------------------- |
-| T4.1   | Reducing horizontal noise using a rotational seismometer | @WayneCrawford, Frederic | not started | [Space](https://resana.numerique.gouv.fr/public/perimetre/consulter/132782) |
-| T4.2 | Signal separation/removal techniques | Ker, @WayneCrawford |  not started | |
-| T4.3  | Separating seismological and biological signals | Ker, Duval | not started | |
+| T4.1   | ~~Reducing horizontal noise using a rotational seismometer~~ | @Crawford, Frederic | Replaced by T4.5 |  |
+| T4.2   | Signal separation/removal techniques | Ker, @Crawford |  completed | |
+| T4.3   | Separating seismological and biological signals | Ker, Duval | not started | |
+| T4.4   | Noise reduction challenge | @Crawford, Duval, Ker | underway | |
+| T4.5   | Rotational seismometer specification | @Crawford | underway | |
 
 ## Deliverables
 
 | Number | Title | Due Date | Status |
 | ------ | ------ | ---------- | ------ |
 | D4.1  | Report on rotational seismometer integration in BBOBS | M12 | not started |
-| D4.2 | Open source software for noise separation and removal | M24-48 | not started |
+| D4.2 | Open source software for noise separation and removal | M24-48 | Completed: Crawford, Amininan, Rebeyrol |
 | D4.3 | Catalog of seafloor noise sources | M36 | not started |
-| D4.3 | Scientific articles | M24-48 | not started |
+| D4.3 | Scientific articles | M24-48 | Rebeyrol, Aminian |
 
 ## Details
 
-### Task 4.1: Reducing horizontal noise using a rotational seismometer
-We will investigate reducing seafloor horizontal noise levels using the iXblue blueSeis-1C rotational seismometer. This task is divided into sequential subtasks: 
-
-1. **Conception**. Mechanical analysis of integration of blueSeis-1C into INSU-IPGP BBOBS;
-2. **Manufacturing**: Construction of blueSeis-1C and modified BBOBS parts
-3. **Installation** of the rotational seismometer in a BBOBS
-4. **Calibration table evaluation**. Using iXblue’s state of the art 3-axis calibration table
-5. **Analysis of results**. Compare calibration table tests with predicted noise level improvements. Modify installation and retest if needed
-6. **Near-shore test**: Deployment offshore Brest to validate instrument and obtain high-current data
-7. **At-sea test**. Leverage yearly month-long expeditions by the OBS team to the deep seafloor Lucky Strike volcano.
-   We will request a 1-day cruise extension for summer 2023 or 2024
-8. **Analysis and scientific article**.
+### ~~Task 4.1: Reducing horizontal noise using a rotational seismometer~~
+The task was planned to reducing seafloor horizontal noise levels using the iXblue blueSeis-1C rotational seismometer. iXblue
+was sold, renamed as eXail, and the new management removed the bleuSeis division.  **Task 4.5 replaces this task.**
 
 ### Task 4.2: Signal processing techniques for signal separation and noise removal
 This task will be run in collaboration between IPGP and IFREMER with the support of a postdoctoral researcher specialised in signal analysis/processing and a broad group of signal processing experts from ESIEE, iXBlue, GEO3BCN and GIPSA-Lab.
@@ -52,9 +45,13 @@ noise is present, we will investigate broad source separation methods relying on
 ### Task 4.3: Separating seismological and biological signals
 We will develop an approach to separate simultaneous seismological and whale call signals in the shared frequency band around 20 Hz, including the challenging chorus footprint (Bouffaut et al., 2018). We will use recently developed signal deconvolution/restoration techniques (SPOQ) using sparse non-convex norm-ratio penalties (Cherni et al., 2020) to characterise the overlapping signals using robust statistical measures (moments and moment ratios) to enhance their differences and assist their separation.
 
-### Risks:
-**Task 4.1** risks are 1) inability to integrate the rotational seismometer into the BBOBS seismometer sphere or 2) less horizontal noise reduction than predicted. These risks will be evaluated in the first 2-5 subtasks, before the major cost and personnel items are engaged. The risk of the technique not working is low, as the relation between horizontal signal and rotational measurements has already been demonstrated for a less sensitive rotational seismometer using the same technology [Bernauer et al., 2018]. 
+### Task 4.4: The Bruit-FM open data noise reduction challenge
+Proposed in mid-project, the challenge asks researchers to reduce noise on real and synthetic datasets, and to send
+their results to us.  Once the results are received and rated, a community workshop will be held to compare the different
+methods and to draw conclusions about the most effecient existing methods and pathways for future improvements.
+Challenge and training datasets are available on Zenodo, and an article describing the Challenge has been submitted
+to Seismica.
 
-**Task 4.2** is relatively low risk: We know the existing methods very well and have identified weaknesses that we can improve on. We will quantify improvements, limitations and benefits using synthetic and measured data. 
-
-**Task 4.3** is high-risk, high-reward. It uses few resources and failure has no impact on other tasks.
+### Task 4.5: Rotational seismometer specification
+After the restructuring of eXail in 2023 led to the abandonment of their BlueSeis rotational seismology division, this
+project decided to redirect the funds, originally planned for the addition of a BlueSeis rotational seismometer to an existing broad-band OBS, to the design of a BBOBS with rotational seismometer with enhanced rotational sensitivity, so that the seafloor instrument could have comparable horizontal channel noise levels to a buried instrument.

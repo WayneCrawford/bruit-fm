@@ -21,7 +21,7 @@ Increase sensitivity to low-frequency seismological signals (normal modes, teles
 
 | Number | Title | Due Date | Status |
 | ------ | ------ | ---------- | ------ |
-| D4.1  | Report on rotational seismometer integration in BBOBS | M12 | not started |
+| D4.1  | Report on rotational seismometer integration in BBOBS | M12 | underway |
 | D4.2 | Open source software for noise separation and removal | M24-48 | Completed: Crawford, Amininan, Rebeyrol |
 | D4.3 | Catalog of seafloor noise sources | M36 | not started |
 | D4.3 | Scientific articles | M24-48 | Rebeyrol, Aminian |

@@ -19,13 +19,10 @@
 |  6 Jun 2023 | Yearly Project       | IPGP + video   | [minutes](Documents/Minutes_Workshop_BRUIT-FM_06_06_2023.pdf) |
 |  9 Apr 2024 | Yearly Project       | IPGP + video   | [minutes](Documents/2024-04-09-YearTwoMeetingMinutes.pdf) |
 |  4 Mar 2025 | Yearly Project       | IPGP + video   | [minutes](Documents/2025-03-04.Minutes_BRUIT-FM_Meeting.pdf) |
-| 15 Feb 2026 | Closing              | IPGP?          |        |
+| 24 Mar 2026 | Yearly Project       | IPGP + video   | [minutes](Documents/2026-03-24 Annual Meeting Minutes.pdf)       |
+|    Feb 2027 | Yearly Project       | IPGP?          |        |
+|    Feb 2028 | Closing              | IPGP?          |        |
 
-
-## Work Package/Task Meetings
-
-| Date(s)     | Description          | Site           | Links |
-| ----------- | -------------------- | -------------- | ------ |
 
 ## Management Meetings
 
@@ -33,12 +30,13 @@
 | ----------- | ------------------ | 
 | 05 Jan 2022 | Administration, Kickoff Meeting, Collaboration Tools, Hiring |
 | 17 Mar 2022 | Official Documents, Kickoff Meeting |
+| 05 Mar 2026 | Preparation for Annual Meeting |
 
 ## Next meeting
 
-- Type: Plenary
-- Date and Time: Thursday 20 October 14-17h Paris Time
-- Location: on Zoom, at [this link](https://u-paris.zoom.us/j/84585189610?pwd=NzNNdE5WeTJmNlc3YnBzR2ZOenFsUT09)
+- Type: Yearly
+- Date and Time: Feb 2027
+- Location: 
 - Program
   - 6 month data management plan
   - Where to find stuff
@@ -48,9 +46,4 @@
     - WP 4 
     - WP 5 
   - Presentations:
-    - Felix Bernauer: Rotational motion sensing technologies
-    - Wayne Crawford: tiskit
-    - Richard Dreo: Research update and data management
-    - Simon Rebeyrol: OBS low-frequency noise extraction methodology: Toolkits and Benchmark plan
-    - Mohammed-Amin Aminian: Research update
 

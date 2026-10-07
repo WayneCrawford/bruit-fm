@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open OBS Networks</title>
+<meta name="description" content="Interactive map of open-access ocean-bottom seismometer deployments available from FDSN data centres.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="style.css?v=c83a1c6d">
+</head>
+<body>
+<aside id="panel" aria-label="Filters and networks">
+  <header class="panel-head">
+    <div>
+      <h1>Open OBS networks</h1>
+      <p class="muted" id="summary">Loading…</p>
+    </div>
+    <button id="panel-toggle" class="icon-btn" aria-expanded="true" aria-controls="panel-body" title="Hide panel">▾</button>
+  </header>
+
+  <div id="panel-body">
+    <section id="filters" aria-label="Filters">
+      <input id="search" type="search" placeholder="Network, project or station…" aria-label="Search networks and stations">
+
+      <fieldset>
+        <legend>Deployed between <output id="year-label"></output></legend>
+        <div class="range2">
+          <input id="year-from" type="range" aria-label="From year">
+          <input id="year-to" type="range" aria-label="To year">
+        </div>
+      </fieldset>
+
+      <fieldset><legend>Sensors</legend><div class="chips" id="f-sensor"></div></fieldset>
+      <fieldset><legend>Sample rate</legend><div class="chips" id="f-fs"></div></fieldset>
+      <fieldset><legend>Deployment duration</legend><div class="chips" id="f-duration"></div></fieldset>
+      <fieldset><legend>Data access</legend><div class="chips" id="f-access"></div></fieldset>
+
+      <label class="row">Colour by
+        <select id="color-by">
+          <option value="sensor">Sensors</option>
+          <option value="fs">Sample rate</option>
+          <option value="duration">Deployment duration</option>
+          <option value="depth">Water depth</option>
+          <option value="year">Deployment start</option>
+        </select>
+      </label>
+      <ul id="legend" aria-label="Legend"></ul>
+    </section>
+
+    <section id="list-view" aria-label="Networks">
+      <div class="list-head">
+        <h2 id="list-title">Networks</h2>
+        <button id="open-table" class="link-btn">Table view</button>
+      </div>
+      <ul id="network-list"></ul>
+    </section>
+
+    <section id="detail-view" hidden aria-label="Network details"></section>
+
+    <footer class="muted small">
+      Data: <a href="https://www.fdsn.org/networks/">FDSN</a> station web services
+      (open metadata only) + curated additions. Access is checked by downloading a
+      10-minute sample per network without credentials. Updated <span id="generated"></span>.
+      Download <a href="data/networks.csv">networks</a> ·
+      <a href="data/stations.csv">stations</a> ·
+      <a href="data/channels.csv">channels</a> (CSV).
+    </footer>
+  </div>
+</aside>
+
+<main id="map" aria-label="Map of ocean-bottom stations"></main>
+
+<div id="table-view" hidden role="dialog" aria-label="Networks table">
+  <div class="table-head">
+    <h2 id="table-title">Networks</h2>
+    <button id="close-table" class="icon-btn" title="Close">✕</button>
+  </div>
+  <div class="table-scroll"><table id="network-table"></table></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="data/obs.js?v=c83a1c6d"></script>
+<script src="app.js?v=c83a1c6d"></script>
+</body>
+</html>

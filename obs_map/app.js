@@ -18,7 +18,10 @@
   const ACCESS = {
     open: "Open, data verified", no_data: "No data found",
     on_request: "On request (not on FDSN)", unverified: "Not verified",
+    restricted: "Restricted / embargo",
   };
+  // Les stations restreintes ne sont pas affichées par défaut
+  const ACCESS_DEFAULT = ["open", "no_data", "on_request", "unverified"];
   const BINS = {
     fs: { edges: [5, 25, 100], labels: ["< 5 Hz", "5–25 Hz", "25–100 Hz", "≥ 100 Hz"] },
     duration: { edges: [30, 120, 365], labels: ["< 30 days", "30–120 days", "120 days–1 yr", "≥ 1 year"] },
@@ -36,6 +39,7 @@
       i, net: nets[r[F.net]], code: r[F.code], lat: r[F.lat], lon: r[F.lon], depth: r[F.depth],
       start, end, channels: r[F.channels], fs: r[F.fs], sensor: r[F.sensor], sensors: r[F.sensors], dc: r[F.dc],
     };
+    s.access = r[F.restricted] ? "restricted" : s.net.access;
     s.y0 = start ? start.getUTCFullYear() : null;
     s.y1 = end ? end.getUTCFullYear() : NOW.getUTCFullYear();
     s.days = start ? Math.round(((end || NOW) - start) / DAY) : null;
@@ -55,7 +59,7 @@
   const state = {
     q: "", from: YMIN, to: YMAX, colorBy: "sensor", selected: null,
     sensor: new Set([0, 1, 2]), fs: new Set([0, 1, 2, 3, -1]), duration: new Set([0, 1, 2, 3, -1]),
-    access: new Set(Object.keys(ACCESS)),
+    access: new Set(ACCESS_DEFAULT),
   };
 
   const $ = sel => document.querySelector(sel);
@@ -93,7 +97,7 @@
       <p>${fmtDate(s.start)} → ${fmtDate(s.end)}<br>
       Water depth: ${s.depth.toLocaleString("en")} m<br>
       Sensors: ${esc(SENSORS[s.sensor].toLowerCase())}<br>
-      Data access: ${esc(ACCESS[n.access].toLowerCase())}</p>
+      Data access: ${esc(ACCESS[s.access].toLowerCase())}</p>
       <p><b>Channels</b><br>${esc(s.channels).replace(/; /g, "<br>")}</p>
       ${s.sensors ? `<p class="small muted">${esc(s.sensors)}</p>` : ""}
       <p class="small">Data centre: ${esc(s.dc)}</p>
@@ -103,7 +107,7 @@
   // ---------- filtres ----------
   function passes(s, ignoreSelection) {
     if (!ignoreSelection && state.selected && s.net.id !== state.selected) return false;
-    if (!state.access.has(s.net.access)) return false;
+    if (!state.access.has(s.access)) return false;
     if (!state.sensor.has(s.sensor)) return false;
     if (!state.fs.has(s.bins.fs)) return false;
     if (!state.duration.has(s.bins.duration)) return false;
@@ -115,7 +119,8 @@
   function buildChips(container, key, items) {
     const el = $(container);
     el.innerHTML = items.map(([value, label, color]) => `
-      <label class="chip"><input type="checkbox" data-key="${key}" value="${value}" checked>
+      <label class="chip"><input type="checkbox" data-key="${key}" value="${value}"
+        ${state[key].has(key === "access" ? value : Number(value)) ? "checked" : ""}>
       ${color ? `<span class="swatch" style="background:${color}"></span>` : ""}${esc(label)}
       <span class="n" data-count="${key}:${value}"></span></label>`).join("");
     el.addEventListener("change", e => {
@@ -164,8 +169,10 @@
       const unknown = visible.filter(s => s.bins[state.colorBy] < 0).length;
       if (unknown) items.push(["#898781", "unknown", unknown]);
     }
+    const nr = visible.filter(s => s.access === "restricted").length;
     $("#legend").innerHTML = items.map(([c, l, n]) =>
-      `<li><span class="swatch" style="background:${c}"></span>${esc(l)} <span class="n">${n}</span></li>`).join("");
+      `<li><span class="swatch" style="background:${c}"></span>${esc(l)} <span class="n">${n}</span></li>`).join("")
+      + (nr ? `<li><span class="swatch hollow"></span>Restricted / embargo <span class="n">${nr}</span></li>` : "");
   }
 
   function updateCounts() {
@@ -177,7 +184,7 @@
       state[key] = saved;
       document.querySelectorAll(`[data-count^="${key}:"]`).forEach(el => {
         const v = el.dataset.count.split(":")[1];
-        const n = pool.filter(s => key === "access" ? s.net.access === v
+        const n = pool.filter(s => key === "access" ? s.access === v
           : key === "sensor" ? s.sensor === Number(v) : s.bins[key] === Number(v)).length;
         el.textContent = n;
         // « inconnu » / « non vérifié » seulement s'ils existent
@@ -195,9 +202,11 @@
     const ring = getComputedStyle(document.documentElement).getPropertyValue("--marker-ring").trim();
     const big = state.selected != null;
     for (const s of visible) {
-      const m = L.circleMarker([s.lat, s.lon], {
-        radius: big ? 7 : 5, weight: 1.5, color: ring, fillColor: colorOf(s), fillOpacity: 1,
-      }).bindPopup(() => popupHtml(s), { maxWidth: 320 })
+      const restricted = s.access === "restricted";
+      const m = L.circleMarker([s.lat, s.lon], restricted
+        // creux : contour à la couleur de la catégorie, intérieur couleur de fond
+        ? { radius: big ? 6 : 4.5, weight: 2, color: colorOf(s), fillColor: ring, fillOpacity: 1 }
+        : { radius: big ? 7 : 5, weight: 1.5, color: ring, fillColor: colorOf(s), fillOpacity: 1 }).bindPopup(() => popupHtml(s), { maxWidth: 320 })
         .bindTooltip(`${s.net.code}.${s.code}`, { direction: "top", offset: [0, -6] });
       m.addTo(layer);
       markers.set(s.i, m);
@@ -234,7 +243,8 @@
         <dt>Period</dt><dd>${esc(n.start || "?")} → ${esc(n.end || "present")}</dd>
         <dt>Operator</dt><dd>${esc(n.operator || "—")}</dd>
         <dt>DOI</dt><dd>${n.doi ? `<a href="${esc(n.doi)}" target="_blank" rel="noopener">${esc(n.doi.replace("https://doi.org/", ""))}</a>` : "—"}</dd>
-        <dt>Data access</dt><dd>${esc(ACCESS[n.access])}</dd>
+        <dt>Data access</dt><dd>${esc(ACCESS[n.access])}${n.nr && n.access !== "restricted" ? ` (${n.nr} restricted station${n.nr > 1 ? "s" : ""})` : ""}</dd>
+        ${n.nr ? `<dt></dt><dd class="small muted">No public embargo end date in the metadata; contact the network operator (see FDSN page).</dd>` : ""}
         <dt>Stations</dt><dd>${sts.length === all.length ? all.length : `${sts.length} shown of ${all.length}`}</dd>
         <dt>Data centre</dt><dd>${esc(n.dcs)}</dd>
         ${n.source === "fdsn" ? `<dt>FDSN</dt><dd><a href="${fdsnUrl(n)}" target="_blank" rel="noopener">network page</a></dd>` : `<dt>Source</dt><dd>curated addition (not on FDSN)</dd>`}
@@ -242,7 +252,7 @@
       <table class="stations">
         <thead><tr><th>Station</th><th>Start</th><th>End</th><th class="num">Depth</th><th>Channels</th></tr></thead>
         <tbody>${sts.sort((a, b) => a.code.localeCompare(b.code) || (a.start - b.start)).map(s => `
-          <tr data-i="${s.i}"><td>${esc(s.code)}</td><td>${fmtDate(s.start)}</td><td>${fmtDate(s.end)}</td>
+          <tr data-i="${s.i}"><td>${esc(s.code)}${s.access === "restricted" ? ' <span class="muted" title="Restricted / embargo">🔒</span>' : ""}</td><td>${fmtDate(s.start)}</td><td>${fmtDate(s.end)}</td>
           <td class="num">${s.depth.toLocaleString("en")}</td><td>${esc(s.channels).replace(/; /g, "<br>")}</td></tr>`).join("")}
         </tbody>
       </table>`;
@@ -255,7 +265,7 @@
       ["Network", r => r.n.id], ["Name", r => r.n.name], ["Operator", r => r.n.operator || ""],
       ["Start", r => r.n.start || ""], ["End", r => r.n.end || "present"], ["Stations", r => r.count, true],
       ["Sensors", r => SENSORS[r.n.sensor]], ["Max rate (Hz)", r => r.n.fs ?? "", true],
-      ["Data centres", r => r.n.dcs], ["Access", r => ACCESS[r.n.access]], ["DOI", r => r.n.doi || ""],
+      ["Data centres", r => r.n.dcs], ["Access", r => ACCESS[r.n.access] + (r.n.nr && r.n.access !== "restricted" ? ` (${r.n.nr} restricted)` : "")], ["DOI", r => r.n.doi || ""],
     ];
     const table = $("#network-table");
     const sort = table._sort || { col: 3, dir: -1 };
@@ -297,6 +307,12 @@
     const m = location.hash.match(/net=([^&]+)/);
     const id = m ? decodeURIComponent(m[1]) : null;
     state.selected = id && byNet.has(id) ? id : null;
+    // lien direct vers un réseau restreint : on active le filtre plutôt que d'afficher une carte vide
+    if (state.selected && !state.access.has("restricted") &&
+        byNet.get(state.selected).every(s => s.access === "restricted")) {
+      state.access.add("restricted");
+      document.querySelector('input[data-key="access"][value="restricted"]').checked = true;
+    }
     $("#table-view").hidden = true;
     update(!!state.selected || first);
     first = false;

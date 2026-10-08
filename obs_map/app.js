@@ -12,16 +12,21 @@
 
   // ---------- palettes (validées : catégoriel all-pairs, ordinal sur fond carte) ----------
   const CATEGORICAL = { light: ["#2a78d6", "#eb6834", "#1baf7a"], dark: ["#3987e5", "#d95926", "#199e70"] };
-  const ORDINAL = { light: ["#3987e5", "#256abf", "#184f95", "#0d366b"], dark: ["#1c5cab", "#3987e5", "#86b6ef", "#cde2fb"] };
+  // Classes ordonnées (fréquence, durée, profondeur, année) : 4 teintes bien distinctes,
+  // bleu → vert → jaune → rouge du plus petit au plus grand. Validées toutes paires
+  // (vision normale et daltonisme) sur les fonds de carte clair et sombre.
+  const ORDINAL = { light: ["#2a78d6", "#1baf7a", "#c9b000", "#d62728"], dark: ["#3987e5", "#0f9d8a", "#9c9600", "#e0405c"] };
 
   const SENSORS = ["Seismometer + pressure", "Seismometer only", "Pressure only"];
   const ACCESS = {
     open: "Open, data verified", no_data: "No data found",
-    on_request: "On request (not on FDSN)", unverified: "Not verified",
+    on_request: "On request (data not public)", unverified: "Not verified",
     restricted: "Restricted / embargo",
   };
-  // Les stations restreintes ne sont pas affichées par défaut
-  const ACCESS_DEFAULT = ["open", "no_data", "on_request", "unverified"];
+  // Tous les statuts sont affichés par défaut ; les stations restreintes se distinguent
+  // par un marqueur creux et semi-transparent.
+  const ACCESS_DEFAULT = Object.keys(ACCESS);
+  const RESTRICTED_ALPHA = 0.55;
   const BINS = {
     fs: { edges: [5, 25, 100], labels: ["< 5 Hz", "5–25 Hz", "25–100 Hz", "≥ 100 Hz"] },
     duration: { edges: [30, 120, 365], labels: ["< 30 days", "30–120 days", "120 days–1 yr", "≥ 1 year"] },
@@ -66,7 +71,7 @@
   const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const fmtDate = d => d ? d.toISOString().slice(0, 10) : "present";
   const fmtYears = (a, b) => { const y0 = a ? a.slice(0, 4) : "?", y1 = b ? b.slice(0, 4) : "now"; return y0 === y1 ? y0 : `${y0}–${y1}`; };
-  const fdsnUrl = n => `https://www.fdsn.org/networks/detail/${encodeURIComponent(n.id)}/`;
+  const fdsnUrl = n => `https://www.fdsn.org/networks/detail/${encodeURIComponent(n.fdsn)}/`;
 
   // ---------- carte : vue Monde (Mercator) et vues polaires (stéréographiques) ----------
   const ESRI_WORLD = "https://server.arcgisonline.com/ArcGIS/rest/services";
@@ -291,11 +296,15 @@
     const ring = view === "world"
       ? getComputedStyle(document.documentElement).getPropertyValue("--marker-ring").trim() : "#ffffff";
     const big = state.selected != null;
-    for (const s of visible) {
+    // stations restreintes dessinées d'abord : les stations ouvertes restent au-dessus
+    const ordered = visible.filter(s => s.access === "restricted")
+      .concat(visible.filter(s => s.access !== "restricted"));
+    for (const s of ordered) {
       const restricted = s.access === "restricted";
       const m = L.circleMarker([s.lat, s.lon], restricted
         // creux : contour à la couleur de la catégorie, intérieur couleur de fond
-        ? { radius: big ? 6 : 4.5, weight: 2, color: colorOf(s), fillColor: ring, fillOpacity: 1 }
+        ? { radius: big ? 6 : 4.5, weight: 2, color: colorOf(s), opacity: RESTRICTED_ALPHA,
+            fillColor: ring, fillOpacity: RESTRICTED_ALPHA * 0.6 }
         : { radius: big ? 7 : 5, weight: 1.5, color: ring, fillColor: colorOf(s), fillOpacity: 1 }).bindPopup(() => popupHtml(s), { maxWidth: 320, autoPanPaddingTopLeft: L.point(20, 100) })
         .bindTooltip(`${s.net.code}.${s.code}`, { direction: "top", offset: [0, -6] });
       m.addTo(layer);
@@ -337,7 +346,7 @@
         ${n.nr ? `<dt></dt><dd class="small muted">No public embargo end date in the metadata; contact the network operator (see FDSN page).</dd>` : ""}
         <dt>Stations</dt><dd>${sts.length === all.length ? all.length : `${sts.length} shown of ${all.length}`}</dd>
         <dt>Data centre</dt><dd>${esc(n.dcs)}</dd>
-        ${n.source === "fdsn" ? `<dt>FDSN</dt><dd><a href="${fdsnUrl(n)}" target="_blank" rel="noopener">network page</a></dd>` : `<dt>Source</dt><dd>curated addition (not on FDSN)</dd>`}
+        ${n.fdsn ? `<dt>FDSN</dt><dd><a href="${fdsnUrl(n)}" target="_blank" rel="noopener">network page</a></dd>` : `<dt>Source</dt><dd>curated addition (not on FDSN)</dd>`}
       </dl>
       <table class="stations">
         <thead><tr><th>Station</th><th>Start</th><th>End</th><th class="num">Depth</th><th>Channels</th></tr></thead>
@@ -405,7 +414,8 @@
   // on bascule en vue polaire si toutes ses stations sont au-delà de 60°, sinon Monde.
   function chooseView(id) {
     const sts = byNet.get(id);
-    if (view !== "world" && sts.every(VIEWS[view].inView)) return view;
+    // au premier chargement aucune vue n'existe encore (view === null)
+    if (view && view !== "world" && sts.every(VIEWS[view].inView)) return view;
     if (sts.every(s => s.lat >= 60)) return "arctic";
     if (sts.every(s => s.lat <= -60)) return "antarctic";
     return "world";

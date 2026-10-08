@@ -11,15 +11,18 @@
     (document.documentElement.dataset.theme !== "light" && darkQuery.matches);
 
   // ---------- palettes (validées : catégoriel all-pairs, ordinal sur fond carte) ----------
-  const CATEGORICAL = { light: ["#2a78d6", "#eb6834", "#1baf7a"], dark: ["#3987e5", "#d95926", "#199e70"] };
+  const CATEGORICAL = { light: ["#2a78d6", "#eb6834", "#1baf7a", "#c2407e"], dark: ["#3987e5", "#d95926", "#199e70", "#d45fb0"] };
   // Classes ordonnées (fréquence, durée, profondeur, année) : 4 teintes bien distinctes,
   // bleu → vert → jaune → rouge du plus petit au plus grand. Validées toutes paires
   // (vision normale et daltonisme) sur les fonds de carte clair et sombre.
   const ORDINAL = { light: ["#2a78d6", "#1baf7a", "#c9b000", "#d62728"], dark: ["#3987e5", "#0f9d8a", "#9c9600", "#e0405c"] };
 
-  const SENSORS = ["Seismometer + pressure", "Seismometer only", "Pressure only"];
+  const SENSORS = ["Seismometer + pressure", "Seismometer only", "Pressure only", "DAS (fibre optic)"];
+  const DAS = 3;
+  // points DAS individuels visibles à partir de ce zoom (sinon : tracé du câble seul)
+  const DAS_POINTS_ZOOM = { world: 12, polar: 7 };
   const ACCESS = {
-    open: "Open, data verified", no_data: "No data found",
+    open: "Open, data verified", open_external: "Open, outside FDSN", no_data: "No data found",
     on_request: "On request (data not public)", unverified: "Not verified",
     restricted: "Restricted / embargo",
   };
@@ -52,6 +55,8 @@
       fs: binOf(BINS.fs.edges, s.fs), duration: binOf(BINS.duration.edges, s.days),
       depth: binOf(BINS.depth.edges, s.depth), year: binOf(BINS.year.edges, s.y0),
     };
+    s.das = s.sensor === DAS;
+    s.cable = r[F.cable]; s.pos = r[F.pos];
     s.text = (s.code + " " + s.net.id + " " + s.net.name + " " + (s.net.operator || "")).toLowerCase();
     return s;
   });
@@ -63,7 +68,7 @@
   const YMIN = Math.min(...years), YMAX = NOW.getUTCFullYear();
   const state = {
     q: "", from: YMIN, to: YMAX, colorBy: "sensor", selected: null,
-    sensor: new Set([0, 1, 2]), fs: new Set([0, 1, 2, 3, -1]), duration: new Set([0, 1, 2, 3, -1]),
+    sensor: new Set([0, 1, 2, 3]), fs: new Set([0, 1, 2, 3, -1]), duration: new Set([0, 1, 2, 3, -1]),
     access: new Set(ACCESS_DEFAULT),
   };
 
@@ -141,7 +146,7 @@
     },
   });
 
-  let map, layer, view = null;
+  let map, layer, dasPoints, view = null;
   function createMap(key) {
     if (map) map.remove();
     view = key;
@@ -154,6 +159,8 @@
     new ViewSwitch().addTo(map);
     L.control.scale({ imperial: false }).addTo(map);
     layer = L.layerGroup().addTo(map);
+    dasPoints = L.layerGroup();
+    map.on("zoomend", toggleDasPoints);
     map.setView(c.center, c.zoom);
   }
 
@@ -192,7 +199,7 @@
       Data access: ${esc(ACCESS[s.access].toLowerCase())}</p>
       <p><b>Channels</b><br>${esc(s.channels).replace(/; /g, "<br>")}</p>
       ${s.sensors ? `<p class="small muted">${esc(s.sensors)}</p>` : ""}
-      <p class="small">Data centre: ${esc(s.dc)}</p>
+      <p class="small">Data centre: ${s.net.source === "curated" ? "— (curated addition)" : esc(s.dc)}</p>
       <a href="#net=${encodeURIComponent(n.id)}">Network details →</a>`;
   }
 
@@ -257,14 +264,19 @@
     if (state.colorBy === "sensor") {
       items = SENSORS.map((l, i) => [CATEGORICAL[mode][i], l, visible.filter(s => s.sensor === i).length]);
     } else {
-      const bins = BINS[state.colorBy];
-      items = bins.labels.map((l, i) => [ORDINAL[mode][i], l, visible.filter(s => s.bins[state.colorBy] === i).length]);
-      const unknown = visible.filter(s => s.bins[state.colorBy] < 0).length;
+      // les points DAS ne comptent pas comme stations : les câbles ont leur propre ligne
+      const bins = BINS[state.colorBy], obs = visible.filter(s => !s.das);
+      items = bins.labels.map((l, i) => [ORDINAL[mode][i], l, obs.filter(s => s.bins[state.colorBy] === i).length]);
+      const unknown = obs.filter(s => s.bins[state.colorBy] < 0).length;
       if (unknown) items.push(["#898781", "unknown", unknown]);
     }
-    const nr = visible.filter(s => s.access === "restricted").length;
-    $("#legend").innerHTML = items.map(([c, l, n]) =>
-      `<li><span class="swatch" style="background:${c}"></span>${esc(l)} <span class="n">${n}</span></li>`).join("")
+    const nr = visible.filter(s => s.access === "restricted" && !s.das).length;
+    const nCables = cablesOf(visible).length;
+    $("#legend").innerHTML = items.map(([c, l, n], i) =>
+      state.colorBy === "sensor" && i === DAS
+        ? (nCables ? `<li><span class="swatch line" style="background:${c}"></span>${esc(l)} <span class="n">${nCables} cable${nCables > 1 ? "s" : ""}</span></li>` : "")
+        : `<li><span class="swatch" style="background:${c}"></span>${esc(l)} <span class="n">${n}</span></li>`).join("")
+      + (state.colorBy !== "sensor" && nCables ? `<li><span class="swatch line"></span>DAS cable <span class="n">${nCables}</span></li>` : "")
       + (nr ? `<li><span class="swatch hollow"></span>Restricted / embargo <span class="n">${nr}</span></li>` : "");
   }
 
@@ -277,8 +289,10 @@
       state[key] = saved;
       document.querySelectorAll(`[data-count^="${key}:"]`).forEach(el => {
         const v = el.dataset.count.split(":")[1];
-        const n = pool.filter(s => key === "access" ? s.access === v
-          : key === "sensor" ? s.sensor === Number(v) : s.bins[key] === Number(v)).length;
+        const match = pool.filter(s => key === "access" ? s.access === v
+          : key === "sensor" ? s.sensor === Number(v) : s.bins[key] === Number(v));
+        // la puce DAS compte des câbles, pas les centaines de points le long de la fibre
+        const n = key === "sensor" && Number(v) === DAS ? cablesOf(match).length : match.length;
         el.textContent = n;
         // « inconnu » / « non vérifié » seulement s'ils existent
         el.closest(".chip").hidden = (v === "-1" || v === "unverified") && n === 0;
@@ -289,6 +303,73 @@
   // ---------- rendu ----------
   let markers = new Map();
 
+  // Câbles DAS : points regroupés par réseau + câble, triés le long de la fibre
+  function cablesOf(sts) {
+    const groups = new Map();
+    for (const s of sts) {
+      if (!s.das) continue;
+      const key = s.net.id + "|" + (s.cable || s.code);
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(s);
+    }
+    return [...groups.values()].map(pts => pts.sort((a, b) => (a.pos ?? 0) - (b.pos ?? 0)));
+  }
+
+  function lengthKm(pts) {
+    let d = 0;
+    for (let i = 1; i < pts.length; i++) d += L.latLng(pts[i - 1].lat, pts[i - 1].lon).distanceTo([pts[i].lat, pts[i].lon]);
+    return d / 1000;
+  }
+
+  function cableHtml(pts) {
+    const s = pts[0], n = s.net, depths = pts.map(p => p.depth);
+    const start = new Date(Math.min(...pts.map(p => p.start))), ends = pts.map(p => p.end);
+    const end = ends.some(e => !e) ? null : new Date(Math.max(...ends));
+    return `<h3>${esc(n.code)} · cable ${esc(s.cable || s.code)}</h3>
+      <div class="muted">${esc(n.name)}</div>
+      <p>${fmtDate(start)} → ${fmtDate(end)}<br>
+      DAS channels: ${pts.length}${pts.length > 1 ? ` · ${lengthKm(pts).toFixed(1)} km of fibre` : ""}<br>
+      Water depth: ${Math.max(0, Math.min(...depths)).toLocaleString("en")}–${Math.max(...depths).toLocaleString("en")} m<br>
+      Data access: ${esc(ACCESS[s.access].toLowerCase())}</p>
+      <p><b>Channels</b><br>${esc(s.channels).replace(/; /g, "<br>")}</p>
+      ${s.sensors ? `<p class="small muted">${esc(s.sensors)}</p>` : ""}
+      <p class="small">Data centre: ${s.net.source === "curated" ? "— (curated addition)" : esc(s.dc)}</p>
+      <a href="#net=${encodeURIComponent(n.id)}">Network details →</a>`;
+  }
+
+  function toggleDasPoints() {
+    const minZoom = view === "world" ? DAS_POINTS_ZOOM.world : DAS_POINTS_ZOOM.polar;
+    if (map.getZoom() >= minZoom) dasPoints.addTo(map); else dasPoints.remove();
+  }
+
+  function renderCables(visible, ring) {
+    dasPoints.clearLayers();
+    const popupOpts = { maxWidth: 320, autoPanPaddingTopLeft: L.point(20, 100) };
+    for (const pts of cablesOf(visible)) {
+      const s = pts[0], color = colorOf(s), restricted = s.access === "restricted";
+      const alpha = restricted ? RESTRICTED_ALPHA : 1;
+      if (pts.length > 1) {
+        const line = pts.map(p => [p.lat, p.lon]);
+        // liseré couleur de fond sous le tracé, pour le détacher du fond de carte
+        L.polyline(line, { color: ring, weight: 6, opacity: 0.8 * alpha, interactive: false }).addTo(layer);
+        const cable = L.polyline(line, { color, weight: 3.5, opacity: alpha, dashArray: restricted ? "6 5" : null })
+          .bindPopup(() => cableHtml(pts), popupOpts)
+          .bindTooltip(`${s.net.code} · DAS cable ${s.cable || s.code} (${pts.length} ch.)`, { sticky: true });
+        cable.addTo(layer);
+        for (const p of pts) markers.set(p.i, cable);
+      }
+      // points le long de la fibre : seulement en zoom rapproché (ou câble d'un seul point)
+      for (const p of pts) {
+        const m = L.circleMarker([p.lat, p.lon], { radius: pts.length > 1 ? 3 : 5, weight: 1, color: ring,
+          fillColor: color, fillOpacity: alpha, opacity: alpha })
+          .bindPopup(() => popupHtml(p), popupOpts)
+          .bindTooltip(`${p.net.code}.${p.code}`, { direction: "top", offset: [0, -4] });
+        if (pts.length > 1) { m.addTo(dasPoints); } else { m.addTo(layer); markers.set(p.i, m); }
+      }
+    }
+    toggleDasPoints();
+  }
+
   function renderMarkers(visible) {
     layer.clearLayers();
     markers = new Map();
@@ -297,8 +378,10 @@
       ? getComputedStyle(document.documentElement).getPropertyValue("--marker-ring").trim() : "#ffffff";
     const big = state.selected != null;
     // stations restreintes dessinées d'abord : les stations ouvertes restent au-dessus
-    const ordered = visible.filter(s => s.access === "restricted")
-      .concat(visible.filter(s => s.access !== "restricted"));
+    renderCables(visible, ring);
+    const obs = visible.filter(s => !s.das);
+    const ordered = obs.filter(s => s.access === "restricted")
+      .concat(obs.filter(s => s.access !== "restricted"));
     for (const s of ordered) {
       const restricted = s.access === "restricted";
       const m = L.circleMarker([s.lat, s.lon], restricted
@@ -325,7 +408,8 @@
     $("#network-list").innerHTML = rows.length ? rows.map(({ n, count }) => `
       <li tabindex="0" data-id="${esc(n.id)}">
         <span class="id">${esc(n.id)}</span>
-        <span class="meta">${fmtYears(n.start, n.end)} · ${count}${count !== n.n ? "/" + n.n : ""} sta.</span>
+        <span class="meta">${fmtYears(n.start, n.end)} · ${n.nd === n.n
+          ? `DAS, ${count} ch.` : `${count}${count !== n.n ? "/" + n.n : ""} sta.`}</span>
         <span class="name" title="${esc(n.name)}">${esc(n.name)}</span>
       </li>`).join("") : `<li class="empty">No network matches these filters.</li>`;
   }
@@ -344,16 +428,36 @@
         <dt>DOI</dt><dd>${n.doi ? `<a href="${esc(n.doi)}" target="_blank" rel="noopener">${esc(n.doi.replace("https://doi.org/", ""))}</a>` : "—"}</dd>
         <dt>Data access</dt><dd>${esc(ACCESS[n.access])}${n.nr && n.access !== "restricted" ? ` (${n.nr} restricted station${n.nr > 1 ? "s" : ""})` : ""}</dd>
         ${n.nr ? `<dt></dt><dd class="small muted">No public embargo end date in the metadata; contact the network operator (see FDSN page).</dd>` : ""}
-        <dt>Stations</dt><dd>${sts.length === all.length ? all.length : `${sts.length} shown of ${all.length}`}</dd>
-        <dt>Data centre</dt><dd>${esc(n.dcs)}</dd>
+        <dt>${n.nd === n.n ? "DAS channels" : "Stations"}</dt><dd>${sts.length === all.length ? all.length : `${sts.length} shown of ${all.length}`}</dd>
+        <dt>Data centre</dt><dd>${n.source === "curated" ? "—" : esc(n.dcs)}</dd>
+        ${n.url ? `<dt>Data</dt><dd><a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.url)}</a></dd>` : ""}
+        ${n.note ? `<dt>Note</dt><dd class="small">${esc(n.note)}</dd>` : ""}
         ${n.fdsn ? `<dt>FDSN</dt><dd><a href="${fdsnUrl(n)}" target="_blank" rel="noopener">network page</a></dd>` : `<dt>Source</dt><dd>curated addition (not on FDSN)</dd>`}
       </dl>
-      <table class="stations">
+      ${n.nd ? dasTable(sts) : ""}
+      ${sts.some(s => !s.das) ? `<table class="stations">
         <thead><tr><th>Station</th><th>Start</th><th>End</th><th class="num">Depth</th><th>Channels</th></tr></thead>
-        <tbody>${sts.sort((a, b) => a.code.localeCompare(b.code) || (a.start - b.start)).map(s => `
+        <tbody>${sts.filter(s => !s.das).sort((a, b) => a.code.localeCompare(b.code) || (a.start - b.start)).map(s => `
           <tr data-i="${s.i}"><td>${esc(s.code)}${s.access === "restricted" ? ' <span class="muted" title="Restricted / embargo">🔒</span>' : ""}</td><td>${fmtDate(s.start)}</td><td>${fmtDate(s.end)}</td>
           <td class="num">${s.depth.toLocaleString("en")}</td><td>${esc(s.channels).replace(/; /g, "<br>")}</td></tr>`).join("")}
         </tbody>
+      </table>` : ""}`;
+  }
+
+  function dasTable(sts) {
+    const rows = cablesOf(sts).map(pts => {
+      const depths = pts.map(p => p.depth), first = pts[0], last = pts[pts.length - 1];
+      return `<tr data-cable="${esc(first.net.id + "|" + (first.cable || first.code))}">
+        <td>${esc(first.cable || first.code)}</td><td class="num">${pts.length}</td>
+        <td>${pts.length > 1 ? `${esc(first.code)}–${esc(last.code)}` : esc(first.code)}</td>
+        <td class="num">${pts.length > 1 ? lengthKm(pts).toFixed(1) : "—"}</td>
+        <td class="num">${Math.max(0, Math.min(...depths)).toLocaleString("en")}–${Math.max(...depths).toLocaleString("en")}</td></tr>`;
+    }).join("");
+    return `<p class="small muted">Distributed acoustic sensing: each channel is a point along the fibre,
+      ordered by its station code. Length is measured along the plotted channel positions.</p>
+      <table class="stations">
+        <thead><tr><th>Cable</th><th class="num">Channels</th><th>Channel codes</th><th class="num">Length (km)</th><th class="num">Depth (m)</th></tr></thead>
+        <tbody>${rows}</tbody>
       </table>`;
   }
 
@@ -362,9 +466,9 @@
     $("#table-title").textContent = `${rows.length} networks · ${visible.length} stations`;
     const cols = [
       ["Network", r => r.n.id], ["Name", r => r.n.name], ["Operator", r => r.n.operator || ""],
-      ["Start", r => r.n.start || ""], ["End", r => r.n.end || "present"], ["Stations", r => r.count, true],
+      ["Start", r => r.n.start || ""], ["End", r => r.n.end || "present"], ["Stations", r => r.count, true], ["Type", r => r.n.nd === r.n.n ? "DAS" : "OBS"],
       ["Sensors", r => SENSORS[r.n.sensor]], ["Max rate (Hz)", r => r.n.fs ?? "", true],
-      ["Data centres", r => r.n.dcs], ["Access", r => ACCESS[r.n.access] + (r.n.nr && r.n.access !== "restricted" ? ` (${r.n.nr} restricted)` : "")], ["DOI", r => r.n.doi || ""],
+      ["Data centres", r => r.n.source === "curated" ? "—" : r.n.dcs], ["Access", r => ACCESS[r.n.access] + (r.n.nr && r.n.access !== "restricted" ? ` (${r.n.nr} restricted)` : "")], ["DOI", r => r.n.doi || ""],
     ];
     const table = $("#network-table");
     const sort = table._sort || { col: 3, dir: -1 };
@@ -390,7 +494,11 @@
     updateCounts();
     const nNets = new Set(visible.map(s => s.net.id)).size;
     const note = VIEWS[view].note ? ` · ${VIEWS[view].label} view (${VIEWS[view].note})` : "";
-    $("#summary").textContent = `${visible.length.toLocaleString("en")} stations · ${nNets} networks shown${note}`;
+    const nObs = visible.filter(s => !s.das).length, nCables = cablesOf(visible).length;
+    const parts = [];
+    if (nObs || !nCables) parts.push(`${nObs.toLocaleString("en")} stations`);
+    if (nCables) parts.push(`${nCables} DAS cable${nCables > 1 ? "s" : ""}`);
+    $("#summary").textContent = `${parts.join(" · ")} · ${nNets} networks shown${note}`;
     $("#year-label").textContent = `${state.from} and ${state.to}`;
     $("#list-view").hidden = !!state.selected;
     $("#detail-view").hidden = !state.selected;
@@ -452,6 +560,12 @@
     if (e.target.id === "back") {
       if (view === "world") { history.pushState("", "", location.pathname); route(); }
       else location.hash = hashFor(null, view);
+      return;
+    }
+    const trc = e.target.closest("tr[data-cable]");
+    if (trc) {
+      const pts = cablesOf(byNet.get(state.selected)).find(p => p[0].net.id + "|" + (p[0].cable || p[0].code) === trc.dataset.cable);
+      if (pts) fitPoints(pts.map(p => [p.lat, p.lon]), 13);
       return;
     }
     const tr = e.target.closest("tr[data-i]");

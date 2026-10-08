@@ -68,20 +68,107 @@
   const fmtYears = (a, b) => { const y0 = a ? a.slice(0, 4) : "?", y1 = b ? b.slice(0, 4) : "now"; return y0 === y1 ? y0 : `${y0}–${y1}`; };
   const fdsnUrl = n => `https://www.fdsn.org/networks/detail/${encodeURIComponent(n.id)}/`;
 
-  // ---------- carte ----------
-  const map = L.map("map", { preferCanvas: true, worldCopyJump: true, minZoom: 2 });
-  const esri = (path, attribution, maxZoom) => L.tileLayer(
-    `https://server.arcgisonline.com/ArcGIS/rest/services/${path}/MapServer/tile/{z}/{y}/{x}`, { attribution, maxZoom });
-  const base = {
-    "Light": esri("Canvas/World_Light_Gray_Base", "Tiles &copy; Esri — Esri, HERE, Garmin, OpenStreetMap contributors", 16),
-    "Dark": esri("Canvas/World_Dark_Gray_Base", "Tiles &copy; Esri — Esri, HERE, Garmin, OpenStreetMap contributors", 16),
-    "Ocean (Esri)": esri("Ocean/World_Ocean_Base", "Tiles &copy; Esri — GEBCO, NOAA, Garmin, HERE", 13),
-    "Bathymetry (GEBCO)": L.tileLayer.wms("https://wms.gebco.net/mapserv?", { layers: "GEBCO_LATEST", format: "image/png", attribution: "GEBCO Compilation Group" }),
+  // ---------- carte : vue Monde (Mercator) et vues polaires (stéréographiques) ----------
+  const ESRI_WORLD = "https://server.arcgisonline.com/ArcGIS/rest/services";
+  const ATTR_ESRI = "Tiles &copy; Esri — Esri, HERE, Garmin, OpenStreetMap contributors";
+  const ATTR_ESRI_OCEAN = "Tiles &copy; Esri — GEBCO, NOAA, Garmin, HERE";
+  const ATTR_GIBS = 'Imagery: <a href="https://www.earthdata.nasa.gov/engage/open-data-services-software/earthdata-developer-portal/gibs-api">NASA GIBS</a> — Blue Marble';
+  // GIBS : 5 niveaux natifs (8192 → 512 m/px). Deux niveaux plus larges sont ajoutés devant
+  // (zoomOffset -2) pour voir le disque polaire entier, et le zoom au-delà agrandit les tuiles.
+  const GIBS_RES = [32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64];
+  const PROJ = {
+    "EPSG:3413": "+proj=stere +lat_0=90 +lat_ts=70 +lon_0=-45 +k=1 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs",
+    "EPSG:3031": "+proj=stere +lat_0=-90 +lat_ts=-71 +lon_0=0 +k=1 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs",
   };
-  (isDark() ? base.Dark : base.Light).addTo(map);
-  L.control.layers(base, null, { position: "topright" }).addTo(map);
-  L.control.scale({ imperial: false }).addTo(map);
-  const layer = L.layerGroup().addTo(map);
+  const polarCrs = (code, origin, resolutions) => new L.Proj.CRS(code, PROJ[code], { origin, resolutions });
+  const gibs = (epsg, maxZoom) => L.tileLayer(
+    `https://gibs.earthdata.nasa.gov/wmts/epsg${epsg}/best/BlueMarble_ShadedRelief_Bathymetry/default/500m/{z}/{y}/{x}.jpeg`,
+    { attribution: ATTR_GIBS, tileSize: 512, zoomOffset: -2, minNativeZoom: 2, maxNativeZoom: 6, maxZoom });
+  const esriWorld = (path, attribution, maxZoom) => L.tileLayer(
+    `${ESRI_WORLD}/${path}/MapServer/tile/{z}/{y}/{x}`, { attribution, maxZoom });
+  // Limites des vues polaires : les fonds GIBS couvrent jusqu'à ~52° au milieu des bords
+  const NORTH = s => s.lat >= 55, SOUTH = s => s.lat <= -55;
+
+  const VIEWS = {
+    world: {
+      label: "World", note: "", inView: () => true,
+      make: () => ({
+        crs: L.CRS.EPSG3857, center: [15, -150], zoom: 2, minZoom: 2, maxZoom: 16,
+        layers: {
+          "Light": esriWorld("Canvas/World_Light_Gray_Base", ATTR_ESRI, 16),
+          "Dark": esriWorld("Canvas/World_Dark_Gray_Base", ATTR_ESRI, 16),
+          "Ocean (Esri)": esriWorld("Ocean/World_Ocean_Base", ATTR_ESRI_OCEAN, 13),
+          "Bathymetry (GEBCO)": L.tileLayer.wms("https://wms.gebco.net/mapserv?", { layers: "GEBCO_LATEST", format: "image/png", attribution: "GEBCO Compilation Group" }),
+        },
+        default: isDark() ? "Dark" : "Light",
+      }),
+    },
+    antarctic: {
+      label: "Antarctic", note: "south of 55°S", inView: SOUTH,
+      make: () => ({
+        crs: polarCrs("EPSG:3031", [-4194304, 4194304], GIBS_RES),
+        center: [-90, 0], zoom: 2, minZoom: 0, maxZoom: 9,
+        layers: { "Blue Marble bathymetry (NASA)": gibs(3031, 9) },
+      }),
+    },
+    arctic: {
+      label: "Arctic", note: "north of 55°N", inView: NORTH,
+      make: () => ({
+        crs: polarCrs("EPSG:3413", [-4194304, 4194304], GIBS_RES),
+        center: [90, 0], zoom: 2, minZoom: 0, maxZoom: 9,
+        layers: { "Blue Marble bathymetry (NASA)": gibs(3413, 9) },
+      }),
+    },
+  };
+
+  const ViewSwitch = L.Control.extend({
+    options: { position: "topleft" },
+    onAdd() {
+      const div = L.DomUtil.create("div", "view-switch leaflet-bar");
+      for (const key of ["world", "arctic", "antarctic"]) {
+        const v = VIEWS[key];
+        const b = L.DomUtil.create("button", key === view ? "active" : "", div);
+        b.type = "button"; b.textContent = v.label; b.setAttribute("aria-pressed", String(key === view));
+        b.addEventListener("click", () => { location.hash = hashFor(state.selected, key); });
+      }
+      L.DomEvent.disableClickPropagation(div);
+      return div;
+    },
+  });
+
+  let map, layer, view = null;
+  function createMap(key) {
+    if (map) map.remove();
+    view = key;
+    const c = VIEWS[key].make();
+    map = L.map("map", { crs: c.crs, preferCanvas: true, worldCopyJump: key === "world",
+                         minZoom: c.minZoom, maxZoom: c.maxZoom, zoomSnap: key === "world" ? 1 : 0.25 });
+    const names = Object.keys(c.layers);
+    c.layers[c.default || names[0]].addTo(map);
+    if (names.length > 1) L.control.layers(c.layers, null, { position: "topright" }).addTo(map);
+    new ViewSwitch().addTo(map);
+    L.control.scale({ imperial: false }).addTo(map);
+    layer = L.layerGroup().addTo(map);
+    map.setView(c.center, c.zoom);
+  }
+
+  // Cadrage sur des points. En projection polaire, une emprise lat/lon n'est pas un rectangle :
+  // on calcule l'emprise en pixels projetés pour chaque niveau de zoom.
+  function fitPoints(latlngs, maxZoom = 9) {
+    if (view === "world") {
+      map.fitBounds(L.latLngBounds(latlngs).pad(0.15), { maxZoom });
+      return;
+    }
+    const crs = map.options.crs, room = map.getSize().multiplyBy(0.8);
+    const boundsAt = z => L.bounds(latlngs.map(ll => crs.latLngToPoint(L.latLng(ll), z)));
+    let z = Math.min(maxZoom, 6);  // au-delà, les tuiles GIBS (500 m/px) sont juste agrandies
+    while (z > map.getMinZoom()) {
+      const d = boundsAt(z).getSize();
+      if (d.x <= room.x && d.y <= room.y) break;
+      z -= map.options.zoomSnap;
+    }
+    map.setView(crs.pointToLatLng(boundsAt(z).getCenter(), z), z, { animate: false });
+  }
 
   function colorOf(s) {
     const mode = isDark() ? "dark" : "light";
@@ -107,6 +194,7 @@
   // ---------- filtres ----------
   function passes(s, ignoreSelection) {
     if (!ignoreSelection && state.selected && s.net.id !== state.selected) return false;
+    if (!VIEWS[view].inView(s)) return false;
     if (!state.access.has(s.access)) return false;
     if (!state.sensor.has(s.sensor)) return false;
     if (!state.fs.has(s.bins.fs)) return false;
@@ -199,14 +287,16 @@
   function renderMarkers(visible) {
     layer.clearLayers();
     markers = new Map();
-    const ring = getComputedStyle(document.documentElement).getPropertyValue("--marker-ring").trim();
+    // contour couleur de fond en vue Monde ; blanc sur l'imagerie sombre des vues polaires
+    const ring = view === "world"
+      ? getComputedStyle(document.documentElement).getPropertyValue("--marker-ring").trim() : "#ffffff";
     const big = state.selected != null;
     for (const s of visible) {
       const restricted = s.access === "restricted";
       const m = L.circleMarker([s.lat, s.lon], restricted
         // creux : contour à la couleur de la catégorie, intérieur couleur de fond
         ? { radius: big ? 6 : 4.5, weight: 2, color: colorOf(s), fillColor: ring, fillOpacity: 1 }
-        : { radius: big ? 7 : 5, weight: 1.5, color: ring, fillColor: colorOf(s), fillOpacity: 1 }).bindPopup(() => popupHtml(s), { maxWidth: 320 })
+        : { radius: big ? 7 : 5, weight: 1.5, color: ring, fillColor: colorOf(s), fillOpacity: 1 }).bindPopup(() => popupHtml(s), { maxWidth: 320, autoPanPaddingTopLeft: L.point(20, 100) })
         .bindTooltip(`${s.net.code}.${s.code}`, { direction: "top", offset: [0, -6] });
       m.addTo(layer);
       markers.set(s.i, m);
@@ -290,7 +380,8 @@
     renderLegend(visible);
     updateCounts();
     const nNets = new Set(visible.map(s => s.net.id)).size;
-    $("#summary").textContent = `${visible.length.toLocaleString("en")} stations · ${nNets} networks shown`;
+    const note = VIEWS[view].note ? ` · ${VIEWS[view].label} view (${VIEWS[view].note})` : "";
+    $("#summary").textContent = `${visible.length.toLocaleString("en")} stations · ${nNets} networks shown${note}`;
     $("#year-label").textContent = `${state.from} and ${state.to}`;
     $("#list-view").hidden = !!state.selected;
     $("#detail-view").hidden = !state.selected;
@@ -298,14 +389,31 @@
     if (fit && state.selected) $("#detail-view").scrollIntoView({ block: "start" });
     if (!$("#table-view").hidden) renderTable(stations.filter(s => passes(s, true)));
     if (fit && visible.length) {
-      map.fitBounds(L.latLngBounds(visible.map(s => [s.lat, s.lon])).pad(0.15), { maxZoom: 9 });
+      fitPoints(visible.map(s => [s.lat, s.lon]));
     }
   }
 
-  // ---------- navigation (#net=ID) ----------
+  // ---------- navigation (#net=ID&view=arctic) ----------
+  function hashFor(net, v) {
+    const parts = [];
+    if (net) parts.push("net=" + encodeURIComponent(net));
+    if (v && v !== "world") parts.push("view=" + v);
+    return parts.join("&");
+  }
+
+  // Vue adaptée à un réseau : on garde la vue polaire courante si elle le contient,
+  // on bascule en vue polaire si toutes ses stations sont au-delà de 60°, sinon Monde.
+  function chooseView(id) {
+    const sts = byNet.get(id);
+    if (view !== "world" && sts.every(VIEWS[view].inView)) return view;
+    if (sts.every(s => s.lat >= 60)) return "arctic";
+    if (sts.every(s => s.lat <= -60)) return "antarctic";
+    return "world";
+  }
+
   function route() {
-    const m = location.hash.match(/net=([^&]+)/);
-    const id = m ? decodeURIComponent(m[1]) : null;
+    const params = new URLSearchParams(location.hash.slice(1));
+    const id = params.get("net");
     state.selected = id && byNet.has(id) ? id : null;
     // lien direct vers un réseau restreint : on active le filtre plutôt que d'afficher une carte vide
     if (state.selected && !state.access.has("restricted") &&
@@ -313,25 +421,34 @@
       state.access.add("restricted");
       document.querySelector('input[data-key="access"][value="restricted"]').checked = true;
     }
+    const asked = params.get("view");
+    const want = asked in VIEWS ? asked : (state.selected ? chooseView(state.selected) : "world");
+    const switched = want !== view;
+    if (switched) createMap(want);
     $("#table-view").hidden = true;
-    update(!!state.selected || first);
+    update(!!state.selected || first || switched);
     first = false;
   }
   let first = true;
 
   $("#network-list").addEventListener("click", e => {
     const li = e.target.closest("li[data-id]");
-    if (li) location.hash = "net=" + encodeURIComponent(li.dataset.id);
+    if (li) location.hash = hashFor(li.dataset.id, chooseView(li.dataset.id));
   });
   $("#network-list").addEventListener("keydown", e => {
     if (e.key === "Enter") e.target.closest("li[data-id]")?.click();
   });
   $("#detail-view").addEventListener("click", e => {
-    if (e.target.id === "back") { history.pushState("", "", location.pathname); route(); return; }
+    if (e.target.id === "back") {
+      if (view === "world") { history.pushState("", "", location.pathname); route(); }
+      else location.hash = hashFor(null, view);
+      return;
+    }
     const tr = e.target.closest("tr[data-i]");
     if (tr) {
       const s = stations[Number(tr.dataset.i)];
-      map.setView([s.lat, s.lon], Math.max(map.getZoom(), 8));
+      // fonds polaires GIBS : 500 m/pixel au mieux, inutile de zoomer plus près
+      map.setView([s.lat, s.lon], Math.max(map.getZoom(), view === "world" ? 8 : 5));
       markers.get(s.i)?.openPopup();
     }
   });

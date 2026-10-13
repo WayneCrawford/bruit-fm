@@ -8,6 +8,7 @@
     open: "Open, data verified", open_external: "Open, outside FDSN", no_data: "No data found",
     on_request: "On request (data not public)", unverified: "Not verified",
     restricted: "Restricted / embargo",
+    archive_only: "BRUIT-FM archive only (not public)",
   };
   const $ = sel => document.querySelector(sel);
   const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -51,6 +52,7 @@
       ["Data access", esc(ACCESS[n.access] || n.access) +
         (n.nr && n.access !== "restricted" ? ` (${n.nr} restricted station${n.nr > 1 ? "s" : ""})` : "")],
       [n.nd === n.n ? "DAS channels" : "Stations", n.n.toLocaleString("en")],
+      ...(n.na ? [["BRUIT-FM archive", `${n.na === n.n ? "all" : `${n.na} of ${n.n}`} ${n.nd === n.n ? "channels" : "stations"}`]] : []),
       ["Data centre", n.source === "curated" ? "—" : esc(n.dcs)],
     ];
     if (n.fdsn) items.push(["FDSN", `<a href="https://www.fdsn.org/networks/detail/${encodeURIComponent(n.fdsn)}/" target="_blank" rel="noopener">network page</a>`]);

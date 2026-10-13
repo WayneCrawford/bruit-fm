@@ -12,7 +12,7 @@ This is the point of entry for the BRUIT-FM project (project [ANR-21-CE01-0031](
 - [Interactive map of ocean-bottom networks](obs_map/)<br>
   OBS and seafloor DAS available from FDSN data centres, with filters, polar views, a table view and a page per network listing its instruments and channels.<br>
   [<img src='Images/map_thumb.png' align='top'>](obs_map/)
-- [Map of networks downloaded for project members](obs_networks/world_map_downloaded.html)
+- [Map of networks downloaded for project members](obs_map/#archive)
 
 ## The Project
 

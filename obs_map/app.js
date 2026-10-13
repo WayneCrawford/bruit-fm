@@ -11,20 +11,25 @@
     (document.documentElement.dataset.theme !== "light" && darkQuery.matches);
 
   // ---------- palettes (validées : catégoriel all-pairs, ordinal sur fond carte) ----------
-  const CATEGORICAL = { light: ["#2a78d6", "#eb6834", "#1baf7a", "#c2407e"], dark: ["#3987e5", "#d95926", "#199e70", "#d45fb0"] };
+  // 5e entrée : capteur inconnu (station connue par sa seule position), gris neutre
+  const CATEGORICAL = { light: ["#2a78d6", "#eb6834", "#1baf7a", "#c2407e", "#898781"], dark: ["#3987e5", "#d95926", "#199e70", "#d45fb0", "#898781"] };
   // Classes ordonnées (fréquence, durée, profondeur, année) : 4 teintes bien distinctes,
   // bleu → vert → jaune → rouge du plus petit au plus grand. Validées toutes paires
   // (vision normale et daltonisme) sur les fonds de carte clair et sombre.
   const ORDINAL = { light: ["#2a78d6", "#1baf7a", "#c9b000", "#d62728"], dark: ["#3987e5", "#0f9d8a", "#9c9600", "#e0405c"] };
 
-  const SENSORS = ["Seismometer + pressure", "Seismometer only", "Pressure only", "DAS (fibre optic)"];
+  const SENSORS = ["Seismometer + pressure", "Seismometer only", "Pressure only", "DAS (fibre optic)", "Unknown (not described)"];
   const DAS = 3;
+  // filtres dont les valeurs sont des chaînes (les autres sont des numéros de classe)
+  const STRING_KEYS = new Set(["access", "archive"]);
+  const ARCHIVE_OUT = "#898781";  // stations hors archive : gris neutre, en retrait
   // points DAS individuels visibles à partir de ce zoom (sinon : tracé du câble seul)
   const DAS_POINTS_ZOOM = { world: 12, polar: 7 };
   const ACCESS = {
     open: "Open, data verified", open_external: "Open, outside FDSN", no_data: "No data found",
     on_request: "On request (data not public)", unverified: "Not verified",
     restricted: "Restricted / embargo",
+    archive_only: "BRUIT-FM archive only (not public)",
   };
   // Tous les statuts sont affichés par défaut ; les stations restreintes se distinguent
   // par un marqueur creux et semi-transparent.
@@ -47,7 +52,8 @@
       i, net: nets[r[F.net]], code: r[F.code], lat: r[F.lat], lon: r[F.lon], depth: r[F.depth],
       start, end, channels: r[F.channels], fs: r[F.fs], sensor: r[F.sensor], sensors: r[F.sensors], dc: r[F.dc],
     };
-    s.access = r[F.restricted] ? "restricted" : s.net.access;
+    s.access = r[F.restricted] ? "restricted" : r[F.archive_only] ? "archive_only" : s.net.access;
+    s.arch = r[F.archive] ? "in" : "out";
     s.y0 = start ? start.getUTCFullYear() : null;
     s.y1 = end ? end.getUTCFullYear() : NOW.getUTCFullYear();
     s.days = start ? Math.round(((end || NOW) - start) / DAY) : null;
@@ -68,8 +74,8 @@
   const YMIN = Math.min(...years), YMAX = NOW.getUTCFullYear();
   const state = {
     q: "", from: YMIN, to: YMAX, colorBy: "sensor", selected: null,
-    sensor: new Set([0, 1, 2, 3]), fs: new Set([0, 1, 2, 3, -1]), duration: new Set([0, 1, 2, 3, -1]),
-    access: new Set(ACCESS_DEFAULT),
+    sensor: new Set([0, 1, 2, 3, 4]), fs: new Set([0, 1, 2, 3, -1]), duration: new Set([0, 1, 2, 3, -1]),
+    access: new Set(ACCESS_DEFAULT), archive: new Set(["in", "out"]),
   };
 
   const $ = sel => document.querySelector(sel);
@@ -186,6 +192,7 @@
   function colorOf(s) {
     const mode = isDark() ? "dark" : "light";
     if (state.colorBy === "sensor") return CATEGORICAL[mode][s.sensor];
+    if (state.colorBy === "archive") return s.arch === "in" ? CATEGORICAL[mode][0] : ARCHIVE_OUT;
     const b = s.bins[state.colorBy];
     return b < 0 ? "#898781" : ORDINAL[mode][b];
   }
@@ -209,6 +216,7 @@
     if (!ignoreSelection && state.selected && s.net.id !== state.selected) return false;
     if (!VIEWS[view].inView(s)) return false;
     if (!state.access.has(s.access)) return false;
+    if (!state.archive.has(s.arch)) return false;
     if (!state.sensor.has(s.sensor)) return false;
     if (!state.fs.has(s.bins.fs)) return false;
     if (!state.duration.has(s.bins.duration)) return false;
@@ -221,12 +229,12 @@
     const el = $(container);
     el.innerHTML = items.map(([value, label, color]) => `
       <label class="chip"><input type="checkbox" data-key="${key}" value="${value}"
-        ${state[key].has(key === "access" ? value : Number(value)) ? "checked" : ""}>
+        ${state[key].has(STRING_KEYS.has(key) ? value : Number(value)) ? "checked" : ""}>
       ${color ? `<span class="swatch" style="background:${color}"></span>` : ""}${esc(label)}
       <span class="n" data-count="${key}:${value}"></span></label>`).join("");
     el.addEventListener("change", e => {
       const v = e.target.value, set = state[key];
-      const parsed = key === "access" ? v : Number(v);
+      const parsed = STRING_KEYS.has(key) ? v : Number(v);
       e.target.checked ? set.add(parsed) : set.delete(parsed);
       update();
     });
@@ -238,6 +246,7 @@
     buildChips("#f-fs", "fs", BINS.fs.labels.map((l, i) => [i, l]).concat([[-1, "unknown"]]));
     buildChips("#f-duration", "duration", BINS.duration.labels.map((l, i) => [i, l]));
     buildChips("#f-access", "access", Object.entries(ACCESS));
+    buildChips("#f-archive", "archive", [["in", "In the archive"], ["out", "Not in the archive"]]);
     const ranges = [["#year-from", "from"], ["#year-to", "to"]];
     for (const [sel, key] of ranges) {
       const input = $(sel);
@@ -263,7 +272,12 @@
     const mode = isDark() ? "dark" : "light";
     let items;
     if (state.colorBy === "sensor") {
-      items = SENSORS.map((l, i) => [CATEGORICAL[mode][i], l, visible.filter(s => s.sensor === i).length]);
+      items = SENSORS.map((l, i) => [CATEGORICAL[mode][i], l, visible.filter(s => s.sensor === i).length])
+        .filter(([, , n], i) => i !== 4 || n > 0);  // « inconnu » seulement s'il y en a
+    } else if (state.colorBy === "archive") {
+      const obs = visible.filter(s => !s.das);
+      items = [[CATEGORICAL[mode][0], "In the BRUIT-FM archive", obs.filter(s => s.arch === "in").length],
+               [ARCHIVE_OUT, "Not in the archive", obs.filter(s => s.arch === "out").length]];
     } else {
       // les points DAS ne comptent pas comme stations : les câbles ont leur propre ligne
       const bins = BINS[state.colorBy], obs = visible.filter(s => !s.das);
@@ -283,20 +297,21 @@
 
   function updateCounts() {
     // compte de chaque chip à filtres courants, hors filtre de la dimension elle-même
-    for (const key of ["sensor", "fs", "duration", "access"]) {
+    for (const key of ["sensor", "fs", "duration", "access", "archive"]) {
       const saved = state[key];
       state[key] = { has: () => true };
       const pool = stations.filter(s => passes(s, false));
       state[key] = saved;
       document.querySelectorAll(`[data-count^="${key}:"]`).forEach(el => {
         const v = el.dataset.count.split(":")[1];
-        const match = pool.filter(s => key === "access" ? s.access === v
+        const match = pool.filter(s => key === "access" ? s.access === v : key === "archive" ? s.arch === v
           : key === "sensor" ? s.sensor === Number(v) : s.bins[key] === Number(v));
         // la puce DAS compte des câbles, pas les centaines de points le long de la fibre
-        const n = key === "sensor" && Number(v) === DAS ? cablesOf(match).length : match.length;
+        const n = key === "sensor" && Number(v) === DAS ? cablesOf(match).length
+          : key === "archive" ? match.filter(s => !s.das).length : match.length;  // archive : stations, comme la légende
         el.textContent = n;
         // « inconnu » / « non vérifié » seulement s'ils existent
-        el.closest(".chip").hidden = (v === "-1" || v === "unverified") && n === 0;
+        el.closest(".chip").hidden = (v === "-1" || v === "unverified" || (key === "sensor" && v === "4")) && n === 0;
       });
     }
   }
@@ -381,11 +396,16 @@
     // stations restreintes dessinées d'abord : les stations ouvertes restent au-dessus
     renderCables(visible, ring);
     const obs = visible.filter(s => !s.das);
-    const ordered = obs.filter(s => s.access === "restricted")
-      .concat(obs.filter(s => s.access !== "restricted"));
+    // mode archive : stations hors archive en petits points gris, dessinées dessous
+    const faded = s => state.colorBy === "archive" && s.arch === "out";
+    const ordered = obs.filter(faded)
+      .concat(obs.filter(s => !faded(s) && s.access === "restricted"))
+      .concat(obs.filter(s => !faded(s) && s.access !== "restricted"));
     for (const s of ordered) {
       const restricted = s.access === "restricted";
-      const m = L.circleMarker([s.lat, s.lon], restricted
+      const m = L.circleMarker([s.lat, s.lon], faded(s)
+        ? { radius: 3, weight: 0, fillColor: ARCHIVE_OUT, fillOpacity: 0.6 }
+        : restricted
         // creux : contour à la couleur de la catégorie, intérieur couleur de fond
         ? { radius: big ? 6 : 4.5, weight: 2, color: colorOf(s), opacity: RESTRICTED_ALPHA,
             fillColor: ring, fillOpacity: RESTRICTED_ALPHA * 0.6 }
@@ -426,6 +446,7 @@
       <div class="muted">${esc(n.name)}</div>
       <dl>
         <dt>Period</dt><dd>${esc(n.start || "?")} → ${esc(n.end || "present")}</dd>
+        ${n.na ? `<dt>Project archive</dt><dd>${n.na === n.n ? "all" : `${n.na} of ${n.n}`} ${n.nd === n.n ? "channels" : "stations"}</dd>` : ""}
         <dt>Data access</dt><dd>${esc(ACCESS[n.access])}${n.nr && n.access !== "restricted" ? ` (${n.nr} restricted station${n.nr > 1 ? "s" : ""})` : ""}</dd>
         <dt>${n.nd === n.n ? "DAS channels" : "Stations"}</dt><dd>${sts.length === all.length ? all.length : `${sts.length} shown of ${all.length}`}</dd>
       </dl>
@@ -457,7 +478,7 @@
       ["Network", r => r.n.id], ["Name", r => r.n.name], ["Operator", r => r.n.operator || ""],
       ["Start", r => r.n.start || ""], ["End", r => r.n.end || "present"], ["Stations", r => r.count, true], ["Type", r => r.n.nd === r.n.n ? "DAS" : "OBS"],
       ["Sensors", r => SENSORS[r.n.sensor]], ["Max rate (Hz)", r => r.n.fs ?? "", true],
-      ["Data centres", r => r.n.source === "curated" ? "—" : r.n.dcs], ["Access", r => ACCESS[r.n.access] + (r.n.nr && r.n.access !== "restricted" ? ` (${r.n.nr} restricted)` : "")], ["DOI", r => r.n.doi || ""],
+      ["Data centres", r => r.n.source === "curated" ? "—" : r.n.dcs], ["Access", r => ACCESS[r.n.access] + (r.n.nr && r.n.access !== "restricted" ? ` (${r.n.nr} restricted)` : "")], ["Archive", r => r.n.na, true], ["DOI", r => r.n.doi || ""],
     ];
     const table = $("#network-table");
     const sort = table._sort || { col: 3, dir: -1 };
@@ -505,7 +526,7 @@
   // reprend exactement ses filtres, sa vue et son cadrage. La sélection de réseau et la vue
   // polaire sont déjà dans l'adresse (#net=…&view=…).
   const STORE_KEY = "obsmap-state";
-  const SET_KEYS = ["sensor", "fs", "duration", "access"];
+  const SET_KEYS = ["sensor", "fs", "duration", "access", "archive"];
 
   function saveState() {
     if (!map || restoring) return;
@@ -564,6 +585,8 @@
       state.access.add("restricted");
       document.querySelector('input[data-key="access"][value="restricted"]').checked = true;
     }
+    // #archive : lien direct pour les membres, carte colorée selon l'archive du projet
+    if (first && params.has("archive")) { state.colorBy = "archive"; $("#color-by").value = "archive"; }
     const asked = params.get("view");
     const want = asked in VIEWS ? asked : (state.selected ? chooseView(state.selected) : "world");
     const switched = want !== view;

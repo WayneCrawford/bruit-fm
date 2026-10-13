@@ -9,9 +9,8 @@ This is the point of entry for the BRUIT-FM project (project [ANR-21-CE01-0031](
 - [The dataset](https://doi.org/10.5281/zenodo.17132828)
 
 ## Ocean bottom seismology open datasets
-- [Map of networks](obs_networks/world_map_inventory.html)
-[<img src='Images/map_thumb.png' align='top'>](obs_networks/world_map_inventory.html)
-- [List of networks](obs_networks/network_list.html)
+- [Interactive map of ocean-bottom networks](obs_map/): OBS and seafloor DAS available from FDSN data centres, with filters, polar views, a table view and a page per network listing its instruments and channels.
+[<img src='Images/map_thumb.png' align='top'>](obs_map/)
 - [Map of networks downloaded for project members](obs_networks/world_map_downloaded.html)
 
 ## The Project

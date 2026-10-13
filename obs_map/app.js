@@ -161,6 +161,7 @@
     layer = L.layerGroup().addTo(map);
     dasPoints = L.layerGroup();
     map.on("zoomend", toggleDasPoints);
+    map.on("moveend", saveState);
     map.setView(c.center, c.zoom);
   }
 
@@ -200,7 +201,7 @@
       <p><b>Channels</b><br>${esc(s.channels).replace(/; /g, "<br>")}</p>
       ${s.sensors ? `<p class="small muted">${esc(s.sensors)}</p>` : ""}
       <p class="small">Data centre: ${s.net.source === "curated" ? "— (curated addition)" : esc(s.dc)}</p>
-      <a href="#net=${encodeURIComponent(n.id)}">Network details →</a>`;
+      <a href="network.html#${encodeURIComponent(n.id)}">Network details →</a>`;
   }
 
   // ---------- filtres ----------
@@ -334,7 +335,7 @@
       <p><b>Channels</b><br>${esc(s.channels).replace(/; /g, "<br>")}</p>
       ${s.sensors ? `<p class="small muted">${esc(s.sensors)}</p>` : ""}
       <p class="small">Data centre: ${s.net.source === "curated" ? "— (curated addition)" : esc(s.dc)}</p>
-      <a href="#net=${encodeURIComponent(n.id)}">Network details →</a>`;
+      <a href="network.html#${encodeURIComponent(n.id)}">Network details →</a>`;
   }
 
   function toggleDasPoints() {
@@ -414,6 +415,7 @@
       </li>`).join("") : `<li class="empty">No network matches these filters.</li>`;
   }
 
+  // Fiche courte du réseau sélectionné sur la carte ; le détail complet est sur network.html
   function renderDetail() {
     const n = nets.find(x => x.id === state.selected);
     const sts = byNet.get(n.id).filter(s => passes(s, false));
@@ -424,24 +426,11 @@
       <div class="muted">${esc(n.name)}</div>
       <dl>
         <dt>Period</dt><dd>${esc(n.start || "?")} → ${esc(n.end || "present")}</dd>
-        <dt>Operator</dt><dd>${esc(n.operator || "—")}</dd>
-        <dt>DOI</dt><dd>${n.doi ? `<a href="${esc(n.doi)}" target="_blank" rel="noopener">${esc(n.doi.replace("https://doi.org/", ""))}</a>` : "—"}</dd>
         <dt>Data access</dt><dd>${esc(ACCESS[n.access])}${n.nr && n.access !== "restricted" ? ` (${n.nr} restricted station${n.nr > 1 ? "s" : ""})` : ""}</dd>
-        ${n.nr ? `<dt></dt><dd class="small muted">No public embargo end date in the metadata; contact the network operator (see FDSN page).</dd>` : ""}
         <dt>${n.nd === n.n ? "DAS channels" : "Stations"}</dt><dd>${sts.length === all.length ? all.length : `${sts.length} shown of ${all.length}`}</dd>
-        <dt>Data centre</dt><dd>${n.source === "curated" ? "—" : esc(n.dcs)}</dd>
-        ${n.url ? `<dt>Data</dt><dd><a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.url)}</a></dd>` : ""}
-        ${n.note ? `<dt>Note</dt><dd class="small">${esc(n.note)}</dd>` : ""}
-        ${n.fdsn ? `<dt>FDSN</dt><dd><a href="${fdsnUrl(n)}" target="_blank" rel="noopener">network page</a></dd>` : `<dt>Source</dt><dd>curated addition (not on FDSN)</dd>`}
       </dl>
-      ${n.nd ? dasTable(sts) : ""}
-      ${sts.some(s => !s.das) ? `<table class="stations">
-        <thead><tr><th>Station</th><th>Start</th><th>End</th><th class="num">Depth</th><th>Channels</th></tr></thead>
-        <tbody>${sts.filter(s => !s.das).sort((a, b) => a.code.localeCompare(b.code) || (a.start - b.start)).map(s => `
-          <tr data-i="${s.i}"><td>${esc(s.code)}${s.access === "restricted" ? ' <span class="muted" title="Restricted / embargo">🔒</span>' : ""}</td><td>${fmtDate(s.start)}</td><td>${fmtDate(s.end)}</td>
-          <td class="num">${s.depth.toLocaleString("en")}</td><td>${esc(s.channels).replace(/; /g, "<br>")}</td></tr>`).join("")}
-        </tbody>
-      </table>` : ""}`;
+      <a class="primary-btn" href="network.html#${encodeURIComponent(n.id)}">Instruments &amp; channels →</a>
+      ${n.nd ? dasTable(sts) : ""}`;
   }
 
   function dasTable(sts) {
@@ -480,7 +469,7 @@
       `<th data-col="${i}" ${i === sort.col ? `aria-sort="${sort.dir > 0 ? "ascending" : "descending"}"` : ""}>${h}</th>`).join("")}</tr></thead>
       <tbody>${rows.map(r => `<tr>${cols.map(([h, f, num]) => {
         const v = f(r);
-        if (h === "Network") return `<td><a href="#net=${encodeURIComponent(v)}" data-close>${esc(v)}</a></td>`;
+        if (h === "Network") return `<td><a href="network.html#${encodeURIComponent(v)}">${esc(v)}</a></td>`;
         if (h === "DOI") return `<td>${v ? `<a href="${esc(v)}" target="_blank" rel="noopener">${esc(v.replace("https://doi.org/", ""))}</a>` : ""}</td>`;
         return `<td${num ? ' class="num"' : ""}>${esc(v)}</td>`;
       }).join("")}</tr>`).join("")}</tbody>`;
@@ -508,7 +497,43 @@
     if (fit && visible.length) {
       fitPoints(visible.map(s => [s.lat, s.lon]));
     }
+    saveState();
   }
+
+  // ---------- état de la carte, mémorisé pour la session ----------
+  // Au retour depuis la page d'un réseau (bouton Retour ou « Back to the map »), la carte
+  // reprend exactement ses filtres, sa vue et son cadrage. La sélection de réseau et la vue
+  // polaire sont déjà dans l'adresse (#net=…&view=…).
+  const STORE_KEY = "obsmap-state";
+  const SET_KEYS = ["sensor", "fs", "duration", "access"];
+
+  function saveState() {
+    if (!map || restoring) return;
+    const c = map.getCenter();
+    const saved = { q: state.q, from: state.from, to: state.to, colorBy: state.colorBy,
+                    view, center: [c.lat, c.lng], zoom: map.getZoom() };
+    for (const k of SET_KEYS) saved[k] = [...state[k]];
+    try { sessionStorage.setItem(STORE_KEY, JSON.stringify(saved)); } catch (e) { /* stockage indisponible */ }
+  }
+
+  function loadSavedState() {
+    const nav = performance.getEntriesByType("navigation")[0];
+    if (!nav || nav.type !== "back_forward") return null;  // nouvelle visite : état par défaut
+    try { return JSON.parse(sessionStorage.getItem(STORE_KEY)); } catch (e) { return null; }
+  }
+
+  function applySavedFilters(saved) {
+    Object.assign(state, { q: saved.q || "", from: saved.from, to: saved.to, colorBy: saved.colorBy });
+    for (const k of SET_KEYS) if (Array.isArray(saved[k])) state[k] = new Set(saved[k]);
+  }
+
+  function syncInputs() {
+    $("#search").value = state.q;
+    $("#year-from").value = state.from;
+    $("#year-to").value = state.to;
+    $("#color-by").value = state.colorBy;
+  }
+  let restoring = false;
 
   // ---------- navigation (#net=ID&view=arctic) ----------
   function hashFor(net, v) {
@@ -588,7 +613,6 @@
       t._sort = { col, dir: t._sort && t._sort.col === col ? -t._sort.dir : 1 };
       renderTable(stations.filter(s => passes(s, true)));
     }
-    if (e.target.matches("[data-close]")) $("#table-view").hidden = true;
   });
   document.addEventListener("keydown", e => { if (e.key === "Escape") $("#table-view").hidden = true; });
   $("#panel-toggle").addEventListener("click", () => {
@@ -601,6 +625,17 @@
   window.addEventListener("hashchange", route);
 
   $("#generated").textContent = D.generated;
-  initFilters();
-  route();
+  const saved = loadSavedState();
+  if (saved) applySavedFilters(saved);
+  initFilters();  // les puces sont cochées d'après l'état (éventuellement restauré)
+  if (saved) {
+    syncInputs();
+    restoring = true;
+    route();
+    if (saved.view === view && saved.center) map.setView(saved.center, saved.zoom, { animate: false });
+    restoring = false;
+    saveState();
+  } else {
+    route();
+  }
 })();

@@ -1,8 +1,7 @@
 # Datasets open or available through BRUIT-FM
 
-- [World Map](https://www.bruit-fm.org/obs_networks/world_map_inventory.html).
-- [List of networks](https://www.bruit-fm.org/obs_networks/network_list.html).
-- [Downloaded networks](https://www.bruit-fm.org/obs_networks/world_map_downloaded.html).
+- [Interactive map of ocean-bottom networks](https://www.bruit-fm.org/obs_map/) (map, network list and table view, one page per network with its instruments and channels).
+- [Downloaded networks](https://www.bruit-fm.org/obs_networks/world_map_downloaded.html) (project members).
 
 ## Examples of data and metadata access using [obspy](https://github.com/obspy/obspy/wiki/)
 

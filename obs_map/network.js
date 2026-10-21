@@ -12,6 +12,7 @@
   };
   const $ = sel => document.querySelector(sel);
   const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const fmtCoord = v => v == null ? "?" : v.toFixed(4);  // 4 décimales ≈ 10 m
   const fmtRate = r => r == null ? "?" : Number(r).toLocaleString("en", { maximumFractionDigits: 3 });
   const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
   // même suffixe de version que les scripts de la page : le JSON du réseau suit les mises à jour
@@ -129,14 +130,16 @@
       ? `${total} deployment${total > 1 ? "s" : ""}; one line per sensor. A station redeployed at another position appears twice.`
       : `${shown.length} of ${total} deployments match the filter.`;
     $("#channels").innerHTML = `<thead><tr><th>Station</th><th>Channels</th><th class="num">Rate (Hz)</th>
-      <th>Sensor</th><th>Start</th><th>End</th><th class="num">Depth (m)</th></tr></thead>
+      <th>Sensor</th><th>Start</th><th>End</th><th class="num">Latitude</th><th class="num">Longitude</th>
+      <th class="num">Depth (m)</th></tr></thead>
       <tbody>${shown.map(r => r.inst.map((i, k) => {
         const span = r.inst.length > 1 ? ` rowspan="${r.inst.length}"` : "";
         const first = k === 0;
         return `<tr class="${first ? "group-start" : ""}">
           ${first ? `<th scope="row"${span}>${esc(r.sta)}${r.restricted ? ' <span title="Restricted / embargo">🔒</span>' : ""}</th>` : ""}
           <td class="mono">${esc(i[0])}</td><td class="num">${fmtRate(i[1])}</td><td>${esc(i[2])}</td>
-          ${first ? `<td${span}>${esc(r.start || "?")}</td><td${span}>${esc(r.end || "present")}</td>
+          ${first ? `<td class="nowrap"${span}>${esc(r.start || "?")}</td><td class="nowrap"${span}>${esc(r.end || "present")}</td>
+            <td class="num"${span}>${fmtCoord(r.lat)}</td><td class="num"${span}>${fmtCoord(r.lon)}</td>
             <td class="num"${span}>${r.depth.toLocaleString("en")}</td>` : ""}
         </tr>`;
       }).join("")).join("")}</tbody>`;
@@ -144,9 +147,11 @@
 
   function downloadCsv() {
     const quote = v => /[",\n]/.test(String(v ?? "")) ? `"${String(v).replace(/"/g, '""')}"` : String(v ?? "");
-    const lines = [["network", "station", "start", "end", "depth_m", "channels", "sample_rate_hz", "sensor", "restricted"].join(",")];
+    const lines = [["network", "station", "start", "end", "latitude", "longitude", "depth_m", "channels",
+                    "sample_rate_hz", "sensor", "restricted"].join(",")];
     for (const r of rows) for (const [chans, rate, sensor] of r.inst) {
-      lines.push([net.id, r.sta, r.start, r.end || "", r.depth, chans, rate ?? "", sensor, r.restricted].map(quote).join(","));
+      lines.push([net.id, r.sta, r.start, r.end || "", r.lat, r.lon, r.depth, chans, rate ?? "", sensor,
+                  r.restricted].map(quote).join(","));
     }
     const a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([lines.join("\n") + "\n"], { type: "text/csv" }));
